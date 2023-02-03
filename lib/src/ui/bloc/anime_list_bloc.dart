@@ -1,7 +1,9 @@
 import 'dart:math';
 import 'package:anitrack/src/data/anime.dart';
+import 'package:anitrack/src/service/database.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get_it/get_it.dart';
 
 part 'anime_list_state.dart';
 part 'anime_list_event.dart';
@@ -12,10 +14,13 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     on<AnimeAddedEvent>(_onAnimeAdded);
     on<AnimeEpisodeIncrementedEvent>(_onIncremented);
     on<AnimeEpisodeDecrementedEvent>(_onDecremented);
+    on<AnimesLoadedEvent>(_onAnimesLoaded);
   }
 
-  // TODO: Remove
   Future<void> _onAnimeAdded(AnimeAddedEvent event, Emitter<AnimeListState> emit) async {
+    // Add the anime to the database
+    await GetIt.I.get<DatabaseService>().addAnime(event.data);
+
     emit(
       state.copyWith(
         animes: List.from([
@@ -34,16 +39,18 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     if (anime.episodesTotal != null && anime.episodesWatched + 1 > anime.episodesTotal!) return;
 
     final newList = List<AnimeTrackingData>.from(state.animes);
-    newList[index] = anime.copyWith(
-      anime.episodesWatched + 1,
+    final newAnime = anime.copyWith(
+      episodesWatched: anime.episodesWatched + 1,
     );
+    newList[index] = newAnime;
 
     emit(
       state.copyWith(
         animes: newList,
       ),
     );
-    print('${event.id} incremented');
+
+    await GetIt.I.get<DatabaseService>().updateAnime(newAnime);
   }
 
   Future<void> _onDecremented(AnimeEpisodeDecrementedEvent event, Emitter<AnimeListState> emit) async {
@@ -54,15 +61,25 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     if (anime.episodesWatched - 1 < 0) return;
 
     final newList = List<AnimeTrackingData>.from(state.animes);
-    newList[index] = anime.copyWith(
-      anime.episodesWatched - 1,
+    final newAnime = anime.copyWith(
+      episodesWatched: anime.episodesWatched - 1,
     );
+    newList[index] = newAnime;
 
     emit(
       state.copyWith(
         animes: newList,
       ),
     );
-    print('${event.id} decremented');
+
+    await GetIt.I.get<DatabaseService>().updateAnime(newAnime);
+  }
+
+  Future<void> _onAnimesLoaded(AnimesLoadedEvent event, Emitter<AnimeListState> emit) async {
+    emit(
+      state.copyWith(
+        animes: await GetIt.I.get<DatabaseService>().loadAnimes(),
+      ),
+    );
   }
 }

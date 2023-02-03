@@ -79,20 +79,27 @@ class AnimeSearchPage extends StatelessWidget {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Text(
-                                        item.title,
-                                        style: Theme.of(context).textTheme.titleLarge,
-                                        maxLines: 2,
-                                        softWrap: true,
-                                        overflow: TextOverflow.ellipsis,
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          item.title,
+                                          style: Theme.of(context).textTheme.titleLarge,
+                                          maxLines: 2,
+                                          softWrap: true,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
                                       ),
 
-                                      Text(
-                                        item.description,
-                                        style: Theme.of(context).textTheme.bodyMedium,
-                                        maxLines: 4,
-                                        softWrap: true,
-                                        overflow: TextOverflow.ellipsis,
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          item.description,
+                                          textAlign: TextAlign.justify,
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          maxLines: 4,
+                                          softWrap: true,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
                                       ),
                                     ],
                                   ),

@@ -22,3 +22,6 @@ class AnimeAddedEvent extends AnimeListEvent {
   /// The anime to add.
   final AnimeTrackingData data;
 }
+
+/// Triggered when animes are to be loaded from the database
+class AnimesLoadedEvent extends AnimeListEvent {}
