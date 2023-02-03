@@ -74,7 +74,6 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
         ),).toList(),
       ),
     );
-    print(result);
   }
 
   Future<void> _onAnimeAdded(AnimeAddedEvent event, Emitter<AnimeSearchState> emit) async {
