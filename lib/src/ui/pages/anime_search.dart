@@ -52,59 +52,61 @@ class AnimeSearchPage extends StatelessWidget {
                   ),
                 )
               else
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: state.searchResults.length,
-                  itemBuilder: (context, index) {
-                    final item = state.searchResults[index];
-                    return InkWell(
-                      onTap: () {
-                        context.read<AnimeSearchBloc>().add(
-                          AnimeAddedEvent(item),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AnimeCoverImage(
-                              url: item.thumbnailUrl,
-                            ),
+                Expanded(
+                  child: ListView.builder(
+                    //shrinkWrap: true,
+                    itemCount: state.searchResults.length,
+                    itemBuilder: (context, index) {
+                      final item = state.searchResults[index];
+                      return InkWell(
+                        onTap: () {
+                          context.read<AnimeSearchBloc>().add(
+                            AnimeAddedEvent(item),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AnimeCoverImage(
+                                url: item.thumbnailUrl,
+                              ),
 
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 8),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      item.title,
-                                      style: Theme.of(context).textTheme.titleLarge,
-                                      maxLines: 2,
-                                      softWrap: true,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        item.title,
+                                        style: Theme.of(context).textTheme.titleLarge,
+                                        maxLines: 2,
+                                        softWrap: true,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
 
-                                    Text(
-                                      item.description,
-                                      style: Theme.of(context).textTheme.bodyMedium,
-                                      maxLines: 4,
-                                      softWrap: true,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ],
+                                      Text(
+                                        item.description,
+                                        style: Theme.of(context).textTheme.bodyMedium,
+                                        maxLines: 4,
+                                        softWrap: true,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  }
+                      );
+                    }
+                  ),
                 ),
-              ],
-            ),
+            ],
+          ),
         );
       },
     );
