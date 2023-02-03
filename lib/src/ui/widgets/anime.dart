@@ -72,9 +72,11 @@ class AnimeListWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       data.title,
+                      textAlign: TextAlign.left,
                       style: Theme.of(context).textTheme.titleLarge,
                       maxLines: 2,
                       softWrap: true,
