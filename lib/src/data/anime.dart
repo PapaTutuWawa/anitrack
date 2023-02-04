@@ -9,15 +9,19 @@ enum AnimeTrackingState {
   completed,   // 1
   planToWatch, // 2
   dropped,     // 3
+  /// This is a pseudo state, i.e. it should never be set
+  all,         // -1
 }
 
 extension AnimeTrackStateExtension on AnimeTrackingState {
   int toInteger() {
+    assert(this != AnimeTrackingState.all, 'AnimeTrackingState.all must not be serialized');
     switch (this) {
       case AnimeTrackingState.watching: return 0;
       case AnimeTrackingState.completed: return 1;
       case AnimeTrackingState.planToWatch: return 2;
       case AnimeTrackingState.dropped: return 3;
+      case AnimeTrackingState.all: return -1;
     }
   }
 }

@@ -15,6 +15,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     on<AnimeEpisodeIncrementedEvent>(_onIncremented);
     on<AnimeEpisodeDecrementedEvent>(_onDecremented);
     on<AnimesLoadedEvent>(_onAnimesLoaded);
+    on<AnimeFilterChangedEvent>(_onAnimesFiltered);
   }
 
   Future<void> _onAnimeAdded(AnimeAddedEvent event, Emitter<AnimeListState> emit) async {
@@ -79,6 +80,14 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     emit(
       state.copyWith(
         animes: await GetIt.I.get<DatabaseService>().loadAnimes(),
+      ),
+    );
+  }
+
+  Future<void> _onAnimesFiltered(AnimeFilterChangedEvent event, Emitter<AnimeListState> emit) async {
+    emit(
+      state.copyWith(
+        filterState: event.filterState,
       ),
     );
   }

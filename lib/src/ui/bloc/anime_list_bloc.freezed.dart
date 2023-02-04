@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AnimeListState {
   List<AnimeTrackingData> get animes => throw _privateConstructorUsedError;
+  AnimeTrackingState get filterState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AnimeListStateCopyWith<AnimeListState> get copyWith =>
@@ -28,7 +29,7 @@ abstract class $AnimeListStateCopyWith<$Res> {
   factory $AnimeListStateCopyWith(
           AnimeListState value, $Res Function(AnimeListState) then) =
       _$AnimeListStateCopyWithImpl<$Res>;
-  $Res call({List<AnimeTrackingData> animes});
+  $Res call({List<AnimeTrackingData> animes, AnimeTrackingState filterState});
 }
 
 /// @nodoc
@@ -43,12 +44,17 @@ class _$AnimeListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? animes = freezed,
+    Object? filterState = freezed,
   }) {
     return _then(_value.copyWith(
       animes: animes == freezed
           ? _value.animes
           : animes // ignore: cast_nullable_to_non_nullable
               as List<AnimeTrackingData>,
+      filterState: filterState == freezed
+          ? _value.filterState
+          : filterState // ignore: cast_nullable_to_non_nullable
+              as AnimeTrackingState,
     ));
   }
 }
@@ -60,7 +66,7 @@ abstract class _$$_AnimeListStateCopyWith<$Res>
           _$_AnimeListState value, $Res Function(_$_AnimeListState) then) =
       __$$_AnimeListStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<AnimeTrackingData> animes});
+  $Res call({List<AnimeTrackingData> animes, AnimeTrackingState filterState});
 }
 
 /// @nodoc
@@ -77,12 +83,17 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? animes = freezed,
+    Object? filterState = freezed,
   }) {
     return _then(_$_AnimeListState(
       animes: animes == freezed
           ? _value._animes
           : animes // ignore: cast_nullable_to_non_nullable
               as List<AnimeTrackingData>,
+      filterState: filterState == freezed
+          ? _value.filterState
+          : filterState // ignore: cast_nullable_to_non_nullable
+              as AnimeTrackingState,
     ));
   }
 }
@@ -90,7 +101,9 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AnimeListState implements _AnimeListState {
-  _$_AnimeListState({final List<AnimeTrackingData> animes = const []})
+  _$_AnimeListState(
+      {final List<AnimeTrackingData> animes = const [],
+      this.filterState = AnimeTrackingState.watching})
       : _animes = animes;
 
   final List<AnimeTrackingData> _animes;
@@ -102,8 +115,12 @@ class _$_AnimeListState implements _AnimeListState {
   }
 
   @override
+  @JsonKey()
+  final AnimeTrackingState filterState;
+
+  @override
   String toString() {
-    return 'AnimeListState(animes: $animes)';
+    return 'AnimeListState(animes: $animes, filterState: $filterState)';
   }
 
   @override
@@ -111,12 +128,16 @@ class _$_AnimeListState implements _AnimeListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AnimeListState &&
-            const DeepCollectionEquality().equals(other._animes, _animes));
+            const DeepCollectionEquality().equals(other._animes, _animes) &&
+            const DeepCollectionEquality()
+                .equals(other.filterState, filterState));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_animes));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_animes),
+      const DeepCollectionEquality().hash(filterState));
 
   @JsonKey(ignore: true)
   @override
@@ -125,11 +146,14 @@ class _$_AnimeListState implements _AnimeListState {
 }
 
 abstract class _AnimeListState implements AnimeListState {
-  factory _AnimeListState({final List<AnimeTrackingData> animes}) =
-      _$_AnimeListState;
+  factory _AnimeListState(
+      {final List<AnimeTrackingData> animes,
+      final AnimeTrackingState filterState}) = _$_AnimeListState;
 
   @override
   List<AnimeTrackingData> get animes;
+  @override
+  AnimeTrackingState get filterState;
   @override
   @JsonKey(ignore: true)
   _$$_AnimeListStateCopyWith<_$_AnimeListState> get copyWith =>

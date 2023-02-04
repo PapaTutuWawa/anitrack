@@ -25,3 +25,11 @@ class AnimeAddedEvent extends AnimeListEvent {
 
 /// Triggered when animes are to be loaded from the database
 class AnimesLoadedEvent extends AnimeListEvent {}
+
+/// Triggered when the filter is changed
+class AnimeFilterChangedEvent extends AnimeListEvent {
+  AnimeFilterChangedEvent(this.filterState);
+
+  /// The state to filter
+  final AnimeTrackingState filterState;
+}

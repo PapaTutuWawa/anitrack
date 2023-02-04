@@ -21,12 +21,52 @@ class AnimeListPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text('Animes'),
+            actions: [
+              PopupMenuButton(
+                icon: Icon(
+                  Icons.filter_list,
+                ),
+                initialValue: state.filterState,
+                onSelected: (filterState) {
+                  context.read<AnimeListBloc>().add(
+                    AnimeFilterChangedEvent(filterState),
+                  );
+                },
+                itemBuilder: (_) => [
+                  const PopupMenuItem<AnimeTrackingState>(
+                    value: AnimeTrackingState.watching,
+                    child: Text('Watching'),
+                  ),
+                  const PopupMenuItem<AnimeTrackingState>(
+                    value: AnimeTrackingState.completed,
+                    child: Text('Completed'),
+                  ),
+                  const PopupMenuItem<AnimeTrackingState>(
+                    value: AnimeTrackingState.planToWatch,
+                    child: Text('Plan to watch'),
+                  ),
+                  const PopupMenuItem<AnimeTrackingState>(
+                    value: AnimeTrackingState.dropped,
+                    child: Text('Dropped'),
+                  ),
+                  const PopupMenuItem<AnimeTrackingState>(
+                    value: AnimeTrackingState.all,
+                    child: Text('All'),
+                  ),
+                ],
+              ),
+            ],
           ),
           body: ListView.builder(
             itemCount: state.animes.length,
             itemBuilder: (context, index) {
+              final anime = state.animes[index];
+              if (state.filterState != AnimeTrackingState.all) {
+                if (anime.state != state.filterState) return Container();
+              }
+
               return AnimeListWidget(
-                data: state.animes[index],
+                data: anime,
                 onLeftSwipe: () {
                   context.read<AnimeListBloc>().add(
                     AnimeEpisodeDecrementedEvent(state.animes[index].id),
