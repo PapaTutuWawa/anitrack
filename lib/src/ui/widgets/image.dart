@@ -14,7 +14,7 @@ class AnimeCoverImage extends StatelessWidget {
       borderRadius: BorderRadius.circular(8),
       child: SizedBox(
         height: 100 * (16 / 9),
-        width: 100,
+        width: 120,
         child: DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(

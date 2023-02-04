@@ -1,4 +1,5 @@
 import 'package:anitrack/src/data/anime.dart';
+import 'package:anitrack/src/ui/widgets/image.dart';
 import 'package:anitrack/src/ui/widgets/swipe_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:swipeable_tile/swipeable_tile.dart';
@@ -67,14 +68,8 @@ class ListItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: SizedBox(
-                width: 100,
-                child: Image.network(
-                  thumbnailUrl,
-                ),
-              ),
+            AnimeCoverImage(
+              url: thumbnailUrl,
             ),
 
             Expanded(
