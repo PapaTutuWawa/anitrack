@@ -2,7 +2,12 @@ part of 'anime_search_bloc.dart';
 
 abstract class AnimeSearchEvent {}
 
-class AnimeSearchRequestedEvent extends AnimeSearchEvent {}
+class AnimeSearchRequestedEvent extends AnimeSearchEvent {
+  AnimeSearchRequestedEvent(this.type);
+
+  /// The tracking type for which we want to search
+  TrackingMediumType type;
+}
 
 /// Triggered when the search query is changed.
 class SearchQueryChangedEvent extends AnimeSearchEvent {
@@ -16,9 +21,9 @@ class SearchQueryChangedEvent extends AnimeSearchEvent {
 class SearchQuerySubmittedEvent extends AnimeSearchEvent {}
 
 /// Triggered when an anime is added to the tracking list
-class AnimeAddedEvent extends AnimeSearchEvent {
-  AnimeAddedEvent(this.result);
+class ResultTappedEvent extends AnimeSearchEvent {
+  ResultTappedEvent(this.result);
 
   /// The search result to add.
-  final AnimeSearchResult result;
+  final SearchResult result;
 }

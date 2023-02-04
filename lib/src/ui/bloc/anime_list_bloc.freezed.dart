@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AnimeListState {
   List<AnimeTrackingData> get animes => throw _privateConstructorUsedError;
-  AnimeTrackingState get filterState => throw _privateConstructorUsedError;
+  List<MangaTrackingData> get mangas => throw _privateConstructorUsedError;
+  AnimeTrackingState get animeFilterState => throw _privateConstructorUsedError;
+  MangaTrackingState get mangaFilterState => throw _privateConstructorUsedError;
   TrackingMediumType get trackingType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +34,9 @@ abstract class $AnimeListStateCopyWith<$Res> {
       _$AnimeListStateCopyWithImpl<$Res>;
   $Res call(
       {List<AnimeTrackingData> animes,
-      AnimeTrackingState filterState,
+      List<MangaTrackingData> mangas,
+      AnimeTrackingState animeFilterState,
+      MangaTrackingState mangaFilterState,
       TrackingMediumType trackingType});
 }
 
@@ -48,7 +52,9 @@ class _$AnimeListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? animes = freezed,
-    Object? filterState = freezed,
+    Object? mangas = freezed,
+    Object? animeFilterState = freezed,
+    Object? mangaFilterState = freezed,
     Object? trackingType = freezed,
   }) {
     return _then(_value.copyWith(
@@ -56,10 +62,18 @@ class _$AnimeListStateCopyWithImpl<$Res>
           ? _value.animes
           : animes // ignore: cast_nullable_to_non_nullable
               as List<AnimeTrackingData>,
-      filterState: filterState == freezed
-          ? _value.filterState
-          : filterState // ignore: cast_nullable_to_non_nullable
+      mangas: mangas == freezed
+          ? _value.mangas
+          : mangas // ignore: cast_nullable_to_non_nullable
+              as List<MangaTrackingData>,
+      animeFilterState: animeFilterState == freezed
+          ? _value.animeFilterState
+          : animeFilterState // ignore: cast_nullable_to_non_nullable
               as AnimeTrackingState,
+      mangaFilterState: mangaFilterState == freezed
+          ? _value.mangaFilterState
+          : mangaFilterState // ignore: cast_nullable_to_non_nullable
+              as MangaTrackingState,
       trackingType: trackingType == freezed
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
@@ -77,7 +91,9 @@ abstract class _$$_AnimeListStateCopyWith<$Res>
   @override
   $Res call(
       {List<AnimeTrackingData> animes,
-      AnimeTrackingState filterState,
+      List<MangaTrackingData> mangas,
+      AnimeTrackingState animeFilterState,
+      MangaTrackingState mangaFilterState,
       TrackingMediumType trackingType});
 }
 
@@ -95,7 +111,9 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? animes = freezed,
-    Object? filterState = freezed,
+    Object? mangas = freezed,
+    Object? animeFilterState = freezed,
+    Object? mangaFilterState = freezed,
     Object? trackingType = freezed,
   }) {
     return _then(_$_AnimeListState(
@@ -103,10 +121,18 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
           ? _value._animes
           : animes // ignore: cast_nullable_to_non_nullable
               as List<AnimeTrackingData>,
-      filterState: filterState == freezed
-          ? _value.filterState
-          : filterState // ignore: cast_nullable_to_non_nullable
+      mangas: mangas == freezed
+          ? _value._mangas
+          : mangas // ignore: cast_nullable_to_non_nullable
+              as List<MangaTrackingData>,
+      animeFilterState: animeFilterState == freezed
+          ? _value.animeFilterState
+          : animeFilterState // ignore: cast_nullable_to_non_nullable
               as AnimeTrackingState,
+      mangaFilterState: mangaFilterState == freezed
+          ? _value.mangaFilterState
+          : mangaFilterState // ignore: cast_nullable_to_non_nullable
+              as MangaTrackingState,
       trackingType: trackingType == freezed
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
@@ -120,9 +146,12 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
 class _$_AnimeListState implements _AnimeListState {
   _$_AnimeListState(
       {final List<AnimeTrackingData> animes = const [],
-      this.filterState = AnimeTrackingState.watching,
+      final List<MangaTrackingData> mangas = const [],
+      this.animeFilterState = AnimeTrackingState.watching,
+      this.mangaFilterState = MangaTrackingState.reading,
       this.trackingType = TrackingMediumType.anime})
-      : _animes = animes;
+      : _animes = animes,
+        _mangas = mangas;
 
   final List<AnimeTrackingData> _animes;
   @override
@@ -132,16 +161,27 @@ class _$_AnimeListState implements _AnimeListState {
     return EqualUnmodifiableListView(_animes);
   }
 
+  final List<MangaTrackingData> _mangas;
   @override
   @JsonKey()
-  final AnimeTrackingState filterState;
+  List<MangaTrackingData> get mangas {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_mangas);
+  }
+
+  @override
+  @JsonKey()
+  final AnimeTrackingState animeFilterState;
+  @override
+  @JsonKey()
+  final MangaTrackingState mangaFilterState;
   @override
   @JsonKey()
   final TrackingMediumType trackingType;
 
   @override
   String toString() {
-    return 'AnimeListState(animes: $animes, filterState: $filterState, trackingType: $trackingType)';
+    return 'AnimeListState(animes: $animes, mangas: $mangas, animeFilterState: $animeFilterState, mangaFilterState: $mangaFilterState, trackingType: $trackingType)';
   }
 
   @override
@@ -150,8 +190,11 @@ class _$_AnimeListState implements _AnimeListState {
         (other.runtimeType == runtimeType &&
             other is _$_AnimeListState &&
             const DeepCollectionEquality().equals(other._animes, _animes) &&
+            const DeepCollectionEquality().equals(other._mangas, _mangas) &&
             const DeepCollectionEquality()
-                .equals(other.filterState, filterState) &&
+                .equals(other.animeFilterState, animeFilterState) &&
+            const DeepCollectionEquality()
+                .equals(other.mangaFilterState, mangaFilterState) &&
             const DeepCollectionEquality()
                 .equals(other.trackingType, trackingType));
   }
@@ -160,7 +203,9 @@ class _$_AnimeListState implements _AnimeListState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_animes),
-      const DeepCollectionEquality().hash(filterState),
+      const DeepCollectionEquality().hash(_mangas),
+      const DeepCollectionEquality().hash(animeFilterState),
+      const DeepCollectionEquality().hash(mangaFilterState),
       const DeepCollectionEquality().hash(trackingType));
 
   @JsonKey(ignore: true)
@@ -172,13 +217,19 @@ class _$_AnimeListState implements _AnimeListState {
 abstract class _AnimeListState implements AnimeListState {
   factory _AnimeListState(
       {final List<AnimeTrackingData> animes,
-      final AnimeTrackingState filterState,
+      final List<MangaTrackingData> mangas,
+      final AnimeTrackingState animeFilterState,
+      final MangaTrackingState mangaFilterState,
       final TrackingMediumType trackingType}) = _$_AnimeListState;
 
   @override
   List<AnimeTrackingData> get animes;
   @override
-  AnimeTrackingState get filterState;
+  List<MangaTrackingData> get mangas;
+  @override
+  AnimeTrackingState get animeFilterState;
+  @override
+  MangaTrackingState get mangaFilterState;
   @override
   TrackingMediumType get trackingType;
   @override

@@ -1,4 +1,5 @@
 import 'package:anitrack/src/data/anime.dart';
+import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
@@ -24,6 +25,79 @@ class AnimeListPage extends StatelessWidget {
       case TrackingMediumType.manga: return 'Manga';
     }
   }
+
+  Widget _getPopupButton(BuildContext context, AnimeListState state) {
+    switch (state.trackingType) {
+      case TrackingMediumType.anime:
+        return PopupMenuButton(
+          icon: Icon(
+            Icons.filter_list,
+          ),
+          initialValue: state.animeFilterState,
+          onSelected: (filterState) {
+            context.read<AnimeListBloc>().add(
+              AnimeFilterChangedEvent(filterState),
+            );
+          },
+          itemBuilder: (_) => [
+            const PopupMenuItem<AnimeTrackingState>(
+              value: AnimeTrackingState.watching,
+              child: Text('Watching'),
+            ),
+            const PopupMenuItem<AnimeTrackingState>(
+              value: AnimeTrackingState.completed,
+              child: Text('Completed'),
+            ),
+            const PopupMenuItem<AnimeTrackingState>(
+              value: AnimeTrackingState.planToWatch,
+              child: Text('Plan to watch'),
+            ),
+            const PopupMenuItem<AnimeTrackingState>(
+              value: AnimeTrackingState.dropped,
+              child: Text('Dropped'),
+            ),
+            const PopupMenuItem<AnimeTrackingState>(
+              value: AnimeTrackingState.all,
+              child: Text('All'),
+            ),
+          ],
+        );
+      case TrackingMediumType.manga:
+        return PopupMenuButton(
+          icon: Icon(
+            Icons.filter_list,
+          ),
+          initialValue: state.mangaFilterState,
+          onSelected: (filterState) {
+            context.read<AnimeListBloc>().add(
+              MangaFilterChangedEvent(filterState),
+            );
+          },
+          itemBuilder: (_) => [
+            const PopupMenuItem<MangaTrackingState>(
+              value: MangaTrackingState.reading,
+              child: Text('Reading'),
+            ),
+            const PopupMenuItem<MangaTrackingState>(
+              value: MangaTrackingState.completed,
+              child: Text('Completed'),
+            ),
+            const PopupMenuItem<MangaTrackingState>(
+              value: MangaTrackingState.planToWatch,
+              child: Text('Plan to watch'),
+            ),
+            const PopupMenuItem<MangaTrackingState>(
+              value: MangaTrackingState.dropped,
+              child: Text('Dropped'),
+            ),
+            const PopupMenuItem<MangaTrackingState>(
+              value: MangaTrackingState.all,
+              child: Text('All'),
+            ),
+          ],
+        );
+    }
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -35,39 +109,7 @@ class AnimeListPage extends StatelessWidget {
               _getPageTitle(state.trackingType)
             ),
             actions: [
-              PopupMenuButton(
-                icon: Icon(
-                  Icons.filter_list,
-                ),
-                initialValue: state.filterState,
-                onSelected: (filterState) {
-                  context.read<AnimeListBloc>().add(
-                    AnimeFilterChangedEvent(filterState),
-                  );
-                },
-                itemBuilder: (_) => [
-                  const PopupMenuItem<AnimeTrackingState>(
-                    value: AnimeTrackingState.watching,
-                    child: Text('Watching'),
-                  ),
-                  const PopupMenuItem<AnimeTrackingState>(
-                    value: AnimeTrackingState.completed,
-                    child: Text('Completed'),
-                  ),
-                  const PopupMenuItem<AnimeTrackingState>(
-                    value: AnimeTrackingState.planToWatch,
-                    child: Text('Plan to watch'),
-                  ),
-                  const PopupMenuItem<AnimeTrackingState>(
-                    value: AnimeTrackingState.dropped,
-                    child: Text('Dropped'),
-                  ),
-                  const PopupMenuItem<AnimeTrackingState>(
-                    value: AnimeTrackingState.all,
-                    child: Text('All'),
-                  ),
-                ],
-              ),
+              _getPopupButton(context, state),
             ],
           ),
           body: PageView(
@@ -77,8 +119,8 @@ class AnimeListPage extends StatelessWidget {
                 itemCount: state.animes.length,
                 itemBuilder: (context, index) {
                   final anime = state.animes[index];
-                  if (state.filterState != AnimeTrackingState.all) {
-                    if (anime.state != state.filterState) return Container();
+                  if (state.animeFilterState != AnimeTrackingState.all) {
+                    if (anime.state != state.animeFilterState) return Container();
                   }
 
                   return ListItem(
@@ -103,13 +145,42 @@ class AnimeListPage extends StatelessWidget {
                   );
                 },
               ),
-              Placeholder(),
+              ListView.builder(
+                itemCount: state.mangas.length,
+                itemBuilder: (context, index) {
+                  final manga = state.mangas[index];
+                  if (state.mangaFilterState != MangaTrackingState.all) {
+                    if (manga.state != state.mangaFilterState) return Container();
+                  }
+
+                  return ListItem(
+                    title: manga.title,
+                    thumbnailUrl: manga.thumbnailUrl,
+                    extra: [
+                      Text(
+                        '${manga.chaptersRead}/${manga.chaptersTotal ?? "???"}',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ],
+                    onLeftSwipe: () {
+                      context.read<AnimeListBloc>().add(
+                        MangaChapterDecrementedEvent(state.mangas[index].id),
+                      );
+                    },
+                    onRightSwipe: () {
+                      context.read<AnimeListBloc>().add(
+                        MangaChapterIncrementedEvent(state.mangas[index].id),
+                      );
+                    },
+                  );
+                },
+              ),
             ],
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               context.read<AnimeSearchBloc>().add(
-                AnimeSearchRequestedEvent(),
+                AnimeSearchRequestedEvent(state.trackingType),
               );
             },
             tooltip: 'Increment',
@@ -120,7 +191,6 @@ class AnimeListPage extends StatelessWidget {
               0 :
               1,
             onTap: (int index) {
-              _controller.jumpToPage(index);
               context.read<AnimeListBloc>().add(
                 AnimeTrackingTypeChanged(
                   index == 0 ?
@@ -128,6 +198,8 @@ class AnimeListPage extends StatelessWidget {
                     TrackingMediumType.manga,
                 ),
               );
+
+              _controller.jumpToPage(index);
             },
             items: <BottomBarItem>[
               BottomBarItem(

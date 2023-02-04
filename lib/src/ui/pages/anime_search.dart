@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:anitrack/src/data/anime.dart';
+import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:anitrack/src/ui/widgets/list_item.dart';
@@ -20,7 +21,11 @@ class AnimeSearchPage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Anime Search'),
+            title: Text(
+              state.trackingType == TrackingMediumType.anime ?
+                'Anime Search' :
+                'Manga Search',
+            ),
           ),
           body: Column(
             children: [
@@ -60,7 +65,7 @@ class AnimeSearchPage extends StatelessWidget {
                       return InkWell(
                         onTap: () {
                           context.read<AnimeSearchBloc>().add(
-                            AnimeAddedEvent(item),
+                            ResultTappedEvent(item),
                           );
                         },
                         child: ListItem(

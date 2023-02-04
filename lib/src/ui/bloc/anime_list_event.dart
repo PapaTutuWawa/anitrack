@@ -26,7 +26,7 @@ class AnimeAddedEvent extends AnimeListEvent {
 /// Triggered when animes are to be loaded from the database
 class AnimesLoadedEvent extends AnimeListEvent {}
 
-/// Triggered when the filter is changed
+/// Triggered when the anime filter is changed
 class AnimeFilterChangedEvent extends AnimeListEvent {
   AnimeFilterChangedEvent(this.filterState);
 
@@ -40,4 +40,33 @@ class AnimeTrackingTypeChanged extends AnimeListEvent {
 
   /// The type we switched to
   final TrackingMediumType type;
+}
+
+class MangaAddedEvent extends AnimeListEvent {
+  MangaAddedEvent(this.data);
+  
+  /// The manga to add.
+  final MangaTrackingData data;
+}
+
+/// Triggered when the manga filter is changed
+class MangaFilterChangedEvent extends AnimeListEvent {
+  MangaFilterChangedEvent(this.filterState);
+
+  /// The state to filter
+  final MangaTrackingState filterState;
+}
+
+class MangaChapterIncrementedEvent extends AnimeListEvent {
+  MangaChapterIncrementedEvent(this.id);
+
+  /// The ID of the anime
+  final String id;
+}
+
+class MangaChapterDecrementedEvent extends AnimeListEvent {
+  MangaChapterDecrementedEvent(this.id);
+
+  /// The ID of the anime
+  final String id;
 }

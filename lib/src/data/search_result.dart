@@ -1,8 +1,8 @@
-class AnimeSearchResult {
-  const AnimeSearchResult(
+class SearchResult {
+  const SearchResult(
     this.title,
     this.id,
-    this.episodesTotal,
+    this.total,
     this.thumbnailUrl,
     this.description,
   );
@@ -16,9 +16,9 @@ class AnimeSearchResult {
   /// The URL to a thumbnail image.
   final String thumbnailUrl;
 
-  /// The amount of total episodes. If null, it means that there is not total amount
-  /// of episodes set.
-  final int? episodesTotal;
+  /// The amount of total episodes or chapters. If null, it means that there is not
+  /// total amount of episodes set.
+  final int? total;
 
   /// The description of the anime
   final String description;

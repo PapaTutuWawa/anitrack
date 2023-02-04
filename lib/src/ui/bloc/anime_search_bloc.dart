@@ -1,5 +1,7 @@
 import 'package:anitrack/src/data/anime.dart';
+import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/search_result.dart';
+import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart' as list;
 import 'package:anitrack/src/ui/bloc/navigation_bloc.dart';
@@ -17,7 +19,7 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
     on<AnimeSearchRequestedEvent>(_onRequested);
     on<SearchQueryChangedEvent>(_onQueryChanged);
     on<SearchQuerySubmittedEvent>(_onQuerySubmitted);
-    on<AnimeAddedEvent>(_onAnimeAdded);
+    on<ResultTappedEvent>(_onResultTapped);
   }
 
   Future<void> _onRequested(AnimeSearchRequestedEvent event, Emitter<AnimeSearchState> emit) async {
@@ -26,6 +28,7 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
         searchQuery: '',
         working: false,
         searchResults: [],
+        trackingType: event.type,
       ),
     );
 
@@ -52,42 +55,70 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
         working: true,
       ),
     );
-    
-    final result = await Jikan().searchAnime(
-      query: state.searchQuery,
-    );
 
-    emit(
-      state.copyWith(
-        working: false,
-      ),
-    );
-    
-    emit(
-      state.copyWith(
-        searchResults: result.map((Anime anime) => AnimeSearchResult(
-          anime.title,
-          anime.malId.toString(),
-          anime.episodes,
-          anime.imageUrl,
-          anime.synopsis ?? '',
-        ),).toList(),
-      ),
-    );
+    if (state.trackingType == TrackingMediumType.anime) {
+      // Anime
+      final result = await Jikan().searchAnime(
+        query: state.searchQuery,
+      );
+
+      emit(
+        state.copyWith(
+          working: false,
+          searchResults: result.map((Anime anime) => SearchResult(
+            anime.title,
+            anime.malId.toString(),
+            anime.episodes,
+            anime.imageUrl,
+            anime.synopsis ?? '',
+          ),).toList(),
+        ),
+      );
+    } else {
+      // Manga
+      final result = await Jikan().searchManga(
+        query: state.searchQuery,
+      );
+
+      emit(
+        state.copyWith(
+          working: false,
+          searchResults: result.map((Manga manga) => SearchResult(
+            manga.title,
+            manga.malId.toString(),
+            manga.chapters,
+            manga.imageUrl,
+            manga.synopsis ?? '',
+          ),).toList(),
+        ),
+      );
+    }
   }
 
-  Future<void> _onAnimeAdded(AnimeAddedEvent event, Emitter<AnimeSearchState> emit) async {
+  Future<void> _onResultTapped(ResultTappedEvent event, Emitter<AnimeSearchState> emit) async {
     GetIt.I.get<list.AnimeListBloc>().add(
-      list.AnimeAddedEvent(
-        AnimeTrackingData(
-          event.result.id,
-          AnimeTrackingState.watching,
-          event.result.title,
-          0,
-          event.result.episodesTotal,
-          event.result.thumbnailUrl,
-        ),
-      ),
+      state.trackingType == TrackingMediumType.anime ?
+        list.AnimeAddedEvent(
+          AnimeTrackingData(
+            event.result.id,
+            AnimeTrackingState.watching,
+            event.result.title,
+            0,
+            event.result.total,
+            event.result.thumbnailUrl,
+          ),
+        ) :
+        list.MangaAddedEvent(
+          MangaTrackingData(
+            event.result.id,
+            MangaTrackingState.reading,
+            event.result.title,
+            0,
+            0,
+            event.result.total,
+            event.result.thumbnailUrl,
+          ),
+        )
     );
 
     GetIt.I.get<NavigationBloc>().add(
