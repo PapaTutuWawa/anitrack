@@ -3,7 +3,7 @@ import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
-import 'package:anitrack/src/ui/widgets/anime.dart';
+import 'package:anitrack/src/ui/widgets/list_item.dart';
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,8 +81,15 @@ class AnimeListPage extends StatelessWidget {
                     if (anime.state != state.filterState) return Container();
                   }
 
-                  return AnimeListWidget(
-                    data: anime,
+                  return ListItem(
+                    title: anime.title,
+                    thumbnailUrl: anime.thumbnailUrl,
+                    extra: [
+                      Text(
+                        '${anime.episodesWatched}/${anime.episodesTotal ?? "???"}',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ],
                     onLeftSwipe: () {
                       context.read<AnimeListBloc>().add(
                         AnimeEpisodeDecrementedEvent(state.animes[index].id),

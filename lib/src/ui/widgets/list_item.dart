@@ -4,29 +4,37 @@ import 'package:flutter/material.dart';
 import 'package:swipeable_tile/swipeable_tile.dart';
 
 /// A widget for displaying simple data about an anime in the listview
-class AnimeListWidget extends StatelessWidget {
-  const AnimeListWidget({
-    required this.data,
-    required this.onLeftSwipe,
-    required this.onRightSwipe,
+class ListItem extends StatelessWidget {
+  ListItem({
+    required this.thumbnailUrl,
+    required this.title,
+    this.onLeftSwipe,
+    this.onRightSwipe,
+    this.extra = const [],
     super.key,
   });
   
-  /// The anime to display
-  final AnimeTrackingData data;
+  /// URL for the cover image.
+  final String thumbnailUrl;
 
-  /// Callbacks for the swipe functionality
-  final void Function() onLeftSwipe;
-  final void Function() onRightSwipe;
+  /// The title of the item
+  final String title;
+
+  /// Extra widgets.
+  final List<Widget> extra;
+  
+  /// Callbacks for the swipe functionality.
+  final void Function()? onLeftSwipe;
+  final void Function()? onRightSwipe;
 
   @override
   Widget build(BuildContext context) {
     return SwipeableTile.swipeToTrigger(
       onSwiped: (direction) {
         if (direction == SwipeDirection.endToStart) {
-          onRightSwipe();
+          onRightSwipe!();
         } else if (direction == SwipeDirection.startToEnd) {
-          onLeftSwipe();
+          onLeftSwipe!();
         }
       },
       // TODO(PapaTutuWawa): Fix
@@ -51,7 +59,9 @@ class AnimeListWidget extends StatelessWidget {
         return Container();
       },
       color: Theme.of(context).scaffoldBackgroundColor,
-      direction: SwipeDirection.horizontal,
+      direction: onRightSwipe != null && onLeftSwipe != null ?
+        SwipeDirection.horizontal :
+        SwipeDirection.none,
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Row(
@@ -62,7 +72,7 @@ class AnimeListWidget extends StatelessWidget {
               child: SizedBox(
                 width: 100,
                 child: Image.network(
-                  data.thumbnailUrl,
+                  thumbnailUrl,
                 ),
               ),
             ),
@@ -75,7 +85,7 @@ class AnimeListWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      data.title,
+                      title,
                       textAlign: TextAlign.left,
                       style: Theme.of(context).textTheme.titleLarge,
                       maxLines: 2,
@@ -83,10 +93,7 @@ class AnimeListWidget extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
 
-                    Text(
-                      '${data.episodesWatched}/${data.episodesTotal ?? "???"}',
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
+                    ...extra,
                   ],
                 ),
               ),

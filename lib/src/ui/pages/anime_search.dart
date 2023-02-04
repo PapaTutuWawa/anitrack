@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
-import 'package:anitrack/src/ui/widgets/anime.dart';
+import 'package:anitrack/src/ui/widgets/list_item.dart';
 import 'package:anitrack/src/ui/widgets/image.dart';
 
 class AnimeSearchPage extends StatelessWidget {
@@ -54,7 +54,6 @@ class AnimeSearchPage extends StatelessWidget {
               else
                 Expanded(
                   child: ListView.builder(
-                    //shrinkWrap: true,
                     itemCount: state.searchResults.length,
                     itemBuilder: (context, index) {
                       final item = state.searchResults[index];
@@ -64,49 +63,22 @@ class AnimeSearchPage extends StatelessWidget {
                             AnimeAddedEvent(item),
                           );
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AnimeCoverImage(
-                                url: item.thumbnailUrl,
+                        child: ListItem(
+                          title: item.title,
+                          thumbnailUrl: item.thumbnailUrl,
+                          extra: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                item.description,
+                                textAlign: TextAlign.justify,
+                                style: Theme.of(context).textTheme.bodyMedium,
+                                maxLines: 4,
+                                softWrap: true,
+                                overflow: TextOverflow.ellipsis,
                               ),
-
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          item.title,
-                                          style: Theme.of(context).textTheme.titleLarge,
-                                          maxLines: 2,
-                                          softWrap: true,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          item.description,
-                                          textAlign: TextAlign.justify,
-                                          style: Theme.of(context).textTheme.bodyMedium,
-                                          maxLines: 4,
-                                          softWrap: true,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       );
                     }
