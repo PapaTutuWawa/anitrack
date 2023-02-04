@@ -33,3 +33,11 @@ class AnimeFilterChangedEvent extends AnimeListEvent {
   /// The state to filter
   final AnimeTrackingState filterState;
 }
+
+/// Triggered when the view is changed from the anime or the manga view
+class AnimeTrackingTypeChanged extends AnimeListEvent {
+  AnimeTrackingTypeChanged(this.type);
+
+  /// The type we switched to
+  final TrackingMediumType type;
+}

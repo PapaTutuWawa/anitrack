@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:anitrack/src/data/anime.dart';
+import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/service/database.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,6 +17,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     on<AnimeEpisodeDecrementedEvent>(_onDecremented);
     on<AnimesLoadedEvent>(_onAnimesLoaded);
     on<AnimeFilterChangedEvent>(_onAnimesFiltered);
+    on<AnimeTrackingTypeChanged>(_onTrackingTypeChanged);
   }
 
   Future<void> _onAnimeAdded(AnimeAddedEvent event, Emitter<AnimeListState> emit) async {
@@ -88,6 +90,14 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     emit(
       state.copyWith(
         filterState: event.filterState,
+      ),
+    );
+  }
+
+  Future<void> _onTrackingTypeChanged(AnimeTrackingTypeChanged event, Emitter<AnimeListState> emit) async {
+    emit(
+      state.copyWith(
+        trackingType: event.type,
       ),
     );
   }

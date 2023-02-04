@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AnimeListState {
   List<AnimeTrackingData> get animes => throw _privateConstructorUsedError;
   AnimeTrackingState get filterState => throw _privateConstructorUsedError;
+  TrackingMediumType get trackingType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AnimeListStateCopyWith<AnimeListState> get copyWith =>
@@ -29,7 +30,10 @@ abstract class $AnimeListStateCopyWith<$Res> {
   factory $AnimeListStateCopyWith(
           AnimeListState value, $Res Function(AnimeListState) then) =
       _$AnimeListStateCopyWithImpl<$Res>;
-  $Res call({List<AnimeTrackingData> animes, AnimeTrackingState filterState});
+  $Res call(
+      {List<AnimeTrackingData> animes,
+      AnimeTrackingState filterState,
+      TrackingMediumType trackingType});
 }
 
 /// @nodoc
@@ -45,6 +49,7 @@ class _$AnimeListStateCopyWithImpl<$Res>
   $Res call({
     Object? animes = freezed,
     Object? filterState = freezed,
+    Object? trackingType = freezed,
   }) {
     return _then(_value.copyWith(
       animes: animes == freezed
@@ -55,6 +60,10 @@ class _$AnimeListStateCopyWithImpl<$Res>
           ? _value.filterState
           : filterState // ignore: cast_nullable_to_non_nullable
               as AnimeTrackingState,
+      trackingType: trackingType == freezed
+          ? _value.trackingType
+          : trackingType // ignore: cast_nullable_to_non_nullable
+              as TrackingMediumType,
     ));
   }
 }
@@ -66,7 +75,10 @@ abstract class _$$_AnimeListStateCopyWith<$Res>
           _$_AnimeListState value, $Res Function(_$_AnimeListState) then) =
       __$$_AnimeListStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<AnimeTrackingData> animes, AnimeTrackingState filterState});
+  $Res call(
+      {List<AnimeTrackingData> animes,
+      AnimeTrackingState filterState,
+      TrackingMediumType trackingType});
 }
 
 /// @nodoc
@@ -84,6 +96,7 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
   $Res call({
     Object? animes = freezed,
     Object? filterState = freezed,
+    Object? trackingType = freezed,
   }) {
     return _then(_$_AnimeListState(
       animes: animes == freezed
@@ -94,6 +107,10 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
           ? _value.filterState
           : filterState // ignore: cast_nullable_to_non_nullable
               as AnimeTrackingState,
+      trackingType: trackingType == freezed
+          ? _value.trackingType
+          : trackingType // ignore: cast_nullable_to_non_nullable
+              as TrackingMediumType,
     ));
   }
 }
@@ -103,7 +120,8 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
 class _$_AnimeListState implements _AnimeListState {
   _$_AnimeListState(
       {final List<AnimeTrackingData> animes = const [],
-      this.filterState = AnimeTrackingState.watching})
+      this.filterState = AnimeTrackingState.watching,
+      this.trackingType = TrackingMediumType.anime})
       : _animes = animes;
 
   final List<AnimeTrackingData> _animes;
@@ -117,10 +135,13 @@ class _$_AnimeListState implements _AnimeListState {
   @override
   @JsonKey()
   final AnimeTrackingState filterState;
+  @override
+  @JsonKey()
+  final TrackingMediumType trackingType;
 
   @override
   String toString() {
-    return 'AnimeListState(animes: $animes, filterState: $filterState)';
+    return 'AnimeListState(animes: $animes, filterState: $filterState, trackingType: $trackingType)';
   }
 
   @override
@@ -130,14 +151,17 @@ class _$_AnimeListState implements _AnimeListState {
             other is _$_AnimeListState &&
             const DeepCollectionEquality().equals(other._animes, _animes) &&
             const DeepCollectionEquality()
-                .equals(other.filterState, filterState));
+                .equals(other.filterState, filterState) &&
+            const DeepCollectionEquality()
+                .equals(other.trackingType, trackingType));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_animes),
-      const DeepCollectionEquality().hash(filterState));
+      const DeepCollectionEquality().hash(filterState),
+      const DeepCollectionEquality().hash(trackingType));
 
   @JsonKey(ignore: true)
   @override
@@ -148,12 +172,15 @@ class _$_AnimeListState implements _AnimeListState {
 abstract class _AnimeListState implements AnimeListState {
   factory _AnimeListState(
       {final List<AnimeTrackingData> animes,
-      final AnimeTrackingState filterState}) = _$_AnimeListState;
+      final AnimeTrackingState filterState,
+      final TrackingMediumType trackingType}) = _$_AnimeListState;
 
   @override
   List<AnimeTrackingData> get animes;
   @override
   AnimeTrackingState get filterState;
+  @override
+  TrackingMediumType get trackingType;
   @override
   @JsonKey(ignore: true)
   _$$_AnimeListStateCopyWith<_$_AnimeListState> get copyWith =>
