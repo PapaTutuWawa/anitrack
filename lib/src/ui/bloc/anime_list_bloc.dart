@@ -23,6 +23,8 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     on<MangaFilterChangedEvent>(_onMangasFiltered);
     on<MangaChapterIncrementedEvent>(_onMangaIncremented);
     on<MangaChapterDecrementedEvent>(_onMangaDecremented);
+    on<AnimeUpdatedEvent>(_onAnimeUpdated);
+    on<MangaUpdatedEvent>(_onMangaUpdated);
   }
 
   Future<void> _onAnimeAdded(AnimeAddedEvent event, Emitter<AnimeListState> emit) async {
@@ -172,5 +174,37 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     );
 
     await GetIt.I.get<DatabaseService>().updateManga(newManga);
+  }
+
+  Future<void> _onAnimeUpdated(AnimeUpdatedEvent event, Emitter<AnimeListState> emit) async {
+    emit(
+      state.copyWith(
+        animes: List.from(
+          state.animes.map((anime) {
+            if (anime.id == event.anime.id) {
+              return event.anime;
+            }
+
+            return anime;
+          }),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _onMangaUpdated(MangaUpdatedEvent event, Emitter<AnimeListState> emit) async {
+    emit(
+      state.copyWith(
+        mangas: List.from(
+          state.mangas.map((manga) {
+            if (manga.id == event.manga.id) {
+              return event.manga;
+            }
+
+            return manga;
+          }),
+        ),
+      ),
+    );
   }
 }

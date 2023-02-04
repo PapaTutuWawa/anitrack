@@ -42,6 +42,12 @@ class AnimeTrackingTypeChanged extends AnimeListEvent {
   final TrackingMediumType type;
 }
 
+class AnimeUpdatedEvent extends AnimeListEvent {
+  AnimeUpdatedEvent(this.anime);
+
+  final AnimeTrackingData anime;
+}
+
 class MangaAddedEvent extends AnimeListEvent {
   MangaAddedEvent(this.data);
   
@@ -69,4 +75,10 @@ class MangaChapterDecrementedEvent extends AnimeListEvent {
 
   /// The ID of the anime
   final String id;
+}
+
+class MangaUpdatedEvent extends AnimeListEvent {
+  MangaUpdatedEvent(this.manga);
+
+  final MangaTrackingData manga;
 }

@@ -24,6 +24,18 @@ extension AnimeTrackStateExtension on AnimeTrackingState {
       case AnimeTrackingState.all: return -1;
     }
   }
+
+  String toNameString() {
+    assert(this != AnimeTrackingState.all, 'AnimeTrackingState.all must not be stringified');
+
+    switch (this) {
+      case AnimeTrackingState.watching: return 'Watching';
+      case AnimeTrackingState.completed: return 'Completed';
+      case AnimeTrackingState.planToWatch: return 'Plan to watch';
+      case AnimeTrackingState.dropped: return 'Dropped';
+      case AnimeTrackingState.all: return 'All';
+    }
+  }
 }
 
 class AnimeTrackingStateConverter implements JsonConverter<AnimeTrackingState, int> {

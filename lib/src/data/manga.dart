@@ -7,7 +7,7 @@ part 'manga.g.dart';
 enum MangaTrackingState {
   reading,    // 0
   completed,   // 1
-  planToWatch, // 2
+  planToRead, // 2
   dropped,     // 3
   /// This is a pseudo state, i.e. it should never be set
   all,         // -1
@@ -19,9 +19,21 @@ extension MangaTrackStateExtension on MangaTrackingState {
     switch (this) {
       case MangaTrackingState.reading: return 0;
       case MangaTrackingState.completed: return 1;
-      case MangaTrackingState.planToWatch: return 2;
+      case MangaTrackingState.planToRead: return 2;
       case MangaTrackingState.dropped: return 3;
       case MangaTrackingState.all: return -1;
+    }
+  }
+
+  String toNameString() {
+    assert(this != MangaTrackingState.all, 'MangaTrackingState.all must not be stringified');
+
+    switch (this) {
+      case MangaTrackingState.reading: return 'Reading';
+      case MangaTrackingState.completed: return 'Completed';
+      case MangaTrackingState.planToRead: return 'Plan to read';
+      case MangaTrackingState.dropped: return 'Dropped';
+      case MangaTrackingState.all: return 'All';
     }
   }
 }
@@ -34,11 +46,11 @@ class MangaTrackingStateConverter implements JsonConverter<MangaTrackingState, i
     switch (json) {
       case 0: return MangaTrackingState.reading;
       case 1: return MangaTrackingState.completed;
-      case 2: return MangaTrackingState.planToWatch;
+      case 2: return MangaTrackingState.planToRead;
       case 3: return MangaTrackingState.dropped;
     }
 
-    return MangaTrackingState.planToWatch;
+    return MangaTrackingState.planToRead;
   }
   
   @override
