@@ -56,17 +56,18 @@ class MyApp extends StatelessWidget {
 
   final GlobalKey<NavigatorState> navKey;
   
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AniTrack',
-
+      themeMode: ThemeMode.system,
       theme: ThemeData(
+        brightness: Brightness.light,
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
+        brightness: Brightness.dark,
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
