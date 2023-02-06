@@ -68,7 +68,9 @@ class DetailsPage extends StatelessWidget {
                 ),
 
                 DropdownSelector<MediumTrackingState>(
-                  title: 'Watchstate',
+                  title: state.trackingType == TrackingMediumType.anime ?
+                    'Watch state' :
+                    'Read state',
                   onChanged: (MediumTrackingState newState) {
                     if (state.trackingType == TrackingMediumType.anime) {
                       context.read<DetailsBloc>().add(
