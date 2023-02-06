@@ -5,40 +5,23 @@ import 'package:anitrack/src/ui/bloc/details_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:anitrack/src/ui/widgets/dropdown.dart';
 import 'package:anitrack/src/ui/widgets/image.dart';
+import 'package:anitrack/src/ui/widgets/integer_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
-class DetailsPage extends StatefulWidget {
-  DetailsPage({
+class DetailsPage extends StatelessWidget {
+  const DetailsPage({
     super.key,
   });
 
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
-    builder: (_) => DetailsPage(),
+    builder: (_) => const DetailsPage(),
     settings: const RouteSettings(
       name: detailsRoute,
     ),
   );
 
-  @override
-  DetailsPageState createState() => DetailsPageState();
-}
-
-class DetailsPageState extends State<DetailsPage> {
-  final TextEditingController _volumesOwnedController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-
-    final state = GetIt.I.get<DetailsBloc>().state;
-    
-    if (state.trackingType == TrackingMediumType.manga) {
-      _volumesOwnedController.text = '${(state.data as MangaTrackingData).volumesOwned}';
-    }
-  }
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,78 +120,62 @@ class DetailsPageState extends State<DetailsPage> {
                   ),
                 ),
 
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8,
+                  ),
+                  child: IntegerInput(
+                    labelText: state.trackingType == TrackingMediumType.anime ?
+                      'Episodes' :
+                      'Chapters',
+                    onChanged: (value) {
+                      switch (state.trackingType) {
+                        case TrackingMediumType.anime:
+                          final data = state.data as AnimeTrackingData;
+                          context.read<DetailsBloc>().add(
+                            DetailsUpdatedEvent(
+                              data.copyWith(
+                                episodesWatched: value,
+                              ),
+                            ),
+                          );
+                          break;
+                        case TrackingMediumType.manga:
+                          final data = state.data as MangaTrackingData;
+                          context.read<DetailsBloc>().add(
+                            DetailsUpdatedEvent(
+                              data.copyWith(
+                                chaptersRead: value,
+                              ),
+                            ),
+                          );
+                          break;
+                      }
+                    },
+                    initialValue: state.trackingType == TrackingMediumType.anime ?
+                      (state.data as AnimeTrackingData).episodesWatched :
+                      (state.data as MangaTrackingData).chaptersRead,
+                  ),
+                ),
+                
                 if (state.trackingType == TrackingMediumType.manga)
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       vertical: 8,
                     ),
-                    child: Row(
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            final data = (state.data as MangaTrackingData);
-                            if (data.volumesOwned == 0) return;
-
-                            _volumesOwnedController.text = '${data.volumesOwned - 1}';
-                            context.read<DetailsBloc>().add(
-                              DetailsUpdatedEvent(
-                                data.copyWith(
-                                  volumesOwned: data.volumesOwned - 1,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Icon(Icons.remove),
-                        ),
-
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                            ),
-                            child: TextField(
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Volumes owned',
-                              ),
-                              keyboardType: TextInputType.numberWithOptions(
-                                signed: false,
-                                decimal: false,
-                              ),
-                              textInputAction: TextInputAction.done,
-                              controller: _volumesOwnedController,
-                              onSubmitted: (value) {
-                                final amount = int.parse(value);
-                                if (amount < 0) return;
-
-                                context.read<DetailsBloc>().add(
-                                  DetailsUpdatedEvent(
-                                    (state.data as MangaTrackingData).copyWith(
-                                      volumesOwned: amount,
-                                    ),
-                                  ),
-                                );
-                              },
+                    child: IntegerInput(
+                      labelText: 'Volumes owned',
+                      onChanged: (value) {
+                        final data = state.data as MangaTrackingData;
+                        context.read<DetailsBloc>().add(
+                          DetailsUpdatedEvent(
+                            data.copyWith(
+                              volumesOwned: value,
                             ),
                           ),
-                        ),
-
-                        ElevatedButton(
-                          onPressed: () {
-                            final data = (state.data as MangaTrackingData);
-
-                            _volumesOwnedController.text = '${data.volumesOwned + 1}';
-                            context.read<DetailsBloc>().add(
-                              DetailsUpdatedEvent(
-                                data.copyWith(
-                                  volumesOwned: data.volumesOwned + 1,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Icon(Icons.add),
-                        ),
-                      ],
+                        );
+                      },
+                      initialValue: (GetIt.I.get<DetailsBloc>().state.data as MangaTrackingData).volumesOwned,
                     ),
                   ),
               ],
