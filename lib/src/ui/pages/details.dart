@@ -40,30 +40,28 @@ class DetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AnimeCoverImage(
-                      url: state.trackingType == TrackingMediumType.anime ?
-                      (state.data as AnimeTrackingData).thumbnailUrl :
-                      (state.data as MangaTrackingData).thumbnailUrl,
+                      url: state.data!.thumbnailUrl,
                     ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 8,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            state.trackingType == TrackingMediumType.anime ?
-                            (state.data as AnimeTrackingData).title :
-                            (state.data as MangaTrackingData).title,
-                            textAlign: TextAlign.left,
-                            style: Theme.of(context).textTheme.titleLarge,
-                            maxLines: 2,
-                            softWrap: true,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 8,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              state.data!.title,
+                              textAlign: TextAlign.left,
+                              style: Theme.of(context).textTheme.titleLarge,
+                              maxLines: 2,
+                              softWrap: true,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -114,9 +112,7 @@ class DetailsPage extends StatelessWidget {
                         MediumTrackingState.dropped.toNameString(state.trackingType),
                       ),
                     ],
-                    initialValue: state.trackingType == TrackingMediumType.anime ?
-                    (state.data as AnimeTrackingData).state :
-                    (state.data as MangaTrackingData).state,
+                    initialValue: state.data!.state,
                   ),
                 ),
 

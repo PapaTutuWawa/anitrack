@@ -15,6 +15,18 @@ enum MediumTrackingState {
   all,
 }
 
+/// Interface for the Anime and Manga data classes
+abstract class TrackingMedium {
+  /// The title of the medium
+  final String title = '';
+
+  /// The URL of the cover image.
+  final String thumbnailUrl = '';
+
+  /// The tracking state
+  final MediumTrackingState state = MediumTrackingState.planned;
+}
+
 extension MediumStateExtension on MediumTrackingState {
   int toInteger() {
     assert(this != MediumTrackingState.all, 'MediumTrackingState.all must not be serialized');

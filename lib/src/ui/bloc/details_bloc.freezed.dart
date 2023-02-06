@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DetailsState {
-  dynamic get data => throw _privateConstructorUsedError;
+  TrackingMedium? get data => throw _privateConstructorUsedError;
   TrackingMediumType get trackingType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +29,7 @@ abstract class $DetailsStateCopyWith<$Res> {
   factory $DetailsStateCopyWith(
           DetailsState value, $Res Function(DetailsState) then) =
       _$DetailsStateCopyWithImpl<$Res>;
-  $Res call({dynamic data, TrackingMediumType trackingType});
+  $Res call({TrackingMedium? data, TrackingMediumType trackingType});
 }
 
 /// @nodoc
@@ -49,7 +49,7 @@ class _$DetailsStateCopyWithImpl<$Res> implements $DetailsStateCopyWith<$Res> {
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as TrackingMedium?,
       trackingType: trackingType == freezed
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
@@ -65,7 +65,7 @@ abstract class _$$_DetailsStateCopyWith<$Res>
           _$_DetailsState value, $Res Function(_$_DetailsState) then) =
       __$$_DetailsStateCopyWithImpl<$Res>;
   @override
-  $Res call({dynamic data, TrackingMediumType trackingType});
+  $Res call({TrackingMedium? data, TrackingMediumType trackingType});
 }
 
 /// @nodoc
@@ -88,7 +88,7 @@ class __$$_DetailsStateCopyWithImpl<$Res>
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as TrackingMedium?,
       trackingType: trackingType == freezed
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ class _$_DetailsState implements _DetailsState {
   _$_DetailsState({this.data, this.trackingType = TrackingMediumType.anime});
 
   @override
-  final dynamic data;
+  final TrackingMedium? data;
   @override
   @JsonKey()
   final TrackingMediumType trackingType;
@@ -137,11 +137,11 @@ class _$_DetailsState implements _DetailsState {
 
 abstract class _DetailsState implements DetailsState {
   factory _DetailsState(
-      {final dynamic data,
+      {final TrackingMedium? data,
       final TrackingMediumType trackingType}) = _$_DetailsState;
 
   @override
-  dynamic get data;
+  TrackingMedium? get data;
   @override
   TrackingMediumType get trackingType;
   @override

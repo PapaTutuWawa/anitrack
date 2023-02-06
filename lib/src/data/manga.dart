@@ -6,7 +6,7 @@ part 'manga.g.dart';
 
 /// Data about a tracked anime
 @freezed
-class MangaTrackingData with _$MangaTrackingData{
+class MangaTrackingData with _$MangaTrackingData, TrackingMedium {
   factory MangaTrackingData(
     /// The ID of the manga
     String id,
