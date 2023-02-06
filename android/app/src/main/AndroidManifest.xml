@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.polynom.anitrack">
    <application
-        android:label="anitrack"
+        android:label="AniTrack"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
