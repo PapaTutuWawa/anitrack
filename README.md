@@ -5,7 +5,7 @@ its data source.
 
 ## Screenshots
 
-TODO
+[<img src="https://codeberg.org/PapaTutuWawa/anitrack/raw/branch/master/assets/images/screenshot.jpg" width="20%"></img>](./assets/images/screenshot.jpg)
 
 ## License
 
