@@ -1,6 +1,6 @@
 # anitrack
 
-A simple Anime and Manga tracker that uses the [Jikan API]() as
+A simple Anime and Manga tracker that uses the [Jikan API](https://jikan.moe/) as
 its data source.
 
 ## Screenshots
