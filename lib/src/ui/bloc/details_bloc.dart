@@ -1,10 +1,10 @@
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/type.dart';
+import 'package:anitrack/src/service/database.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/navigation_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
-import 'package:anitrack/src/service/database.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
@@ -30,9 +30,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
 
     GetIt.I.get<NavigationBloc>().add(
       PushedNamedEvent(
-        NavigationDestination(
-          detailsRoute,
-        ),
+        const NavigationDestination(detailsRoute),
       ),
     );
   }
@@ -47,9 +45,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
 
     GetIt.I.get<NavigationBloc>().add(
       PushedNamedEvent(
-        NavigationDestination(
-          detailsRoute,
-        ),
+        const NavigationDestination(detailsRoute),
       ),
     );
   }

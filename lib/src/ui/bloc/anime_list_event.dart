@@ -31,7 +31,7 @@ class AnimeFilterChangedEvent extends AnimeListEvent {
   AnimeFilterChangedEvent(this.filterState);
 
   /// The state to filter
-  final AnimeTrackingState filterState;
+  final MediumTrackingState filterState;
 }
 
 /// Triggered when the view is changed from the anime or the manga view
@@ -60,7 +60,7 @@ class MangaFilterChangedEvent extends AnimeListEvent {
   MangaFilterChangedEvent(this.filterState);
 
   /// The state to filter
-  final MangaTrackingState filterState;
+  final MediumTrackingState filterState;
 }
 
 class MangaChapterIncrementedEvent extends AnimeListEvent {

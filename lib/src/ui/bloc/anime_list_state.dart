@@ -5,8 +5,8 @@ class AnimeListState with _$AnimeListState {
   factory AnimeListState({
     @Default([]) List<AnimeTrackingData> animes,
     @Default([]) List<MangaTrackingData> mangas,
-    @Default(AnimeTrackingState.watching) AnimeTrackingState animeFilterState,
-    @Default(MangaTrackingState.reading) MangaTrackingState mangaFilterState,
+    @Default(MediumTrackingState.ongoing) MediumTrackingState animeFilterState,
+    @Default(MediumTrackingState.ongoing) MediumTrackingState mangaFilterState,
     @Default(TrackingMediumType.anime) TrackingMediumType trackingType,
   }) = _AnimeListState;
 }

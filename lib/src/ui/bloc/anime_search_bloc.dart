@@ -2,9 +2,9 @@ import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/search_result.dart';
 import 'package:anitrack/src/data/type.dart';
-import 'package:anitrack/src/ui/constants.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart' as list;
 import 'package:anitrack/src/ui/bloc/navigation_bloc.dart';
+import 'package:anitrack/src/ui/constants.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
@@ -34,7 +34,7 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
 
     GetIt.I.get<NavigationBloc>().add(
       PushedNamedEvent(
-        NavigationDestination(animeSearchRoute),
+        const NavigationDestination(animeSearchRoute),
       ),
     );
   }
@@ -101,7 +101,7 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
         list.AnimeAddedEvent(
           AnimeTrackingData(
             event.result.id,
-            AnimeTrackingState.watching,
+            MediumTrackingState.ongoing,
             event.result.title,
             0,
             event.result.total,
@@ -111,14 +111,14 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
         list.MangaAddedEvent(
           MangaTrackingData(
             event.result.id,
-            MangaTrackingState.reading,
+            MediumTrackingState.ongoing,
             event.result.title,
             0,
             0,
             event.result.total,
             event.result.thumbnailUrl,
           ),
-        )
+        ),
     );
 
     GetIt.I.get<NavigationBloc>().add(

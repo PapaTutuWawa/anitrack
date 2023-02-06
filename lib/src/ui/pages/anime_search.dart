@@ -1,15 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:anitrack/src/ui/widgets/list_item.dart';
-import 'package:anitrack/src/ui/widgets/image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AnimeSearchPage extends StatelessWidget {
+  const AnimeSearchPage({
+    super.key,
+  });
+
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
-    builder: (_) => AnimeSearchPage(),
+    builder: (_) => const AnimeSearchPage(),
     settings: const RouteSettings(
       name: animeSearchRoute,
     ),
@@ -32,7 +34,7 @@ class AnimeSearchPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: TextField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Search query',
                   ),
@@ -50,9 +52,8 @@ class AnimeSearchPage extends StatelessWidget {
               ),
 
               if (state.working)
-                Expanded(
+                const Expanded(
                   child: Align(
-                    alignment: Alignment.center,
                     child: CircularProgressIndicator(),
                   ),
                 )
@@ -86,7 +87,7 @@ class AnimeSearchPage extends StatelessWidget {
                           ],
                         ),
                       );
-                    }
+                    },
                   ),
                 ),
             ],

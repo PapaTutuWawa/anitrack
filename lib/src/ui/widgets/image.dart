@@ -9,6 +9,7 @@ class AnimeCoverImage extends StatelessWidget {
   /// The URL to the cover image.
   final String url;
 
+  @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),

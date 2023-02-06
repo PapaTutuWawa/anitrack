@@ -24,8 +24,8 @@ mixin _$AnimeTrackingData {
   String get id => throw _privateConstructorUsedError;
 
   /// The state of the anime
-  @AnimeTrackingStateConverter()
-  AnimeTrackingState get state => throw _privateConstructorUsedError;
+  @MediumTrackingStateConverter()
+  MediumTrackingState get state => throw _privateConstructorUsedError;
 
   /// The title of the anime
   String get title => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $AnimeTrackingDataCopyWith<$Res> {
       _$AnimeTrackingDataCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      @AnimeTrackingStateConverter() AnimeTrackingState state,
+      @MediumTrackingStateConverter() MediumTrackingState state,
       String title,
       int episodesWatched,
       int? episodesTotal,
@@ -85,7 +85,7 @@ class _$AnimeTrackingDataCopyWithImpl<$Res>
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as AnimeTrackingState,
+              as MediumTrackingState,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$_AnimeTrackingDataCopyWith<$Res>
   @override
   $Res call(
       {String id,
-      @AnimeTrackingStateConverter() AnimeTrackingState state,
+      @MediumTrackingStateConverter() MediumTrackingState state,
       String title,
       int episodesWatched,
       int? episodesTotal,
@@ -150,7 +150,7 @@ class __$$_AnimeTrackingDataCopyWithImpl<$Res>
       state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as AnimeTrackingState,
+              as MediumTrackingState,
       title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -174,7 +174,7 @@ class __$$_AnimeTrackingDataCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AnimeTrackingData implements _AnimeTrackingData {
-  _$_AnimeTrackingData(this.id, @AnimeTrackingStateConverter() this.state,
+  _$_AnimeTrackingData(this.id, @MediumTrackingStateConverter() this.state,
       this.title, this.episodesWatched, this.episodesTotal, this.thumbnailUrl);
 
   factory _$_AnimeTrackingData.fromJson(Map<String, dynamic> json) =>
@@ -186,8 +186,8 @@ class _$_AnimeTrackingData implements _AnimeTrackingData {
 
   /// The state of the anime
   @override
-  @AnimeTrackingStateConverter()
-  final AnimeTrackingState state;
+  @MediumTrackingStateConverter()
+  final MediumTrackingState state;
 
   /// The title of the anime
   @override
@@ -254,7 +254,7 @@ class _$_AnimeTrackingData implements _AnimeTrackingData {
 abstract class _AnimeTrackingData implements AnimeTrackingData {
   factory _AnimeTrackingData(
       final String id,
-      @AnimeTrackingStateConverter() final AnimeTrackingState state,
+      @MediumTrackingStateConverter() final MediumTrackingState state,
       final String title,
       final int episodesWatched,
       final int? episodesTotal,
@@ -270,8 +270,8 @@ abstract class _AnimeTrackingData implements AnimeTrackingData {
   @override
 
   /// The state of the anime
-  @AnimeTrackingStateConverter()
-  AnimeTrackingState get state;
+  @MediumTrackingStateConverter()
+  MediumTrackingState get state;
   @override
 
   /// The title of the anime

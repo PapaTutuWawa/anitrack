@@ -9,7 +9,7 @@ part of 'manga.dart';
 _$_MangaTrackingData _$$_MangaTrackingDataFromJson(Map<String, dynamic> json) =>
     _$_MangaTrackingData(
       json['id'] as String,
-      const MangaTrackingStateConverter().fromJson(json['state'] as int),
+      const MediumTrackingStateConverter().fromJson(json['state'] as int),
       json['title'] as String,
       json['chaptersRead'] as int,
       json['volumesOwned'] as int,
@@ -21,7 +21,7 @@ Map<String, dynamic> _$$_MangaTrackingDataToJson(
         _$_MangaTrackingData instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'state': const MangaTrackingStateConverter().toJson(instance.state),
+      'state': const MediumTrackingStateConverter().toJson(instance.state),
       'title': instance.title,
       'chaptersRead': instance.chaptersRead,
       'volumesOwned': instance.volumesOwned,

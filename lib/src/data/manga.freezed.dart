@@ -24,8 +24,8 @@ mixin _$MangaTrackingData {
   String get id => throw _privateConstructorUsedError;
 
   /// The state of the manga
-  @MangaTrackingStateConverter()
-  MangaTrackingState get state => throw _privateConstructorUsedError;
+  @MediumTrackingStateConverter()
+  MediumTrackingState get state => throw _privateConstructorUsedError;
 
   /// The title of the manga
   String get title => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $MangaTrackingDataCopyWith<$Res> {
       _$MangaTrackingDataCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      @MangaTrackingStateConverter() MangaTrackingState state,
+      @MediumTrackingStateConverter() MediumTrackingState state,
       String title,
       int chaptersRead,
       int volumesOwned,
@@ -90,7 +90,7 @@ class _$MangaTrackingDataCopyWithImpl<$Res>
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as MangaTrackingState,
+              as MediumTrackingState,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -124,7 +124,7 @@ abstract class _$$_MangaTrackingDataCopyWith<$Res>
   @override
   $Res call(
       {String id,
-      @MangaTrackingStateConverter() MangaTrackingState state,
+      @MediumTrackingStateConverter() MediumTrackingState state,
       String title,
       int chaptersRead,
       int volumesOwned,
@@ -161,7 +161,7 @@ class __$$_MangaTrackingDataCopyWithImpl<$Res>
       state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as MangaTrackingState,
+              as MediumTrackingState,
       title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -191,7 +191,7 @@ class __$$_MangaTrackingDataCopyWithImpl<$Res>
 class _$_MangaTrackingData implements _MangaTrackingData {
   _$_MangaTrackingData(
       this.id,
-      @MangaTrackingStateConverter() this.state,
+      @MediumTrackingStateConverter() this.state,
       this.title,
       this.chaptersRead,
       this.volumesOwned,
@@ -207,8 +207,8 @@ class _$_MangaTrackingData implements _MangaTrackingData {
 
   /// The state of the manga
   @override
-  @MangaTrackingStateConverter()
-  final MangaTrackingState state;
+  @MediumTrackingStateConverter()
+  final MediumTrackingState state;
 
   /// The title of the manga
   @override
@@ -282,7 +282,7 @@ class _$_MangaTrackingData implements _MangaTrackingData {
 abstract class _MangaTrackingData implements MangaTrackingData {
   factory _MangaTrackingData(
       final String id,
-      @MangaTrackingStateConverter() final MangaTrackingState state,
+      @MediumTrackingStateConverter() final MediumTrackingState state,
       final String title,
       final int chaptersRead,
       final int volumesOwned,
@@ -299,8 +299,8 @@ abstract class _MangaTrackingData implements MangaTrackingData {
   @override
 
   /// The state of the manga
-  @MangaTrackingStateConverter()
-  MangaTrackingState get state;
+  @MediumTrackingStateConverter()
+  MediumTrackingState get state;
   @override
 
   /// The title of the manga

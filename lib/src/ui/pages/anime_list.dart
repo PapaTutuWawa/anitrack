@@ -1,5 +1,3 @@
-import 'package:anitrack/src/data/anime.dart';
-import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
@@ -11,6 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AnimeListPage extends StatelessWidget {
+  AnimeListPage({
+    super.key,
+  });
+
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
     builder: (_) => AnimeListPage(),
     settings: const RouteSettings(
@@ -27,11 +29,36 @@ class AnimeListPage extends StatelessWidget {
     }
   }
 
+  List<PopupMenuItem<MediumTrackingState>> _getPopupButtonItems(TrackingMediumType type) {
+    return [
+      PopupMenuItem<MediumTrackingState>(
+        value: MediumTrackingState.ongoing,
+        child: Text(MediumTrackingState.ongoing.toNameString(type)),
+      ),
+      PopupMenuItem<MediumTrackingState>(
+        value: MediumTrackingState.completed,
+        child: Text(MediumTrackingState.completed.toNameString(type)),
+      ),
+      PopupMenuItem<MediumTrackingState>(
+        value: MediumTrackingState.planned,
+        child: Text(MediumTrackingState.planned.toNameString(type)),
+      ),
+      PopupMenuItem<MediumTrackingState>(
+        value: MediumTrackingState.dropped,
+        child: Text(MediumTrackingState.dropped.toNameString(type)),
+      ),
+      const PopupMenuItem<MediumTrackingState>(
+        value: MediumTrackingState.all,
+        child: Text('All'),
+      ),
+    ];
+  }
+  
   Widget _getPopupButton(BuildContext context, AnimeListState state) {
     switch (state.trackingType) {
       case TrackingMediumType.anime:
         return PopupMenuButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.filter_list,
           ),
           initialValue: state.animeFilterState,
@@ -40,32 +67,11 @@ class AnimeListPage extends StatelessWidget {
               AnimeFilterChangedEvent(filterState),
             );
           },
-          itemBuilder: (_) => [
-            const PopupMenuItem<AnimeTrackingState>(
-              value: AnimeTrackingState.watching,
-              child: Text('Watching'),
-            ),
-            const PopupMenuItem<AnimeTrackingState>(
-              value: AnimeTrackingState.completed,
-              child: Text('Completed'),
-            ),
-            const PopupMenuItem<AnimeTrackingState>(
-              value: AnimeTrackingState.planToWatch,
-              child: Text('Plan to watch'),
-            ),
-            const PopupMenuItem<AnimeTrackingState>(
-              value: AnimeTrackingState.dropped,
-              child: Text('Dropped'),
-            ),
-            const PopupMenuItem<AnimeTrackingState>(
-              value: AnimeTrackingState.all,
-              child: Text('All'),
-            ),
-          ],
+          itemBuilder: (_) => _getPopupButtonItems(TrackingMediumType.anime),
         );
       case TrackingMediumType.manga:
         return PopupMenuButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.filter_list,
           ),
           initialValue: state.mangaFilterState,
@@ -74,28 +80,7 @@ class AnimeListPage extends StatelessWidget {
               MangaFilterChangedEvent(filterState),
             );
           },
-          itemBuilder: (_) => [
-            const PopupMenuItem<MangaTrackingState>(
-              value: MangaTrackingState.reading,
-              child: Text('Reading'),
-            ),
-            const PopupMenuItem<MangaTrackingState>(
-              value: MangaTrackingState.completed,
-              child: Text('Completed'),
-            ),
-            const PopupMenuItem<MangaTrackingState>(
-              value: MangaTrackingState.planToRead,
-              child: Text('Plan to read'),
-            ),
-            const PopupMenuItem<MangaTrackingState>(
-              value: MangaTrackingState.dropped,
-              child: Text('Dropped'),
-            ),
-            const PopupMenuItem<MangaTrackingState>(
-              value: MangaTrackingState.all,
-              child: Text('All'),
-            ),
-          ],
+          itemBuilder: (_) => _getPopupButtonItems(TrackingMediumType.manga),
         );
     }
   }
@@ -107,7 +92,7 @@ class AnimeListPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              _getPageTitle(state.trackingType)
+              _getPageTitle(state.trackingType),
             ),
             actions: [
               _getPopupButton(context, state),
@@ -120,7 +105,7 @@ class AnimeListPage extends StatelessWidget {
                 itemCount: state.animes.length,
                 itemBuilder: (context, index) {
                   final anime = state.animes[index];
-                  if (state.animeFilterState != AnimeTrackingState.all) {
+                  if (state.animeFilterState != MediumTrackingState.all) {
                     if (anime.state != state.animeFilterState) return Container();
                   }
 
@@ -157,7 +142,7 @@ class AnimeListPage extends StatelessWidget {
                 itemCount: state.mangas.length,
                 itemBuilder: (context, index) {
                   final manga = state.mangas[index];
-                  if (state.mangaFilterState != MangaTrackingState.all) {
+                  if (state.mangaFilterState != MediumTrackingState.all) {
                     if (manga.state != state.mangaFilterState) return Container();
                   }
 
@@ -216,7 +201,7 @@ class AnimeListPage extends StatelessWidget {
 
               _controller.jumpToPage(index);
             },
-            items: <BottomBarItem>[
+            items: const [
               BottomBarItem(
                 icon: Icon(Icons.tv),
                 title: Text('Anime'),

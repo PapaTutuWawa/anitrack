@@ -1,4 +1,3 @@
-import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/ui/widgets/image.dart';
 import 'package:anitrack/src/ui/widgets/swipe_icon.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +5,7 @@ import 'package:swipeable_tile/swipeable_tile.dart';
 
 /// A widget for displaying simple data about an anime in the listview
 class ListItem extends StatelessWidget {
-  ListItem({
+  const ListItem({
     required this.thumbnailUrl,
     required this.title,
     this.onLeftSwipe,
@@ -42,14 +41,14 @@ class ListItem extends StatelessWidget {
       key: UniqueKey(),
       backgroundBuilder: (_, direction, __) {
         if (direction == SwipeDirection.endToStart) {
-          return Align(
+          return const Align(
             alignment: Alignment.centerRight,
             child: SwipeIcon(
               Icons.add,
             ),
           );
         } else if (direction == SwipeDirection.startToEnd) {
-          return Align(
+          return const Align(
             alignment: Alignment.centerLeft,
             child: SwipeIcon(
               Icons.remove,

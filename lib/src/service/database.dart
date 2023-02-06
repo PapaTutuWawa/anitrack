@@ -47,7 +47,7 @@ class DatabaseService {
 
     return animes
       .cast<Map<String, dynamic>>()
-      .map((Map<String, dynamic> anime) => AnimeTrackingData.fromJson(anime))
+      .map(AnimeTrackingData.fromJson)
       .toList();
   }
 
@@ -56,7 +56,7 @@ class DatabaseService {
 
     return mangas
       .cast<Map<String, dynamic>>()
-      .map((Map<String, dynamic> manga) => MangaTrackingData.fromJson(manga))
+      .map(MangaTrackingData.fromJson)
       .toList();
   }
   

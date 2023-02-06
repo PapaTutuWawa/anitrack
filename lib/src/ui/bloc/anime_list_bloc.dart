@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/type.dart';

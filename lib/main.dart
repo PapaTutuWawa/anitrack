@@ -1,3 +1,4 @@
+import 'package:anitrack/src/service/database.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
 import 'package:anitrack/src/ui/bloc/details_bloc.dart';
@@ -6,7 +7,6 @@ import 'package:anitrack/src/ui/constants.dart';
 import 'package:anitrack/src/ui/pages/anime_list.dart';
 import 'package:anitrack/src/ui/pages/anime_search.dart';
 import 'package:anitrack/src/ui/pages/details.dart';
-import 'package:anitrack/src/service/database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -66,7 +66,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AniTrack',
-      themeMode: ThemeMode.system,
       theme: ThemeData(
         brightness: Brightness.light,
         primarySwatch: Colors.blue,
