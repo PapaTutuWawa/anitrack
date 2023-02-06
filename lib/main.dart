@@ -4,6 +4,7 @@ import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
 import 'package:anitrack/src/ui/bloc/details_bloc.dart';
 import 'package:anitrack/src/ui/bloc/navigation_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
+import 'package:anitrack/src/ui/pages/about.dart';
 import 'package:anitrack/src/ui/pages/anime_list.dart';
 import 'package:anitrack/src/ui/pages/anime_search.dart';
 import 'package:anitrack/src/ui/pages/details.dart';
@@ -83,6 +84,7 @@ class MyApp extends StatelessWidget {
           case animeListRoute: return AnimeListPage.route;
           case animeSearchRoute: return AnimeSearchPage.route;
           case detailsRoute: return DetailsPage.route;
+          case aboutRoute: return AboutPage.route;
         }
 
         return null;

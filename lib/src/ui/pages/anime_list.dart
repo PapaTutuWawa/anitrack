@@ -98,6 +98,32 @@ class AnimeListPage extends StatelessWidget {
               _getPopupButton(context, state),
             ],
           ),
+          drawer: Drawer(
+            child: ListView(
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Color(0xffcf4aff),
+                  ),
+                  child: Text(
+                    'AniTrack',
+                    style: TextStyle(
+                      color: Color(0xff232323),
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+
+                ListTile(
+                  leading: Icon(Icons.info),
+                  title: Text('About'),
+                  onTap: () {
+                    Navigator.of(context).pushNamed(aboutRoute);
+                  },
+                ),
+              ],
+            ),
+          ),
           body: PageView(
             // Prevent swiping between pages
             // (https://github.com/flutter/flutter/issues/37510#issuecomment-612663656)
