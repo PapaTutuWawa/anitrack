@@ -10,6 +10,7 @@ class ListItem extends StatelessWidget {
     required this.title,
     this.onLeftSwipe,
     this.onRightSwipe,
+    this.cached = true,
     this.extra = const [],
     super.key,
   });
@@ -27,6 +28,9 @@ class ListItem extends StatelessWidget {
   final void Function()? onLeftSwipe;
   final void Function()? onRightSwipe;
 
+  /// Flag indicating whether the thumbnail image should be cached
+  final bool cached;
+  
   @override
   Widget build(BuildContext context) {
     return SwipeableTile.swipeToTrigger(
@@ -68,6 +72,7 @@ class ListItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AnimeCoverImage(
+              cached: cached,
               url: thumbnailUrl,
             ),
 

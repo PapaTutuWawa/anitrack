@@ -9,7 +9,8 @@ environment:
 
 dependencies:
   bloc: ^8.1.0
-  bottom_bar: ^2.0.3 
+  bottom_bar: ^2.0.3
+  cached_network_image: ^3.2.3
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter

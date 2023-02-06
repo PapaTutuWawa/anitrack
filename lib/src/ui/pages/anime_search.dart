@@ -72,6 +72,7 @@ class AnimeSearchPage extends StatelessWidget {
                         child: ListItem(
                           title: item.title,
                           thumbnailUrl: item.thumbnailUrl,
+                          cached: false,
                           extra: [
                             Align(
                               alignment: Alignment.centerLeft,

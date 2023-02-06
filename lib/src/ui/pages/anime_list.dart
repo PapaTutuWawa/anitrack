@@ -101,7 +101,7 @@ class AnimeListPage extends StatelessWidget {
           body: PageView(
             // Prevent swiping between pages
             // (https://github.com/flutter/flutter/issues/37510#issuecomment-612663656)
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             controller: _controller,
             children: [
               ListView.builder(
