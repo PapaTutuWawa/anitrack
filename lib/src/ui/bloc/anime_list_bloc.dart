@@ -24,6 +24,8 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     on<MangaChapterDecrementedEvent>(_onMangaDecremented);
     on<AnimeUpdatedEvent>(_onAnimeUpdated);
     on<MangaUpdatedEvent>(_onMangaUpdated);
+    on<AnimeRemovedEvent>(_onAnimeRemoved);
+    on<MangaRemovedEvent>(_onMangaRemoved);
   }
 
   Future<void> _onAnimeAdded(AnimeAddedEvent event, Emitter<AnimeListState> emit) async {
@@ -205,5 +207,31 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
         ),
       ),
     );
+  }
+
+  Future<void> _onAnimeRemoved(AnimeRemovedEvent event, Emitter<AnimeListState> emit) async {
+    emit(
+      state.copyWith(
+        animes: List.from(
+          state.animes.where((anime) => anime.id != event.id),
+        ),
+      ),
+    );
+
+    // Update the database
+    await GetIt.I.get<DatabaseService>().deleteAnime(event.id);
+  }
+  
+  Future<void> _onMangaRemoved(MangaRemovedEvent event, Emitter<AnimeListState> emit) async {
+    emit(
+      state.copyWith(
+        mangas: List.from(
+          state.mangas.where((manga) => manga.id != event.id),
+        ),
+      ),
+    );
+
+    // Update the database
+    await GetIt.I.get<DatabaseService>().deleteManga(event.id);
   }
 }

@@ -76,6 +76,14 @@ class DatabaseService {
     );
   }
 
+  Future<void> deleteAnime(String id) async {
+    await _db.delete(
+      animeTable,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+  
   Future<void> addManga(MangaTrackingData data) async {
     await _db.insert(
       mangaTable,
@@ -89,6 +97,14 @@ class DatabaseService {
       data.toJson(),
       where: 'id = ?',
       whereArgs: [data.id],
+    );
+  }
+
+  Future<void> deleteManga(String id) async {
+    await _db.delete(
+      mangaTable,
+      where: 'id = ?',
+      whereArgs: [id],
     );
   }
 }

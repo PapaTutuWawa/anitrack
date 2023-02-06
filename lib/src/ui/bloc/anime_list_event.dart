@@ -48,6 +48,13 @@ class AnimeUpdatedEvent extends AnimeListEvent {
   final AnimeTrackingData anime;
 }
 
+class AnimeRemovedEvent extends AnimeListEvent {
+  AnimeRemovedEvent(this.id);
+
+  /// The ID of the anime to be removed from the list.
+  final String id;
+}
+
 class MangaAddedEvent extends AnimeListEvent {
   MangaAddedEvent(this.data);
   
@@ -81,4 +88,11 @@ class MangaUpdatedEvent extends AnimeListEvent {
   MangaUpdatedEvent(this.manga);
 
   final MangaTrackingData manga;
+}
+
+class MangaRemovedEvent extends AnimeListEvent {
+  MangaRemovedEvent(this.id);
+
+  /// The ID of the manga to be removed from the list.
+  final String id;
 }

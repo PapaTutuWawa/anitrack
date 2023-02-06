@@ -18,6 +18,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     on<AnimeDetailsRequestedEvent>(_onAnimeRequested);
     on<MangaDetailsRequestedEvent>(_onMangaRequested);
     on<DetailsUpdatedEvent>(_onDetailsUpdated);
+    on<ItemRemovedEvent>(_onItemRemoved);
   }
 
   Future<void> _onAnimeRequested(AnimeDetailsRequestedEvent event, Emitter<DetailsState> emit) async {
@@ -76,5 +77,27 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
         MangaUpdatedEvent(event.data as MangaTrackingData),
       );
     }
+  }
+
+  Future<void> _onItemRemoved(ItemRemovedEvent event, Emitter<DetailsState> emit) async {
+    emit(
+      state.copyWith(
+        data: null,
+      ),
+    );
+
+    /// Remove the item from the database
+    final bloc = GetIt.I.get<AnimeListBloc>();
+    switch (event.trackingType) {
+      case TrackingMediumType.anime:
+        bloc.add(AnimeRemovedEvent(event.id));
+        break;
+      case TrackingMediumType.manga:
+        bloc.add(MangaRemovedEvent(event.id));
+        break;
+    }
+
+    // Navigate back
+    GetIt.I.get<NavigationBloc>().add(PoppedRouteEvent());
   }
 }

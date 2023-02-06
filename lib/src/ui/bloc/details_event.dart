@@ -19,5 +19,15 @@ class MangaDetailsRequestedEvent extends DetailsEvent {
 class DetailsUpdatedEvent extends DetailsEvent {
   DetailsUpdatedEvent(this.data);
 
-  final dynamic data;
+  final TrackingMedium data;
+}
+
+class ItemRemovedEvent extends DetailsEvent {
+  ItemRemovedEvent(this.id, this.trackingType);
+
+  /// The ID of the item to be removed
+  final String id;
+
+  /// The type of medium of the item
+  final TrackingMediumType trackingType;
 }

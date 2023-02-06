@@ -101,7 +101,7 @@ class AnimeListPage extends StatelessWidget {
           drawer: Drawer(
             child: ListView(
               children: [
-                DrawerHeader(
+                const DrawerHeader(
                   decoration: BoxDecoration(
                     color: Color(0xffcf4aff),
                   ),
@@ -115,8 +115,8 @@ class AnimeListPage extends StatelessWidget {
                 ),
 
                 ListTile(
-                  leading: Icon(Icons.info),
-                  title: Text('About'),
+                  leading: const Icon(Icons.info),
+                  title: const Text('About'),
                   onTap: () {
                     Navigator.of(context).pushNamed(aboutRoute);
                   },

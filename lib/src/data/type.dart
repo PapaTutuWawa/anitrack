@@ -17,6 +17,9 @@ enum MediumTrackingState {
 
 /// Interface for the Anime and Manga data classes
 abstract class TrackingMedium {
+  /// The ID of the medium
+  final String id = '';
+
   /// The title of the medium
   final String title = '';
 

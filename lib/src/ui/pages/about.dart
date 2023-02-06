@@ -1,16 +1,15 @@
-import 'dart:io';
 import 'package:anitrack/licenses.g.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
-  AboutPage({
+  const AboutPage({
     super.key,
   });
 
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
-    builder: (_) => AboutPage(),
+    builder: (_) => const AboutPage(),
     settings: const RouteSettings(
       name: aboutRoute,
     ),
@@ -20,7 +19,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About'),
+        title: const Text('About'),
       ),
       body: ListView.builder(
         itemCount: ossLicenses.length + 1,
@@ -29,7 +28,6 @@ class AboutPage extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
@@ -44,7 +42,7 @@ class AboutPage extends StatelessWidget {
                         mode: LaunchMode.externalApplication,
                       );
                     },
-                    child: Text('Source')
+                    child: const Text('Source'),
                   ),
                 ],
               ),

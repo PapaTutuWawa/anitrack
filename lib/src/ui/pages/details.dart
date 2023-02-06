@@ -60,6 +60,48 @@ class DetailsPage extends StatelessWidget {
                               softWrap: true,
                               overflow: TextOverflow.ellipsis,
                             ),
+
+                            ElevatedButton(
+                              onPressed: () async {
+                                final result = await showDialog<bool>(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: Text('Remove "${state.data!.title}"?'),
+                                      content: Text('Are you sure you want to remove "${state.data!.title}" from the list?'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop(true);
+                                          },
+                                          style: TextButton.styleFrom(
+                                            foregroundColor: Colors.red,
+                                          ),
+                                          child: const Text('Remove'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop(false);
+                                          },
+                                          child: const Text('Cancel'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+
+                                if (result != true) return;
+
+                                // ignore: use_build_context_synchronously
+                                context.read<DetailsBloc>().add(
+                                  ItemRemovedEvent(
+                                    state.data!.id,
+                                    state.trackingType,
+                                  ),
+                                );
+                              },
+                              child: const Icon(Icons.delete),
+                            ),
                           ],
                         ),
                       ),
@@ -79,7 +121,7 @@ class DetailsPage extends StatelessWidget {
                       if (state.trackingType == TrackingMediumType.anime) {
                         context.read<DetailsBloc>().add(
                           DetailsUpdatedEvent(
-                            (state.data as AnimeTrackingData).copyWith(
+                            (state.data! as AnimeTrackingData).copyWith(
                               state: newState,
                             ),
                           ),
@@ -87,7 +129,7 @@ class DetailsPage extends StatelessWidget {
                       } else if (state.trackingType == TrackingMediumType.manga) {
                         context.read<DetailsBloc>().add(
                           DetailsUpdatedEvent(
-                            (state.data as MangaTrackingData).copyWith(
+                            (state.data! as MangaTrackingData).copyWith(
                               state: newState,
                             ),
                           ),
@@ -127,7 +169,7 @@ class DetailsPage extends StatelessWidget {
                     onChanged: (value) {
                       switch (state.trackingType) {
                         case TrackingMediumType.anime:
-                          final data = state.data as AnimeTrackingData;
+                          final data = state.data! as AnimeTrackingData;
                           context.read<DetailsBloc>().add(
                             DetailsUpdatedEvent(
                               data.copyWith(
@@ -137,7 +179,7 @@ class DetailsPage extends StatelessWidget {
                           );
                           break;
                         case TrackingMediumType.manga:
-                          final data = state.data as MangaTrackingData;
+                          final data = state.data! as MangaTrackingData;
                           context.read<DetailsBloc>().add(
                             DetailsUpdatedEvent(
                               data.copyWith(
@@ -149,8 +191,8 @@ class DetailsPage extends StatelessWidget {
                       }
                     },
                     initialValue: state.trackingType == TrackingMediumType.anime ?
-                      (state.data as AnimeTrackingData).episodesWatched :
-                      (state.data as MangaTrackingData).chaptersRead,
+                      (state.data! as AnimeTrackingData).episodesWatched :
+                      (state.data! as MangaTrackingData).chaptersRead,
                   ),
                 ),
                 
@@ -162,7 +204,7 @@ class DetailsPage extends StatelessWidget {
                     child: IntegerInput(
                       labelText: 'Volumes owned',
                       onChanged: (value) {
-                        final data = state.data as MangaTrackingData;
+                        final data = state.data! as MangaTrackingData;
                         context.read<DetailsBloc>().add(
                           DetailsUpdatedEvent(
                             data.copyWith(
@@ -171,7 +213,7 @@ class DetailsPage extends StatelessWidget {
                           ),
                         );
                       },
-                      initialValue: (GetIt.I.get<DetailsBloc>().state.data as MangaTrackingData).volumesOwned,
+                      initialValue: (GetIt.I.get<DetailsBloc>().state.data! as MangaTrackingData).volumesOwned,
                     ),
                   ),
               ],
