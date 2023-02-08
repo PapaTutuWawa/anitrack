@@ -59,17 +59,11 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     // Add it to the cache
     _animes.add(event.data);
 
-    if (event.data.state == state.animeFilterState ||
-        state.animeFilterState == MediumTrackingState.all) {
-      emit(
-        state.copyWith(
-          animes: List.from([
-              ...state.animes,
-              event.data,
-          ]),
-        ),
-      );
-    }
+    emit(
+      state.copyWith(
+        animes: _getFilteredAnime(),
+      ),
+    );
   }
 
   Future<void> _onMangaAdded(MangaAddedEvent event, Emitter<AnimeListState> emit) async {
@@ -79,17 +73,11 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     // Add it to the cache
     _mangas.add(event.data);
 
-    if (event.data.state == state.mangaFilterState ||
-        state.mangaFilterState == MediumTrackingState.all) {
-      emit(
-        state.copyWith(
-          mangas: List.from([
-              ...state.mangas,
-              event.data,
-          ]),
-        ),
-      );
-    }
+    emit(
+      state.copyWith(
+        mangas: _getFilteredManga(),
+      ),
+    );
   }
   
   Future<void> _onAnimeIncremented(AnimeEpisodeIncrementedEvent event, Emitter<AnimeListState> emit) async {
