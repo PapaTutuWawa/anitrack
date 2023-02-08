@@ -3,7 +3,8 @@ import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
 import 'package:anitrack/src/ui/bloc/details_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
-import 'package:anitrack/src/ui/widgets/list_item.dart';
+import 'package:anitrack/src/ui/widgets/grid_item.dart';
+import 'package:anitrack/src/ui/widgets/image.dart';
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -130,79 +131,103 @@ class AnimeListPage extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             controller: _controller,
             children: [
-              ListView.builder(
-                itemCount: state.animes.length,
-                itemBuilder: (context, index) {
-                  final anime = state.animes[index];
-                  if (state.animeFilterState != MediumTrackingState.all) {
-                    if (anime.state != state.animeFilterState) return Container();
-                  }
-
-                  return InkWell(
-                    onTap: () {
-                      context.read<DetailsBloc>().add(
-                        AnimeDetailsRequestedEvent(anime),
-                      );
-                    },
-                    child: ListItem(
-                      title: anime.title,
-                      thumbnailUrl: anime.thumbnailUrl,
-                      extra: [
-                        Text(
-                          '${anime.episodesWatched}/${anime.episodesTotal ?? "???"}',
-                          style: Theme.of(context).textTheme.titleMedium,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                    childAspectRatio: 120 / (100 * (16 / 9)),
+                  ),
+                  itemCount: state.animes.length,
+                  itemBuilder: (context, index) {
+                    final anime = state.animes[index];
+                    return GridItem(
+                      minusCallback: () {
+                        context.read<AnimeListBloc>().add(
+                          AnimeEpisodeDecrementedEvent(
+                            anime.id,
+                          ),
+                        );
+                      },
+                      plusCallback: () {
+                        context.read<AnimeListBloc>().add(
+                          AnimeEpisodeIncrementedEvent(
+                            anime.id,
+                          ),
+                        );
+                      },
+                      child: AnimeCoverImage(
+                        url: anime.thumbnailUrl,
+                        onTap: () {
+                          context.read<DetailsBloc>().add(
+                            AnimeDetailsRequestedEvent(anime),
+                          );
+                        },
+                        extra: Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Text(
+                              '${anime.episodesWatched}/${anime.episodesTotal ?? "???"}',
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                          ),
                         ),
-                      ],
-                      onLeftSwipe: () {
-                        context.read<AnimeListBloc>().add(
-                          AnimeEpisodeDecrementedEvent(state.animes[index].id),
-                        );
-                      },
-                      onRightSwipe: () {
-                        context.read<AnimeListBloc>().add(
-                          AnimeEpisodeIncrementedEvent(state.animes[index].id),
-                        );
-                      },
-                    ),
-                  );
-                },
+                      ),
+                    );
+                  },
+                ),
               ),
-              ListView.builder(
-                itemCount: state.mangas.length,
-                itemBuilder: (context, index) {
-                  final manga = state.mangas[index];
-                  if (state.mangaFilterState != MediumTrackingState.all) {
-                    if (manga.state != state.mangaFilterState) return Container();
-                  }
-
-                  return InkWell(
-                    onTap: () {
-                      context.read<DetailsBloc>().add(
-                        MangaDetailsRequestedEvent(manga),
-                      );
-                    },
-                    child: ListItem(
-                      title: manga.title,
-                      thumbnailUrl: manga.thumbnailUrl,
-                      extra: [
-                        Text(
-                          '${manga.chaptersRead}/${manga.chaptersTotal ?? "???"}',
-                          style: Theme.of(context).textTheme.titleMedium,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                    childAspectRatio: 120 / (100 * (16 / 9)),
+                  ),
+                  itemCount: state.mangas.length,
+                  itemBuilder: (context, index) {
+                    final manga = state.mangas[index];
+                    return GridItem(
+                      minusCallback: () {
+                        context.read<AnimeListBloc>().add(
+                          MangaChapterDecrementedEvent(
+                            manga.id,
+                          ),
+                        );
+                      },
+                      plusCallback: () {
+                        context.read<AnimeListBloc>().add(
+                          MangaChapterIncrementedEvent(
+                            manga.id,
+                          ),
+                        );
+                      },
+                      child: AnimeCoverImage(
+                        url: manga.thumbnailUrl,
+                        onTap: () {
+                          context.read<DetailsBloc>().add(
+                            MangaDetailsRequestedEvent(manga),
+                          );
+                        },
+                        extra: Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Text(
+                              '${manga.chaptersRead}/${manga.chaptersTotal ?? "???"}',
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                          ),
                         ),
-                      ],
-                      onLeftSwipe: () {
-                        context.read<AnimeListBloc>().add(
-                          MangaChapterDecrementedEvent(state.mangas[index].id),
-                        );
-                      },
-                      onRightSwipe: () {
-                        context.read<AnimeListBloc>().add(
-                          MangaChapterIncrementedEvent(state.mangas[index].id),
-                        );
-                      },
-                    ),
-                  );
-                },
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),

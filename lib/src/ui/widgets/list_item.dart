@@ -12,6 +12,7 @@ class ListItem extends StatelessWidget {
     this.onRightSwipe,
     this.cached = true,
     this.extra = const [],
+    this.imageExtra,
     super.key,
   });
   
@@ -23,6 +24,8 @@ class ListItem extends StatelessWidget {
 
   /// Extra widgets.
   final List<Widget> extra;
+
+  final Widget? imageExtra;
   
   /// Callbacks for the swipe functionality.
   final void Function()? onLeftSwipe;
@@ -73,6 +76,7 @@ class ListItem extends StatelessWidget {
           children: [
             AnimeCoverImage(
               cached: cached,
+              extra: imageExtra,
               url: thumbnailUrl,
             ),
 
