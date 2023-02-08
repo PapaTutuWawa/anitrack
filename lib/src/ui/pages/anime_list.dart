@@ -159,23 +159,24 @@ class AnimeListPage extends StatelessWidget {
                         );
                       },
                       child: AnimeCoverImage(
-                        url: anime.thumbnailUrl,
-                        onTap: () {
-                          context.read<DetailsBloc>().add(
-                            AnimeDetailsRequestedEvent(anime),
-                          );
-                        },
-                        extra: Align(
-                          alignment: Alignment.centerRight,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 8),
-                            child: Text(
-                              '${anime.episodesWatched}/${anime.episodesTotal ?? "???"}',
-                              style: Theme.of(context).textTheme.titleMedium,
+                          url: anime.thumbnailUrl,
+                          hero: anime.id,
+                          onTap: () {
+                            context.read<DetailsBloc>().add(
+                              AnimeDetailsRequestedEvent(anime),
+                            );
+                          },
+                          extra: Align(
+                            alignment: Alignment.centerRight,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 8),
+                              child: Text(
+                                '${anime.episodesWatched}/${anime.episodesTotal ?? "???"}',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
                             ),
                           ),
                         ),
-                      ),
                     );
                   },
                 ),
@@ -208,23 +209,24 @@ class AnimeListPage extends StatelessWidget {
                         );
                       },
                       child: AnimeCoverImage(
-                        url: manga.thumbnailUrl,
-                        onTap: () {
-                          context.read<DetailsBloc>().add(
-                            MangaDetailsRequestedEvent(manga),
-                          );
-                        },
-                        extra: Align(
-                          alignment: Alignment.centerRight,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 8),
-                            child: Text(
-                              '${manga.chaptersRead}/${manga.chaptersTotal ?? "???"}',
-                              style: Theme.of(context).textTheme.titleMedium,
+                        hero: manga.id,
+                          url: manga.thumbnailUrl,
+                          onTap: () {
+                            context.read<DetailsBloc>().add(
+                              MangaDetailsRequestedEvent(manga),
+                            );
+                          },
+                          extra: Align(
+                            alignment: Alignment.centerRight,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 8),
+                              child: Text(
+                                '${manga.chaptersRead}/${manga.chaptersTotal ?? "???"}',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
                             ),
                           ),
                         ),
-                      ),
                     );
                   },
                 ),

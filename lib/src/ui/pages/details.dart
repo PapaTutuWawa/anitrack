@@ -38,9 +38,9 @@ class DetailsPage extends StatelessWidget {
               children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AnimeCoverImage(
-                      url: state.data!.thumbnailUrl,
+                  children: [AnimeCoverImage(
+                        url: state.data!.thumbnailUrl,
+                        hero: state.data!.id,
                     ),
 
                     Expanded(

@@ -76,6 +76,8 @@ class ListItem extends StatelessWidget {
           children: [
             AnimeCoverImage(
               cached: cached,
+              // TODO(Unknown): Have the ID here
+              hero: thumbnailUrl,
               extra: imageExtra,
               url: thumbnailUrl,
             ),
