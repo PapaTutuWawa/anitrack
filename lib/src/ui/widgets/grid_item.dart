@@ -20,6 +20,7 @@ class GridItem extends StatefulWidget {
 
 class GridItemState extends State<GridItem> {
   double _offset = 0;
+  double _translationX = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +28,21 @@ class GridItemState extends State<GridItem> {
       onHorizontalDragUpdate: (details) {
         setState(() {
           _offset += details.delta.dx;
+          _translationX = 160 / (1 + exp(-1 * (1/30) * _offset)) - 80;
         });
       },
       onHorizontalDragEnd: (_) {
-        if (_offset <= 50) {
+        if (_translationX <= -60) {
           widget.plusCallback();
-        } else if (_offset >= -50) {
+        } else if (_translationX >= 60) {
           widget.minusCallback();
         }
 
         // Reset the view
-        setState(() => _offset = 0);
+        setState(() {
+          _offset = 0;
+          _translationX = 0;
+        });
       },
       child: Stack(
         children: [
@@ -62,7 +67,10 @@ class GridItemState extends State<GridItem> {
             ),
           ),
           Positioned(
-            left: 160 / (1 + exp(-1 * (1/30) * _offset)) - 80,
+            left: _translationX,
+            right: -1 * _translationX,
+            bottom: 0,
+            top: 0,
             child: widget.child,
           ),
         ],
