@@ -68,7 +68,6 @@ class IntegerInputState extends State<IntegerInput> {
             child: Focus(
               onFocusChange: (hasFocus) {
                 if (!hasFocus) {
-                  print('Handle focus loss');
                   _handleSubmit(_controller.text);
                 }
               },
