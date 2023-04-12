@@ -1,5 +1,6 @@
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
+import 'package:anitrack/src/service/migrations/0000_score.dart';
 import 'package:sqflite/sqflite.dart';
 
 const animeTable = 'Anime';
@@ -14,7 +15,8 @@ Future<void> _createDatabase(Database db, int version) async {
       episodesTotal INTEGER,
       episodesWatched INTEGER NOT NULL,
       thumbnailUrl TEXT NOT NULL,
-      title TEXT NOT NULL
+      title TEXT NOT NULL,
+      score INTEGER
     )''',
   );
   await db.execute(
@@ -26,7 +28,8 @@ Future<void> _createDatabase(Database db, int version) async {
       chaptersRead INTEGER NOT NULL,
       volumesOwned INTEGER NOT NULL,
       thumbnailUrl TEXT NOT NULL,
-      title TEXT NOT NULL
+      title TEXT NOT NULL,
+      score INTEGER
     )''',
   );
 }
@@ -37,8 +40,23 @@ class DatabaseService {
   Future<void> initialize() async {
     _db = await openDatabase(
       'anitrack.db',
-      version: 1,
+      version: 2,
+      onConfigure: (db) async {
+        // In order to do schema changes during database upgrades, we disable foreign
+        // keys in the onConfigure phase, but re-enable them here.
+        // See https://github.com/tekartik/sqflite/issues/624#issuecomment-813324273
+        // for the "solution".
+        await db.execute('PRAGMA foreign_keys = OFF');
+      },
+      onOpen: (db) async {
+        await db.execute('PRAGMA foreign_keys = ON');
+      },
       onCreate: _createDatabase,
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await migrateFromV1ToV2(db);
+        }
+      },
     );
   }
 
@@ -64,6 +82,7 @@ class DatabaseService {
     await _db.insert(
       animeTable,
       data.toJson(),
+      conflictAlgorithm: ConflictAlgorithm.ignore,
     );
   }
 
@@ -88,6 +107,7 @@ class DatabaseService {
     await _db.insert(
       mangaTable,
       data.toJson(),
+      conflictAlgorithm: ConflictAlgorithm.ignore,
     );
   }
 

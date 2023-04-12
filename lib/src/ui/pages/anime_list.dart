@@ -84,6 +84,10 @@ class AnimeListPageState extends State<AnimeListPage> {
         value: MediumTrackingState.dropped,
         child: Text(MediumTrackingState.dropped.toNameString(type)),
       ),
+      PopupMenuItem<MediumTrackingState>(
+        value: MediumTrackingState.paused,
+        child: Text(MediumTrackingState.paused.toNameString(type)),
+      ),
       const PopupMenuItem<MediumTrackingState>(
         value: MediumTrackingState.all,
         child: Text('All'),
@@ -149,6 +153,13 @@ class AnimeListPageState extends State<AnimeListPage> {
                       fontSize: 24,
                     ),
                   ),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Settings'),
+                  onTap: () {
+                    Navigator.of(context).pushNamed(settingsRoute);
+                  },
                 ),
                 ListTile(
                   leading: const Icon(Icons.info),

@@ -2,16 +2,19 @@ name: anitrack
 description: An anime and manga tracker
 publish_to: 'none'
 
-version: 0.1.1+6
+version: 0.1.2+8
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
 
 dependencies:
+  archive: ^3.3.7
   bloc: ^8.1.0
   bottom_bar: ^2.0.3
   cached_network_image: ^3.2.3
+  collection: ^1.17.0
   cupertino_icons: ^1.0.2
+  file_picker: ^5.2.8
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
@@ -22,6 +25,7 @@ dependencies:
   sqflite: ^2.2.4+1
   swipeable_tile: ^2.0.0+3
   url_launcher: ^6.1.8
+  xml: ^6.2.2
 
 dev_dependencies:
   build_runner: ^2.1.11

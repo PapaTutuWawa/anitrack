@@ -8,10 +8,22 @@ enum TrackingMediumType {
 
 /// The state of the medium we're tracking, i.e. reading/watching, dropped, ...
 enum MediumTrackingState {
+  /// Currently watching or reading
   ongoing,
+
+  /// Done
   completed,
+
+  /// Plan to watch or read
   planned,
+
+  /// Dropped
   dropped,
+
+  /// Paused
+  paused,
+
+  /// Meta state
   all,
 }
 
@@ -45,6 +57,8 @@ extension MediumStateExtension on MediumTrackingState {
         return 2;
       case MediumTrackingState.dropped:
         return 3;
+      case MediumTrackingState.paused:
+        return 4;
       case MediumTrackingState.all:
         return -1;
     }
@@ -75,6 +89,8 @@ extension MediumStateExtension on MediumTrackingState {
         }
       case MediumTrackingState.dropped:
         return 'Dropped';
+      case MediumTrackingState.paused:
+        return 'Paused';
       case MediumTrackingState.all:
         return 'All';
     }
@@ -96,6 +112,8 @@ class MediumTrackingStateConverter
         return MediumTrackingState.planned;
       case 3:
         return MediumTrackingState.dropped;
+      case 4:
+        return MediumTrackingState.paused;
     }
 
     return MediumTrackingState.planned;

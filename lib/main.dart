@@ -3,11 +3,13 @@ import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
 import 'package:anitrack/src/ui/bloc/details_bloc.dart';
 import 'package:anitrack/src/ui/bloc/navigation_bloc.dart';
+import 'package:anitrack/src/ui/bloc/settings_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:anitrack/src/ui/pages/about.dart';
 import 'package:anitrack/src/ui/pages/anime_list.dart';
 import 'package:anitrack/src/ui/pages/anime_search.dart';
 import 'package:anitrack/src/ui/pages/details.dart';
+import 'package:anitrack/src/ui/pages/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -28,6 +30,7 @@ void main() async {
   GetIt.I.registerSingleton<AnimeSearchBloc>(AnimeSearchBloc());
   GetIt.I.registerSingleton<DetailsBloc>(DetailsBloc());
   GetIt.I.registerSingleton<NavigationBloc>(NavigationBloc(navKey));
+  GetIt.I.registerSingleton<SettingsBloc>(SettingsBloc());
 
   // Load animes
   GetIt.I.get<AnimeListBloc>().add(
@@ -48,6 +51,9 @@ void main() async {
         ),
         BlocProvider<NavigationBloc>(
           create: (_) => GetIt.I.get<NavigationBloc>(),
+        ),
+        BlocProvider<SettingsBloc>(
+          create: (_) => GetIt.I.get<SettingsBloc>(),
         ),
       ],
       child: MyApp(navKey),
@@ -89,6 +95,8 @@ class MyApp extends StatelessWidget {
             return DetailsPage.route;
           case aboutRoute:
             return AboutPage.route;
+          case settingsRoute:
+            return SettingsPage.route;
         }
 
         return null;

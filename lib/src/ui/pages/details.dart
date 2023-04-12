@@ -166,6 +166,11 @@ class DetailsPage extends StatelessWidget {
                               MediumTrackingState.dropped
                                   .toNameString(state.trackingType),
                             ),
+                            SelectorItem(
+                              MediumTrackingState.paused,
+                              MediumTrackingState.paused
+                                  .toNameString(state.trackingType),
+                            ),
                           ],
                           initialValue: state.data!.state,
                         ),
