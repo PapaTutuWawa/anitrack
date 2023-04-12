@@ -8,9 +8,10 @@ import 'package:anitrack/src/ui/widgets/image.dart';
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
-class AnimeListPage extends StatelessWidget {
-  AnimeListPage({
+class AnimeListPage extends StatefulWidget {
+  const AnimeListPage({
     super.key,
   });
 
@@ -21,8 +22,38 @@ class AnimeListPage extends StatelessWidget {
     ),
   );
 
-  final PageController _controller = PageController();
+  @override
+  AnimeListPageState createState() => AnimeListPageState();
+}
 
+class AnimeListPageState extends State<AnimeListPage> {
+  final PageController _controller = PageController();
+  final ScrollController _animeScrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _animeScrollController.addListener(_onAnimeListScrolled);
+  }
+  
+  void _onAnimeListScrolled() {
+    //print(_animeScrollController.position.maxScrollExtent);
+    final bloc = GetIt.I.get<AnimeListBloc>();
+    if (_animeScrollController.offset + 20 >= _animeScrollController.position.maxScrollExtent) {
+      if (bloc.state.buttonVisibility) {
+        bloc.add(
+          AddButtonVisibilitySetEvent(false),
+        );
+      }
+    } else {
+      if (!bloc.state.buttonVisibility) {
+        bloc.add(
+          AddButtonVisibilitySetEvent(true),
+        );
+      }
+    }
+  }
+  
   String _getPageTitle(TrackingMediumType type) {
     switch (type) {
       case TrackingMediumType.anime: return 'Anime';
@@ -141,6 +172,7 @@ class AnimeListPage extends StatelessWidget {
                     childAspectRatio: 120 / (100 * (16 / 9)),
                   ),
                   itemCount: state.animes.length,
+                  controller: _animeScrollController,
                   itemBuilder: (context, index) {
                     final anime = state.animes[index];
                     return GridItem(
@@ -233,14 +265,26 @@ class AnimeListPage extends StatelessWidget {
               ),
             ],
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              context.read<AnimeSearchBloc>().add(
-                AnimeSearchRequestedEvent(state.trackingType),
+          floatingActionButton: BlocBuilder<AnimeListBloc, AnimeListState>(
+            buildWhen: (prev, next) => prev.buttonVisibility != next.buttonVisibility,
+            builder: (context, state) {
+              return AnimatedScale(
+                duration: const Duration(milliseconds: 250),
+                scale: state.buttonVisibility ?
+                  1 :
+                  0,
+                curve: Curves.easeInOutQuint,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    context.read<AnimeSearchBloc>().add(
+                      AnimeSearchRequestedEvent(state.trackingType),
+                    );
+                  },
+                  tooltip: 'Add new item',
+                  child: const Icon(Icons.add),
+                ),
               );
             },
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
           ),
           bottomNavigationBar: BottomBar(
             selectedIndex: state.trackingType == TrackingMediumType.anime ?

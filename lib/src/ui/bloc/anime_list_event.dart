@@ -96,3 +96,10 @@ class MangaRemovedEvent extends AnimeListEvent {
   /// The ID of the manga to be removed from the list.
   final String id;
 }
+
+class AddButtonVisibilitySetEvent extends AnimeListEvent {
+  AddButtonVisibilitySetEvent(this.state);
+
+  /// The visibility of the button
+  final bool state;
+}

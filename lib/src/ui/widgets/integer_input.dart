@@ -35,6 +35,15 @@ class IntegerInputState extends State<IntegerInput> {
     _value = widget.initialValue;
     _controller.text = _value.toString();
   }
+
+  void _handleSubmit(String text) {
+    final value = int.parse(text);
+    if (value < 0) return;
+
+    _value = value;
+    _controller.text = '$_value';
+    widget.onChanged(_value);
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -56,22 +65,23 @@ class IntegerInputState extends State<IntegerInput> {
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
             ),
-            child: TextField(
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
-                labelText: widget.labelText,
-              ),
-              keyboardType: TextInputType.number,
-              textInputAction: TextInputAction.done,
-              controller: _controller,
-              onSubmitted: (text) {
-                final value = int.parse(text);
-                if (value < 0) return;
-
-                _value = value;
-                _controller.text = '$_value';
-                widget.onChanged(_value);
+            child: Focus(
+              onFocusChange: (hasFocus) {
+                if (!hasFocus) {
+                  print('Handle focus loss');
+                  _handleSubmit(_controller.text);
+                }
               },
+              child: TextField(
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: widget.labelText,
+                ),
+                keyboardType: TextInputType.number,
+                textInputAction: TextInputAction.done,
+                controller: _controller,
+                onSubmitted: _handleSubmit,
+              ),
             ),
           ),
         ),

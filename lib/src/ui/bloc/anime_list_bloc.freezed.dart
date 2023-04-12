@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AnimeListState {
+  bool get buttonVisibility => throw _privateConstructorUsedError;
   List<AnimeTrackingData> get animes => throw _privateConstructorUsedError;
   List<MangaTrackingData> get mangas => throw _privateConstructorUsedError;
   MediumTrackingState get animeFilterState =>
@@ -35,7 +36,8 @@ abstract class $AnimeListStateCopyWith<$Res> {
           AnimeListState value, $Res Function(AnimeListState) then) =
       _$AnimeListStateCopyWithImpl<$Res>;
   $Res call(
-      {List<AnimeTrackingData> animes,
+      {bool buttonVisibility,
+      List<AnimeTrackingData> animes,
       List<MangaTrackingData> mangas,
       MediumTrackingState animeFilterState,
       MediumTrackingState mangaFilterState,
@@ -53,6 +55,7 @@ class _$AnimeListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? buttonVisibility = freezed,
     Object? animes = freezed,
     Object? mangas = freezed,
     Object? animeFilterState = freezed,
@@ -60,6 +63,10 @@ class _$AnimeListStateCopyWithImpl<$Res>
     Object? trackingType = freezed,
   }) {
     return _then(_value.copyWith(
+      buttonVisibility: buttonVisibility == freezed
+          ? _value.buttonVisibility
+          : buttonVisibility // ignore: cast_nullable_to_non_nullable
+              as bool,
       animes: animes == freezed
           ? _value.animes
           : animes // ignore: cast_nullable_to_non_nullable
@@ -92,7 +99,8 @@ abstract class _$$_AnimeListStateCopyWith<$Res>
       __$$_AnimeListStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<AnimeTrackingData> animes,
+      {bool buttonVisibility,
+      List<AnimeTrackingData> animes,
       List<MangaTrackingData> mangas,
       MediumTrackingState animeFilterState,
       MediumTrackingState mangaFilterState,
@@ -112,6 +120,7 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? buttonVisibility = freezed,
     Object? animes = freezed,
     Object? mangas = freezed,
     Object? animeFilterState = freezed,
@@ -119,6 +128,10 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
     Object? trackingType = freezed,
   }) {
     return _then(_$_AnimeListState(
+      buttonVisibility: buttonVisibility == freezed
+          ? _value.buttonVisibility
+          : buttonVisibility // ignore: cast_nullable_to_non_nullable
+              as bool,
       animes: animes == freezed
           ? _value._animes
           : animes // ignore: cast_nullable_to_non_nullable
@@ -147,7 +160,8 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
 
 class _$_AnimeListState implements _AnimeListState {
   _$_AnimeListState(
-      {final List<AnimeTrackingData> animes = const [],
+      {this.buttonVisibility = true,
+      final List<AnimeTrackingData> animes = const [],
       final List<MangaTrackingData> mangas = const [],
       this.animeFilterState = MediumTrackingState.ongoing,
       this.mangaFilterState = MediumTrackingState.ongoing,
@@ -155,6 +169,9 @@ class _$_AnimeListState implements _AnimeListState {
       : _animes = animes,
         _mangas = mangas;
 
+  @override
+  @JsonKey()
+  final bool buttonVisibility;
   final List<AnimeTrackingData> _animes;
   @override
   @JsonKey()
@@ -183,7 +200,7 @@ class _$_AnimeListState implements _AnimeListState {
 
   @override
   String toString() {
-    return 'AnimeListState(animes: $animes, mangas: $mangas, animeFilterState: $animeFilterState, mangaFilterState: $mangaFilterState, trackingType: $trackingType)';
+    return 'AnimeListState(buttonVisibility: $buttonVisibility, animes: $animes, mangas: $mangas, animeFilterState: $animeFilterState, mangaFilterState: $mangaFilterState, trackingType: $trackingType)';
   }
 
   @override
@@ -191,6 +208,8 @@ class _$_AnimeListState implements _AnimeListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AnimeListState &&
+            const DeepCollectionEquality()
+                .equals(other.buttonVisibility, buttonVisibility) &&
             const DeepCollectionEquality().equals(other._animes, _animes) &&
             const DeepCollectionEquality().equals(other._mangas, _mangas) &&
             const DeepCollectionEquality()
@@ -204,6 +223,7 @@ class _$_AnimeListState implements _AnimeListState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(buttonVisibility),
       const DeepCollectionEquality().hash(_animes),
       const DeepCollectionEquality().hash(_mangas),
       const DeepCollectionEquality().hash(animeFilterState),
@@ -218,12 +238,15 @@ class _$_AnimeListState implements _AnimeListState {
 
 abstract class _AnimeListState implements AnimeListState {
   factory _AnimeListState(
-      {final List<AnimeTrackingData> animes,
+      {final bool buttonVisibility,
+      final List<AnimeTrackingData> animes,
       final List<MangaTrackingData> mangas,
       final MediumTrackingState animeFilterState,
       final MediumTrackingState mangaFilterState,
       final TrackingMediumType trackingType}) = _$_AnimeListState;
 
+  @override
+  bool get buttonVisibility;
   @override
   List<AnimeTrackingData> get animes;
   @override

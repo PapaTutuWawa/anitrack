@@ -26,6 +26,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     on<MangaUpdatedEvent>(_onMangaUpdated);
     on<AnimeRemovedEvent>(_onAnimeRemoved);
     on<MangaRemovedEvent>(_onMangaRemoved);
+    on<AddButtonVisibilitySetEvent>(_onButtonVisibilityToggled);
   }
 
   /// Internal anime state
@@ -162,6 +163,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     emit(
       state.copyWith(
         trackingType: event.type,
+        buttonVisibility: true,
       ),
     );
   }
@@ -280,5 +282,13 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     
     // Update the database
     await GetIt.I.get<DatabaseService>().deleteManga(event.id);
+  }
+
+  Future<void> _onButtonVisibilityToggled(AddButtonVisibilitySetEvent event, Emitter<AnimeListState> emit) async {
+    emit(
+      state.copyWith(
+        buttonVisibility: event.state,
+      ),
+    );
   }
 }
