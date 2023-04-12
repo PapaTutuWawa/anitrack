@@ -31,9 +31,9 @@ void main() async {
 
   // Load animes
   GetIt.I.get<AnimeListBloc>().add(
-    AnimesLoadedEvent(),
-  );
-  
+        AnimesLoadedEvent(),
+      );
+
   runApp(
     MultiBlocProvider(
       providers: [
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
   });
 
   final GlobalKey<NavigatorState> navKey;
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -81,10 +81,14 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case '/':
-          case animeListRoute: return AnimeListPage.route;
-          case animeSearchRoute: return AnimeSearchPage.route;
-          case detailsRoute: return DetailsPage.route;
-          case aboutRoute: return AboutPage.route;
+          case animeListRoute:
+            return AnimeListPage.route;
+          case animeSearchRoute:
+            return AnimeSearchPage.route;
+          case detailsRoute:
+            return DetailsPage.route;
+          case aboutRoute:
+            return AboutPage.route;
         }
 
         return null;

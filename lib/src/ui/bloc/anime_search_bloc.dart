@@ -22,7 +22,10 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
     on<ResultTappedEvent>(_onResultTapped);
   }
 
-  Future<void> _onRequested(AnimeSearchRequestedEvent event, Emitter<AnimeSearchState> emit) async {
+  Future<void> _onRequested(
+    AnimeSearchRequestedEvent event,
+    Emitter<AnimeSearchState> emit,
+  ) async {
     emit(
       state.copyWith(
         searchQuery: '',
@@ -33,21 +36,27 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
     );
 
     GetIt.I.get<NavigationBloc>().add(
-      PushedNamedEvent(
-        const NavigationDestination(animeSearchRoute),
-      ),
-    );
+          PushedNamedEvent(
+            const NavigationDestination(animeSearchRoute),
+          ),
+        );
   }
 
-  Future<void> _onQueryChanged(SearchQueryChangedEvent event, Emitter<AnimeSearchState> emit) async {
+  Future<void> _onQueryChanged(
+    SearchQueryChangedEvent event,
+    Emitter<AnimeSearchState> emit,
+  ) async {
     emit(
       state.copyWith(
         searchQuery: event.query,
       ),
     );
   }
-  
-  Future<void> _onQuerySubmitted(SearchQuerySubmittedEvent event, Emitter<AnimeSearchState> emit) async {
+
+  Future<void> _onQuerySubmitted(
+    SearchQuerySubmittedEvent event,
+    Emitter<AnimeSearchState> emit,
+  ) async {
     if (state.searchQuery.isEmpty) return;
 
     emit(
@@ -65,13 +74,17 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
       emit(
         state.copyWith(
           working: false,
-          searchResults: result.map((Anime anime) => SearchResult(
-            anime.title,
-            anime.malId.toString(),
-            anime.episodes,
-            anime.imageUrl,
-            anime.synopsis ?? '',
-          ),).toList(),
+          searchResults: result
+              .map(
+                (Anime anime) => SearchResult(
+                  anime.title,
+                  anime.malId.toString(),
+                  anime.episodes,
+                  anime.imageUrl,
+                  anime.synopsis ?? '',
+                ),
+              )
+              .toList(),
         ),
       );
     } else {
@@ -83,46 +96,53 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
       emit(
         state.copyWith(
           working: false,
-          searchResults: result.map((Manga manga) => SearchResult(
-            manga.title,
-            manga.malId.toString(),
-            manga.chapters,
-            manga.imageUrl,
-            manga.synopsis ?? '',
-          ),).toList(),
+          searchResults: result
+              .map(
+                (Manga manga) => SearchResult(
+                  manga.title,
+                  manga.malId.toString(),
+                  manga.chapters,
+                  manga.imageUrl,
+                  manga.synopsis ?? '',
+                ),
+              )
+              .toList(),
         ),
       );
     }
   }
 
-  Future<void> _onResultTapped(ResultTappedEvent event, Emitter<AnimeSearchState> emit) async {
+  Future<void> _onResultTapped(
+    ResultTappedEvent event,
+    Emitter<AnimeSearchState> emit,
+  ) async {
     GetIt.I.get<list.AnimeListBloc>().add(
-      state.trackingType == TrackingMediumType.anime ?
-        list.AnimeAddedEvent(
-          AnimeTrackingData(
-            event.result.id,
-            MediumTrackingState.ongoing,
-            event.result.title,
-            0,
-            event.result.total,
-            event.result.thumbnailUrl,
-          ),
-        ) :
-        list.MangaAddedEvent(
-          MangaTrackingData(
-            event.result.id,
-            MediumTrackingState.ongoing,
-            event.result.title,
-            0,
-            0,
-            event.result.total,
-            event.result.thumbnailUrl,
-          ),
-        ),
-    );
+          state.trackingType == TrackingMediumType.anime
+              ? list.AnimeAddedEvent(
+                  AnimeTrackingData(
+                    event.result.id,
+                    MediumTrackingState.ongoing,
+                    event.result.title,
+                    0,
+                    event.result.total,
+                    event.result.thumbnailUrl,
+                  ),
+                )
+              : list.MangaAddedEvent(
+                  MangaTrackingData(
+                    event.result.id,
+                    MediumTrackingState.ongoing,
+                    event.result.title,
+                    0,
+                    0,
+                    event.result.total,
+                    event.result.thumbnailUrl,
+                  ),
+                ),
+        );
 
     GetIt.I.get<NavigationBloc>().add(
-      PoppedRouteEvent(),
-    );
+          PoppedRouteEvent(),
+        );
   }
 }

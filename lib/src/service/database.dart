@@ -46,20 +46,20 @@ class DatabaseService {
     final animes = await _db.query(animeTable);
 
     return animes
-      .cast<Map<String, dynamic>>()
-      .map(AnimeTrackingData.fromJson)
-      .toList();
+        .cast<Map<String, dynamic>>()
+        .map(AnimeTrackingData.fromJson)
+        .toList();
   }
 
   Future<List<MangaTrackingData>> loadMangas() async {
     final mangas = await _db.query(mangaTable);
 
     return mangas
-      .cast<Map<String, dynamic>>()
-      .map(MangaTrackingData.fromJson)
-      .toList();
+        .cast<Map<String, dynamic>>()
+        .map(MangaTrackingData.fromJson)
+        .toList();
   }
-  
+
   Future<void> addAnime(AnimeTrackingData data) async {
     await _db.insert(
       animeTable,
@@ -83,7 +83,7 @@ class DatabaseService {
       whereArgs: [id],
     );
   }
-  
+
   Future<void> addManga(MangaTrackingData data) async {
     await _db.insert(
       mangaTable,

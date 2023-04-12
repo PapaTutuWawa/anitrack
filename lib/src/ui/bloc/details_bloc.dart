@@ -21,7 +21,10 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     on<ItemRemovedEvent>(_onItemRemoved);
   }
 
-  Future<void> _onAnimeRequested(AnimeDetailsRequestedEvent event, Emitter<DetailsState> emit) async {
+  Future<void> _onAnimeRequested(
+    AnimeDetailsRequestedEvent event,
+    Emitter<DetailsState> emit,
+  ) async {
     emit(
       state.copyWith(
         trackingType: TrackingMediumType.anime,
@@ -30,13 +33,16 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     );
 
     GetIt.I.get<NavigationBloc>().add(
-      PushedNamedEvent(
-        const NavigationDestination(detailsRoute),
-      ),
-    );
+          PushedNamedEvent(
+            const NavigationDestination(detailsRoute),
+          ),
+        );
   }
 
-  Future<void> _onMangaRequested(MangaDetailsRequestedEvent event, Emitter<DetailsState> emit) async {
+  Future<void> _onMangaRequested(
+    MangaDetailsRequestedEvent event,
+    Emitter<DetailsState> emit,
+  ) async {
     emit(
       state.copyWith(
         trackingType: TrackingMediumType.manga,
@@ -45,13 +51,16 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     );
 
     GetIt.I.get<NavigationBloc>().add(
-      PushedNamedEvent(
-        const NavigationDestination(detailsRoute),
-      ),
-    );
+          PushedNamedEvent(
+            const NavigationDestination(detailsRoute),
+          ),
+        );
   }
 
-  Future<void> _onDetailsUpdated(DetailsUpdatedEvent event, Emitter<DetailsState> emit) async {
+  Future<void> _onDetailsUpdated(
+    DetailsUpdatedEvent event,
+    Emitter<DetailsState> emit,
+  ) async {
     if (state.trackingType == TrackingMediumType.anime) {
       emit(
         state.copyWith(
@@ -59,11 +68,13 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
         ),
       );
 
-      await GetIt.I.get<DatabaseService>().updateAnime(event.data as AnimeTrackingData);
+      await GetIt.I
+          .get<DatabaseService>()
+          .updateAnime(event.data as AnimeTrackingData);
 
       GetIt.I.get<AnimeListBloc>().add(
-        AnimeUpdatedEvent(event.data as AnimeTrackingData),
-      );
+            AnimeUpdatedEvent(event.data as AnimeTrackingData),
+          );
     } else {
       emit(
         state.copyWith(
@@ -71,15 +82,20 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
         ),
       );
 
-      await GetIt.I.get<DatabaseService>().updateManga(event.data as MangaTrackingData);
+      await GetIt.I
+          .get<DatabaseService>()
+          .updateManga(event.data as MangaTrackingData);
 
       GetIt.I.get<AnimeListBloc>().add(
-        MangaUpdatedEvent(event.data as MangaTrackingData),
-      );
+            MangaUpdatedEvent(event.data as MangaTrackingData),
+          );
     }
   }
 
-  Future<void> _onItemRemoved(ItemRemovedEvent event, Emitter<DetailsState> emit) async {
+  Future<void> _onItemRemoved(
+    ItemRemovedEvent event,
+    Emitter<DetailsState> emit,
+  ) async {
     emit(
       state.copyWith(
         data: null,

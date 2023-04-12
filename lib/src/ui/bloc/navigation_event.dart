@@ -2,11 +2,9 @@ part of 'navigation_bloc.dart';
 
 class NavigationDestination {
   const NavigationDestination(
-    this.path,
-    {
-      this.arguments,
-    }
-  );
+    this.path, {
+    this.arguments,
+  });
   final String path;
   final Object? arguments;
 }

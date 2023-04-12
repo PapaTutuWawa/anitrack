@@ -12,7 +12,7 @@ class AnimeSearchRequestedEvent extends AnimeSearchEvent {
 /// Triggered when the search query is changed.
 class SearchQueryChangedEvent extends AnimeSearchEvent {
   SearchQueryChangedEvent(this.query);
-  
+
   /// The current value of the query
   final String query;
 }

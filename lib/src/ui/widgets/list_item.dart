@@ -15,7 +15,7 @@ class ListItem extends StatelessWidget {
     this.imageExtra,
     super.key,
   });
-  
+
   /// URL for the cover image.
   final String thumbnailUrl;
 
@@ -26,14 +26,14 @@ class ListItem extends StatelessWidget {
   final List<Widget> extra;
 
   final Widget? imageExtra;
-  
+
   /// Callbacks for the swipe functionality.
   final void Function()? onLeftSwipe;
   final void Function()? onRightSwipe;
 
   /// Flag indicating whether the thumbnail image should be cached
   final bool cached;
-  
+
   @override
   Widget build(BuildContext context) {
     return SwipeableTile.swipeToTrigger(
@@ -66,9 +66,9 @@ class ListItem extends StatelessWidget {
         return Container();
       },
       color: Theme.of(context).scaffoldBackgroundColor,
-      direction: onRightSwipe != null && onLeftSwipe != null ?
-        SwipeDirection.horizontal :
-        SwipeDirection.none,
+      direction: onRightSwipe != null && onLeftSwipe != null
+          ? SwipeDirection.horizontal
+          : SwipeDirection.none,
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Row(
@@ -81,7 +81,6 @@ class ListItem extends StatelessWidget {
               extra: imageExtra,
               url: thumbnailUrl,
             ),
-
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -97,7 +96,6 @@ class ListItem extends StatelessWidget {
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                     ),
-
                     ...extra,
                   ],
                 ),

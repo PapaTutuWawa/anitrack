@@ -30,30 +30,35 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
   }
 
   /// Internal anime state
-  final List<AnimeTrackingData> _animes = List<AnimeTrackingData>.empty(growable: true);
-  final List<MangaTrackingData> _mangas = List<MangaTrackingData>.empty(growable: true);
+  final List<AnimeTrackingData> _animes =
+      List<AnimeTrackingData>.empty(growable: true);
+  final List<MangaTrackingData> _mangas =
+      List<MangaTrackingData>.empty(growable: true);
 
-  List<AnimeTrackingData> _getFilteredAnime({MediumTrackingState? trackingState}) {
+  List<AnimeTrackingData> _getFilteredAnime({
+    MediumTrackingState? trackingState,
+  }) {
     final filterState = trackingState ?? state.animeFilterState;
 
     if (filterState == MediumTrackingState.all) return _animes;
 
-    return _animes
-      .where((anime) => anime.state == filterState)
-      .toList();
+    return _animes.where((anime) => anime.state == filterState).toList();
   }
 
-  List<MangaTrackingData> _getFilteredManga({MediumTrackingState? trackingState}) {
+  List<MangaTrackingData> _getFilteredManga({
+    MediumTrackingState? trackingState,
+  }) {
     final filterState = trackingState ?? state.mangaFilterState;
 
     if (state.mangaFilterState == MediumTrackingState.all) return _mangas;
 
-    return _mangas
-      .where((manga) => manga.state == filterState)
-      .toList();
+    return _mangas.where((manga) => manga.state == filterState).toList();
   }
-  
-  Future<void> _onAnimeAdded(AnimeAddedEvent event, Emitter<AnimeListState> emit) async {
+
+  Future<void> _onAnimeAdded(
+    AnimeAddedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     // Add the anime to the database
     await GetIt.I.get<DatabaseService>().addAnime(event.data);
 
@@ -67,7 +72,10 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     );
   }
 
-  Future<void> _onMangaAdded(MangaAddedEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onMangaAdded(
+    MangaAddedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     // Add the manga to the database
     await GetIt.I.get<DatabaseService>().addManga(event.data);
 
@@ -80,13 +88,17 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
       ),
     );
   }
-  
-  Future<void> _onAnimeIncremented(AnimeEpisodeIncrementedEvent event, Emitter<AnimeListState> emit) async {
+
+  Future<void> _onAnimeIncremented(
+    AnimeEpisodeIncrementedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     final index = state.animes.indexWhere((item) => item.id == event.id);
     if (index == -1) return;
 
     final anime = state.animes[index];
-    if (anime.episodesTotal != null && anime.episodesWatched + 1 > anime.episodesTotal!) return;
+    if (anime.episodesTotal != null &&
+        anime.episodesWatched + 1 > anime.episodesTotal!) return;
 
     final newList = List<AnimeTrackingData>.from(state.animes);
     final newAnime = anime.copyWith(
@@ -103,7 +115,10 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     await GetIt.I.get<DatabaseService>().updateAnime(newAnime);
   }
 
-  Future<void> _onAnimeDecremented(AnimeEpisodeDecrementedEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onAnimeDecremented(
+    AnimeEpisodeDecrementedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     final index = state.animes.indexWhere((item) => item.id == event.id);
     if (index == -1) return;
 
@@ -125,14 +140,17 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     await GetIt.I.get<DatabaseService>().updateAnime(newAnime);
   }
 
-  Future<void> _onAnimesLoaded(AnimesLoadedEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onAnimesLoaded(
+    AnimesLoadedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     _animes.addAll(
       await GetIt.I.get<DatabaseService>().loadAnimes(),
     );
     _mangas.addAll(
       await GetIt.I.get<DatabaseService>().loadMangas(),
     );
-    
+
     emit(
       state.copyWith(
         animes: _getFilteredAnime(),
@@ -141,7 +159,10 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     );
   }
 
-  Future<void> _onAnimesFiltered(AnimeFilterChangedEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onAnimesFiltered(
+    AnimeFilterChangedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     emit(
       state.copyWith(
         animeFilterState: event.filterState,
@@ -150,7 +171,10 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     );
   }
 
-  Future<void> _onMangasFiltered(MangaFilterChangedEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onMangasFiltered(
+    MangaFilterChangedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     emit(
       state.copyWith(
         mangaFilterState: event.filterState,
@@ -158,8 +182,11 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
       ),
     );
   }
-  
-  Future<void> _onTrackingTypeChanged(AnimeTrackingTypeChanged event, Emitter<AnimeListState> emit) async {
+
+  Future<void> _onTrackingTypeChanged(
+    AnimeTrackingTypeChanged event,
+    Emitter<AnimeListState> emit,
+  ) async {
     emit(
       state.copyWith(
         trackingType: event.type,
@@ -168,12 +195,16 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     );
   }
 
-  Future<void> _onMangaIncremented(MangaChapterIncrementedEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onMangaIncremented(
+    MangaChapterIncrementedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     final index = state.mangas.indexWhere((item) => item.id == event.id);
     assert(index != -1, 'The manga must exist');
 
     final manga = state.mangas[index];
-    if (manga.chaptersTotal != null && manga.chaptersRead + 1 > manga.chaptersTotal!) return;
+    if (manga.chaptersTotal != null &&
+        manga.chaptersRead + 1 > manga.chaptersTotal!) return;
 
     final newList = List<MangaTrackingData>.from(state.mangas);
     final newManga = manga.copyWith(
@@ -185,7 +216,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     final cacheIndex = _mangas.indexWhere((m) => m.id == event.id);
     assert(cacheIndex != -1, 'The manga must exist');
     _mangas[cacheIndex] = newManga;
-    
+
     emit(
       state.copyWith(
         mangas: newList,
@@ -195,7 +226,10 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     await GetIt.I.get<DatabaseService>().updateManga(newManga);
   }
 
-  Future<void> _onMangaDecremented(MangaChapterDecrementedEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onMangaDecremented(
+    MangaChapterDecrementedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     final index = state.mangas.indexWhere((item) => item.id == event.id);
     if (index == -1) return;
 
@@ -212,7 +246,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     final cacheIndex = _mangas.indexWhere((m) => m.id == event.id);
     assert(cacheIndex != -1, 'The manga must exist');
     _mangas[cacheIndex] = newManga;
-    
+
     emit(
       state.copyWith(
         mangas: newList,
@@ -222,7 +256,10 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     await GetIt.I.get<DatabaseService>().updateManga(newManga);
   }
 
-  Future<void> _onAnimeUpdated(AnimeUpdatedEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onAnimeUpdated(
+    AnimeUpdatedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     final index = _animes.indexWhere((anime) => anime.id == event.anime.id);
     assert(index != -1, 'The anime must exist');
 
@@ -235,7 +272,10 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     );
   }
 
-  Future<void> _onMangaUpdated(MangaUpdatedEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onMangaUpdated(
+    MangaUpdatedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     final index = _mangas.indexWhere((manga) => manga.id == event.manga.id);
     assert(index != -1, 'The manga must exist');
 
@@ -248,7 +288,10 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     );
   }
 
-  Future<void> _onAnimeRemoved(AnimeRemovedEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onAnimeRemoved(
+    AnimeRemovedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     emit(
       state.copyWith(
         animes: List.from(
@@ -265,8 +308,11 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     // Update the database
     await GetIt.I.get<DatabaseService>().deleteAnime(event.id);
   }
-  
-  Future<void> _onMangaRemoved(MangaRemovedEvent event, Emitter<AnimeListState> emit) async {
+
+  Future<void> _onMangaRemoved(
+    MangaRemovedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     emit(
       state.copyWith(
         mangas: List.from(
@@ -279,12 +325,15 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     final cacheIndex = _animes.indexWhere((a) => a.id == event.id);
     assert(cacheIndex != -1, 'The manga must exist');
     _animes.removeAt(cacheIndex);
-    
+
     // Update the database
     await GetIt.I.get<DatabaseService>().deleteManga(event.id);
   }
 
-  Future<void> _onButtonVisibilityToggled(AddButtonVisibilitySetEvent event, Emitter<AnimeListState> emit) async {
+  Future<void> _onButtonVisibilityToggled(
+    AddButtonVisibilitySetEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
     emit(
       state.copyWith(
         buttonVisibility: event.state,

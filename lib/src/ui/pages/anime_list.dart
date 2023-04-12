@@ -16,11 +16,11 @@ class AnimeListPage extends StatefulWidget {
   });
 
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
-    builder: (_) => AnimeListPage(),
-    settings: const RouteSettings(
-      name: animeListRoute,
-    ),
-  );
+        builder: (_) => const AnimeListPage(),
+        settings: const RouteSettings(
+          name: animeListRoute,
+        ),
+      );
 
   @override
   AnimeListPageState createState() => AnimeListPageState();
@@ -35,11 +35,12 @@ class AnimeListPageState extends State<AnimeListPage> {
     super.initState();
     _animeScrollController.addListener(_onAnimeListScrolled);
   }
-  
+
   void _onAnimeListScrolled() {
     //print(_animeScrollController.position.maxScrollExtent);
     final bloc = GetIt.I.get<AnimeListBloc>();
-    if (_animeScrollController.offset + 20 >= _animeScrollController.position.maxScrollExtent) {
+    if (_animeScrollController.offset + 20 >=
+        _animeScrollController.position.maxScrollExtent) {
       if (bloc.state.buttonVisibility) {
         bloc.add(
           AddButtonVisibilitySetEvent(false),
@@ -53,15 +54,19 @@ class AnimeListPageState extends State<AnimeListPage> {
       }
     }
   }
-  
+
   String _getPageTitle(TrackingMediumType type) {
     switch (type) {
-      case TrackingMediumType.anime: return 'Anime';
-      case TrackingMediumType.manga: return 'Manga';
+      case TrackingMediumType.anime:
+        return 'Anime';
+      case TrackingMediumType.manga:
+        return 'Manga';
     }
   }
 
-  List<PopupMenuItem<MediumTrackingState>> _getPopupButtonItems(TrackingMediumType type) {
+  List<PopupMenuItem<MediumTrackingState>> _getPopupButtonItems(
+    TrackingMediumType type,
+  ) {
     return [
       PopupMenuItem<MediumTrackingState>(
         value: MediumTrackingState.ongoing,
@@ -85,7 +90,7 @@ class AnimeListPageState extends State<AnimeListPage> {
       ),
     ];
   }
-  
+
   Widget _getPopupButton(BuildContext context, AnimeListState state) {
     switch (state.trackingType) {
       case TrackingMediumType.anime:
@@ -96,8 +101,8 @@ class AnimeListPageState extends State<AnimeListPage> {
           initialValue: state.animeFilterState,
           onSelected: (filterState) {
             context.read<AnimeListBloc>().add(
-              AnimeFilterChangedEvent(filterState),
-            );
+                  AnimeFilterChangedEvent(filterState),
+                );
           },
           itemBuilder: (_) => _getPopupButtonItems(TrackingMediumType.anime),
         );
@@ -109,14 +114,14 @@ class AnimeListPageState extends State<AnimeListPage> {
           initialValue: state.mangaFilterState,
           onSelected: (filterState) {
             context.read<AnimeListBloc>().add(
-              MangaFilterChangedEvent(filterState),
-            );
+                  MangaFilterChangedEvent(filterState),
+                );
           },
           itemBuilder: (_) => _getPopupButtonItems(TrackingMediumType.manga),
         );
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AnimeListBloc, AnimeListState>(
@@ -145,7 +150,6 @@ class AnimeListPageState extends State<AnimeListPage> {
                     ),
                   ),
                 ),
-
                 ListTile(
                   leading: const Icon(Icons.info),
                   title: const Text('About'),
@@ -178,37 +182,37 @@ class AnimeListPageState extends State<AnimeListPage> {
                     return GridItem(
                       minusCallback: () {
                         context.read<AnimeListBloc>().add(
-                          AnimeEpisodeDecrementedEvent(
-                            anime.id,
-                          ),
-                        );
+                              AnimeEpisodeDecrementedEvent(
+                                anime.id,
+                              ),
+                            );
                       },
                       plusCallback: () {
                         context.read<AnimeListBloc>().add(
-                          AnimeEpisodeIncrementedEvent(
-                            anime.id,
-                          ),
-                        );
+                              AnimeEpisodeIncrementedEvent(
+                                anime.id,
+                              ),
+                            );
                       },
                       child: AnimeCoverImage(
-                          url: anime.thumbnailUrl,
-                          hero: anime.id,
-                          onTap: () {
-                            context.read<DetailsBloc>().add(
-                              AnimeDetailsRequestedEvent(anime),
-                            );
-                          },
-                          extra: Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 8),
-                              child: Text(
-                                '${anime.episodesWatched}/${anime.episodesTotal ?? "???"}',
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
+                        url: anime.thumbnailUrl,
+                        hero: anime.id,
+                        onTap: () {
+                          context.read<DetailsBloc>().add(
+                                AnimeDetailsRequestedEvent(anime),
+                              );
+                        },
+                        extra: Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Text(
+                              '${anime.episodesWatched}/${anime.episodesTotal ?? "???"}',
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ),
                         ),
+                      ),
                     );
                   },
                 ),
@@ -228,37 +232,37 @@ class AnimeListPageState extends State<AnimeListPage> {
                     return GridItem(
                       minusCallback: () {
                         context.read<AnimeListBloc>().add(
-                          MangaChapterDecrementedEvent(
-                            manga.id,
-                          ),
-                        );
+                              MangaChapterDecrementedEvent(
+                                manga.id,
+                              ),
+                            );
                       },
                       plusCallback: () {
                         context.read<AnimeListBloc>().add(
-                          MangaChapterIncrementedEvent(
-                            manga.id,
-                          ),
-                        );
+                              MangaChapterIncrementedEvent(
+                                manga.id,
+                              ),
+                            );
                       },
                       child: AnimeCoverImage(
                         hero: manga.id,
-                          url: manga.thumbnailUrl,
-                          onTap: () {
-                            context.read<DetailsBloc>().add(
-                              MangaDetailsRequestedEvent(manga),
-                            );
-                          },
-                          extra: Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 8),
-                              child: Text(
-                                '${manga.chaptersRead}/${manga.chaptersTotal ?? "???"}',
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
+                        url: manga.thumbnailUrl,
+                        onTap: () {
+                          context.read<DetailsBloc>().add(
+                                MangaDetailsRequestedEvent(manga),
+                              );
+                        },
+                        extra: Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Text(
+                              '${manga.chaptersRead}/${manga.chaptersTotal ?? "???"}',
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ),
                         ),
+                      ),
                     );
                   },
                 ),
@@ -266,19 +270,18 @@ class AnimeListPageState extends State<AnimeListPage> {
             ],
           ),
           floatingActionButton: BlocBuilder<AnimeListBloc, AnimeListState>(
-            buildWhen: (prev, next) => prev.buttonVisibility != next.buttonVisibility,
+            buildWhen: (prev, next) =>
+                prev.buttonVisibility != next.buttonVisibility,
             builder: (context, state) {
               return AnimatedScale(
                 duration: const Duration(milliseconds: 250),
-                scale: state.buttonVisibility ?
-                  1 :
-                  0,
+                scale: state.buttonVisibility ? 1 : 0,
                 curve: Curves.easeInOutQuint,
                 child: FloatingActionButton(
                   onPressed: () {
                     context.read<AnimeSearchBloc>().add(
-                      AnimeSearchRequestedEvent(state.trackingType),
-                    );
+                          AnimeSearchRequestedEvent(state.trackingType),
+                        );
                   },
                   tooltip: 'Add new item',
                   child: const Icon(Icons.add),
@@ -287,17 +290,16 @@ class AnimeListPageState extends State<AnimeListPage> {
             },
           ),
           bottomNavigationBar: BottomBar(
-            selectedIndex: state.trackingType == TrackingMediumType.anime ?
-              0 :
-              1,
+            selectedIndex:
+                state.trackingType == TrackingMediumType.anime ? 0 : 1,
             onTap: (int index) {
               context.read<AnimeListBloc>().add(
-                AnimeTrackingTypeChanged(
-                  index == 0 ?
-                    TrackingMediumType.anime :
-                    TrackingMediumType.manga,
-                ),
-              );
+                    AnimeTrackingTypeChanged(
+                      index == 0
+                          ? TrackingMediumType.anime
+                          : TrackingMediumType.manga,
+                    ),
+                  );
 
               _controller.jumpToPage(index);
             },

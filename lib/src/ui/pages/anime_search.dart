@@ -11,12 +11,12 @@ class AnimeSearchPage extends StatelessWidget {
   });
 
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
-    builder: (_) => const AnimeSearchPage(),
-    settings: const RouteSettings(
-      name: animeSearchRoute,
-    ),
-  );
-  
+        builder: (_) => const AnimeSearchPage(),
+        settings: const RouteSettings(
+          name: animeSearchRoute,
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AnimeSearchBloc, AnimeSearchState>(
@@ -24,9 +24,9 @@ class AnimeSearchPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              state.trackingType == TrackingMediumType.anime ?
-                'Anime Search' :
-                'Manga Search',
+              state.trackingType == TrackingMediumType.anime
+                  ? 'Anime Search'
+                  : 'Manga Search',
             ),
           ),
           body: Column(
@@ -40,17 +40,16 @@ class AnimeSearchPage extends StatelessWidget {
                   ),
                   onSubmitted: (_) {
                     context.read<AnimeSearchBloc>().add(
-                      SearchQuerySubmittedEvent(),
-                    );
+                          SearchQuerySubmittedEvent(),
+                        );
                   },
                   onChanged: (value) {
                     context.read<AnimeSearchBloc>().add(
-                      SearchQueryChangedEvent(value),
-                    );
+                          SearchQueryChangedEvent(value),
+                        );
                   },
                 ),
               ),
-
               if (state.working)
                 const Expanded(
                   child: Align(
@@ -66,8 +65,8 @@ class AnimeSearchPage extends StatelessWidget {
                       return InkWell(
                         onTap: () {
                           context.read<AnimeSearchBloc>().add(
-                            ResultTappedEvent(item),
-                          );
+                                ResultTappedEvent(item),
+                              );
                         },
                         child: ListItem(
                           title: item.title,

@@ -18,7 +18,7 @@ class AnimeEpisodeDecrementedEvent extends AnimeListEvent {
 
 class AnimeAddedEvent extends AnimeListEvent {
   AnimeAddedEvent(this.data);
-  
+
   /// The anime to add.
   final AnimeTrackingData data;
 }
@@ -57,7 +57,7 @@ class AnimeRemovedEvent extends AnimeListEvent {
 
 class MangaAddedEvent extends AnimeListEvent {
   MangaAddedEvent(this.data);
-  
+
   /// The manga to add.
   final MangaTrackingData data;
 }

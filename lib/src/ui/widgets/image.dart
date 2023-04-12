@@ -19,13 +19,13 @@ class AnimeCoverImage extends StatelessWidget {
 
   /// The hero tag of the image.
   final String hero;
-  
+
   /// An extra widget with a translucent backdrop.
   final Widget? extra;
 
   /// Callback for when the image is tapped.
   final void Function()? onTap;
-  
+
   @override
   Widget build(BuildContext context) {
     return Hero(
@@ -48,15 +48,14 @@ class AnimeCoverImage extends StatelessWidget {
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: cached ?
-                            CachedNetworkImageProvider(url) as ImageProvider :
-                            NetworkImage(url),
+                          image: cached
+                              ? CachedNetworkImageProvider(url) as ImageProvider
+                              : NetworkImage(url),
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
                   ),
-
                   if (extra != null)
                     Positioned(
                       left: 0,

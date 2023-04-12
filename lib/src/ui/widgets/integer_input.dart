@@ -27,7 +27,7 @@ class IntegerInputState extends State<IntegerInput> {
 
   /// The controller for the TextField.
   final TextEditingController _controller = TextEditingController();
-  
+
   @override
   void initState() {
     super.initState();
@@ -44,7 +44,7 @@ class IntegerInputState extends State<IntegerInput> {
     _controller.text = '$_value';
     widget.onChanged(_value);
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -59,7 +59,6 @@ class IntegerInputState extends State<IntegerInput> {
           },
           child: const Icon(Icons.remove),
         ),
-
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -84,7 +83,6 @@ class IntegerInputState extends State<IntegerInput> {
             ),
           ),
         ),
-
         ElevatedButton(
           onPressed: () {
             _value++;

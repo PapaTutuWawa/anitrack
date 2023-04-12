@@ -13,7 +13,7 @@ class GridItem extends StatefulWidget {
 
   final void Function() plusCallback;
   final void Function() minusCallback;
-  
+
   @override
   GridItemState createState() => GridItemState();
 }
@@ -28,7 +28,7 @@ class GridItemState extends State<GridItem> {
       onHorizontalDragUpdate: (details) {
         setState(() {
           _offset += details.delta.dx;
-          _translationX = 160 / (1 + exp(-1 * (1/30) * _offset)) - 80;
+          _translationX = 160 / (1 + exp(-1 * (1 / 30) * _offset)) - 80;
         });
       },
       onHorizontalDragEnd: (_) {
