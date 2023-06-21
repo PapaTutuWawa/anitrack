@@ -1,3 +1,4 @@
+import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/type.dart';
@@ -26,7 +27,7 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Details'),
+        title: Text(t.details.title),
       ),
       body: BlocBuilder<DetailsBloc, DetailsState>(
         builder: (context, state) {
@@ -68,10 +69,10 @@ class DetailsPage extends StatelessWidget {
                                         builder: (context) {
                                           return AlertDialog(
                                             title: Text(
-                                              'Remove "${state.data!.title}"?',
+                                              t.details.removeTitle(title: state.data!.title),
                                             ),
                                             content: Text(
-                                              'Are you sure you want to remove "${state.data!.title}" from the list?',
+                                              t.details.removeBody(title: state.data!.title),
                                             ),
                                             actions: [
                                               TextButton(
@@ -82,14 +83,14 @@ class DetailsPage extends StatelessWidget {
                                                 style: TextButton.styleFrom(
                                                   foregroundColor: Colors.red,
                                                 ),
-                                                child: const Text('Remove'),
+                                                child: Text(t.details.removeButton),
                                               ),
                                               TextButton(
                                                 onPressed: () {
                                                   Navigator.of(context)
                                                       .pop(false);
                                                 },
-                                                child: const Text('Cancel'),
+                                                child: Text(t.details.cancelButton),
                                               ),
                                             ],
                                           );
@@ -120,8 +121,8 @@ class DetailsPage extends StatelessWidget {
                         ),
                         child: DropdownSelector<MediumTrackingState>(
                           title: state.trackingType == TrackingMediumType.anime
-                              ? 'Watch state'
-                              : 'Read state',
+                              ? t.details.watchState
+                              : t.details.readState,
                           onChanged: (MediumTrackingState newState) {
                             if (state.trackingType ==
                                 TrackingMediumType.anime) {
@@ -182,8 +183,8 @@ class DetailsPage extends StatelessWidget {
                         child: IntegerInput(
                           labelText:
                               state.trackingType == TrackingMediumType.anime
-                                  ? 'Episodes'
-                                  : 'Chapters',
+                                  ? t.details.episodes
+                                  : t.details.chapters,
                           onChanged: (value) {
                             switch (state.trackingType) {
                               case TrackingMediumType.anime:
@@ -221,7 +222,7 @@ class DetailsPage extends StatelessWidget {
                             vertical: 8,
                           ),
                           child: IntegerInput(
-                            labelText: 'Volumes owned',
+                            labelText: t.details.volumesOwned,
                             onChanged: (value) {
                               final data = state.data! as MangaTrackingData;
                               context.read<DetailsBloc>().add(

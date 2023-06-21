@@ -1,3 +1,4 @@
+import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/ui/bloc/settings_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:file_picker/file_picker.dart';
@@ -32,15 +33,13 @@ class SettingsPage extends StatelessWidget {
                 bottom: 0,
                 child: Scaffold(
                   appBar: AppBar(
-                    title: const Text('Settings'),
+                    title: Text(t.settings.title),
                   ),
                   body: ListView(
                     children: [
                       ListTile(
-                        title: const Text('Import anime list'),
-                        subtitle: const Text(
-                          'Import anime list exported from MyAnimeList.',
-                        ),
+                        title: Text(t.settings.importAnime),
+                        subtitle: Text(t.settings.importAnimeDesc),
                         onTap: () async {
                           // Pick the file
                           final result = await FilePicker.platform.pickFiles();
@@ -49,11 +48,9 @@ class SettingsPage extends StatelessWidget {
                           if (!result.files.first.path!.endsWith('.xml.gz')) {
                             await showDialog<void>(
                               context: context,
-                              builder: (_) => const AlertDialog(
-                                title: Text('Invalid anime list'),
-                                content: Text(
-                                  'The selected file is not a MAL anime list. It lacks the ".xml.gz" suffix.',
-                                ),
+                              builder: (_) => AlertDialog(
+                                title: Text(t.settings.invalidAnimeListTitle),
+                                content: Text(t.settings.invalidAnimeListBody),
                               ),
                             );
                             return;
@@ -68,10 +65,8 @@ class SettingsPage extends StatelessWidget {
                         },
                       ),
                       ListTile(
-                        title: const Text('Import manga list'),
-                        subtitle: const Text(
-                          'Import manga list exported from MyAnimeList.',
-                        ),
+                        title: Text(t.settings.importManga),
+                        subtitle: Text(t.settings.importMangaDesc),
                         onTap: () async {
                           // Pick the file
                           final result = await FilePicker.platform.pickFiles();
@@ -80,11 +75,9 @@ class SettingsPage extends StatelessWidget {
                           if (!result.files.first.path!.endsWith('.xml.gz')) {
                             await showDialog<void>(
                               context: context,
-                              builder: (_) => const AlertDialog(
-                                title: Text('Invalid manga list'),
-                                content: Text(
-                                  'The selected file is not a MAL manga list. It lacks the ".xml.gz" suffix.',
-                                ),
+                              builder: (_) => AlertDialog(
+                                title: Text(t.settings.invalidMangaListTitle),
+                                content: Text(t.settings.invalidMangaListBody),
                               ),
                             );
                             return;
@@ -137,7 +130,10 @@ class SettingsPage extends StatelessWidget {
                               child: CircularProgressIndicator(),
                             ),
                             Text(
-                              '${state.importCurrent} of ${state.importTotal}',
+                              t.settings.importIndicator(
+                                current: state.importCurrent,
+                                total: state.importTotal,
+                              ),
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ],

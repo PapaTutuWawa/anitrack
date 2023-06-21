@@ -1,3 +1,4 @@
+import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
@@ -25,8 +26,8 @@ class AnimeSearchPage extends StatelessWidget {
           appBar: AppBar(
             title: Text(
               state.trackingType == TrackingMediumType.anime
-                  ? 'Anime Search'
-                  : 'Manga Search',
+                  ? t.search.anime
+                  : t.search.manga,
             ),
           ),
           body: Column(
@@ -34,9 +35,9 @@ class AnimeSearchPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: TextField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Search query',
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    labelText: t.search.query,
                   ),
                   onSubmitted: (_) {
                     context.read<AnimeSearchBloc>().add(

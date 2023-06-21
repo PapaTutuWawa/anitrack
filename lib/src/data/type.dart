@@ -1,3 +1,4 @@
+import 'package:anitrack/i18n/strings.g.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 /// The type of medium we are tracking. Useful for UI stuff.
@@ -74,25 +75,25 @@ extension MediumStateExtension on MediumTrackingState {
       case MediumTrackingState.ongoing:
         switch (type) {
           case TrackingMediumType.anime:
-            return 'Watching';
+            return t.data.ongoing.anime;
           case TrackingMediumType.manga:
-            return 'Reading';
+            return t.data.ongoing.manga;
         }
       case MediumTrackingState.completed:
-        return 'Completed';
+        return t.data.completed;
       case MediumTrackingState.planned:
         switch (type) {
           case TrackingMediumType.anime:
-            return 'Plan to watch';
+            return t.data.planned.anime;
           case TrackingMediumType.manga:
-            return 'Plan to read';
+            return t.data.planned.manga;
         }
       case MediumTrackingState.dropped:
-        return 'Dropped';
+        return t.data.dropped;
       case MediumTrackingState.paused:
-        return 'Paused';
+        return t.data.paused;
       case MediumTrackingState.all:
-        return 'All';
+        return t.data.all;
     }
   }
 }

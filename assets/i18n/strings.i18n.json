@@ -1,0 +1,56 @@
+{
+    "settings": {
+        "title": "Settings",
+        "importAnime": "Import anime list",
+        "importAnimeDesc": "Import anime list exported from MyAnimeList.",
+        "invalidAnimeListTitle": "Invalid anime list",
+        "invalidAnimeListBody": "The selected file is not a MAL anime list. It lacks the \".xml.gz\" suffix.",
+        "importManga": "Import manga list",
+        "importMangaDesc": "Import manga list exported from MyAnimeList.",
+        "invalidMangaListTitle": "Invalid manga list",
+        "invalidMangaListBody": "The selected file is not a MAL manga list. It lacks the \".xml.gz\" suffix.",
+        "importIndicator": "$current of $total"
+    },
+    "about": {
+        "title": "About",
+        "source": "Source code"
+    },
+    "tooltips": {
+        "addNewItem": "Add new item"
+    },
+    "content": {
+        "anime": "Anime",
+        "manga": "Manga"
+    },
+    "search": {
+        "anime": "Anime search",
+        "manga": "Manga search",
+        "query": "Search query"
+    },
+    "details": {
+        "title": "Details",
+        "removeTitle": "Remove $title?",
+        "removeBody": "Are you sure you want to remove \"$title\" from the list?",
+        "removeButton": "Remove",
+        "cancelButton": "Cancel",
+        "watchState": "Watch state",
+        "readState": "Read state",
+        "episodes": "Episodes",
+        "chapters": "Chapters",
+        "volumesOwned": "Volumes owned"
+    },
+    "data": {
+        "ongoing": {
+            "anime": "Watching",
+            "manga": "Reading"
+        },
+        "completed": "Completed",
+        "planned": {
+            "anime": "Plan to watch",
+            "manga": "Plan to read"
+        },
+        "dropped": "Dropped",
+        "paused": "Paused",
+        "all": "All"
+    }
+}

@@ -38,9 +38,8 @@
     devShell = pkgs.mkShell {
       buildInputs = with pkgs; [
         flutter pinnedJDK android.platform-tools dart scrcpy # Flutter/Android
-	pythonEnv gnumake # Build scripts
-	gitlint jq # Code hygiene
-	ripgrep # General utilities
+	      gitlint jq # Code hygiene
+      	ripgrep # General utilities
       ];
 
       JAVA_HOME = pinnedJDK;

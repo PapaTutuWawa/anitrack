@@ -1,3 +1,4 @@
+import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/service/database.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
@@ -36,6 +37,9 @@ void main() async {
   GetIt.I.get<AnimeListBloc>().add(
         AnimesLoadedEvent(),
       );
+
+  WidgetsFlutterBinding.ensureInitialized();
+  LocaleSettings.useDeviceLocale();
 
   runApp(
     MultiBlocProvider(

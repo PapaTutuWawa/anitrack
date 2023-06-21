@@ -1,3 +1,4 @@
+import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
@@ -58,9 +59,9 @@ class AnimeListPageState extends State<AnimeListPage> {
   String _getPageTitle(TrackingMediumType type) {
     switch (type) {
       case TrackingMediumType.anime:
-        return 'Anime';
+        return t.content.anime;
       case TrackingMediumType.manga:
-        return 'Manga';
+        return t.content.manga;
     }
   }
 
@@ -156,14 +157,14 @@ class AnimeListPageState extends State<AnimeListPage> {
                 ),
                 ListTile(
                   leading: const Icon(Icons.settings),
-                  title: const Text('Settings'),
+                  title: Text(t.settings.title),
                   onTap: () {
                     Navigator.of(context).pushNamed(settingsRoute);
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.info),
-                  title: const Text('About'),
+                  title: Text(t.about.title),
                   onTap: () {
                     Navigator.of(context).pushNamed(aboutRoute);
                   },
@@ -294,7 +295,7 @@ class AnimeListPageState extends State<AnimeListPage> {
                           AnimeSearchRequestedEvent(state.trackingType),
                         );
                   },
-                  tooltip: 'Add new item',
+                  tooltip: t.tooltips.addNewItem,
                   child: const Icon(Icons.add),
                 ),
               );
@@ -314,15 +315,15 @@ class AnimeListPageState extends State<AnimeListPage> {
 
               _controller.jumpToPage(index);
             },
-            items: const [
+            items: [
               BottomBarItem(
-                icon: Icon(Icons.tv),
-                title: Text('Anime'),
+                icon: const Icon(Icons.tv),
+                title: Text(t.content.anime),
                 activeColor: Colors.blue,
               ),
               BottomBarItem(
-                icon: Icon(Icons.auto_stories),
-                title: Text('Manga'),
+                icon: const Icon(Icons.auto_stories),
+                title: Text(t.content.manga),
                 activeColor: Colors.red,
               ),
             ],

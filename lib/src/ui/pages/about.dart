@@ -1,3 +1,4 @@
+import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/licenses.g.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About'),
+        title: Text(t.about.title),
       ),
       body: ListView.builder(
         itemCount: ossLicenses.length + 1,
@@ -41,7 +42,7 @@ class AboutPage extends StatelessWidget {
                         mode: LaunchMode.externalApplication,
                       );
                     },
-                    child: const Text('Source'),
+                    child: Text(t.about.source),
                   ),
                 ],
               ),
