@@ -1,0 +1,56 @@
+{
+    "settings": {
+        "importAnime": "Animeliste importieren",
+        "importAnimeDesc": "Importiert die von MyAnimeList exportierte Animeliste.",
+        "invalidAnimeListTitle": "Ungültige Animeliste",
+        "importManga": "Mangaliste importieren",
+        "importMangaDesc": "Importiert die von MyAnimeList exportierte Mangaliste.",
+        "invalidMangaListTitle": "Ungültige Mangaliste",
+        "title": "Einstellungen",
+        "invalidAnimeListBody": "Die ausgewählte Datei ist keine gültige MAL Animeliste, da die Dateiendung nicht \".xml.gz\" ist.",
+        "invalidMangaListBody": "Die ausgewählte Datei ist keine MAL Mangaliste, da die Dateiendung nicht \".xml.gz\" ist.",
+        "importIndicator": "$current von $total"
+    },
+    "about": {
+        "title": "Über",
+        "source": "Quellcode"
+    },
+    "content": {
+        "anime": "Anime",
+        "manga": "Manga"
+    },
+    "search": {
+        "anime": "Animesuche",
+        "query": "Suche",
+        "manga": "Mangasuche"
+    },
+    "details": {
+        "title": "Details",
+        "removeTitle": "$title entfernen?",
+        "removeButton": "Entfernen",
+        "watchState": "Schau-Status",
+        "volumesOwned": "Bände im Besitz",
+        "removeBody": "Bist Du dir sicher, dass du \"$title\" aus der Liste entfernen möchtest?",
+        "cancelButton": "Abbrechen",
+        "readState": "Lese-Status",
+        "episodes": "Folgen",
+        "chapters": "Kapitel"
+    },
+    "data": {
+        "dropped": "Abgebrochen",
+        "all": "Alle",
+        "ongoing": {
+            "anime": "Guckt",
+            "manga": "Liest"
+        },
+        "completed": "Beendet",
+        "planned": {
+            "anime": "Geplant zu gucken",
+            "manga": "Geplant zu lesen"
+        },
+        "paused": "Pausiert"
+    },
+    "tooltips": {
+        "addNewItem": "Neuen Eintrag erstellen"
+    }
+}
