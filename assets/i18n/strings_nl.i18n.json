@@ -1,0 +1,56 @@
+{
+    "settings": {
+        "title": "Instellingen",
+        "importAnime": "Animelijst importeren",
+        "importAnimeDesc": "Importeer een animelijst van MyAnimeList.",
+        "invalidAnimeListTitle": "Ongeldige animelijst",
+        "invalidAnimeListBody": "Het gekozen bestand is geen MAL-lijst; het achtervoegsel ‘.xml.gz’ ontbreekt.",
+        "importManga": "Mangalijst importeren",
+        "importMangaDesc": "Importeer een mangalijst van MyAnimeList.",
+        "invalidMangaListTitle": "Ongeldige mangalijst",
+        "invalidMangaListBody": "Het gekozen bestand is geen MAL-lijst; het achtervoegsel ‘.xml.gz’ ontbreekt.",
+        "importIndicator": "$current van $total"
+    },
+    "about": {
+        "title": "Over",
+        "source": "Broncode"
+    },
+    "tooltips": {
+        "addNewItem": "Item toevoegen"
+    },
+    "content": {
+        "anime": "Anime",
+        "manga": "Manga"
+    },
+    "search": {
+        "anime": "Zoeken naar anime",
+        "manga": "Zoeken naar manga",
+        "query": "Zoekopdracht"
+    },
+    "details": {
+        "title": "Details",
+        "removeBody": "Weet je zeker dat je ‘$title’ van de lijst wilt verwijderen?",
+        "removeButton": "Verwijderen",
+        "cancelButton": "Annuleren",
+        "removeTitle": "‘$title’ verwijderen?",
+        "watchState": "Kijkstatus",
+        "readState": "Leesstatus",
+        "episodes": "Afleveringen",
+        "chapters": "Hoofdstukken",
+        "volumesOwned": "Aantal edities in bezit"
+    },
+    "data": {
+        "ongoing": {
+            "anime": "Aan het kijken",
+            "manga": "Aan het lezen"
+        },
+        "completed": "Afgerond",
+        "planned": {
+            "anime": "Wil ik kijken",
+            "manga": "Wil ik lezen"
+        },
+        "dropped": "Gestopt",
+        "paused": "Onderbroken",
+        "all": "Alles"
+    }
+}
