@@ -39,9 +39,9 @@ class GridItemState extends State<GridItem> {
       onHorizontalDragEnd: (_) {
         if (!widget.enableDrag) return;
 
-        if (_translationX <= -60) {
+        if (_translationX <= -40) {
           widget.plusCallback!();
-        } else if (_translationX >= 60) {
+        } else if (_translationX >= 40) {
           widget.minusCallback!();
         }
 
