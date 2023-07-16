@@ -51,7 +51,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         airing = false;
       }
 
-      print('Anime "${anime.title}": airing=${airing}');
+      print('Anime "${anime.title}": airing=$airing');
       if (!airing) {
         al.add(
           AnimeUpdatedEvent(
