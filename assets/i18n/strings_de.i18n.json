@@ -9,15 +9,26 @@
         "title": "Einstellungen",
         "invalidAnimeListBody": "Die ausgewählte Datei ist keine gültige MAL Animeliste, da die Dateiendung nicht \".xml.gz\" ist.",
         "invalidMangaListBody": "Die ausgewählte Datei ist keine MAL Mangaliste, da die Dateiendung nicht \".xml.gz\" ist.",
-        "importIndicator": "$current von $total"
+        "importIndicator": "$current von $total",
+        "importData": "Daten importieren",
+        "dataExportSuccess": "Daten erfolgreich exportiert",
+        "dataImportSuccess": "Daten erfolgreich importiert",
+        "importInvalidData": {
+            "content": "Die ausgewählte Datei ist nicht ein AniTrack-Datenexport, da die Dateiendung \".json.gz\" fehlt.",
+            "title": "Ungültige AniTrack-Daten"
+        },
+        "exportData": "Daten exportieren"
     },
     "about": {
         "title": "Über",
-        "source": "Quellcode"
+        "source": "Quellcode",
+        "license": "Lizenz",
+        "close": "Schließen"
     },
     "content": {
         "anime": "Anime",
-        "manga": "Manga"
+        "manga": "Manga",
+        "list": "Liste"
     },
     "search": {
         "anime": "Animesuche",
@@ -52,5 +63,18 @@
     },
     "tooltips": {
         "addNewItem": "Neuen Eintrag erstellen"
+    },
+    "calendar": {
+        "calendar": "Kalender",
+        "days": {
+            "monday": "Montag",
+            "tuesday": "Dienstag",
+            "wednesday": "Mittwoch",
+            "thursday": "Donnerstag",
+            "friday": "Freitag",
+            "saturday": "Samstag",
+            "sunday": "Sonntag",
+            "unknown": "Unbekannt"
+        }
     }
 }
