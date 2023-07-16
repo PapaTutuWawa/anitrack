@@ -40,7 +40,14 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     for (final anime in animes) {
       emit(state.copyWith(refreshingCount: state.refreshingCount + 1));
 
-      final apiData = await Jikan().getAnime(int.parse(anime.id));
+      Anime apiData;
+      try {
+        apiData = await Jikan().getAnime(int.parse(anime.id));
+      } catch (_) {
+        print('API request for anime ${anime.id} failed');
+        continue;
+      }
+
       if (!apiData.airing) {
         al.add(
           AnimeUpdatedEvent(
