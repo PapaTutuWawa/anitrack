@@ -10,62 +10,46 @@ enum TrackingMediumType {
 /// The state of the medium we're tracking, i.e. reading/watching, dropped, ...
 enum MediumTrackingState {
   /// Currently watching or reading
-  ongoing,
+  ongoing(0),
 
   /// Done
-  completed,
+  completed(1),
 
   /// Plan to watch or read
-  planned,
+  planned(2),
 
   /// Dropped
-  dropped,
+  dropped(3),
 
   /// Paused
-  paused,
+  paused(4),
 
   /// Meta state
-  all,
-}
+  all(-1);
 
-/// Interface for the Anime and Manga data classes
-abstract class TrackingMedium {
-  /// The ID of the medium
-  final String id = '';
+  const MediumTrackingState(this.id);
 
-  /// The title of the medium
-  final String title = '';
-
-  /// The URL of the cover image.
-  final String thumbnailUrl = '';
-
-  /// The tracking state
-  final MediumTrackingState state = MediumTrackingState.planned;
-}
-
-extension MediumStateExtension on MediumTrackingState {
-  int toInteger() {
-    assert(
-      this != MediumTrackingState.all,
-      'MediumTrackingState.all must not be serialized',
-    );
-    switch (this) {
-      case MediumTrackingState.ongoing:
-        return 0;
-      case MediumTrackingState.completed:
-        return 1;
-      case MediumTrackingState.planned:
-        return 2;
-      case MediumTrackingState.dropped:
-        return 3;
-      case MediumTrackingState.paused:
-        return 4;
-      case MediumTrackingState.all:
-        return -1;
+  factory MediumTrackingState.fromInt(int id) {
+    switch (id) {
+      case 0:
+        return MediumTrackingState.ongoing;
+      case 1:
+        return MediumTrackingState.completed;
+      case 2:
+        return MediumTrackingState.planned;
+      case 3:
+        return MediumTrackingState.dropped;
+      case 4:
+        return MediumTrackingState.paused;
     }
+
+    return MediumTrackingState.planned;
   }
 
-  String toNameString(TrackingMediumType type) {
+  /// The id of the value.
+  final int id;
+
+  String getName(TrackingMediumType type) {
     assert(
       this != MediumTrackingState.all,
       'MediumTrackingState.all must not be stringified',
@@ -98,28 +82,28 @@ extension MediumStateExtension on MediumTrackingState {
   }
 }
 
+/// Interface for the Anime and Manga data classes
+abstract class TrackingMedium {
+  /// The ID of the medium
+  final String id = '';
+
+  /// The title of the medium
+  final String title = '';
+
+  /// The URL of the cover image.
+  final String thumbnailUrl = '';
+
+  /// The tracking state
+  final MediumTrackingState state = MediumTrackingState.planned;
+}
+
 class MediumTrackingStateConverter
     implements JsonConverter<MediumTrackingState, int> {
   const MediumTrackingStateConverter();
 
   @override
-  MediumTrackingState fromJson(int json) {
-    switch (json) {
-      case 0:
-        return MediumTrackingState.ongoing;
-      case 1:
-        return MediumTrackingState.completed;
-      case 2:
-        return MediumTrackingState.planned;
-      case 3:
-        return MediumTrackingState.dropped;
-      case 4:
-        return MediumTrackingState.paused;
-    }
-
-    return MediumTrackingState.planned;
-  }
+  MediumTrackingState fromJson(int json) => MediumTrackingState.fromInt(json);
 
   @override
-  int toJson(MediumTrackingState state) => state.toInteger();
+  int toJson(MediumTrackingState state) => state.id;
 }

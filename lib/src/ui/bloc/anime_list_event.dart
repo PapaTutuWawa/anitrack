@@ -17,10 +17,14 @@ class AnimeEpisodeDecrementedEvent extends AnimeListEvent {
 }
 
 class AnimeAddedEvent extends AnimeListEvent {
-  AnimeAddedEvent(this.data);
+  AnimeAddedEvent(this.data, {this.checkIfExists = false});
 
   /// The anime to add.
   final AnimeTrackingData data;
+
+  /// If true, checks if the anime with the id is already in the list.
+  /// If it is, does nothing.
+  final bool checkIfExists;
 }
 
 /// Triggered when animes are to be loaded from the database
@@ -59,10 +63,14 @@ class AnimeRemovedEvent extends AnimeListEvent {
 }
 
 class MangaAddedEvent extends AnimeListEvent {
-  MangaAddedEvent(this.data);
+  MangaAddedEvent(this.data, {this.checkIfExists = false});
 
   /// The manga to add.
   final MangaTrackingData data;
+
+  /// If true, checks if the manga with the id is already in the list.
+  /// If it is, does nothing.
+  final bool checkIfExists;
 }
 
 /// Triggered when the manga filter is changed

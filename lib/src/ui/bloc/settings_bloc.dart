@@ -1,19 +1,25 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
+import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/service/database.dart';
+import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
+import 'package:archive/archive.dart' as archive;
 import 'package:archive/archive_io.dart';
 import 'package:bloc/bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:jikan_api/jikan_api.dart';
+import 'package:path/path.dart' as path;
 import 'package:xml/xml.dart';
 
-part 'settings_state.dart';
-part 'settings_event.dart';
 part 'settings_bloc.freezed.dart';
+part 'settings_event.dart';
+part 'settings_state.dart';
 
 MediumTrackingState malStatusToTrackingState(String status) {
   switch (status) {
@@ -39,6 +45,8 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   SettingsBloc() : super(SettingsState()) {
     on<AnimeListImportedEvent>(_onAnimeListImported);
     on<MangaListImportedEvent>(_onMangaListImported);
+    on<DataExportedEvent>(_onDataExported);
+    on<DataImportedEvent>(_onDataImported);
   }
 
   void _showLoadingSpinner(Emitter<SettingsState> emit) {
@@ -204,5 +212,70 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
 
     // Hide the spinner again
     _hideLoadingSpinner(emit);
+  }
+
+  Future<void> _onDataExported(
+    DataExportedEvent event,
+    Emitter<SettingsState> emit,
+  ) async {
+    final al = GetIt.I.get<AnimeListBloc>();
+    final data = {
+      // TODO(Unknown): Track the version here to (maybe) to migrations
+      'animes': al.state.animes.map((anime) => anime.toJson()).toList(),
+      'mangas': al.state.mangas.map((manga) => manga.toJson()).toList(),
+    };
+    final exportData = jsonEncode(data);
+    final date = DateTime.now();
+    final outputPath = path.join(
+      event.path,
+      'anitrack_${date.year}${date.month}${date.day}.json.gz',
+    );
+    archive.GZipEncoder().encode(
+      InputStream(utf8.encode(exportData)),
+      output: OutputFileStream(outputPath),
+    );
+
+    await Fluttertoast.showToast(
+      msg: t.settings.dataExportSuccess,
+    );
+  }
+
+  Future<void> _onDataImported(
+    DataImportedEvent event,
+    Emitter<SettingsState> emit,
+  ) async {
+    final al = GetIt.I.get<AnimeListBloc>();
+    final exportArchive = archive.GZipDecoder().decodeBytes(
+      await File(event.path).readAsBytes(),
+    );
+    final json = jsonDecode(utf8.decode(exportArchive)) as Map<String, dynamic>;
+
+    // Process anime
+    for (final animeRaw
+        in (json['animes']! as List<dynamic>).cast<Map<dynamic, dynamic>>()) {
+      final anime = AnimeTrackingData.fromJson(
+        animeRaw.cast<String, dynamic>(),
+      );
+
+      al.add(
+        AnimeAddedEvent(anime, checkIfExists: true),
+      );
+    }
+
+    // Process manga
+    for (final mangaRaw
+        in (json['mangas']! as List<dynamic>).cast<Map<dynamic, dynamic>>()) {
+      final manga = MangaTrackingData.fromJson(
+        mangaRaw.cast<String, dynamic>(),
+      );
+
+      al.add(
+        MangaAddedEvent(manga, checkIfExists: true),
+      );
+    }
+
+    await Fluttertoast.showToast(
+      msg: t.settings.dataImportSuccess,
+    );
   }
 }

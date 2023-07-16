@@ -158,27 +158,27 @@ class DetailsPage extends StatelessWidget {
                             SelectorItem(
                               MediumTrackingState.ongoing,
                               MediumTrackingState.ongoing
-                                  .toNameString(state.trackingType),
+                                  .getName(state.trackingType),
                             ),
                             SelectorItem(
                               MediumTrackingState.completed,
                               MediumTrackingState.completed
-                                  .toNameString(state.trackingType),
+                                  .getName(state.trackingType),
                             ),
                             SelectorItem(
                               MediumTrackingState.planned,
                               MediumTrackingState.planned
-                                  .toNameString(state.trackingType),
+                                  .getName(state.trackingType),
                             ),
                             SelectorItem(
                               MediumTrackingState.dropped,
                               MediumTrackingState.dropped
-                                  .toNameString(state.trackingType),
+                                  .getName(state.trackingType),
                             ),
                             SelectorItem(
                               MediumTrackingState.paused,
                               MediumTrackingState.paused
-                                  .toNameString(state.trackingType),
+                                  .getName(state.trackingType),
                             ),
                           ],
                           initialValue: state.data!.state,

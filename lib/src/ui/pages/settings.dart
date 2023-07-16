@@ -5,6 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -87,6 +88,51 @@ class SettingsPage extends StatelessWidget {
                                 MangaListImportedEvent(
                                   result.files.first.path!,
                                   ImportListType.mal,
+                                ),
+                              );
+                        },
+                      ),
+                      ListTile(
+                        title: Text(t.settings.exportData),
+                        onTap: () async {
+                          // Pick the file
+                          final result =
+                              await FilePicker.platform.getDirectoryPath();
+                          if (result == null) return;
+
+                          if (!(await Permission.manageExternalStorage
+                                  .request())
+                              .isGranted) return;
+
+                          GetIt.I.get<SettingsBloc>().add(
+                                DataExportedEvent(
+                                  result,
+                                ),
+                              );
+                        },
+                      ),
+                      ListTile(
+                        title: Text(t.settings.importData),
+                        onTap: () async {
+                          // Pick the file
+                          final result = await FilePicker.platform.pickFiles();
+                          if (result == null) return;
+
+                          if (!result.files.first.path!.endsWith('.json.gz')) {
+                            await showDialog<void>(
+                              context: context,
+                              builder: (_) => AlertDialog(
+                                title: Text(t.settings.importInvalidData.title),
+                                content:
+                                    Text(t.settings.importInvalidData.content),
+                              ),
+                            );
+                            return;
+                          }
+
+                          GetIt.I.get<SettingsBloc>().add(
+                                DataImportedEvent(
+                                  result.files.first.path!,
                                 ),
                               );
                         },

@@ -34,3 +34,19 @@ class MangaListImportedEvent extends SettingsEvent {
   /// The type of list we're importing
   final ImportListType type;
 }
+
+/// Triggered when a data export should be produced.
+class DataExportedEvent extends SettingsEvent {
+  DataExportedEvent(this.path);
+
+  /// The path where the export should be stored.
+  final String path;
+}
+
+/// Triggered when a data export has been picked for import.
+class DataImportedEvent extends SettingsEvent {
+  DataImportedEvent(this.path);
+
+  /// The path of the data export to import.
+  final String path;
+}

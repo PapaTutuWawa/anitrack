@@ -3,6 +3,7 @@ import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/service/database.dart';
 import 'package:bloc/bloc.dart';
+import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 
@@ -63,7 +64,16 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     await GetIt.I.get<DatabaseService>().addAnime(event.data);
 
     // Add it to the cache
-    _animes.add(event.data);
+    if (event.checkIfExists) {
+      final shouldAdd =
+          _animes.firstWhereOrNull((element) => element.id == event.data.id) ==
+              null;
+      if (shouldAdd) {
+        _animes.add(event.data);
+      }
+    } else {
+      _animes.add(event.data);
+    }
 
     emit(
       state.copyWith(
@@ -80,7 +90,17 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     await GetIt.I.get<DatabaseService>().addManga(event.data);
 
     // Add it to the cache
-    _mangas.add(event.data);
+    // Add it to the cache
+    if (event.checkIfExists) {
+      final shouldAdd =
+          _mangas.firstWhereOrNull((element) => element.id == event.data.id) ==
+              null;
+      if (shouldAdd) {
+        _mangas.add(event.data);
+      }
+    } else {
+      _mangas.add(event.data);
+    }
 
     emit(
       state.copyWith(

@@ -18,10 +18,13 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
+  fluttertoast: ^8.2.2
   freezed_annotation: 2.1.0
   get_it: ^7.2.0
   jikan_api: ^2.0.0
   json_annotation: 4.6.0
+  path: ^1.8.2
+  permission_handler: ^10.4.3
   slang: 3.19.0
   slang_flutter: 3.19.0
   sqflite: ^2.2.4+1

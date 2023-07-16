@@ -72,23 +72,23 @@ class AnimeListPageState extends State<AnimeListPage> {
     return [
       PopupMenuItem<MediumTrackingState>(
         value: MediumTrackingState.ongoing,
-        child: Text(MediumTrackingState.ongoing.toNameString(type)),
+        child: Text(MediumTrackingState.ongoing.getName(type)),
       ),
       PopupMenuItem<MediumTrackingState>(
         value: MediumTrackingState.completed,
-        child: Text(MediumTrackingState.completed.toNameString(type)),
+        child: Text(MediumTrackingState.completed.getName(type)),
       ),
       PopupMenuItem<MediumTrackingState>(
         value: MediumTrackingState.planned,
-        child: Text(MediumTrackingState.planned.toNameString(type)),
+        child: Text(MediumTrackingState.planned.getName(type)),
       ),
       PopupMenuItem<MediumTrackingState>(
         value: MediumTrackingState.dropped,
-        child: Text(MediumTrackingState.dropped.toNameString(type)),
+        child: Text(MediumTrackingState.dropped.getName(type)),
       ),
       PopupMenuItem<MediumTrackingState>(
         value: MediumTrackingState.paused,
-        child: Text(MediumTrackingState.paused.toNameString(type)),
+        child: Text(MediumTrackingState.paused.getName(type)),
       ),
       const PopupMenuItem<MediumTrackingState>(
         value: MediumTrackingState.all,

@@ -9,7 +9,15 @@
         "importMangaDesc": "Import manga list exported from MyAnimeList.",
         "invalidMangaListTitle": "Invalid manga list",
         "invalidMangaListBody": "The selected file is not a MAL manga list. It lacks the \".xml.gz\" suffix.",
-        "importIndicator": "$current of $total"
+        "importIndicator": "$current of $total",
+        "exportData": "Export data",
+        "importData": "Import data",
+        "dataExportSuccess": "Data successfully exported",
+        "dataImportSuccess": "Data successfully imported",
+        "importInvalidData": {
+            "title": "Invalid AniTrack Data",
+            "content": "The selected file is not an AniTrack data export. It lacks the \".json.gz\" suffix."
+        }
     },
     "about": {
         "title": "About",
