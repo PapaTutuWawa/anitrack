@@ -64,11 +64,16 @@ class AboutPage extends StatelessWidget {
                             await showDialog<void>(
                               context: context,
                               builder: (context) {
-                                return SimpleDialog(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(16),
-                                      child: Text(licenseText),
+                                return AlertDialog(
+                                  content: SingleChildScrollView(
+                                    child: Text(licenseText),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text(t.about.close),
                                     ),
                                   ],
                                 );
