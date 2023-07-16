@@ -21,7 +21,9 @@
     },
     "about": {
         "title": "About",
-        "source": "Source code"
+        "source": "Source code",
+        "license": "License",
+        "close": "Clsoe"
     },
     "tooltips": {
         "addNewItem": "Add new item"
