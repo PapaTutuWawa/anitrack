@@ -3,10 +3,15 @@ part of 'details_bloc.dart';
 abstract class DetailsEvent {}
 
 class AnimeDetailsRequestedEvent extends DetailsEvent {
-  AnimeDetailsRequestedEvent(this.anime);
+  AnimeDetailsRequestedEvent(
+    this.anime, {
+    this.heroImagePrefix,
+  });
 
   /// The anime to show details about
   final AnimeTrackingData anime;
+
+  final String? heroImagePrefix;
 }
 
 class MangaDetailsRequestedEvent extends DetailsEvent {

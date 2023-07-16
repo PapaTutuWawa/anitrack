@@ -5,6 +5,8 @@ class SearchResult {
     this.total,
     this.thumbnailUrl,
     this.description,
+    this.isAiring,
+    this.broadcastDay,
   );
 
   /// The title of the anime.
@@ -22,4 +24,10 @@ class SearchResult {
 
   /// The description of the anime
   final String description;
+
+  /// Flag whether the anime is airing.
+  final bool isAiring;
+
+  /// The day of the week the anime is airing.
+  final String? broadcastDay;
 }

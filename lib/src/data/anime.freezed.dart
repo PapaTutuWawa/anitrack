@@ -39,6 +39,13 @@ mixin _$AnimeTrackingData {
   /// URL to the thumbnail/cover art for the anime.
   String get thumbnailUrl => throw _privateConstructorUsedError;
 
+  /// Flag whether the anime is airing
+  @BoolConverter()
+  bool get airing => throw _privateConstructorUsedError;
+
+  /// The day of the week the anime is airing
+  String? get broadcastDay => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AnimeTrackingDataCopyWith<AnimeTrackingData> get copyWith =>
@@ -56,7 +63,9 @@ abstract class $AnimeTrackingDataCopyWith<$Res> {
       String title,
       int episodesWatched,
       int? episodesTotal,
-      String thumbnailUrl});
+      String thumbnailUrl,
+      @BoolConverter() bool airing,
+      String? broadcastDay});
 }
 
 /// @nodoc
@@ -76,6 +85,8 @@ class _$AnimeTrackingDataCopyWithImpl<$Res>
     Object? episodesWatched = freezed,
     Object? episodesTotal = freezed,
     Object? thumbnailUrl = freezed,
+    Object? airing = freezed,
+    Object? broadcastDay = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -102,6 +113,14 @@ class _$AnimeTrackingDataCopyWithImpl<$Res>
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      airing: airing == freezed
+          ? _value.airing
+          : airing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      broadcastDay: broadcastDay == freezed
+          ? _value.broadcastDay
+          : broadcastDay // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -119,7 +138,9 @@ abstract class _$$_AnimeTrackingDataCopyWith<$Res>
       String title,
       int episodesWatched,
       int? episodesTotal,
-      String thumbnailUrl});
+      String thumbnailUrl,
+      @BoolConverter() bool airing,
+      String? broadcastDay});
 }
 
 /// @nodoc
@@ -141,6 +162,8 @@ class __$$_AnimeTrackingDataCopyWithImpl<$Res>
     Object? episodesWatched = freezed,
     Object? episodesTotal = freezed,
     Object? thumbnailUrl = freezed,
+    Object? airing = freezed,
+    Object? broadcastDay = freezed,
   }) {
     return _then(_$_AnimeTrackingData(
       id == freezed
@@ -167,6 +190,14 @@ class __$$_AnimeTrackingDataCopyWithImpl<$Res>
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      airing == freezed
+          ? _value.airing
+          : airing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      broadcastDay == freezed
+          ? _value.broadcastDay
+          : broadcastDay // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -174,8 +205,15 @@ class __$$_AnimeTrackingDataCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AnimeTrackingData implements _AnimeTrackingData {
-  _$_AnimeTrackingData(this.id, @MediumTrackingStateConverter() this.state,
-      this.title, this.episodesWatched, this.episodesTotal, this.thumbnailUrl);
+  _$_AnimeTrackingData(
+      this.id,
+      @MediumTrackingStateConverter() this.state,
+      this.title,
+      this.episodesWatched,
+      this.episodesTotal,
+      this.thumbnailUrl,
+      @BoolConverter() this.airing,
+      this.broadcastDay);
 
   factory _$_AnimeTrackingData.fromJson(Map<String, dynamic> json) =>
       _$$_AnimeTrackingDataFromJson(json);
@@ -205,9 +243,18 @@ class _$_AnimeTrackingData implements _AnimeTrackingData {
   @override
   final String thumbnailUrl;
 
+  /// Flag whether the anime is airing
+  @override
+  @BoolConverter()
+  final bool airing;
+
+  /// The day of the week the anime is airing
+  @override
+  final String? broadcastDay;
+
   @override
   String toString() {
-    return 'AnimeTrackingData(id: $id, state: $state, title: $title, episodesWatched: $episodesWatched, episodesTotal: $episodesTotal, thumbnailUrl: $thumbnailUrl)';
+    return 'AnimeTrackingData(id: $id, state: $state, title: $title, episodesWatched: $episodesWatched, episodesTotal: $episodesTotal, thumbnailUrl: $thumbnailUrl, airing: $airing, broadcastDay: $broadcastDay)';
   }
 
   @override
@@ -223,7 +270,10 @@ class _$_AnimeTrackingData implements _AnimeTrackingData {
             const DeepCollectionEquality()
                 .equals(other.episodesTotal, episodesTotal) &&
             const DeepCollectionEquality()
-                .equals(other.thumbnailUrl, thumbnailUrl));
+                .equals(other.thumbnailUrl, thumbnailUrl) &&
+            const DeepCollectionEquality().equals(other.airing, airing) &&
+            const DeepCollectionEquality()
+                .equals(other.broadcastDay, broadcastDay));
   }
 
   @JsonKey(ignore: true)
@@ -235,7 +285,9 @@ class _$_AnimeTrackingData implements _AnimeTrackingData {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(episodesWatched),
       const DeepCollectionEquality().hash(episodesTotal),
-      const DeepCollectionEquality().hash(thumbnailUrl));
+      const DeepCollectionEquality().hash(thumbnailUrl),
+      const DeepCollectionEquality().hash(airing),
+      const DeepCollectionEquality().hash(broadcastDay));
 
   @JsonKey(ignore: true)
   @override
@@ -258,7 +310,9 @@ abstract class _AnimeTrackingData implements AnimeTrackingData {
       final String title,
       final int episodesWatched,
       final int? episodesTotal,
-      final String thumbnailUrl) = _$_AnimeTrackingData;
+      final String thumbnailUrl,
+      @BoolConverter() final bool airing,
+      final String? broadcastDay) = _$_AnimeTrackingData;
 
   factory _AnimeTrackingData.fromJson(Map<String, dynamic> json) =
       _$_AnimeTrackingData.fromJson;
@@ -288,6 +342,15 @@ abstract class _AnimeTrackingData implements AnimeTrackingData {
 
   /// URL to the thumbnail/cover art for the anime.
   String get thumbnailUrl;
+  @override
+
+  /// Flag whether the anime is airing
+  @BoolConverter()
+  bool get airing;
+  @override
+
+  /// The day of the week the anime is airing
+  String? get broadcastDay;
   @override
   @JsonKey(ignore: true)
   _$$_AnimeTrackingDataCopyWith<_$_AnimeTrackingData> get copyWith =>

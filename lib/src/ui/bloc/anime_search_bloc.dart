@@ -82,6 +82,8 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
                   anime.episodes,
                   anime.imageUrl,
                   anime.synopsis ?? '',
+                  anime.airing,
+                  anime.broadcast?.split(' ').first,
                 ),
               )
               .toList(),
@@ -104,6 +106,9 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
                   manga.chapters,
                   manga.imageUrl,
                   manga.synopsis ?? '',
+                  // TODO(Unknown): Implement for Manga
+                  false,
+                  null,
                 ),
               )
               .toList(),
@@ -126,6 +131,8 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
                     0,
                     event.result.total,
                     event.result.thumbnailUrl,
+                    event.result.isAiring,
+                    event.result.broadcastDay,
                   ),
                 )
               : list.MangaAddedEvent(

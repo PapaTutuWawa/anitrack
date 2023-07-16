@@ -43,9 +43,12 @@ class AnimeTrackingTypeChanged extends AnimeListEvent {
 }
 
 class AnimeUpdatedEvent extends AnimeListEvent {
-  AnimeUpdatedEvent(this.anime);
+  AnimeUpdatedEvent(this.anime, {this.commit = false});
 
   final AnimeTrackingData anime;
+
+  /// Commit the new anime data to the database.
+  final bool commit;
 }
 
 class AnimeRemovedEvent extends AnimeListEvent {

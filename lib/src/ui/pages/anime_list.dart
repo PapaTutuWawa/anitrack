@@ -4,6 +4,7 @@ import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
 import 'package:anitrack/src/ui/bloc/details_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
+import 'package:anitrack/src/ui/helpers.dart';
 import 'package:anitrack/src/ui/widgets/grid_item.dart';
 import 'package:anitrack/src/ui/widgets/image.dart';
 import 'package:bottom_bar/bottom_bar.dart';
@@ -140,38 +141,7 @@ class AnimeListPageState extends State<AnimeListPage> {
               _getPopupButton(context, state),
             ],
           ),
-          drawer: Drawer(
-            child: ListView(
-              children: [
-                const DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Color(0xffcf4aff),
-                  ),
-                  child: Text(
-                    'AniTrack',
-                    style: TextStyle(
-                      color: Color(0xff232323),
-                      fontSize: 24,
-                    ),
-                  ),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.settings),
-                  title: Text(t.settings.title),
-                  onTap: () {
-                    Navigator.of(context).pushNamed(settingsRoute);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.info),
-                  title: Text(t.about.title),
-                  onTap: () {
-                    Navigator.of(context).pushNamed(aboutRoute);
-                  },
-                ),
-              ],
-            ),
-          ),
+          drawer: getDrawer(context),
           body: PageView(
             // Prevent swiping between pages
             // (https://github.com/flutter/flutter/issues/37510#issuecomment-612663656)

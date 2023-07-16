@@ -28,6 +28,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     emit(
       state.copyWith(
         trackingType: TrackingMediumType.anime,
+        heroImagePrefix: event.heroImagePrefix,
         data: event.anime,
       ),
     );

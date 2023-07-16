@@ -19,6 +19,7 @@
         "addNewItem": "Add new item"
     },
     "content": {
+        "list": "List",
         "anime": "Anime",
         "manga": "Manga"
     },
@@ -38,6 +39,19 @@
         "episodes": "Episodes",
         "chapters": "Chapters",
         "volumesOwned": "Volumes owned"
+    },
+    "calendar": {
+        "calendar": "Calendar",
+        "days": {
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday",
+            "unknown": "Unknown"
+        }
     },
     "data": {
         "ongoing": {

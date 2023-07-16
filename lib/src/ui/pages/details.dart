@@ -42,7 +42,7 @@ class DetailsPage extends StatelessWidget {
                         children: [
                           AnimeCoverImage(
                             url: state.data!.thumbnailUrl,
-                            hero: state.data!.id,
+                            hero: '${state.heroImagePrefix}${state.data!.id}',
                           ),
                           Expanded(
                             child: Padding(
@@ -69,10 +69,14 @@ class DetailsPage extends StatelessWidget {
                                         builder: (context) {
                                           return AlertDialog(
                                             title: Text(
-                                              t.details.removeTitle(title: state.data!.title),
+                                              t.details.removeTitle(
+                                                title: state.data!.title,
+                                              ),
                                             ),
                                             content: Text(
-                                              t.details.removeBody(title: state.data!.title),
+                                              t.details.removeBody(
+                                                title: state.data!.title,
+                                              ),
                                             ),
                                             actions: [
                                               TextButton(
@@ -83,14 +87,18 @@ class DetailsPage extends StatelessWidget {
                                                 style: TextButton.styleFrom(
                                                   foregroundColor: Colors.red,
                                                 ),
-                                                child: Text(t.details.removeButton),
+                                                child: Text(
+                                                  t.details.removeButton,
+                                                ),
                                               ),
                                               TextButton(
                                                 onPressed: () {
                                                   Navigator.of(context)
                                                       .pop(false);
                                                 },
-                                                child: Text(t.details.cancelButton),
+                                                child: Text(
+                                                  t.details.cancelButton,
+                                                ),
                                               ),
                                             ],
                                           );

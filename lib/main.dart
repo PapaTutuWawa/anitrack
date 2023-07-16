@@ -2,6 +2,7 @@ import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/service/database.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
+import 'package:anitrack/src/ui/bloc/calendar_bloc.dart';
 import 'package:anitrack/src/ui/bloc/details_bloc.dart';
 import 'package:anitrack/src/ui/bloc/navigation_bloc.dart';
 import 'package:anitrack/src/ui/bloc/settings_bloc.dart';
@@ -9,6 +10,7 @@ import 'package:anitrack/src/ui/constants.dart';
 import 'package:anitrack/src/ui/pages/about.dart';
 import 'package:anitrack/src/ui/pages/anime_list.dart';
 import 'package:anitrack/src/ui/pages/anime_search.dart';
+import 'package:anitrack/src/ui/pages/calendar.dart';
 import 'package:anitrack/src/ui/pages/details.dart';
 import 'package:anitrack/src/ui/pages/settings.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +34,7 @@ void main() async {
   GetIt.I.registerSingleton<DetailsBloc>(DetailsBloc());
   GetIt.I.registerSingleton<NavigationBloc>(NavigationBloc(navKey));
   GetIt.I.registerSingleton<SettingsBloc>(SettingsBloc());
+  GetIt.I.registerSingleton<CalendarBloc>(CalendarBloc());
 
   // Load animes
   GetIt.I.get<AnimeListBloc>().add(
@@ -58,6 +61,9 @@ void main() async {
         ),
         BlocProvider<SettingsBloc>(
           create: (_) => GetIt.I.get<SettingsBloc>(),
+        ),
+        BlocProvider<CalendarBloc>(
+          create: (_) => GetIt.I.get<CalendarBloc>(),
         ),
       ],
       child: MyApp(navKey),
@@ -95,6 +101,8 @@ class MyApp extends StatelessWidget {
             return AnimeListPage.route;
           case animeSearchRoute:
             return AnimeSearchPage.route;
+          case calendarRoute:
+            return CalendarPage.route;
           case detailsRoute:
             return DetailsPage.route;
           case aboutRoute:

@@ -14,6 +14,8 @@ _$_AnimeTrackingData _$$_AnimeTrackingDataFromJson(Map<String, dynamic> json) =>
       json['episodesWatched'] as int,
       json['episodesTotal'] as int?,
       json['thumbnailUrl'] as String,
+      const BoolConverter().fromJson(json['airing'] as int),
+      json['broadcastDay'] as String?,
     );
 
 Map<String, dynamic> _$$_AnimeTrackingDataToJson(
@@ -25,4 +27,6 @@ Map<String, dynamic> _$$_AnimeTrackingDataToJson(
       'episodesWatched': instance.episodesWatched,
       'episodesTotal': instance.episodesTotal,
       'thumbnailUrl': instance.thumbnailUrl,
+      'airing': const BoolConverter().toJson(instance.airing),
+      'broadcastDay': instance.broadcastDay,
     };

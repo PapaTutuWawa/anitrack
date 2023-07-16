@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DetailsState {
   TrackingMedium? get data => throw _privateConstructorUsedError;
+  String? get heroImagePrefix => throw _privateConstructorUsedError;
   TrackingMediumType get trackingType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +30,10 @@ abstract class $DetailsStateCopyWith<$Res> {
   factory $DetailsStateCopyWith(
           DetailsState value, $Res Function(DetailsState) then) =
       _$DetailsStateCopyWithImpl<$Res>;
-  $Res call({TrackingMedium? data, TrackingMediumType trackingType});
+  $Res call(
+      {TrackingMedium? data,
+      String? heroImagePrefix,
+      TrackingMediumType trackingType});
 }
 
 /// @nodoc
@@ -43,6 +47,7 @@ class _$DetailsStateCopyWithImpl<$Res> implements $DetailsStateCopyWith<$Res> {
   @override
   $Res call({
     Object? data = freezed,
+    Object? heroImagePrefix = freezed,
     Object? trackingType = freezed,
   }) {
     return _then(_value.copyWith(
@@ -50,6 +55,10 @@ class _$DetailsStateCopyWithImpl<$Res> implements $DetailsStateCopyWith<$Res> {
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as TrackingMedium?,
+      heroImagePrefix: heroImagePrefix == freezed
+          ? _value.heroImagePrefix
+          : heroImagePrefix // ignore: cast_nullable_to_non_nullable
+              as String?,
       trackingType: trackingType == freezed
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
@@ -65,7 +74,10 @@ abstract class _$$_DetailsStateCopyWith<$Res>
           _$_DetailsState value, $Res Function(_$_DetailsState) then) =
       __$$_DetailsStateCopyWithImpl<$Res>;
   @override
-  $Res call({TrackingMedium? data, TrackingMediumType trackingType});
+  $Res call(
+      {TrackingMedium? data,
+      String? heroImagePrefix,
+      TrackingMediumType trackingType});
 }
 
 /// @nodoc
@@ -82,6 +94,7 @@ class __$$_DetailsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
+    Object? heroImagePrefix = freezed,
     Object? trackingType = freezed,
   }) {
     return _then(_$_DetailsState(
@@ -89,6 +102,10 @@ class __$$_DetailsStateCopyWithImpl<$Res>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as TrackingMedium?,
+      heroImagePrefix: heroImagePrefix == freezed
+          ? _value.heroImagePrefix
+          : heroImagePrefix // ignore: cast_nullable_to_non_nullable
+              as String?,
       trackingType: trackingType == freezed
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
@@ -100,17 +117,22 @@ class __$$_DetailsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DetailsState implements _DetailsState {
-  _$_DetailsState({this.data, this.trackingType = TrackingMediumType.anime});
+  _$_DetailsState(
+      {this.data,
+      this.heroImagePrefix,
+      this.trackingType = TrackingMediumType.anime});
 
   @override
   final TrackingMedium? data;
+  @override
+  final String? heroImagePrefix;
   @override
   @JsonKey()
   final TrackingMediumType trackingType;
 
   @override
   String toString() {
-    return 'DetailsState(data: $data, trackingType: $trackingType)';
+    return 'DetailsState(data: $data, heroImagePrefix: $heroImagePrefix, trackingType: $trackingType)';
   }
 
   @override
@@ -120,6 +142,8 @@ class _$_DetailsState implements _DetailsState {
             other is _$_DetailsState &&
             const DeepCollectionEquality().equals(other.data, data) &&
             const DeepCollectionEquality()
+                .equals(other.heroImagePrefix, heroImagePrefix) &&
+            const DeepCollectionEquality()
                 .equals(other.trackingType, trackingType));
   }
 
@@ -127,6 +151,7 @@ class _$_DetailsState implements _DetailsState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(data),
+      const DeepCollectionEquality().hash(heroImagePrefix),
       const DeepCollectionEquality().hash(trackingType));
 
   @JsonKey(ignore: true)
@@ -138,10 +163,13 @@ class _$_DetailsState implements _DetailsState {
 abstract class _DetailsState implements DetailsState {
   factory _DetailsState(
       {final TrackingMedium? data,
+      final String? heroImagePrefix,
       final TrackingMediumType trackingType}) = _$_DetailsState;
 
   @override
   TrackingMedium? get data;
+  @override
+  String? get heroImagePrefix;
   @override
   TrackingMediumType get trackingType;
   @override

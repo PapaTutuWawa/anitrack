@@ -270,6 +270,8 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
         animes: _getFilteredAnime(),
       ),
     );
+
+    await GetIt.I.get<DatabaseService>().updateAnime(event.anime);
   }
 
   Future<void> _onMangaUpdated(

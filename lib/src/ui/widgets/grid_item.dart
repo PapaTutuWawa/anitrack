@@ -4,15 +4,18 @@ import 'package:flutter/material.dart';
 class GridItem extends StatefulWidget {
   const GridItem({
     required this.child,
-    required this.plusCallback,
-    required this.minusCallback,
+    this.plusCallback,
+    this.minusCallback,
+    this.enableDrag = true,
     super.key,
   });
 
   final Widget child;
 
-  final void Function() plusCallback;
-  final void Function() minusCallback;
+  final bool enableDrag;
+
+  final void Function()? plusCallback;
+  final void Function()? minusCallback;
 
   @override
   GridItemState createState() => GridItemState();
@@ -26,16 +29,20 @@ class GridItemState extends State<GridItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onHorizontalDragUpdate: (details) {
+        if (!widget.enableDrag) return;
+
         setState(() {
           _offset += details.delta.dx;
           _translationX = 160 / (1 + exp(-1 * (1 / 30) * _offset)) - 80;
         });
       },
       onHorizontalDragEnd: (_) {
+        if (!widget.enableDrag) return;
+
         if (_translationX <= -60) {
-          widget.plusCallback();
+          widget.plusCallback!();
         } else if (_translationX >= 60) {
-          widget.minusCallback();
+          widget.minusCallback!();
         }
 
         // Reset the view

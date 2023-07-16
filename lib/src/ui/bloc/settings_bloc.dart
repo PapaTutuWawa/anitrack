@@ -119,6 +119,9 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
               // 0 means that MAL does not know
               totalEpisodes == 0 ? null : totalEpisodes,
               data.imageUrl,
+              // NOTE: When the calendar gets refreshed, this should also get cleared
+              true,
+              null,
             ),
           );
     }

@@ -1,22 +1,37 @@
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
+import 'package:anitrack/src/service/migrations/0000_airing.dart';
 import 'package:anitrack/src/service/migrations/0000_score.dart';
 import 'package:sqflite/sqflite.dart';
 
 const animeTable = 'Anime';
 const mangaTable = 'Manga';
 
+extension BoolToInt on bool {
+  int toInt() {
+    return this ? 1 : 0;
+  }
+}
+
+extension IntToBool on int {
+  bool toBool() {
+    return this == 1;
+  }
+}
+
 Future<void> _createDatabase(Database db, int version) async {
   await db.execute(
     '''
     CREATE TABLE $animeTable(
-      id TEXT NOT NULL PRIMARY KEY,
-      state INTEGER NOT NULL,
-      episodesTotal INTEGER,
+      id              TEXT NOT NULL PRIMARY KEY,
+      state           INTEGER NOT NULL,
+      episodesTotal   INTEGER,
       episodesWatched INTEGER NOT NULL,
-      thumbnailUrl TEXT NOT NULL,
-      title TEXT NOT NULL,
-      score INTEGER
+      thumbnailUrl    TEXT NOT NULL,
+      title           TEXT NOT NULL,
+      score           INTEGER,
+      airing          INTEGER NOT NULL,
+      broadcastDay    TEXT
     )''',
   );
   await db.execute(
@@ -40,7 +55,7 @@ class DatabaseService {
   Future<void> initialize() async {
     _db = await openDatabase(
       'anitrack.db',
-      version: 2,
+      version: 3,
       onConfigure: (db) async {
         // In order to do schema changes during database upgrades, we disable foreign
         // keys in the onConfigure phase, but re-enable them here.
@@ -55,6 +70,9 @@ class DatabaseService {
       onUpgrade: (db, oldVersion, newVersion) async {
         if (oldVersion < 2) {
           await migrateFromV1ToV2(db);
+        }
+        if (oldVersion < 3) {
+          await migrateFromV2ToV3(db);
         }
       },
     );
