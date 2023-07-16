@@ -28,7 +28,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     );
 
     final al = GetIt.I.get<AnimeListBloc>();
-    final animes = al.state.animes.where((anime) => anime.airing);
+    final animes = al.unfilteredAnime.where((anime) => anime.airing);
     emit(
       state.copyWith(
         refreshing: true,
@@ -40,18 +40,30 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     for (final anime in animes) {
       emit(state.copyWith(refreshingCount: state.refreshingCount + 1));
 
-      Anime apiData;
+      String? broadcastDay;
+      bool airing;
       try {
-        apiData = await Jikan().getAnime(int.parse(anime.id));
-      } catch (_) {
-        print('API request for anime ${anime.id} failed');
-        continue;
+        final apiData = await Jikan().getAnime(int.parse(anime.id));
+        airing = apiData.airing;
+        broadcastDay = apiData.broadcast?.split(' ').first;
+      } catch (ex) {
+        print('API request for anime ${anime.id} failed: $ex');
+        airing = false;
       }
 
-      if (!apiData.airing) {
+      print('Anime "${anime.title}": airing=${airing}');
+      if (!airing) {
         al.add(
           AnimeUpdatedEvent(
             anime.copyWith(airing: false, broadcastDay: null),
+            commit: true,
+          ),
+        );
+      } else if (anime.broadcastDay != broadcastDay) {
+        print('Updating Anime "${anime.title}": broadcastDay=$broadcastDay');
+        al.add(
+          AnimeUpdatedEvent(
+            anime.copyWith(airing: true, broadcastDay: broadcastDay),
             commit: true,
           ),
         );

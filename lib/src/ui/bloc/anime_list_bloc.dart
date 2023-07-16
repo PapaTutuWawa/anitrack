@@ -36,6 +36,8 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
   final List<MangaTrackingData> _mangas =
       List<MangaTrackingData>.empty(growable: true);
 
+  List<AnimeTrackingData> get unfilteredAnime => _animes;
+
   List<AnimeTrackingData> _getFilteredAnime({
     MediumTrackingState? trackingState,
   }) {
