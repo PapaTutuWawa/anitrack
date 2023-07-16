@@ -23,7 +23,7 @@
         "title": "About",
         "source": "Source code",
         "license": "License",
-        "close": "Clsoe"
+        "close": "Close"
     },
     "tooltips": {
         "addNewItem": "Add new item"
