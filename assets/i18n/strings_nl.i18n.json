@@ -4,23 +4,34 @@
         "importAnime": "Animelijst importeren",
         "importAnimeDesc": "Importeer een animelijst van MyAnimeList.",
         "invalidAnimeListTitle": "Ongeldige animelijst",
-        "invalidAnimeListBody": "Het gekozen bestand is geen MAL-lijst; het achtervoegsel ‘.xml.gz’ ontbreekt.",
+        "invalidAnimeListBody": "Het gekozen bestand is geen MAL-lijst: de ‘.xml.gz’-extensie ontbreekt.",
         "importManga": "Mangalijst importeren",
         "importMangaDesc": "Importeer een mangalijst van MyAnimeList.",
         "invalidMangaListTitle": "Ongeldige mangalijst",
         "invalidMangaListBody": "Het gekozen bestand is geen MAL-lijst; het achtervoegsel ‘.xml.gz’ ontbreekt.",
-        "importIndicator": "$current van $total"
+        "importIndicator": "$current van $total",
+        "exportData": "Gegevens exporteren",
+        "importData": "Gegevens importeren",
+        "dataExportSuccess": "De gegevens zĳn geëxporteerd",
+        "dataImportSuccess": "De gegevens zĳn geïmporteerd",
+        "importInvalidData": {
+            "title": "De AniTrack-gegevens zĳn ongeldig",
+            "content": "Het gekozen bestand is geen AniTrack-gegevensexport: de ‘.json.gz’-extensie ontbreekt."
+        }
     },
     "about": {
         "title": "Over",
-        "source": "Broncode"
+        "source": "Broncode",
+        "close": "Sluiten",
+        "license": "Licentie"
     },
     "tooltips": {
         "addNewItem": "Item toevoegen"
     },
     "content": {
         "anime": "Anime",
-        "manga": "Manga"
+        "manga": "Manga",
+        "list": "Lĳst"
     },
     "search": {
         "anime": "Zoeken naar anime",
@@ -52,5 +63,18 @@
         "dropped": "Gestopt",
         "paused": "Onderbroken",
         "all": "Alles"
+    },
+    "calendar": {
+        "calendar": "Kalender",
+        "days": {
+            "monday": "maandag",
+            "tuesday": "dinsdag",
+            "wednesday": "woensdag",
+            "thursday": "donderdag",
+            "friday": "vrĳdag",
+            "saturday": "zaterdag",
+            "sunday": "zondag",
+            "unknown": "Onbekend"
+        }
     }
 }
