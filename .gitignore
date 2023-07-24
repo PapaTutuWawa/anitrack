@@ -49,3 +49,6 @@ lib/i18n/
 # NixOS
 .direnv
 .envrc
+
+# Build artifacts
+release-*/
