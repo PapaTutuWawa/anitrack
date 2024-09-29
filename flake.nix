@@ -28,14 +28,15 @@
       platform-tools
       emulator
       patcher-v4
-      platforms-android-30
+      #platforms-android-30
       platforms-android-31
       platforms-android-33
+      platforms-android-34
     ]);
   in {
     devShell = pkgs.mkShell {
       buildInputs = with pkgs; [
-        # Android  
+        # Android
         sdk
 
         # Flutter

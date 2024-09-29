@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'manga.dart';
 
@@ -12,7 +12,7 @@ part of 'manga.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MangaTrackingData _$MangaTrackingDataFromJson(Map<String, dynamic> json) {
   return _MangaTrackingData.fromJson(json);
@@ -42,8 +42,12 @@ mixin _$MangaTrackingData {
   /// URL to the thumbnail/cover art for the manga.
   String get thumbnailUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this MangaTrackingData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MangaTrackingData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MangaTrackingDataCopyWith<MangaTrackingData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,7 +56,8 @@ mixin _$MangaTrackingData {
 abstract class $MangaTrackingDataCopyWith<$Res> {
   factory $MangaTrackingDataCopyWith(
           MangaTrackingData value, $Res Function(MangaTrackingData) then) =
-      _$MangaTrackingDataCopyWithImpl<$Res>;
+      _$MangaTrackingDataCopyWithImpl<$Res, MangaTrackingData>;
+  @useResult
   $Res call(
       {String id,
       @MediumTrackingStateConverter() MediumTrackingState state,
@@ -64,64 +69,69 @@ abstract class $MangaTrackingDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MangaTrackingDataCopyWithImpl<$Res>
+class _$MangaTrackingDataCopyWithImpl<$Res, $Val extends MangaTrackingData>
     implements $MangaTrackingDataCopyWith<$Res> {
   _$MangaTrackingDataCopyWithImpl(this._value, this._then);
 
-  final MangaTrackingData _value;
   // ignore: unused_field
-  final $Res Function(MangaTrackingData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  /// Create a copy of MangaTrackingData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? state = freezed,
-    Object? title = freezed,
-    Object? chaptersRead = freezed,
-    Object? volumesOwned = freezed,
+    Object? id = null,
+    Object? state = null,
+    Object? title = null,
+    Object? chaptersRead = null,
+    Object? volumesOwned = null,
     Object? chaptersTotal = freezed,
-    Object? thumbnailUrl = freezed,
+    Object? thumbnailUrl = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      state: state == freezed
+      state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as MediumTrackingState,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      chaptersRead: chaptersRead == freezed
+      chaptersRead: null == chaptersRead
           ? _value.chaptersRead
           : chaptersRead // ignore: cast_nullable_to_non_nullable
               as int,
-      volumesOwned: volumesOwned == freezed
+      volumesOwned: null == volumesOwned
           ? _value.volumesOwned
           : volumesOwned // ignore: cast_nullable_to_non_nullable
               as int,
-      chaptersTotal: chaptersTotal == freezed
+      chaptersTotal: freezed == chaptersTotal
           ? _value.chaptersTotal
           : chaptersTotal // ignore: cast_nullable_to_non_nullable
               as int?,
-      thumbnailUrl: thumbnailUrl == freezed
+      thumbnailUrl: null == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_MangaTrackingDataCopyWith<$Res>
+abstract class _$$MangaTrackingDataImplCopyWith<$Res>
     implements $MangaTrackingDataCopyWith<$Res> {
-  factory _$$_MangaTrackingDataCopyWith(_$_MangaTrackingData value,
-          $Res Function(_$_MangaTrackingData) then) =
-      __$$_MangaTrackingDataCopyWithImpl<$Res>;
+  factory _$$MangaTrackingDataImplCopyWith(_$MangaTrackingDataImpl value,
+          $Res Function(_$MangaTrackingDataImpl) then) =
+      __$$MangaTrackingDataImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       @MediumTrackingStateConverter() MediumTrackingState state,
@@ -133,52 +143,52 @@ abstract class _$$_MangaTrackingDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MangaTrackingDataCopyWithImpl<$Res>
-    extends _$MangaTrackingDataCopyWithImpl<$Res>
-    implements _$$_MangaTrackingDataCopyWith<$Res> {
-  __$$_MangaTrackingDataCopyWithImpl(
-      _$_MangaTrackingData _value, $Res Function(_$_MangaTrackingData) _then)
-      : super(_value, (v) => _then(v as _$_MangaTrackingData));
+class __$$MangaTrackingDataImplCopyWithImpl<$Res>
+    extends _$MangaTrackingDataCopyWithImpl<$Res, _$MangaTrackingDataImpl>
+    implements _$$MangaTrackingDataImplCopyWith<$Res> {
+  __$$MangaTrackingDataImplCopyWithImpl(_$MangaTrackingDataImpl _value,
+      $Res Function(_$MangaTrackingDataImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_MangaTrackingData get _value => super._value as _$_MangaTrackingData;
-
+  /// Create a copy of MangaTrackingData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? state = freezed,
-    Object? title = freezed,
-    Object? chaptersRead = freezed,
-    Object? volumesOwned = freezed,
+    Object? id = null,
+    Object? state = null,
+    Object? title = null,
+    Object? chaptersRead = null,
+    Object? volumesOwned = null,
     Object? chaptersTotal = freezed,
-    Object? thumbnailUrl = freezed,
+    Object? thumbnailUrl = null,
   }) {
-    return _then(_$_MangaTrackingData(
-      id == freezed
+    return _then(_$MangaTrackingDataImpl(
+      null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      state == freezed
+      null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as MediumTrackingState,
-      title == freezed
+      null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      chaptersRead == freezed
+      null == chaptersRead
           ? _value.chaptersRead
           : chaptersRead // ignore: cast_nullable_to_non_nullable
               as int,
-      volumesOwned == freezed
+      null == volumesOwned
           ? _value.volumesOwned
           : volumesOwned // ignore: cast_nullable_to_non_nullable
               as int,
-      chaptersTotal == freezed
+      freezed == chaptersTotal
           ? _value.chaptersTotal
           : chaptersTotal // ignore: cast_nullable_to_non_nullable
               as int?,
-      thumbnailUrl == freezed
+      null == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String,
@@ -188,8 +198,8 @@ class __$$_MangaTrackingDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MangaTrackingData implements _MangaTrackingData {
-  _$_MangaTrackingData(
+class _$MangaTrackingDataImpl implements _MangaTrackingData {
+  _$MangaTrackingDataImpl(
       this.id,
       @MediumTrackingStateConverter() this.state,
       this.title,
@@ -198,8 +208,8 @@ class _$_MangaTrackingData implements _MangaTrackingData {
       this.chaptersTotal,
       this.thumbnailUrl);
 
-  factory _$_MangaTrackingData.fromJson(Map<String, dynamic> json) =>
-      _$$_MangaTrackingDataFromJson(json);
+  factory _$MangaTrackingDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MangaTrackingDataImplFromJson(json);
 
   /// The ID of the manga
   @override
@@ -236,44 +246,40 @@ class _$_MangaTrackingData implements _MangaTrackingData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MangaTrackingData &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.state, state) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.chaptersRead, chaptersRead) &&
-            const DeepCollectionEquality()
-                .equals(other.volumesOwned, volumesOwned) &&
-            const DeepCollectionEquality()
-                .equals(other.chaptersTotal, chaptersTotal) &&
-            const DeepCollectionEquality()
-                .equals(other.thumbnailUrl, thumbnailUrl));
+            other is _$MangaTrackingDataImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.chaptersRead, chaptersRead) ||
+                other.chaptersRead == chaptersRead) &&
+            (identical(other.volumesOwned, volumesOwned) ||
+                other.volumesOwned == volumesOwned) &&
+            (identical(other.chaptersTotal, chaptersTotal) ||
+                other.chaptersTotal == chaptersTotal) &&
+            (identical(other.thumbnailUrl, thumbnailUrl) ||
+                other.thumbnailUrl == thumbnailUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(state),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(chaptersRead),
-      const DeepCollectionEquality().hash(volumesOwned),
-      const DeepCollectionEquality().hash(chaptersTotal),
-      const DeepCollectionEquality().hash(thumbnailUrl));
+  int get hashCode => Object.hash(runtimeType, id, state, title, chaptersRead,
+      volumesOwned, chaptersTotal, thumbnailUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MangaTrackingData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  _$$_MangaTrackingDataCopyWith<_$_MangaTrackingData> get copyWith =>
-      __$$_MangaTrackingDataCopyWithImpl<_$_MangaTrackingData>(
+  @pragma('vm:prefer-inline')
+  _$$MangaTrackingDataImplCopyWith<_$MangaTrackingDataImpl> get copyWith =>
+      __$$MangaTrackingDataImplCopyWithImpl<_$MangaTrackingDataImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MangaTrackingDataToJson(
+    return _$$MangaTrackingDataImplToJson(
       this,
     );
   }
@@ -287,42 +293,44 @@ abstract class _MangaTrackingData implements MangaTrackingData {
       final int chaptersRead,
       final int volumesOwned,
       final int? chaptersTotal,
-      final String thumbnailUrl) = _$_MangaTrackingData;
+      final String thumbnailUrl) = _$MangaTrackingDataImpl;
 
   factory _MangaTrackingData.fromJson(Map<String, dynamic> json) =
-      _$_MangaTrackingData.fromJson;
-
-  @override
+      _$MangaTrackingDataImpl.fromJson;
 
   /// The ID of the manga
-  String get id;
   @override
+  String get id;
 
   /// The state of the manga
+  @override
   @MediumTrackingStateConverter()
   MediumTrackingState get state;
-  @override
 
   /// The title of the manga
+  @override
   String get title;
-  @override
 
   /// Chapters read.
+  @override
   int get chaptersRead;
-  @override
 
   /// Chapters read.
-  int get volumesOwned;
   @override
+  int get volumesOwned;
 
   /// Episodes watched.
-  int? get chaptersTotal;
   @override
+  int? get chaptersTotal;
 
   /// URL to the thumbnail/cover art for the manga.
-  String get thumbnailUrl;
   @override
-  @JsonKey(ignore: true)
-  _$$_MangaTrackingDataCopyWith<_$_MangaTrackingData> get copyWith =>
+  String get thumbnailUrl;
+
+  /// Create a copy of MangaTrackingData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MangaTrackingDataImplCopyWith<_$MangaTrackingDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

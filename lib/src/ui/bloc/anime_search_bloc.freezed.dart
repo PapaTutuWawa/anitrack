@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'anime_search_bloc.dart';
 
@@ -12,7 +12,7 @@ part of 'anime_search_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AnimeSearchState {
@@ -21,7 +21,9 @@ mixin _$AnimeSearchState {
   bool get working => throw _privateConstructorUsedError;
   List<SearchResult> get searchResults => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnimeSearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnimeSearchStateCopyWith<AnimeSearchState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -30,7 +32,8 @@ mixin _$AnimeSearchState {
 abstract class $AnimeSearchStateCopyWith<$Res> {
   factory $AnimeSearchStateCopyWith(
           AnimeSearchState value, $Res Function(AnimeSearchState) then) =
-      _$AnimeSearchStateCopyWithImpl<$Res>;
+      _$AnimeSearchStateCopyWithImpl<$Res, AnimeSearchState>;
+  @useResult
   $Res call(
       {TrackingMediumType trackingType,
       String searchQuery,
@@ -39,49 +42,54 @@ abstract class $AnimeSearchStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AnimeSearchStateCopyWithImpl<$Res>
+class _$AnimeSearchStateCopyWithImpl<$Res, $Val extends AnimeSearchState>
     implements $AnimeSearchStateCopyWith<$Res> {
   _$AnimeSearchStateCopyWithImpl(this._value, this._then);
 
-  final AnimeSearchState _value;
   // ignore: unused_field
-  final $Res Function(AnimeSearchState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  /// Create a copy of AnimeSearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trackingType = freezed,
-    Object? searchQuery = freezed,
-    Object? working = freezed,
-    Object? searchResults = freezed,
+    Object? trackingType = null,
+    Object? searchQuery = null,
+    Object? working = null,
+    Object? searchResults = null,
   }) {
     return _then(_value.copyWith(
-      trackingType: trackingType == freezed
+      trackingType: null == trackingType
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
               as TrackingMediumType,
-      searchQuery: searchQuery == freezed
+      searchQuery: null == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
-      working: working == freezed
+      working: null == working
           ? _value.working
           : working // ignore: cast_nullable_to_non_nullable
               as bool,
-      searchResults: searchResults == freezed
+      searchResults: null == searchResults
           ? _value.searchResults
           : searchResults // ignore: cast_nullable_to_non_nullable
               as List<SearchResult>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_AnimeSearchStateCopyWith<$Res>
+abstract class _$$AnimeSearchStateImplCopyWith<$Res>
     implements $AnimeSearchStateCopyWith<$Res> {
-  factory _$$_AnimeSearchStateCopyWith(
-          _$_AnimeSearchState value, $Res Function(_$_AnimeSearchState) then) =
-      __$$_AnimeSearchStateCopyWithImpl<$Res>;
+  factory _$$AnimeSearchStateImplCopyWith(_$AnimeSearchStateImpl value,
+          $Res Function(_$AnimeSearchStateImpl) then) =
+      __$$AnimeSearchStateImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {TrackingMediumType trackingType,
       String searchQuery,
@@ -90,37 +98,37 @@ abstract class _$$_AnimeSearchStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AnimeSearchStateCopyWithImpl<$Res>
-    extends _$AnimeSearchStateCopyWithImpl<$Res>
-    implements _$$_AnimeSearchStateCopyWith<$Res> {
-  __$$_AnimeSearchStateCopyWithImpl(
-      _$_AnimeSearchState _value, $Res Function(_$_AnimeSearchState) _then)
-      : super(_value, (v) => _then(v as _$_AnimeSearchState));
+class __$$AnimeSearchStateImplCopyWithImpl<$Res>
+    extends _$AnimeSearchStateCopyWithImpl<$Res, _$AnimeSearchStateImpl>
+    implements _$$AnimeSearchStateImplCopyWith<$Res> {
+  __$$AnimeSearchStateImplCopyWithImpl(_$AnimeSearchStateImpl _value,
+      $Res Function(_$AnimeSearchStateImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_AnimeSearchState get _value => super._value as _$_AnimeSearchState;
-
+  /// Create a copy of AnimeSearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trackingType = freezed,
-    Object? searchQuery = freezed,
-    Object? working = freezed,
-    Object? searchResults = freezed,
+    Object? trackingType = null,
+    Object? searchQuery = null,
+    Object? working = null,
+    Object? searchResults = null,
   }) {
-    return _then(_$_AnimeSearchState(
-      trackingType: trackingType == freezed
+    return _then(_$AnimeSearchStateImpl(
+      trackingType: null == trackingType
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
               as TrackingMediumType,
-      searchQuery: searchQuery == freezed
+      searchQuery: null == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
-      working: working == freezed
+      working: null == working
           ? _value.working
           : working // ignore: cast_nullable_to_non_nullable
               as bool,
-      searchResults: searchResults == freezed
+      searchResults: null == searchResults
           ? _value._searchResults
           : searchResults // ignore: cast_nullable_to_non_nullable
               as List<SearchResult>,
@@ -130,8 +138,8 @@ class __$$_AnimeSearchStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AnimeSearchState implements _AnimeSearchState {
-  _$_AnimeSearchState(
+class _$AnimeSearchStateImpl implements _AnimeSearchState {
+  _$AnimeSearchStateImpl(
       {this.trackingType = TrackingMediumType.anime,
       this.searchQuery = '',
       this.working = false,
@@ -151,6 +159,7 @@ class _$_AnimeSearchState implements _AnimeSearchState {
   @override
   @JsonKey()
   List<SearchResult> get searchResults {
+    if (_searchResults is EqualUnmodifiableListView) return _searchResults;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_searchResults);
   }
@@ -161,31 +170,31 @@ class _$_AnimeSearchState implements _AnimeSearchState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnimeSearchState &&
-            const DeepCollectionEquality()
-                .equals(other.trackingType, trackingType) &&
-            const DeepCollectionEquality()
-                .equals(other.searchQuery, searchQuery) &&
-            const DeepCollectionEquality().equals(other.working, working) &&
+            other is _$AnimeSearchStateImpl &&
+            (identical(other.trackingType, trackingType) ||
+                other.trackingType == trackingType) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery) &&
+            (identical(other.working, working) || other.working == working) &&
             const DeepCollectionEquality()
                 .equals(other._searchResults, _searchResults));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(trackingType),
-      const DeepCollectionEquality().hash(searchQuery),
-      const DeepCollectionEquality().hash(working),
-      const DeepCollectionEquality().hash(_searchResults));
+  int get hashCode => Object.hash(runtimeType, trackingType, searchQuery,
+      working, const DeepCollectionEquality().hash(_searchResults));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnimeSearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  _$$_AnimeSearchStateCopyWith<_$_AnimeSearchState> get copyWith =>
-      __$$_AnimeSearchStateCopyWithImpl<_$_AnimeSearchState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$AnimeSearchStateImplCopyWith<_$AnimeSearchStateImpl> get copyWith =>
+      __$$AnimeSearchStateImplCopyWithImpl<_$AnimeSearchStateImpl>(
+          this, _$identity);
 }
 
 abstract class _AnimeSearchState implements AnimeSearchState {
@@ -193,7 +202,7 @@ abstract class _AnimeSearchState implements AnimeSearchState {
       {final TrackingMediumType trackingType,
       final String searchQuery,
       final bool working,
-      final List<SearchResult> searchResults}) = _$_AnimeSearchState;
+      final List<SearchResult> searchResults}) = _$AnimeSearchStateImpl;
 
   @override
   TrackingMediumType get trackingType;
@@ -203,8 +212,11 @@ abstract class _AnimeSearchState implements AnimeSearchState {
   bool get working;
   @override
   List<SearchResult> get searchResults;
+
+  /// Create a copy of AnimeSearchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_AnimeSearchStateCopyWith<_$_AnimeSearchState> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AnimeSearchStateImplCopyWith<_$AnimeSearchStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

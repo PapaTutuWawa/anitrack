@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'anime_list_bloc.dart';
 
@@ -12,7 +12,7 @@ part of 'anime_list_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AnimeListState {
@@ -25,7 +25,9 @@ mixin _$AnimeListState {
       throw _privateConstructorUsedError;
   TrackingMediumType get trackingType => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnimeListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnimeListStateCopyWith<AnimeListState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -34,7 +36,8 @@ mixin _$AnimeListState {
 abstract class $AnimeListStateCopyWith<$Res> {
   factory $AnimeListStateCopyWith(
           AnimeListState value, $Res Function(AnimeListState) then) =
-      _$AnimeListStateCopyWithImpl<$Res>;
+      _$AnimeListStateCopyWithImpl<$Res, AnimeListState>;
+  @useResult
   $Res call(
       {bool buttonVisibility,
       List<AnimeTrackingData> animes,
@@ -45,59 +48,64 @@ abstract class $AnimeListStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AnimeListStateCopyWithImpl<$Res>
+class _$AnimeListStateCopyWithImpl<$Res, $Val extends AnimeListState>
     implements $AnimeListStateCopyWith<$Res> {
   _$AnimeListStateCopyWithImpl(this._value, this._then);
 
-  final AnimeListState _value;
   // ignore: unused_field
-  final $Res Function(AnimeListState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  /// Create a copy of AnimeListState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? buttonVisibility = freezed,
-    Object? animes = freezed,
-    Object? mangas = freezed,
-    Object? animeFilterState = freezed,
-    Object? mangaFilterState = freezed,
-    Object? trackingType = freezed,
+    Object? buttonVisibility = null,
+    Object? animes = null,
+    Object? mangas = null,
+    Object? animeFilterState = null,
+    Object? mangaFilterState = null,
+    Object? trackingType = null,
   }) {
     return _then(_value.copyWith(
-      buttonVisibility: buttonVisibility == freezed
+      buttonVisibility: null == buttonVisibility
           ? _value.buttonVisibility
           : buttonVisibility // ignore: cast_nullable_to_non_nullable
               as bool,
-      animes: animes == freezed
+      animes: null == animes
           ? _value.animes
           : animes // ignore: cast_nullable_to_non_nullable
               as List<AnimeTrackingData>,
-      mangas: mangas == freezed
+      mangas: null == mangas
           ? _value.mangas
           : mangas // ignore: cast_nullable_to_non_nullable
               as List<MangaTrackingData>,
-      animeFilterState: animeFilterState == freezed
+      animeFilterState: null == animeFilterState
           ? _value.animeFilterState
           : animeFilterState // ignore: cast_nullable_to_non_nullable
               as MediumTrackingState,
-      mangaFilterState: mangaFilterState == freezed
+      mangaFilterState: null == mangaFilterState
           ? _value.mangaFilterState
           : mangaFilterState // ignore: cast_nullable_to_non_nullable
               as MediumTrackingState,
-      trackingType: trackingType == freezed
+      trackingType: null == trackingType
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
               as TrackingMediumType,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_AnimeListStateCopyWith<$Res>
+abstract class _$$AnimeListStateImplCopyWith<$Res>
     implements $AnimeListStateCopyWith<$Res> {
-  factory _$$_AnimeListStateCopyWith(
-          _$_AnimeListState value, $Res Function(_$_AnimeListState) then) =
-      __$$_AnimeListStateCopyWithImpl<$Res>;
+  factory _$$AnimeListStateImplCopyWith(_$AnimeListStateImpl value,
+          $Res Function(_$AnimeListStateImpl) then) =
+      __$$AnimeListStateImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool buttonVisibility,
       List<AnimeTrackingData> animes,
@@ -108,47 +116,47 @@ abstract class _$$_AnimeListStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AnimeListStateCopyWithImpl<$Res>
-    extends _$AnimeListStateCopyWithImpl<$Res>
-    implements _$$_AnimeListStateCopyWith<$Res> {
-  __$$_AnimeListStateCopyWithImpl(
-      _$_AnimeListState _value, $Res Function(_$_AnimeListState) _then)
-      : super(_value, (v) => _then(v as _$_AnimeListState));
+class __$$AnimeListStateImplCopyWithImpl<$Res>
+    extends _$AnimeListStateCopyWithImpl<$Res, _$AnimeListStateImpl>
+    implements _$$AnimeListStateImplCopyWith<$Res> {
+  __$$AnimeListStateImplCopyWithImpl(
+      _$AnimeListStateImpl _value, $Res Function(_$AnimeListStateImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_AnimeListState get _value => super._value as _$_AnimeListState;
-
+  /// Create a copy of AnimeListState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? buttonVisibility = freezed,
-    Object? animes = freezed,
-    Object? mangas = freezed,
-    Object? animeFilterState = freezed,
-    Object? mangaFilterState = freezed,
-    Object? trackingType = freezed,
+    Object? buttonVisibility = null,
+    Object? animes = null,
+    Object? mangas = null,
+    Object? animeFilterState = null,
+    Object? mangaFilterState = null,
+    Object? trackingType = null,
   }) {
-    return _then(_$_AnimeListState(
-      buttonVisibility: buttonVisibility == freezed
+    return _then(_$AnimeListStateImpl(
+      buttonVisibility: null == buttonVisibility
           ? _value.buttonVisibility
           : buttonVisibility // ignore: cast_nullable_to_non_nullable
               as bool,
-      animes: animes == freezed
+      animes: null == animes
           ? _value._animes
           : animes // ignore: cast_nullable_to_non_nullable
               as List<AnimeTrackingData>,
-      mangas: mangas == freezed
+      mangas: null == mangas
           ? _value._mangas
           : mangas // ignore: cast_nullable_to_non_nullable
               as List<MangaTrackingData>,
-      animeFilterState: animeFilterState == freezed
+      animeFilterState: null == animeFilterState
           ? _value.animeFilterState
           : animeFilterState // ignore: cast_nullable_to_non_nullable
               as MediumTrackingState,
-      mangaFilterState: mangaFilterState == freezed
+      mangaFilterState: null == mangaFilterState
           ? _value.mangaFilterState
           : mangaFilterState // ignore: cast_nullable_to_non_nullable
               as MediumTrackingState,
-      trackingType: trackingType == freezed
+      trackingType: null == trackingType
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
               as TrackingMediumType,
@@ -158,8 +166,8 @@ class __$$_AnimeListStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AnimeListState implements _AnimeListState {
-  _$_AnimeListState(
+class _$AnimeListStateImpl implements _AnimeListState {
+  _$AnimeListStateImpl(
       {this.buttonVisibility = true,
       final List<AnimeTrackingData> animes = const [],
       final List<MangaTrackingData> mangas = const [],
@@ -176,6 +184,7 @@ class _$_AnimeListState implements _AnimeListState {
   @override
   @JsonKey()
   List<AnimeTrackingData> get animes {
+    if (_animes is EqualUnmodifiableListView) return _animes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_animes);
   }
@@ -184,6 +193,7 @@ class _$_AnimeListState implements _AnimeListState {
   @override
   @JsonKey()
   List<MangaTrackingData> get mangas {
+    if (_mangas is EqualUnmodifiableListView) return _mangas;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_mangas);
   }
@@ -204,36 +214,40 @@ class _$_AnimeListState implements _AnimeListState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnimeListState &&
-            const DeepCollectionEquality()
-                .equals(other.buttonVisibility, buttonVisibility) &&
+            other is _$AnimeListStateImpl &&
+            (identical(other.buttonVisibility, buttonVisibility) ||
+                other.buttonVisibility == buttonVisibility) &&
             const DeepCollectionEquality().equals(other._animes, _animes) &&
             const DeepCollectionEquality().equals(other._mangas, _mangas) &&
-            const DeepCollectionEquality()
-                .equals(other.animeFilterState, animeFilterState) &&
-            const DeepCollectionEquality()
-                .equals(other.mangaFilterState, mangaFilterState) &&
-            const DeepCollectionEquality()
-                .equals(other.trackingType, trackingType));
+            (identical(other.animeFilterState, animeFilterState) ||
+                other.animeFilterState == animeFilterState) &&
+            (identical(other.mangaFilterState, mangaFilterState) ||
+                other.mangaFilterState == mangaFilterState) &&
+            (identical(other.trackingType, trackingType) ||
+                other.trackingType == trackingType));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(buttonVisibility),
+      buttonVisibility,
       const DeepCollectionEquality().hash(_animes),
       const DeepCollectionEquality().hash(_mangas),
-      const DeepCollectionEquality().hash(animeFilterState),
-      const DeepCollectionEquality().hash(mangaFilterState),
-      const DeepCollectionEquality().hash(trackingType));
+      animeFilterState,
+      mangaFilterState,
+      trackingType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnimeListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  _$$_AnimeListStateCopyWith<_$_AnimeListState> get copyWith =>
-      __$$_AnimeListStateCopyWithImpl<_$_AnimeListState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$AnimeListStateImplCopyWith<_$AnimeListStateImpl> get copyWith =>
+      __$$AnimeListStateImplCopyWithImpl<_$AnimeListStateImpl>(
+          this, _$identity);
 }
 
 abstract class _AnimeListState implements AnimeListState {
@@ -243,7 +257,7 @@ abstract class _AnimeListState implements AnimeListState {
       final List<MangaTrackingData> mangas,
       final MediumTrackingState animeFilterState,
       final MediumTrackingState mangaFilterState,
-      final TrackingMediumType trackingType}) = _$_AnimeListState;
+      final TrackingMediumType trackingType}) = _$AnimeListStateImpl;
 
   @override
   bool get buttonVisibility;
@@ -257,8 +271,11 @@ abstract class _AnimeListState implements AnimeListState {
   MediumTrackingState get mangaFilterState;
   @override
   TrackingMediumType get trackingType;
+
+  /// Create a copy of AnimeListState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_AnimeListStateCopyWith<_$_AnimeListState> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AnimeListStateImplCopyWith<_$AnimeListStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

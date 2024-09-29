@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'anime.dart';
 
@@ -12,7 +12,7 @@ part of 'anime.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AnimeTrackingData _$AnimeTrackingDataFromJson(Map<String, dynamic> json) {
   return _AnimeTrackingData.fromJson(json);
@@ -46,8 +46,12 @@ mixin _$AnimeTrackingData {
   /// The day of the week the anime is airing
   String? get broadcastDay => throw _privateConstructorUsedError;
 
+  /// Serializes this AnimeTrackingData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnimeTrackingData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnimeTrackingDataCopyWith<AnimeTrackingData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,7 +60,8 @@ mixin _$AnimeTrackingData {
 abstract class $AnimeTrackingDataCopyWith<$Res> {
   factory $AnimeTrackingDataCopyWith(
           AnimeTrackingData value, $Res Function(AnimeTrackingData) then) =
-      _$AnimeTrackingDataCopyWithImpl<$Res>;
+      _$AnimeTrackingDataCopyWithImpl<$Res, AnimeTrackingData>;
+  @useResult
   $Res call(
       {String id,
       @MediumTrackingStateConverter() MediumTrackingState state,
@@ -69,69 +74,74 @@ abstract class $AnimeTrackingDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AnimeTrackingDataCopyWithImpl<$Res>
+class _$AnimeTrackingDataCopyWithImpl<$Res, $Val extends AnimeTrackingData>
     implements $AnimeTrackingDataCopyWith<$Res> {
   _$AnimeTrackingDataCopyWithImpl(this._value, this._then);
 
-  final AnimeTrackingData _value;
   // ignore: unused_field
-  final $Res Function(AnimeTrackingData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  /// Create a copy of AnimeTrackingData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? state = freezed,
-    Object? title = freezed,
-    Object? episodesWatched = freezed,
+    Object? id = null,
+    Object? state = null,
+    Object? title = null,
+    Object? episodesWatched = null,
     Object? episodesTotal = freezed,
-    Object? thumbnailUrl = freezed,
-    Object? airing = freezed,
+    Object? thumbnailUrl = null,
+    Object? airing = null,
     Object? broadcastDay = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      state: state == freezed
+      state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as MediumTrackingState,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      episodesWatched: episodesWatched == freezed
+      episodesWatched: null == episodesWatched
           ? _value.episodesWatched
           : episodesWatched // ignore: cast_nullable_to_non_nullable
               as int,
-      episodesTotal: episodesTotal == freezed
+      episodesTotal: freezed == episodesTotal
           ? _value.episodesTotal
           : episodesTotal // ignore: cast_nullable_to_non_nullable
               as int?,
-      thumbnailUrl: thumbnailUrl == freezed
+      thumbnailUrl: null == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      airing: airing == freezed
+      airing: null == airing
           ? _value.airing
           : airing // ignore: cast_nullable_to_non_nullable
               as bool,
-      broadcastDay: broadcastDay == freezed
+      broadcastDay: freezed == broadcastDay
           ? _value.broadcastDay
           : broadcastDay // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_AnimeTrackingDataCopyWith<$Res>
+abstract class _$$AnimeTrackingDataImplCopyWith<$Res>
     implements $AnimeTrackingDataCopyWith<$Res> {
-  factory _$$_AnimeTrackingDataCopyWith(_$_AnimeTrackingData value,
-          $Res Function(_$_AnimeTrackingData) then) =
-      __$$_AnimeTrackingDataCopyWithImpl<$Res>;
+  factory _$$AnimeTrackingDataImplCopyWith(_$AnimeTrackingDataImpl value,
+          $Res Function(_$AnimeTrackingDataImpl) then) =
+      __$$AnimeTrackingDataImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       @MediumTrackingStateConverter() MediumTrackingState state,
@@ -144,57 +154,57 @@ abstract class _$$_AnimeTrackingDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AnimeTrackingDataCopyWithImpl<$Res>
-    extends _$AnimeTrackingDataCopyWithImpl<$Res>
-    implements _$$_AnimeTrackingDataCopyWith<$Res> {
-  __$$_AnimeTrackingDataCopyWithImpl(
-      _$_AnimeTrackingData _value, $Res Function(_$_AnimeTrackingData) _then)
-      : super(_value, (v) => _then(v as _$_AnimeTrackingData));
+class __$$AnimeTrackingDataImplCopyWithImpl<$Res>
+    extends _$AnimeTrackingDataCopyWithImpl<$Res, _$AnimeTrackingDataImpl>
+    implements _$$AnimeTrackingDataImplCopyWith<$Res> {
+  __$$AnimeTrackingDataImplCopyWithImpl(_$AnimeTrackingDataImpl _value,
+      $Res Function(_$AnimeTrackingDataImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_AnimeTrackingData get _value => super._value as _$_AnimeTrackingData;
-
+  /// Create a copy of AnimeTrackingData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? state = freezed,
-    Object? title = freezed,
-    Object? episodesWatched = freezed,
+    Object? id = null,
+    Object? state = null,
+    Object? title = null,
+    Object? episodesWatched = null,
     Object? episodesTotal = freezed,
-    Object? thumbnailUrl = freezed,
-    Object? airing = freezed,
+    Object? thumbnailUrl = null,
+    Object? airing = null,
     Object? broadcastDay = freezed,
   }) {
-    return _then(_$_AnimeTrackingData(
-      id == freezed
+    return _then(_$AnimeTrackingDataImpl(
+      null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      state == freezed
+      null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as MediumTrackingState,
-      title == freezed
+      null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      episodesWatched == freezed
+      null == episodesWatched
           ? _value.episodesWatched
           : episodesWatched // ignore: cast_nullable_to_non_nullable
               as int,
-      episodesTotal == freezed
+      freezed == episodesTotal
           ? _value.episodesTotal
           : episodesTotal // ignore: cast_nullable_to_non_nullable
               as int?,
-      thumbnailUrl == freezed
+      null == thumbnailUrl
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      airing == freezed
+      null == airing
           ? _value.airing
           : airing // ignore: cast_nullable_to_non_nullable
               as bool,
-      broadcastDay == freezed
+      freezed == broadcastDay
           ? _value.broadcastDay
           : broadcastDay // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -204,8 +214,8 @@ class __$$_AnimeTrackingDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AnimeTrackingData implements _AnimeTrackingData {
-  _$_AnimeTrackingData(
+class _$AnimeTrackingDataImpl implements _AnimeTrackingData {
+  _$AnimeTrackingDataImpl(
       this.id,
       @MediumTrackingStateConverter() this.state,
       this.title,
@@ -215,8 +225,8 @@ class _$_AnimeTrackingData implements _AnimeTrackingData {
       @BoolConverter() this.airing,
       this.broadcastDay);
 
-  factory _$_AnimeTrackingData.fromJson(Map<String, dynamic> json) =>
-      _$$_AnimeTrackingDataFromJson(json);
+  factory _$AnimeTrackingDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AnimeTrackingDataImplFromJson(json);
 
   /// The ID of the anime
   @override
@@ -258,46 +268,41 @@ class _$_AnimeTrackingData implements _AnimeTrackingData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnimeTrackingData &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.state, state) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.episodesWatched, episodesWatched) &&
-            const DeepCollectionEquality()
-                .equals(other.episodesTotal, episodesTotal) &&
-            const DeepCollectionEquality()
-                .equals(other.thumbnailUrl, thumbnailUrl) &&
-            const DeepCollectionEquality().equals(other.airing, airing) &&
-            const DeepCollectionEquality()
-                .equals(other.broadcastDay, broadcastDay));
+            other is _$AnimeTrackingDataImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.episodesWatched, episodesWatched) ||
+                other.episodesWatched == episodesWatched) &&
+            (identical(other.episodesTotal, episodesTotal) ||
+                other.episodesTotal == episodesTotal) &&
+            (identical(other.thumbnailUrl, thumbnailUrl) ||
+                other.thumbnailUrl == thumbnailUrl) &&
+            (identical(other.airing, airing) || other.airing == airing) &&
+            (identical(other.broadcastDay, broadcastDay) ||
+                other.broadcastDay == broadcastDay));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(state),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(episodesWatched),
-      const DeepCollectionEquality().hash(episodesTotal),
-      const DeepCollectionEquality().hash(thumbnailUrl),
-      const DeepCollectionEquality().hash(airing),
-      const DeepCollectionEquality().hash(broadcastDay));
+  int get hashCode => Object.hash(runtimeType, id, state, title,
+      episodesWatched, episodesTotal, thumbnailUrl, airing, broadcastDay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnimeTrackingData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  _$$_AnimeTrackingDataCopyWith<_$_AnimeTrackingData> get copyWith =>
-      __$$_AnimeTrackingDataCopyWithImpl<_$_AnimeTrackingData>(
+  @pragma('vm:prefer-inline')
+  _$$AnimeTrackingDataImplCopyWith<_$AnimeTrackingDataImpl> get copyWith =>
+      __$$AnimeTrackingDataImplCopyWithImpl<_$AnimeTrackingDataImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AnimeTrackingDataToJson(
+    return _$$AnimeTrackingDataImplToJson(
       this,
     );
   }
@@ -312,47 +317,49 @@ abstract class _AnimeTrackingData implements AnimeTrackingData {
       final int? episodesTotal,
       final String thumbnailUrl,
       @BoolConverter() final bool airing,
-      final String? broadcastDay) = _$_AnimeTrackingData;
+      final String? broadcastDay) = _$AnimeTrackingDataImpl;
 
   factory _AnimeTrackingData.fromJson(Map<String, dynamic> json) =
-      _$_AnimeTrackingData.fromJson;
-
-  @override
+      _$AnimeTrackingDataImpl.fromJson;
 
   /// The ID of the anime
-  String get id;
   @override
+  String get id;
 
   /// The state of the anime
+  @override
   @MediumTrackingStateConverter()
   MediumTrackingState get state;
-  @override
 
   /// The title of the anime
-  String get title;
   @override
+  String get title;
 
   /// Episodes in total.
-  int get episodesWatched;
   @override
+  int get episodesWatched;
 
   /// Episodes watched.
-  int? get episodesTotal;
   @override
+  int? get episodesTotal;
 
   /// URL to the thumbnail/cover art for the anime.
-  String get thumbnailUrl;
   @override
+  String get thumbnailUrl;
 
   /// Flag whether the anime is airing
+  @override
   @BoolConverter()
   bool get airing;
-  @override
 
   /// The day of the week the anime is airing
-  String? get broadcastDay;
   @override
-  @JsonKey(ignore: true)
-  _$$_AnimeTrackingDataCopyWith<_$_AnimeTrackingData> get copyWith =>
+  String? get broadcastDay;
+
+  /// Create a copy of AnimeTrackingData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AnimeTrackingDataImplCopyWith<_$AnimeTrackingDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

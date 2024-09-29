@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'details_bloc.dart';
 
@@ -12,7 +12,7 @@ part of 'details_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DetailsState {
@@ -20,7 +20,9 @@ mixin _$DetailsState {
   String? get heroImagePrefix => throw _privateConstructorUsedError;
   TrackingMediumType get trackingType => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DetailsStateCopyWith<DetailsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -29,7 +31,8 @@ mixin _$DetailsState {
 abstract class $DetailsStateCopyWith<$Res> {
   factory $DetailsStateCopyWith(
           DetailsState value, $Res Function(DetailsState) then) =
-      _$DetailsStateCopyWithImpl<$Res>;
+      _$DetailsStateCopyWithImpl<$Res, DetailsState>;
+  @useResult
   $Res call(
       {TrackingMedium? data,
       String? heroImagePrefix,
@@ -37,43 +40,49 @@ abstract class $DetailsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DetailsStateCopyWithImpl<$Res> implements $DetailsStateCopyWith<$Res> {
+class _$DetailsStateCopyWithImpl<$Res, $Val extends DetailsState>
+    implements $DetailsStateCopyWith<$Res> {
   _$DetailsStateCopyWithImpl(this._value, this._then);
 
-  final DetailsState _value;
   // ignore: unused_field
-  final $Res Function(DetailsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  /// Create a copy of DetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? data = freezed,
     Object? heroImagePrefix = freezed,
-    Object? trackingType = freezed,
+    Object? trackingType = null,
   }) {
     return _then(_value.copyWith(
-      data: data == freezed
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as TrackingMedium?,
-      heroImagePrefix: heroImagePrefix == freezed
+      heroImagePrefix: freezed == heroImagePrefix
           ? _value.heroImagePrefix
           : heroImagePrefix // ignore: cast_nullable_to_non_nullable
               as String?,
-      trackingType: trackingType == freezed
+      trackingType: null == trackingType
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
               as TrackingMediumType,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_DetailsStateCopyWith<$Res>
+abstract class _$$DetailsStateImplCopyWith<$Res>
     implements $DetailsStateCopyWith<$Res> {
-  factory _$$_DetailsStateCopyWith(
-          _$_DetailsState value, $Res Function(_$_DetailsState) then) =
-      __$$_DetailsStateCopyWithImpl<$Res>;
+  factory _$$DetailsStateImplCopyWith(
+          _$DetailsStateImpl value, $Res Function(_$DetailsStateImpl) then) =
+      __$$DetailsStateImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {TrackingMedium? data,
       String? heroImagePrefix,
@@ -81,32 +90,32 @@ abstract class _$$_DetailsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DetailsStateCopyWithImpl<$Res>
-    extends _$DetailsStateCopyWithImpl<$Res>
-    implements _$$_DetailsStateCopyWith<$Res> {
-  __$$_DetailsStateCopyWithImpl(
-      _$_DetailsState _value, $Res Function(_$_DetailsState) _then)
-      : super(_value, (v) => _then(v as _$_DetailsState));
+class __$$DetailsStateImplCopyWithImpl<$Res>
+    extends _$DetailsStateCopyWithImpl<$Res, _$DetailsStateImpl>
+    implements _$$DetailsStateImplCopyWith<$Res> {
+  __$$DetailsStateImplCopyWithImpl(
+      _$DetailsStateImpl _value, $Res Function(_$DetailsStateImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_DetailsState get _value => super._value as _$_DetailsState;
-
+  /// Create a copy of DetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? data = freezed,
     Object? heroImagePrefix = freezed,
-    Object? trackingType = freezed,
+    Object? trackingType = null,
   }) {
-    return _then(_$_DetailsState(
-      data: data == freezed
+    return _then(_$DetailsStateImpl(
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as TrackingMedium?,
-      heroImagePrefix: heroImagePrefix == freezed
+      heroImagePrefix: freezed == heroImagePrefix
           ? _value.heroImagePrefix
           : heroImagePrefix // ignore: cast_nullable_to_non_nullable
               as String?,
-      trackingType: trackingType == freezed
+      trackingType: null == trackingType
           ? _value.trackingType
           : trackingType // ignore: cast_nullable_to_non_nullable
               as TrackingMediumType,
@@ -116,8 +125,8 @@ class __$$_DetailsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DetailsState implements _DetailsState {
-  _$_DetailsState(
+class _$DetailsStateImpl implements _DetailsState {
+  _$DetailsStateImpl(
       {this.data,
       this.heroImagePrefix,
       this.trackingType = TrackingMediumType.anime});
@@ -136,35 +145,35 @@ class _$_DetailsState implements _DetailsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DetailsState &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality()
-                .equals(other.heroImagePrefix, heroImagePrefix) &&
-            const DeepCollectionEquality()
-                .equals(other.trackingType, trackingType));
+            other is _$DetailsStateImpl &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.heroImagePrefix, heroImagePrefix) ||
+                other.heroImagePrefix == heroImagePrefix) &&
+            (identical(other.trackingType, trackingType) ||
+                other.trackingType == trackingType));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(heroImagePrefix),
-      const DeepCollectionEquality().hash(trackingType));
+  int get hashCode =>
+      Object.hash(runtimeType, data, heroImagePrefix, trackingType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  _$$_DetailsStateCopyWith<_$_DetailsState> get copyWith =>
-      __$$_DetailsStateCopyWithImpl<_$_DetailsState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$DetailsStateImplCopyWith<_$DetailsStateImpl> get copyWith =>
+      __$$DetailsStateImplCopyWithImpl<_$DetailsStateImpl>(this, _$identity);
 }
 
 abstract class _DetailsState implements DetailsState {
   factory _DetailsState(
       {final TrackingMedium? data,
       final String? heroImagePrefix,
-      final TrackingMediumType trackingType}) = _$_DetailsState;
+      final TrackingMediumType trackingType}) = _$DetailsStateImpl;
 
   @override
   TrackingMedium? get data;
@@ -172,8 +181,11 @@ abstract class _DetailsState implements DetailsState {
   String? get heroImagePrefix;
   @override
   TrackingMediumType get trackingType;
+
+  /// Create a copy of DetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_DetailsStateCopyWith<_$_DetailsState> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DetailsStateImplCopyWith<_$DetailsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
