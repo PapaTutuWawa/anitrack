@@ -68,7 +68,7 @@
           --not-signed \
           --zipalign ${sdk}/share/android-sdk/build-tools/34.0.0/zipalign \
           --apksigner ${sdk}/share/android-sdk/build-tools/34.0.0/apksigner \
-          --provider-config ${providerArg} ${lib.optional skipBuild "--skip-build"}
+          --provider-config ${providerArg} ${lib.optionalString skipBuild "--skip-build"}
       '';
     in {
       # Skip the build and just sign
