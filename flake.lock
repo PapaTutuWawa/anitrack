@@ -41,10 +41,7 @@
     },
     "devshell": {
       "inputs": {
-        "nixpkgs": [
-          "android-nixpkgs",
-          "nixpkgs"
-        ],
+        "nixpkgs": ["android-nixpkgs", "nixpkgs"],
         "systems": "systems"
       },
       "locked": {

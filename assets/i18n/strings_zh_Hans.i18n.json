@@ -1,0 +1,80 @@
+{
+    "settings": {
+        "importAnime": "导入动画列表",
+        "title": "设置",
+        "importManga": "导入漫画列表",
+        "importMangaDesc": "导入从 MyAnimeList 导出的漫画列表。",
+        "invalidMangaListTitle": "漫画列表无效",
+        "importIndicator": "$current / $total",
+        "exportData": "导出数据",
+        "importData": "导入数据",
+        "dataExportSuccess": "数据已成功导出",
+        "dataImportSuccess": "数据已成功导入",
+        "importInvalidData": {
+            "title": "AniTrack 数据无效",
+            "content": "所选文件不是 AniTrack 导出的数据。它缺少“.json.gz”后缀。"
+        },
+        "importAnimeDesc": "导入从 MyAnimeList 导出的动画列表。",
+        "invalidAnimeListTitle": "动画列表无效",
+        "invalidAnimeListBody": "所选文件不是 MyAnimeList 动画列表。它缺少“.xml.gz”后缀。",
+        "invalidMangaListBody": "所选文件不是 MyAnimeList 漫画列表。它缺少“.xml.gz”后缀。"
+    },
+    "details": {
+        "removeTitle": "移除 $title？",
+        "title": "详情",
+        "removeBody": "是否确定要从列表中移除“$title”？",
+        "removeButton": "移除",
+        "cancelButton": "取消",
+        "watchState": "观看状态",
+        "episodes": "剧集",
+        "chapters": "章节",
+        "volumesOwned": "拥有的卷",
+        "readState": "阅读状态"
+    },
+    "calendar": {
+        "days": {
+            "monday": "星期一",
+            "tuesday": "星期二",
+            "wednesday": "星期三",
+            "thursday": "星期四",
+            "friday": "星期五",
+            "saturday": "星期六",
+            "sunday": "星期日",
+            "unknown": "未知"
+        },
+        "calendar": "日历"
+    },
+    "data": {
+        "planned": {
+            "manga": "计划阅读",
+            "anime": "计划观看"
+        },
+        "completed": "已完成",
+        "paused": "已暂停",
+        "all": "全部",
+        "ongoing": {
+            "anime": "正在观看",
+            "manga": "正在阅读"
+        },
+        "dropped": "已丢弃"
+    },
+    "about": {
+        "title": "关于",
+        "source": "源代码",
+        "license": "许可证",
+        "close": "关闭"
+    },
+    "tooltips": {
+        "addNewItem": "添加新项目"
+    },
+    "content": {
+        "list": "列表",
+        "anime": "动画",
+        "manga": "漫画"
+    },
+    "search": {
+        "anime": "动画搜索",
+        "manga": "漫画搜索",
+        "query": "搜索查询"
+    }
+}
