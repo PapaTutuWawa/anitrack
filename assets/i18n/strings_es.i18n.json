@@ -1,0 +1,80 @@
+{
+    "settings": {
+        "title": "Ajustes",
+        "importAnime": "Importar lista del anime",
+        "importAnimeDesc": "Importar lista del anime exportada desde MyAnimeList.",
+        "invalidAnimeListTitle": "Lista de anime no válida",
+        "invalidAnimeListBody": "El archivo seleccionado no es una lista de anime MAL. Carece del sufijo \".xml.gz\".",
+        "importManga": "Importar listas de mangas",
+        "importMangaDesc": "Importar la lista de mangas exportada desde MyAnimeList.",
+        "invalidMangaListTitle": "Lista de manga inválida",
+        "invalidMangaListBody": "El archivo seleccionado no es una lista de manga MAL. Carece del sufijo \".xml.gz\".",
+        "importIndicator": "$current de $total",
+        "exportData": "Exportar datos",
+        "importData": "Importar datos",
+        "dataExportSuccess": "Datos exportados correctamente",
+        "dataImportSuccess": "Datos importados correctamente",
+        "importInvalidData": {
+            "title": "Datos AniTrack no válidos",
+            "content": "El archivo seleccionado no es una exportación de datos de AniTrack. Carece del sufijo \".json.gz\"."
+        }
+    },
+    "about": {
+        "title": "Acerca de",
+        "source": "Código fuente",
+        "license": "Licencia",
+        "close": "Cerrar"
+    },
+    "tooltips": {
+        "addNewItem": "Añadir un nuevo elemento"
+    },
+    "content": {
+        "list": "Lista",
+        "anime": "Anime",
+        "manga": "Manga"
+    },
+    "search": {
+        "anime": "Buscar anime",
+        "manga": "Buscar manga",
+        "query": "Consulta la búsqueda"
+    },
+    "details": {
+        "title": "Detalles",
+        "removeTitle": "¿Eliminar el $título?",
+        "removeBody": "¿Estás seguro de querer eliminar \"$title\" de la lista?",
+        "removeButton": "Eliminar",
+        "cancelButton": "Cancelar",
+        "watchState": "Situación de la visualización",
+        "readState": "Estado de la lectura",
+        "episodes": "Episodios",
+        "chapters": "Capítulos",
+        "volumesOwned": "Tús volumenes"
+    },
+    "calendar": {
+        "calendar": "Calendario",
+        "days": {
+            "monday": "Lunes",
+            "tuesday": "Martes",
+            "wednesday": "Miercoles",
+            "thursday": "Jueves",
+            "friday": "Viernes",
+            "saturday": "Sábado",
+            "sunday": "Domingo",
+            "unknown": "Desconocido"
+        }
+    },
+    "data": {
+        "ongoing": {
+            "anime": "Viendo",
+            "manga": "Leyendo"
+        },
+        "completed": "Terminado",
+        "planned": {
+            "anime": "Planeas ver",
+            "manga": "Planeas leer"
+        },
+        "dropped": "Interrumpido",
+        "paused": "Pausado",
+        "all": "Todo"
+    }
+}
