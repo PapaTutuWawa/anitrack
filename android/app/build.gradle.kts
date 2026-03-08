@@ -33,7 +33,7 @@ android {
     buildTypes {
         release {
             // Externally signed using a security key
-            signingConfig null
+            signingConfig = null
         }
     }
 }

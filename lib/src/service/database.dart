@@ -59,8 +59,8 @@ class DatabaseService {
     // Allow initializing the database on Windows and Linux as well.
     if (Platform.isLinux || Platform.isWindows) {
       sqfliteFfiInit();
+      databaseFactory = databaseFactoryFfi;
     }
-    databaseFactory = databaseFactoryFfi;
 
     _db = await openDatabase(
       'anitrack.db',
