@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/service/migrations/0000_airing.dart';
 import 'package:anitrack/src/service/migrations/0000_score.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 const animeTable = 'Anime';
 const mangaTable = 'Manga';
@@ -53,6 +56,12 @@ class DatabaseService {
   late final Database _db;
 
   Future<void> initialize() async {
+    // Allow initializing the database on Windows and Linux as well.
+    if (Platform.isLinux || Platform.isWindows) {
+      sqfliteFfiInit();
+    }
+    databaseFactory = databaseFactoryFfi;
+
     _db = await openDatabase(
       'anitrack.db',
       version: 3,
@@ -113,6 +122,21 @@ class DatabaseService {
     );
   }
 
+  Future<AnimeTrackingData> incrementAnimeWatchCounter(AnimeTrackingData data, int value) async {
+    final result = await _db.rawQuery(
+      'UPDATE $animeTable SET episodesWatched = episodesWatched + $value WHERE id = ? RETURNING *',
+      [
+        data.id,
+      ],
+    );
+
+    return result
+        .cast<Map<String, dynamic>>()
+        .map(AnimeTrackingData.fromJson)
+        .toList()
+        .first;
+  }
+
   Future<void> deleteAnime(String id) async {
     await _db.delete(
       animeTable,
@@ -144,5 +168,20 @@ class DatabaseService {
       where: 'id = ?',
       whereArgs: [id],
     );
+  }
+
+  Future<MangaTrackingData> incrementMangaReadChapters(MangaTrackingData data, int value) async {
+    final result = await _db.rawQuery(
+      'UPDATE $mangaTable SET episodesWatched = chaptersRead + $value WHERE id = ? RETURNING *',
+      [
+        data.id,
+      ],
+    );
+
+    return result
+        .cast<Map<String, dynamic>>()
+        .map(MangaTrackingData.fromJson)
+        .toList()
+        .first;
   }
 }

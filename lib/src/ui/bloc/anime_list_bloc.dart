@@ -122,19 +122,14 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     if (anime.episodesTotal != null &&
         anime.episodesWatched + 1 > anime.episodesTotal!) return;
 
+    final newAnime = await GetIt.I.get<DatabaseService>().incrementAnimeWatchCounter(anime, 1);
     final newList = List<AnimeTrackingData>.from(state.animes);
-    final newAnime = anime.copyWith(
-      episodesWatched: anime.episodesWatched + 1,
-    );
     newList[index] = newAnime;
-
     emit(
       state.copyWith(
         animes: newList,
       ),
     );
-
-    await GetIt.I.get<DatabaseService>().updateAnime(newAnime);
   }
 
   Future<void> _onAnimeDecremented(
@@ -147,19 +142,15 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     final anime = state.animes[index];
     if (anime.episodesWatched - 1 < 0) return;
 
-    final newList = List<AnimeTrackingData>.from(state.animes);
-    final newAnime = anime.copyWith(
-      episodesWatched: anime.episodesWatched - 1,
-    );
-    newList[index] = newAnime;
 
+    final newAnime = await GetIt.I.get<DatabaseService>().incrementAnimeWatchCounter(anime, -1);
+    final newList = List<AnimeTrackingData>.from(state.animes);
+    newList[index] = newAnime;
     emit(
       state.copyWith(
         animes: newList,
       ),
     );
-
-    await GetIt.I.get<DatabaseService>().updateAnime(newAnime);
   }
 
   Future<void> _onAnimesLoaded(
@@ -228,24 +219,19 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     if (manga.chaptersTotal != null &&
         manga.chaptersRead + 1 > manga.chaptersTotal!) return;
 
+    final newManga = await GetIt.I.get<DatabaseService>().incrementMangaReadChapters(manga, 1);
     final newList = List<MangaTrackingData>.from(state.mangas);
-    final newManga = manga.copyWith(
-      chaptersRead: manga.chaptersRead + 1,
-    );
     newList[index] = newManga;
-
-    // Update the cache
-    final cacheIndex = _mangas.indexWhere((m) => m.id == event.id);
-    assert(cacheIndex != -1, 'The manga must exist');
-    _mangas[cacheIndex] = newManga;
-
     emit(
       state.copyWith(
         mangas: newList,
       ),
     );
 
-    await GetIt.I.get<DatabaseService>().updateManga(newManga);
+    // Update the cache
+    final cacheIndex = _mangas.indexWhere((m) => m.id == event.id);
+    assert(cacheIndex != -1, 'The manga must exist');
+    _mangas[cacheIndex] = newManga;
   }
 
   Future<void> _onMangaDecremented(
@@ -258,24 +244,19 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     final manga = state.mangas[index];
     if (manga.chaptersRead - 1 < 0) return;
 
+    final newManga = await GetIt.I.get<DatabaseService>().incrementMangaReadChapters(manga, -1);
     final newList = List<MangaTrackingData>.from(state.mangas);
-    final newManga = manga.copyWith(
-      chaptersRead: manga.chaptersRead - 1,
-    );
     newList[index] = newManga;
-
-    // Update the cache
-    final cacheIndex = _mangas.indexWhere((m) => m.id == event.id);
-    assert(cacheIndex != -1, 'The manga must exist');
-    _mangas[cacheIndex] = newManga;
-
     emit(
       state.copyWith(
         mangas: newList,
       ),
     );
 
-    await GetIt.I.get<DatabaseService>().updateManga(newManga);
+    // Update the cache
+    final cacheIndex = _mangas.indexWhere((m) => m.id == event.id);
+    assert(cacheIndex != -1, 'The manga must exist');
+    _mangas[cacheIndex] = newManga;
   }
 
   Future<void> _onAnimeUpdated(

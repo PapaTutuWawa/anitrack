@@ -28,6 +28,7 @@ dependencies:
   slang: ^3.31.2
   slang_flutter: ^3.31.0
   sqflite: ^2.3.3+2
+  sqflite_common_ffi:
   swipeable_tile: ^2.0.1
   url_launcher: ^6.3.0
   xml: ^6.5.0
