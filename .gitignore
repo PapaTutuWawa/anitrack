@@ -52,3 +52,4 @@ lib/i18n/
 
 # Build artifacts
 release-*/
+android/build
