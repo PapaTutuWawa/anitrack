@@ -75,8 +75,8 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     );
 
     _showLoadingSpinner(emit);
-    final inputStream = InputFileStream(event.path);
-    final listRaw = GZipDecoder().decodeBuffer(inputStream);
+    final input = await File(event.path).readAsBytes();
+    final listRaw = const GZipDecoder().decodeBytes(input);
     final listXml = utf8.decode(listRaw);
     final document = XmlDocument.parse(listXml);
     final mal = document.getElement('myanimelist');
@@ -148,8 +148,8 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     );
 
     _showLoadingSpinner(emit);
-    final inputStream = InputFileStream(event.path);
-    final listRaw = GZipDecoder().decodeBuffer(inputStream);
+    final input = await File(event.path).readAsBytes();
+    final listRaw = const archive.GZipDecoder().decodeBytes(input);
     final listXml = utf8.decode(listRaw);
     final document = XmlDocument.parse(listXml);
     final mal = document.getElement('myanimelist');
@@ -230,11 +230,9 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       event.path,
       'anitrack_${date.year}${date.month}${date.day}.json.gz',
     );
-    archive.GZipEncoder().encode(
-      InputStream(utf8.encode(exportData)),
-      output: OutputFileStream(outputPath),
-    );
 
+    final output = const archive.GZipEncoder().encode(utf8.encode(exportData));
+    await File(outputPath).writeAsBytes(output);
     await Fluttertoast.showToast(
       msg: t.settings.dataExportSuccess,
     );

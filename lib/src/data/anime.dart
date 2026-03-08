@@ -17,7 +17,7 @@ class BoolConverter implements JsonConverter<bool, int> {
 
 /// Data about a tracked anime
 @freezed
-class AnimeTrackingData with _$AnimeTrackingData, TrackingMedium {
+abstract class AnimeTrackingData with _$AnimeTrackingData, TrackingMedium {
   factory AnimeTrackingData(
     /// The ID of the anime
     String id,
@@ -43,6 +43,8 @@ class AnimeTrackingData with _$AnimeTrackingData, TrackingMedium {
     /// The day of the week the anime is airing
     String? broadcastDay,
   ) = _AnimeTrackingData;
+
+  AnimeTrackingData._();
 
   /// JSON
   factory AnimeTrackingData.fromJson(Map<String, dynamic> json) =>

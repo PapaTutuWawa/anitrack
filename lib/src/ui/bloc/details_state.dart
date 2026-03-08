@@ -1,7 +1,7 @@
 part of 'details_bloc.dart';
 
 @freezed
-class DetailsState with _$DetailsState {
+abstract class DetailsState with _$DetailsState {
   factory DetailsState({
     TrackingMedium? data,
     String? heroImagePrefix,

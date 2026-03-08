@@ -6,9 +6,8 @@ part of 'manga.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MangaTrackingDataImpl _$$MangaTrackingDataImplFromJson(
-        Map<String, dynamic> json) =>
-    _$MangaTrackingDataImpl(
+_MangaTrackingData _$MangaTrackingDataFromJson(Map<String, dynamic> json) =>
+    _MangaTrackingData(
       json['id'] as String,
       const MediumTrackingStateConverter()
           .fromJson((json['state'] as num).toInt()),
@@ -19,8 +18,7 @@ _$MangaTrackingDataImpl _$$MangaTrackingDataImplFromJson(
       json['thumbnailUrl'] as String,
     );
 
-Map<String, dynamic> _$$MangaTrackingDataImplToJson(
-        _$MangaTrackingDataImpl instance) =>
+Map<String, dynamic> _$MangaTrackingDataToJson(_MangaTrackingData instance) =>
     <String, dynamic>{
       'id': instance.id,
       'state': const MediumTrackingStateConverter().toJson(instance.state),

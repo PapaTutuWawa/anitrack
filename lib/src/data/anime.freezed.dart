@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,138 +9,83 @@ part of 'anime.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AnimeTrackingData _$AnimeTrackingDataFromJson(Map<String, dynamic> json) {
-  return _AnimeTrackingData.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AnimeTrackingData {
   /// The ID of the anime
-  String get id => throw _privateConstructorUsedError;
+  String get id;
 
   /// The state of the anime
   @MediumTrackingStateConverter()
-  MediumTrackingState get state => throw _privateConstructorUsedError;
+  MediumTrackingState get state;
 
   /// The title of the anime
-  String get title => throw _privateConstructorUsedError;
+  String get title;
 
   /// Episodes in total.
-  int get episodesWatched => throw _privateConstructorUsedError;
+  int get episodesWatched;
 
   /// Episodes watched.
-  int? get episodesTotal => throw _privateConstructorUsedError;
+  int? get episodesTotal;
 
   /// URL to the thumbnail/cover art for the anime.
-  String get thumbnailUrl => throw _privateConstructorUsedError;
+  String get thumbnailUrl;
 
   /// Flag whether the anime is airing
   @BoolConverter()
-  bool get airing => throw _privateConstructorUsedError;
+  bool get airing;
 
   /// The day of the week the anime is airing
-  String? get broadcastDay => throw _privateConstructorUsedError;
-
-  /// Serializes this AnimeTrackingData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get broadcastDay;
 
   /// Create a copy of AnimeTrackingData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AnimeTrackingDataCopyWith<AnimeTrackingData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AnimeTrackingDataCopyWith<$Res> {
-  factory $AnimeTrackingDataCopyWith(
-          AnimeTrackingData value, $Res Function(AnimeTrackingData) then) =
-      _$AnimeTrackingDataCopyWithImpl<$Res, AnimeTrackingData>;
-  @useResult
-  $Res call(
-      {String id,
-      @MediumTrackingStateConverter() MediumTrackingState state,
-      String title,
-      int episodesWatched,
-      int? episodesTotal,
-      String thumbnailUrl,
-      @BoolConverter() bool airing,
-      String? broadcastDay});
-}
-
-/// @nodoc
-class _$AnimeTrackingDataCopyWithImpl<$Res, $Val extends AnimeTrackingData>
-    implements $AnimeTrackingDataCopyWith<$Res> {
-  _$AnimeTrackingDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AnimeTrackingData
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $AnimeTrackingDataCopyWith<AnimeTrackingData> get copyWith =>
+      _$AnimeTrackingDataCopyWithImpl<AnimeTrackingData>(
+          this as AnimeTrackingData, _$identity);
+
+  /// Serializes this AnimeTrackingData to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? state = null,
-    Object? title = null,
-    Object? episodesWatched = null,
-    Object? episodesTotal = freezed,
-    Object? thumbnailUrl = null,
-    Object? airing = null,
-    Object? broadcastDay = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as MediumTrackingState,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      episodesWatched: null == episodesWatched
-          ? _value.episodesWatched
-          : episodesWatched // ignore: cast_nullable_to_non_nullable
-              as int,
-      episodesTotal: freezed == episodesTotal
-          ? _value.episodesTotal
-          : episodesTotal // ignore: cast_nullable_to_non_nullable
-              as int?,
-      thumbnailUrl: null == thumbnailUrl
-          ? _value.thumbnailUrl
-          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      airing: null == airing
-          ? _value.airing
-          : airing // ignore: cast_nullable_to_non_nullable
-              as bool,
-      broadcastDay: freezed == broadcastDay
-          ? _value.broadcastDay
-          : broadcastDay // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AnimeTrackingData &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.episodesWatched, episodesWatched) ||
+                other.episodesWatched == episodesWatched) &&
+            (identical(other.episodesTotal, episodesTotal) ||
+                other.episodesTotal == episodesTotal) &&
+            (identical(other.thumbnailUrl, thumbnailUrl) ||
+                other.thumbnailUrl == thumbnailUrl) &&
+            (identical(other.airing, airing) || other.airing == airing) &&
+            (identical(other.broadcastDay, broadcastDay) ||
+                other.broadcastDay == broadcastDay));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, state, title,
+      episodesWatched, episodesTotal, thumbnailUrl, airing, broadcastDay);
+
+  @override
+  String toString() {
+    return 'AnimeTrackingData(id: $id, state: $state, title: $title, episodesWatched: $episodesWatched, episodesTotal: $episodesTotal, thumbnailUrl: $thumbnailUrl, airing: $airing, broadcastDay: $broadcastDay)';
   }
 }
 
 /// @nodoc
-abstract class _$$AnimeTrackingDataImplCopyWith<$Res>
-    implements $AnimeTrackingDataCopyWith<$Res> {
-  factory _$$AnimeTrackingDataImplCopyWith(_$AnimeTrackingDataImpl value,
-          $Res Function(_$AnimeTrackingDataImpl) then) =
-      __$$AnimeTrackingDataImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AnimeTrackingDataCopyWith<$Res> {
+  factory $AnimeTrackingDataCopyWith(
+          AnimeTrackingData value, $Res Function(AnimeTrackingData) _then) =
+      _$AnimeTrackingDataCopyWithImpl;
   @useResult
   $Res call(
       {String id,
@@ -154,12 +99,12 @@ abstract class _$$AnimeTrackingDataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AnimeTrackingDataImplCopyWithImpl<$Res>
-    extends _$AnimeTrackingDataCopyWithImpl<$Res, _$AnimeTrackingDataImpl>
-    implements _$$AnimeTrackingDataImplCopyWith<$Res> {
-  __$$AnimeTrackingDataImplCopyWithImpl(_$AnimeTrackingDataImpl _value,
-      $Res Function(_$AnimeTrackingDataImpl) _then)
-      : super(_value, _then);
+class _$AnimeTrackingDataCopyWithImpl<$Res>
+    implements $AnimeTrackingDataCopyWith<$Res> {
+  _$AnimeTrackingDataCopyWithImpl(this._self, this._then);
+
+  final AnimeTrackingData _self;
+  final $Res Function(AnimeTrackingData) _then;
 
   /// Create a copy of AnimeTrackingData
   /// with the given fields replaced by the non-null parameter values.
@@ -175,47 +120,255 @@ class __$$AnimeTrackingDataImplCopyWithImpl<$Res>
     Object? airing = null,
     Object? broadcastDay = freezed,
   }) {
-    return _then(_$AnimeTrackingDataImpl(
-      null == id
-          ? _value.id
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      null == state
-          ? _value.state
+      state: null == state
+          ? _self.state
           : state // ignore: cast_nullable_to_non_nullable
               as MediumTrackingState,
-      null == title
-          ? _value.title
+      title: null == title
+          ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      null == episodesWatched
-          ? _value.episodesWatched
+      episodesWatched: null == episodesWatched
+          ? _self.episodesWatched
           : episodesWatched // ignore: cast_nullable_to_non_nullable
               as int,
-      freezed == episodesTotal
-          ? _value.episodesTotal
+      episodesTotal: freezed == episodesTotal
+          ? _self.episodesTotal
           : episodesTotal // ignore: cast_nullable_to_non_nullable
               as int?,
-      null == thumbnailUrl
-          ? _value.thumbnailUrl
+      thumbnailUrl: null == thumbnailUrl
+          ? _self.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      null == airing
-          ? _value.airing
+      airing: null == airing
+          ? _self.airing
           : airing // ignore: cast_nullable_to_non_nullable
               as bool,
-      freezed == broadcastDay
-          ? _value.broadcastDay
+      broadcastDay: freezed == broadcastDay
+          ? _self.broadcastDay
           : broadcastDay // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [AnimeTrackingData].
+extension AnimeTrackingDataPatterns on AnimeTrackingData {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_AnimeTrackingData value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AnimeTrackingData() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_AnimeTrackingData value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AnimeTrackingData():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_AnimeTrackingData value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AnimeTrackingData() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String id,
+            @MediumTrackingStateConverter() MediumTrackingState state,
+            String title,
+            int episodesWatched,
+            int? episodesTotal,
+            String thumbnailUrl,
+            @BoolConverter() bool airing,
+            String? broadcastDay)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AnimeTrackingData() when $default != null:
+        return $default(
+            _that.id,
+            _that.state,
+            _that.title,
+            _that.episodesWatched,
+            _that.episodesTotal,
+            _that.thumbnailUrl,
+            _that.airing,
+            _that.broadcastDay);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String id,
+            @MediumTrackingStateConverter() MediumTrackingState state,
+            String title,
+            int episodesWatched,
+            int? episodesTotal,
+            String thumbnailUrl,
+            @BoolConverter() bool airing,
+            String? broadcastDay)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AnimeTrackingData():
+        return $default(
+            _that.id,
+            _that.state,
+            _that.title,
+            _that.episodesWatched,
+            _that.episodesTotal,
+            _that.thumbnailUrl,
+            _that.airing,
+            _that.broadcastDay);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String id,
+            @MediumTrackingStateConverter() MediumTrackingState state,
+            String title,
+            int episodesWatched,
+            int? episodesTotal,
+            String thumbnailUrl,
+            @BoolConverter() bool airing,
+            String? broadcastDay)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AnimeTrackingData() when $default != null:
+        return $default(
+            _that.id,
+            _that.state,
+            _that.title,
+            _that.episodesWatched,
+            _that.episodesTotal,
+            _that.thumbnailUrl,
+            _that.airing,
+            _that.broadcastDay);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$AnimeTrackingDataImpl implements _AnimeTrackingData {
-  _$AnimeTrackingDataImpl(
+class _AnimeTrackingData extends AnimeTrackingData {
+  _AnimeTrackingData(
       this.id,
       @MediumTrackingStateConverter() this.state,
       this.title,
@@ -223,10 +376,10 @@ class _$AnimeTrackingDataImpl implements _AnimeTrackingData {
       this.episodesTotal,
       this.thumbnailUrl,
       @BoolConverter() this.airing,
-      this.broadcastDay);
-
-  factory _$AnimeTrackingDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AnimeTrackingDataImplFromJson(json);
+      this.broadcastDay)
+      : super._();
+  factory _AnimeTrackingData.fromJson(Map<String, dynamic> json) =>
+      _$AnimeTrackingDataFromJson(json);
 
   /// The ID of the anime
   @override
@@ -262,16 +415,26 @@ class _$AnimeTrackingDataImpl implements _AnimeTrackingData {
   @override
   final String? broadcastDay;
 
+  /// Create a copy of AnimeTrackingData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AnimeTrackingData(id: $id, state: $state, title: $title, episodesWatched: $episodesWatched, episodesTotal: $episodesTotal, thumbnailUrl: $thumbnailUrl, airing: $airing, broadcastDay: $broadcastDay)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AnimeTrackingDataCopyWith<_AnimeTrackingData> get copyWith =>
+      __$AnimeTrackingDataCopyWithImpl<_AnimeTrackingData>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AnimeTrackingDataToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AnimeTrackingDataImpl &&
+            other is _AnimeTrackingData &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.state, state) || other.state == state) &&
             (identical(other.title, title) || other.title == title) &&
@@ -291,75 +454,88 @@ class _$AnimeTrackingDataImpl implements _AnimeTrackingData {
   int get hashCode => Object.hash(runtimeType, id, state, title,
       episodesWatched, episodesTotal, thumbnailUrl, airing, broadcastDay);
 
-  /// Create a copy of AnimeTrackingData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AnimeTrackingDataImplCopyWith<_$AnimeTrackingDataImpl> get copyWith =>
-      __$$AnimeTrackingDataImplCopyWithImpl<_$AnimeTrackingDataImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AnimeTrackingDataImplToJson(
-      this,
-    );
+  String toString() {
+    return 'AnimeTrackingData(id: $id, state: $state, title: $title, episodesWatched: $episodesWatched, episodesTotal: $episodesTotal, thumbnailUrl: $thumbnailUrl, airing: $airing, broadcastDay: $broadcastDay)';
   }
 }
 
-abstract class _AnimeTrackingData implements AnimeTrackingData {
-  factory _AnimeTrackingData(
-      final String id,
-      @MediumTrackingStateConverter() final MediumTrackingState state,
-      final String title,
-      final int episodesWatched,
-      final int? episodesTotal,
-      final String thumbnailUrl,
-      @BoolConverter() final bool airing,
-      final String? broadcastDay) = _$AnimeTrackingDataImpl;
-
-  factory _AnimeTrackingData.fromJson(Map<String, dynamic> json) =
-      _$AnimeTrackingDataImpl.fromJson;
-
-  /// The ID of the anime
+/// @nodoc
+abstract mixin class _$AnimeTrackingDataCopyWith<$Res>
+    implements $AnimeTrackingDataCopyWith<$Res> {
+  factory _$AnimeTrackingDataCopyWith(
+          _AnimeTrackingData value, $Res Function(_AnimeTrackingData) _then) =
+      __$AnimeTrackingDataCopyWithImpl;
   @override
-  String get id;
+  @useResult
+  $Res call(
+      {String id,
+      @MediumTrackingStateConverter() MediumTrackingState state,
+      String title,
+      int episodesWatched,
+      int? episodesTotal,
+      String thumbnailUrl,
+      @BoolConverter() bool airing,
+      String? broadcastDay});
+}
 
-  /// The state of the anime
-  @override
-  @MediumTrackingStateConverter()
-  MediumTrackingState get state;
+/// @nodoc
+class __$AnimeTrackingDataCopyWithImpl<$Res>
+    implements _$AnimeTrackingDataCopyWith<$Res> {
+  __$AnimeTrackingDataCopyWithImpl(this._self, this._then);
 
-  /// The title of the anime
-  @override
-  String get title;
-
-  /// Episodes in total.
-  @override
-  int get episodesWatched;
-
-  /// Episodes watched.
-  @override
-  int? get episodesTotal;
-
-  /// URL to the thumbnail/cover art for the anime.
-  @override
-  String get thumbnailUrl;
-
-  /// Flag whether the anime is airing
-  @override
-  @BoolConverter()
-  bool get airing;
-
-  /// The day of the week the anime is airing
-  @override
-  String? get broadcastDay;
+  final _AnimeTrackingData _self;
+  final $Res Function(_AnimeTrackingData) _then;
 
   /// Create a copy of AnimeTrackingData
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AnimeTrackingDataImplCopyWith<_$AnimeTrackingDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? state = null,
+    Object? title = null,
+    Object? episodesWatched = null,
+    Object? episodesTotal = freezed,
+    Object? thumbnailUrl = null,
+    Object? airing = null,
+    Object? broadcastDay = freezed,
+  }) {
+    return _then(_AnimeTrackingData(
+      null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == state
+          ? _self.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as MediumTrackingState,
+      null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == episodesWatched
+          ? _self.episodesWatched
+          : episodesWatched // ignore: cast_nullable_to_non_nullable
+              as int,
+      freezed == episodesTotal
+          ? _self.episodesTotal
+          : episodesTotal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      null == thumbnailUrl
+          ? _self.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == airing
+          ? _self.airing
+          : airing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      freezed == broadcastDay
+          ? _self.broadcastDay
+          : broadcastDay // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
+
+// dart format on

@@ -1,7 +1,7 @@
 part of 'calendar_bloc.dart';
 
 @freezed
-class CalendarState with _$CalendarState {
+abstract class CalendarState with _$CalendarState {
   factory CalendarState(
     bool refreshing,
     int refreshingCount,

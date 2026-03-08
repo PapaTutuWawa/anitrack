@@ -6,7 +6,7 @@ part 'manga.g.dart';
 
 /// Data about a tracked anime
 @freezed
-class MangaTrackingData with _$MangaTrackingData, TrackingMedium {
+abstract class MangaTrackingData with _$MangaTrackingData, TrackingMedium {
   factory MangaTrackingData(
     /// The ID of the manga
     String id,
@@ -29,6 +29,8 @@ class MangaTrackingData with _$MangaTrackingData, TrackingMedium {
     /// URL to the thumbnail/cover art for the manga.
     String thumbnailUrl,
   ) = _MangaTrackingData;
+
+  MangaTrackingData._();
 
   /// JSON
   factory MangaTrackingData.fromJson(Map<String, dynamic> json) =>

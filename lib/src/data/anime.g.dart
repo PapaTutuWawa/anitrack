@@ -6,9 +6,8 @@ part of 'anime.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AnimeTrackingDataImpl _$$AnimeTrackingDataImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AnimeTrackingDataImpl(
+_AnimeTrackingData _$AnimeTrackingDataFromJson(Map<String, dynamic> json) =>
+    _AnimeTrackingData(
       json['id'] as String,
       const MediumTrackingStateConverter()
           .fromJson((json['state'] as num).toInt()),
@@ -20,8 +19,7 @@ _$AnimeTrackingDataImpl _$$AnimeTrackingDataImplFromJson(
       json['broadcastDay'] as String?,
     );
 
-Map<String, dynamic> _$$AnimeTrackingDataImplToJson(
-        _$AnimeTrackingDataImpl instance) =>
+Map<String, dynamic> _$AnimeTrackingDataToJson(_AnimeTrackingData instance) =>
     <String, dynamic>{
       'id': instance.id,
       'state': const MediumTrackingStateConverter().toJson(instance.state),

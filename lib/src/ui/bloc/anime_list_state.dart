@@ -1,7 +1,7 @@
 part of 'anime_list_bloc.dart';
 
 @freezed
-class AnimeListState with _$AnimeListState {
+abstract class AnimeListState with _$AnimeListState {
   factory AnimeListState({
     @Default(true) bool buttonVisibility,
     @Default([]) List<AnimeTrackingData> animes,
