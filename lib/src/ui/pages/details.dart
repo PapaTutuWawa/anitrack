@@ -8,6 +8,7 @@ import 'package:anitrack/src/ui/widgets/dropdown.dart';
 import 'package:anitrack/src/ui/widgets/image.dart';
 import 'package:anitrack/src/ui/widgets/integer_input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -175,7 +176,13 @@ class DetailsPage extends StatelessWidget {
                                                             mainAxisSize: MainAxisSize.min,
                                                             children: [
                                                               IconButton(
-                                                                  onPressed: () {},
+                                                                  onPressed: () async {
+                                                                    await Clipboard.setData(
+                                                                      ClipboardData(
+                                                                          text: state.data!.title,
+                                                                      ),
+                                                                    );
+                                                                  },
                                                                   icon: const Icon(Icons.copy),
                                                               ),
                                                               Expanded(
