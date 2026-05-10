@@ -10,6 +10,7 @@ import 'package:anitrack/src/ui/widgets/integer_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailsPage extends StatelessWidget {
   const DetailsPage({
@@ -203,6 +204,28 @@ class DetailsPage extends StatelessWidget {
                                           child: const Icon(
                                             Icons.info,
                                           ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 6,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        ElevatedButton(
+                                          onPressed: () async {
+                                            final url = switch (state.trackingType) {
+                                              TrackingMediumType.anime => 'https://myanimelist.net/anime/${state.data!.id}',
+                                              TrackingMediumType.manga => 'https://myanimelist.net/manga/${state.data!.id}',
+                                            };
+                                            await launchUrl(
+                                              Uri.parse(url),
+                                              mode: LaunchMode.externalApplication,
+                                            );
+                                          },
+                                          child: Text(t.details.mal),
                                         ),
                                       ],
                                     ),

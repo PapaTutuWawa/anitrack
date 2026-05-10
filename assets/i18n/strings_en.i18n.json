@@ -49,6 +49,7 @@
         "episodes": "Episodes",
         "chapters": "Chapters",
         "volumesOwned": "Volumes owned",
+        "mal": "MAL",
         "details": {
             "titleJa": "Japanese Title"
         }
