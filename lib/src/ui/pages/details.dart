@@ -251,7 +251,7 @@ class DetailsPage extends StatelessWidget {
                           title: state.trackingType == TrackingMediumType.anime
                               ? t.details.watchState
                               : t.details.readState,
-                          onChanged: (MediumTrackingState newState) {
+                          onChanged: (newState) {
                             if (state.trackingType ==
                                 TrackingMediumType.anime) {
                               context.read<DetailsBloc>().add(
@@ -307,6 +307,31 @@ class DetailsPage extends StatelessWidget {
                           initialValue: state.data!.state,
                         ),
                       ),
+                      /*if (state.trackingType == TrackingMediumType.anime)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 8,
+                          ),
+                          child: Card(
+                            clipBehavior: Clip.hardEdge,
+                            child: Padding(
+                              padding: EdgeInsetsGeometry.all(12),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Episodes aired",
+                                    style: Theme.of(context).textTheme.titleSmall,
+                                  ),
+                                  Text(
+                                    "12",
+                                    style: Theme.of(context).textTheme.bodyLarge,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),*/
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           vertical: 8,
