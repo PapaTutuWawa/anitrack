@@ -253,7 +253,8 @@ class AnimeListPageState extends State<AnimeListPage> {
           ),
           floatingActionButton: BlocBuilder<AnimeListBloc, AnimeListState>(
             buildWhen: (prev, next) =>
-                prev.buttonVisibility != next.buttonVisibility,
+                prev.buttonVisibility != next.buttonVisibility ||
+                prev.trackingType != next.trackingType,
             builder: (context, state) {
               return AnimatedScale(
                 duration: const Duration(milliseconds: 250),
