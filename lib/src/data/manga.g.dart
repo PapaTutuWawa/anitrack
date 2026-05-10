@@ -9,8 +9,9 @@ part of 'manga.dart';
 _MangaTrackingData _$MangaTrackingDataFromJson(Map<String, dynamic> json) =>
     _MangaTrackingData(
       json['id'] as String,
-      const MediumTrackingStateConverter()
-          .fromJson((json['state'] as num).toInt()),
+      const MediumTrackingStateConverter().fromJson(
+        (json['state'] as num).toInt(),
+      ),
       json['title'] as String,
       (json['chaptersRead'] as num).toInt(),
       (json['volumesOwned'] as num).toInt(),

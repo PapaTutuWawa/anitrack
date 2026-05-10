@@ -17,11 +17,11 @@ class DetailsPage extends StatelessWidget {
   });
 
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
-        builder: (_) => const DetailsPage(),
-        settings: const RouteSettings(
-          name: detailsRoute,
-        ),
-      );
+    builder: (_) => const DetailsPage(),
+    settings: const RouteSettings(
+      name: detailsRoute,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -56,66 +56,156 @@ class DetailsPage extends StatelessWidget {
                                   Text(
                                     state.data!.title,
                                     textAlign: TextAlign.left,
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge,
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.titleLarge,
                                     maxLines: 2,
                                     softWrap: true,
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  ElevatedButton(
-                                    onPressed: () async {
-                                      final result = await showDialog<bool>(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            title: Text(
-                                              t.details.removeTitle(
-                                                title: state.data!.title,
-                                              ),
-                                            ),
-                                            content: Text(
-                                              t.details.removeBody(
-                                                title: state.data!.title,
-                                              ),
-                                            ),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.of(context)
-                                                      .pop(true);
-                                                },
-                                                style: TextButton.styleFrom(
-                                                  foregroundColor: Colors.red,
-                                                ),
-                                                child: Text(
-                                                  t.details.removeButton,
-                                                ),
-                                              ),
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.of(context)
-                                                      .pop(false);
-                                                },
-                                                child: Text(
-                                                  t.details.cancelButton,
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 6,
+                                    ),
+                                    child: Row(
+                                      spacing: 8,
+                                      children: [
+                                        ElevatedButton(
+                                          onPressed: () async {
+                                            final result = await showDialog<bool>(
+                                              context: context,
+                                              builder: (context) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                    t.details.removeTitle(
+                                                      title: state.data!.title,
+                                                    ),
+                                                  ),
+                                                  content: Text(
+                                                    t.details.removeBody(
+                                                      title: state.data!.title,
+                                                    ),
+                                                  ),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.of(
+                                                          context,
+                                                        ).pop(true);
+                                                      },
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                            foregroundColor:
+                                                                Colors.red,
+                                                          ),
+                                                      child: Text(
+                                                        t.details.removeButton,
+                                                      ),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.of(
+                                                          context,
+                                                        ).pop(false);
+                                                      },
+                                                      child: Text(
+                                                        t.details.cancelButton,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
 
-                                      if (result != true) return;
+                                            if (result != true) return;
 
-                                      // ignore: use_build_context_synchronously
-                                      context.read<DetailsBloc>().add(
-                                            ItemRemovedEvent(
-                                              state.data!.id,
-                                              state.trackingType,
-                                            ),
-                                          );
-                                    },
-                                    child: const Icon(Icons.delete),
+                                            // ignore: use_build_context_synchronously
+                                            context.read<DetailsBloc>().add(
+                                              ItemRemovedEvent(
+                                                state.data!.id,
+                                                state.trackingType,
+                                              ),
+                                            );
+                                          },
+                                          child: const Icon(
+                                            Icons.delete,
+                                            color: Colors.redAccent,
+                                          ),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () async {
+                                            await showModalBottomSheet<void>(
+                                              context: context,
+                                              builder: (ctx) => DraggableScrollableSheet(
+                                                initialChildSize: 1,
+                                                builder: (ctx, scrollController) {
+                                                  return Padding(
+                                                    padding:
+                                                        const EdgeInsetsGeometry.only(
+                                                          top: 18,
+                                                        ),
+                                                    child: ListView(
+                                                      controller:
+                                                          scrollController,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsGeometry.directional(
+                                                                start: 8,
+                                                                end: 8,
+                                                              ),
+                                                          child: Text(
+                                                            t.details.details.titleJa,
+                                                            style:
+                                                                Theme.of(
+                                                                      context,
+                                                                    )
+                                                                    .textTheme
+                                                                    .headlineSmall,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsGeometry.directional(
+                                                                start: 8,
+                                                                end: 8,
+                                                              ),
+                                                          child: Row(
+                                                            mainAxisSize: MainAxisSize.min,
+                                                            children: [
+                                                              IconButton(
+                                                                  onPressed: () {},
+                                                                  icon: const Icon(Icons.copy),
+                                                              ),
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: const EdgeInsetsGeometry.only(left: 8),
+                                                                  child: Text(
+                                                                    state
+                                                                        .data!
+                                                                        .title,
+                                                                    style: Theme.of(
+                                                                      context,
+                                                                    ).textTheme.bodyLarge,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            );
+                                          },
+                                          child: const Icon(
+                                            Icons.info,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
@@ -135,50 +225,53 @@ class DetailsPage extends StatelessWidget {
                             if (state.trackingType ==
                                 TrackingMediumType.anime) {
                               context.read<DetailsBloc>().add(
-                                    DetailsUpdatedEvent(
-                                      (state.data! as AnimeTrackingData)
-                                          .copyWith(
-                                        state: newState,
-                                      ),
-                                    ),
-                                  );
+                                DetailsUpdatedEvent(
+                                  (state.data! as AnimeTrackingData).copyWith(
+                                    state: newState,
+                                  ),
+                                ),
+                              );
                             } else if (state.trackingType ==
                                 TrackingMediumType.manga) {
                               context.read<DetailsBloc>().add(
-                                    DetailsUpdatedEvent(
-                                      (state.data! as MangaTrackingData)
-                                          .copyWith(
-                                        state: newState,
-                                      ),
-                                    ),
-                                  );
+                                DetailsUpdatedEvent(
+                                  (state.data! as MangaTrackingData).copyWith(
+                                    state: newState,
+                                  ),
+                                ),
+                              );
                             }
                           },
                           values: [
                             SelectorItem(
                               MediumTrackingState.ongoing,
-                              MediumTrackingState.ongoing
-                                  .getName(state.trackingType),
+                              MediumTrackingState.ongoing.getName(
+                                state.trackingType,
+                              ),
                             ),
                             SelectorItem(
                               MediumTrackingState.completed,
-                              MediumTrackingState.completed
-                                  .getName(state.trackingType),
+                              MediumTrackingState.completed.getName(
+                                state.trackingType,
+                              ),
                             ),
                             SelectorItem(
                               MediumTrackingState.planned,
-                              MediumTrackingState.planned
-                                  .getName(state.trackingType),
+                              MediumTrackingState.planned.getName(
+                                state.trackingType,
+                              ),
                             ),
                             SelectorItem(
                               MediumTrackingState.dropped,
-                              MediumTrackingState.dropped
-                                  .getName(state.trackingType),
+                              MediumTrackingState.dropped.getName(
+                                state.trackingType,
+                              ),
                             ),
                             SelectorItem(
                               MediumTrackingState.paused,
-                              MediumTrackingState.paused
-                                  .getName(state.trackingType),
+                              MediumTrackingState.paused.getName(
+                                state.trackingType,
+                              ),
                             ),
                           ],
                           initialValue: state.data!.state,
@@ -191,36 +284,36 @@ class DetailsPage extends StatelessWidget {
                         child: IntegerInput(
                           labelText:
                               state.trackingType == TrackingMediumType.anime
-                                  ? t.details.episodes
-                                  : t.details.chapters,
+                              ? t.details.episodes
+                              : t.details.chapters,
                           onChanged: (value) {
                             switch (state.trackingType) {
                               case TrackingMediumType.anime:
                                 final data = state.data! as AnimeTrackingData;
                                 context.read<DetailsBloc>().add(
-                                      DetailsUpdatedEvent(
-                                        data.copyWith(
-                                          episodesWatched: value,
-                                        ),
-                                      ),
-                                    );
+                                  DetailsUpdatedEvent(
+                                    data.copyWith(
+                                      episodesWatched: value,
+                                    ),
+                                  ),
+                                );
                                 break;
                               case TrackingMediumType.manga:
                                 final data = state.data! as MangaTrackingData;
                                 context.read<DetailsBloc>().add(
-                                      DetailsUpdatedEvent(
-                                        data.copyWith(
-                                          chaptersRead: value,
-                                        ),
-                                      ),
-                                    );
+                                  DetailsUpdatedEvent(
+                                    data.copyWith(
+                                      chaptersRead: value,
+                                    ),
+                                  ),
+                                );
                                 break;
                             }
                           },
-                          initialValue: state.trackingType ==
-                                  TrackingMediumType.anime
+                          initialValue:
+                              state.trackingType == TrackingMediumType.anime
                               ? (state.data! as AnimeTrackingData)
-                                  .episodesWatched
+                                    .episodesWatched
                               : (state.data! as MangaTrackingData).chaptersRead,
                         ),
                       ),
@@ -234,18 +327,17 @@ class DetailsPage extends StatelessWidget {
                             onChanged: (value) {
                               final data = state.data! as MangaTrackingData;
                               context.read<DetailsBloc>().add(
-                                    DetailsUpdatedEvent(
-                                      data.copyWith(
-                                        volumesOwned: value,
-                                      ),
-                                    ),
-                                  );
+                                DetailsUpdatedEvent(
+                                  data.copyWith(
+                                    volumesOwned: value,
+                                  ),
+                                ),
+                              );
                             },
-                            initialValue: (GetIt.I
-                                    .get<DetailsBloc>()
-                                    .state
-                                    .data! as MangaTrackingData)
-                                .volumesOwned,
+                            initialValue:
+                                (GetIt.I.get<DetailsBloc>().state.data!
+                                        as MangaTrackingData)
+                                    .volumesOwned,
                           ),
                         ),
                     ],

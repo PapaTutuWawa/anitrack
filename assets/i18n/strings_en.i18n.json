@@ -48,7 +48,10 @@
         "readState": "Read state",
         "episodes": "Episodes",
         "chapters": "Chapters",
-        "volumesOwned": "Volumes owned"
+        "volumesOwned": "Volumes owned",
+        "details": {
+            "titleJa": "Japanese Title"
+        }
     },
     "calendar": {
         "calendar": "Calendar",

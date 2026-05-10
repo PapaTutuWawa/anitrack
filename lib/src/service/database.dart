@@ -4,7 +4,6 @@ import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/service/migrations/0000_airing.dart';
 import 'package:anitrack/src/service/migrations/0000_score.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 const animeTable = 'Anime';
@@ -32,6 +31,7 @@ Future<void> _createDatabase(Database db, int version) async {
       episodesWatched INTEGER NOT NULL,
       thumbnailUrl    TEXT NOT NULL,
       title           TEXT NOT NULL,
+      otherTitles     TEXT NOT NULL,
       score           INTEGER,
       airing          INTEGER NOT NULL,
       broadcastDay    TEXT
@@ -40,14 +40,15 @@ Future<void> _createDatabase(Database db, int version) async {
   await db.execute(
     '''
     CREATE TABLE $mangaTable(
-      id TEXT NOT NULL PRIMARY KEY,
+      id            TEXT NOT NULL PRIMARY KEY,
       state INTEGER NOT NULL,
       chaptersTotal INTEGER,
-      chaptersRead INTEGER NOT NULL,
-      volumesOwned INTEGER NOT NULL,
-      thumbnailUrl TEXT NOT NULL,
-      title TEXT NOT NULL,
-      score INTEGER
+      chaptersRead  INTEGER NOT NULL,
+      volumesOwned  INTEGER NOT NULL,
+      thumbnailUrl  TEXT NOT NULL,
+      title         TEXT NOT NULL,
+      otherTitles   TEXT NOT NULL,
+      score         INTEGER
     )''',
   );
 }

@@ -42,7 +42,7 @@ void main() async {
       );
 
   WidgetsFlutterBinding.ensureInitialized();
-  LocaleSettings.useDeviceLocale();
+  await LocaleSettings.useDeviceLocale();
 
   runApp(
     MultiBlocProvider(

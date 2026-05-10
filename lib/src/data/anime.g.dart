@@ -9,8 +9,9 @@ part of 'anime.dart';
 _AnimeTrackingData _$AnimeTrackingDataFromJson(Map<String, dynamic> json) =>
     _AnimeTrackingData(
       json['id'] as String,
-      const MediumTrackingStateConverter()
-          .fromJson((json['state'] as num).toInt()),
+      const MediumTrackingStateConverter().fromJson(
+        (json['state'] as num).toInt(),
+      ),
       json['title'] as String,
       (json['episodesWatched'] as num).toInt(),
       (json['episodesTotal'] as num?)?.toInt(),
