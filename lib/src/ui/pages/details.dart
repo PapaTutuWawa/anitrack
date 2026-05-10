@@ -10,6 +10,7 @@ import 'package:anitrack/src/ui/widgets/integer_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -188,6 +189,12 @@ class DetailsPage extends StatelessWidget {
                                                                           .data!
                                                                           .title,
                                                                     ),
+                                                                  );
+                                                                  await Fluttertoast.showToast(
+                                                                    msg: t
+                                                                        .details
+                                                                        .details
+                                                                        .textCopied,
                                                                   );
                                                                 },
                                                                 icon:

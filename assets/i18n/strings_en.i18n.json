@@ -51,7 +51,8 @@
         "volumesOwned": "Volumes owned",
         "mal": "MAL",
         "details": {
-            "titleJa": "Japanese Title"
+            "titleJa": "Japanese Title",
+            "textCopied": "Text copied to clipboard"
         }
     },
     "calendar": {
