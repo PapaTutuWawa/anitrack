@@ -157,7 +157,10 @@ class DetailsPage extends StatelessWidget {
                                                                 end: 8,
                                                               ),
                                                           child: Text(
-                                                            t.details.details.titleJa,
+                                                            t
+                                                                .details
+                                                                .details
+                                                                .titleJa,
                                                             style:
                                                                 Theme.of(
                                                                       context,
@@ -173,21 +176,32 @@ class DetailsPage extends StatelessWidget {
                                                                 end: 8,
                                                               ),
                                                           child: Row(
-                                                            mainAxisSize: MainAxisSize.min,
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
                                                             children: [
                                                               IconButton(
-                                                                  onPressed: () async {
-                                                                    await Clipboard.setData(
-                                                                      ClipboardData(
-                                                                          text: state.data!.title,
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                  icon: const Icon(Icons.copy),
+                                                                onPressed: () async {
+                                                                  await Clipboard.setData(
+                                                                    ClipboardData(
+                                                                      text: state
+                                                                          .data!
+                                                                          .title,
+                                                                    ),
+                                                                  );
+                                                                },
+                                                                icon:
+                                                                    const Icon(
+                                                                      Icons
+                                                                          .copy,
+                                                                    ),
                                                               ),
                                                               Expanded(
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsGeometry.only(left: 8),
+                                                                  padding:
+                                                                      const EdgeInsetsGeometry.only(
+                                                                        left: 8,
+                                                                      ),
                                                                   child: Text(
                                                                     state
                                                                         .data!
@@ -223,13 +237,17 @@ class DetailsPage extends StatelessWidget {
                                       children: [
                                         ElevatedButton(
                                           onPressed: () async {
-                                            final url = switch (state.trackingType) {
-                                              TrackingMediumType.anime => 'https://myanimelist.net/anime/${state.data!.id}',
-                                              TrackingMediumType.manga => 'https://myanimelist.net/manga/${state.data!.id}',
+                                            final url = switch (state
+                                                .trackingType) {
+                                              TrackingMediumType.anime =>
+                                                'https://myanimelist.net/anime/${state.data!.id}',
+                                              TrackingMediumType.manga =>
+                                                'https://myanimelist.net/manga/${state.data!.id}',
                                             };
                                             await launchUrl(
                                               Uri.parse(url),
-                                              mode: LaunchMode.externalApplication,
+                                              mode: LaunchMode
+                                                  .externalApplication,
                                             );
                                           },
                                           child: Text(t.details.mal),

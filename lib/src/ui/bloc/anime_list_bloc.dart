@@ -31,10 +31,12 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
   }
 
   /// Internal anime state
-  final List<AnimeTrackingData> _animes =
-      List<AnimeTrackingData>.empty(growable: true);
-  final List<MangaTrackingData> _mangas =
-      List<MangaTrackingData>.empty(growable: true);
+  final List<AnimeTrackingData> _animes = List<AnimeTrackingData>.empty(
+    growable: true,
+  );
+  final List<MangaTrackingData> _mangas = List<MangaTrackingData>.empty(
+    growable: true,
+  );
 
   List<AnimeTrackingData> get unfilteredAnime => _animes;
 
@@ -69,7 +71,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     if (event.checkIfExists) {
       final shouldAdd =
           _animes.firstWhereOrNull((element) => element.id == event.data.id) ==
-              null;
+          null;
       if (shouldAdd) {
         _animes.add(event.data);
       }
@@ -96,7 +98,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     if (event.checkIfExists) {
       final shouldAdd =
           _mangas.firstWhereOrNull((element) => element.id == event.data.id) ==
-              null;
+          null;
       if (shouldAdd) {
         _mangas.add(event.data);
       }
@@ -120,9 +122,12 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
 
     final anime = state.animes[index];
     if (anime.episodesTotal != null &&
-        anime.episodesWatched + 1 > anime.episodesTotal!) return;
+        anime.episodesWatched + 1 > anime.episodesTotal!)
+      return;
 
-    final newAnime = await GetIt.I.get<DatabaseService>().incrementAnimeWatchCounter(anime, 1);
+    final newAnime = await GetIt.I
+        .get<DatabaseService>()
+        .incrementAnimeWatchCounter(anime, 1);
     final newList = List<AnimeTrackingData>.from(state.animes);
     newList[index] = newAnime;
     emit(
@@ -142,8 +147,9 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     final anime = state.animes[index];
     if (anime.episodesWatched - 1 < 0) return;
 
-
-    final newAnime = await GetIt.I.get<DatabaseService>().incrementAnimeWatchCounter(anime, -1);
+    final newAnime = await GetIt.I
+        .get<DatabaseService>()
+        .incrementAnimeWatchCounter(anime, -1);
     final newList = List<AnimeTrackingData>.from(state.animes);
     newList[index] = newAnime;
     emit(
@@ -217,9 +223,12 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
 
     final manga = state.mangas[index];
     if (manga.chaptersTotal != null &&
-        manga.chaptersRead + 1 > manga.chaptersTotal!) return;
+        manga.chaptersRead + 1 > manga.chaptersTotal!)
+      return;
 
-    final newManga = await GetIt.I.get<DatabaseService>().incrementMangaReadChapters(manga, 1);
+    final newManga = await GetIt.I
+        .get<DatabaseService>()
+        .incrementMangaReadChapters(manga, 1);
     final newList = List<MangaTrackingData>.from(state.mangas);
     newList[index] = newManga;
     emit(
@@ -244,7 +253,9 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     final manga = state.mangas[index];
     if (manga.chaptersRead - 1 < 0) return;
 
-    final newManga = await GetIt.I.get<DatabaseService>().incrementMangaReadChapters(manga, -1);
+    final newManga = await GetIt.I
+        .get<DatabaseService>()
+        .incrementMangaReadChapters(manga, -1);
     final newList = List<MangaTrackingData>.from(state.mangas);
     newList[index] = newManga;
     emit(

@@ -39,8 +39,9 @@ class DropdownSelectorState<T> extends State<DropdownSelector<T>> {
   void initState() {
     super.initState();
 
-    index =
-        widget.values.indexWhere((item) => item.value == widget.initialValue);
+    index = widget.values.indexWhere(
+      (item) => item.value == widget.initialValue,
+    );
   }
 
   @override
@@ -53,48 +54,49 @@ class DropdownSelectorState<T> extends State<DropdownSelector<T>> {
             child: InkWell(
               onTap: () async {
                 final result = await showModalBottomSheet<T>(
-                    context: context,
-                    clipBehavior: Clip.antiAlias,
-                    builder: (context) => DraggableScrollableSheet(
-                      initialChildSize: 1,
-                      builder: (context, controller) => ListView.builder(
-                        shrinkWrap: true,
-                        controller: controller,
-                        itemCount: widget.values.length,
-                        itemBuilder: (context, index) => InkWell(
-                          onTap: () {
-                            Navigator.of(context).pop(widget.values[index].value);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsetsGeometry.symmetric(
-                              horizontal: 16,
-                              vertical: 12,
-                            ),
-                            child: Row(
-                              children: [
-                                Text(
-                                  widget.values[index].text,
-                                  style: Theme.of(context).textTheme.titleLarge,
+                  context: context,
+                  clipBehavior: Clip.antiAlias,
+                  builder: (context) => DraggableScrollableSheet(
+                    initialChildSize: 1,
+                    builder: (context, controller) => ListView.builder(
+                      shrinkWrap: true,
+                      controller: controller,
+                      itemCount: widget.values.length,
+                      itemBuilder: (context, index) => InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop(widget.values[index].value);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsetsGeometry.symmetric(
+                            horizontal: 16,
+                            vertical: 12,
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                widget.values[index].text,
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                              if (this.index == index)
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 12),
+                                  child: Icon(Icons.check),
                                 ),
-                                if (this.index == index)
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 12),
-                                    child: Icon(Icons.check),
-                                  ),
-                              ],
-                            ),
+                            ],
                           ),
                         ),
                       ),
                     ),
+                  ),
                 );
 
                 if (result == null) return;
                 if (result == widget.values[index].value) return;
 
                 setState(() {
-                  index =
-                      widget.values.indexWhere((item) => item.value == result);
+                  index = widget.values.indexWhere(
+                    (item) => item.value == result,
+                  );
                 });
 
                 widget.onChanged(result);

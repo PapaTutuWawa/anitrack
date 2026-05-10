@@ -57,11 +57,11 @@ class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
 
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
-        builder: (_) => const CalendarPage(),
-        settings: const RouteSettings(
-          name: calendarRoute,
-        ),
-      );
+    builder: (_) => const CalendarPage(),
+    settings: const RouteSettings(
+      name: calendarRoute,
+    ),
+  );
 
   @override
   CalendarPageState createState() => CalendarPageState();
@@ -109,11 +109,11 @@ class CalendarPageState extends State<CalendarPage> {
               hero: 'calendar_${anime.id}',
               onTap: () {
                 context.read<DetailsBloc>().add(
-                      AnimeDetailsRequestedEvent(
-                        anime,
-                        heroImagePrefix: 'calendar_',
-                      ),
-                    );
+                  AnimeDetailsRequestedEvent(
+                    anime,
+                    heroImagePrefix: 'calendar_',
+                  ),
+                );
               },
             ),
           );
@@ -183,9 +183,9 @@ class CalendarPageState extends State<CalendarPage> {
                   actions: [
                     IconButton(
                       onPressed: () {
-                        context
-                            .read<CalendarBloc>()
-                            .add(RefreshPerformedEvent());
+                        context.read<CalendarBloc>().add(
+                          RefreshPerformedEvent(),
+                        );
                       },
                       icon: const Icon(Icons.refresh),
                     ),

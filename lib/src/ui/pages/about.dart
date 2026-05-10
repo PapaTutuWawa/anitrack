@@ -11,11 +11,11 @@ class AboutPage extends StatelessWidget {
   });
 
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
-        builder: (_) => const AboutPage(),
-        settings: const RouteSettings(
-          name: aboutRoute,
-        ),
-      );
+    builder: (_) => const AboutPage(),
+    settings: const RouteSettings(
+      name: aboutRoute,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {

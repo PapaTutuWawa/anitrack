@@ -105,8 +105,9 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       );
 
       final title = anime.getElement('series_title')!.text;
-      final totalEpisodes =
-          int.parse(anime.getElement('series_episodes')!.text);
+      final totalEpisodes = int.parse(
+        anime.getElement('series_episodes')!.text,
+      );
       final id = anime.getElement('series_animedb_id')!.text;
 
       print('Waiting 500ms to not hammer Jikan ($title)');
@@ -117,21 +118,21 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
 
       // Add the anime
       await GetIt.I.get<DatabaseService>().addAnime(
-            AnimeTrackingData(
-              id,
-              malStatusToTrackingState(
-                anime.getElement('my_status')!.text,
-              ),
-              title,
-              int.parse(anime.getElement('my_watched_episodes')!.text),
-              // 0 means that MAL does not know
-              totalEpisodes == 0 ? null : totalEpisodes,
-              data.imageUrl,
-              // NOTE: When the calendar gets refreshed, this should also get cleared
-              true,
-              null,
-            ),
-          );
+        AnimeTrackingData(
+          id,
+          malStatusToTrackingState(
+            anime.getElement('my_status')!.text,
+          ),
+          title,
+          int.parse(anime.getElement('my_watched_episodes')!.text),
+          // 0 means that MAL does not know
+          totalEpisodes == 0 ? null : totalEpisodes,
+          data.imageUrl,
+          // NOTE: When the calendar gets refreshed, this should also get cleared
+          true,
+          null,
+        ),
+      );
     }
 
     // Hide the spinner again
@@ -195,19 +196,19 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
 
       // Add the manga
       await GetIt.I.get<DatabaseService>().addManga(
-            MangaTrackingData(
-              id,
-              malStatusToTrackingState(
-                manga.getElement('my_status')!.text,
-              ),
-              title,
-              int.parse(manga.getElement('my_read_chapters')!.text),
-              0,
-              // 0 means that MAL does not know
-              totalChapters == 0 ? null : totalChapters,
-              data.imageUrl,
-            ),
-          );
+        MangaTrackingData(
+          id,
+          malStatusToTrackingState(
+            manga.getElement('my_status')!.text,
+          ),
+          title,
+          int.parse(manga.getElement('my_read_chapters')!.text),
+          0,
+          // 0 means that MAL does not know
+          totalChapters == 0 ? null : totalChapters,
+          data.imageUrl,
+        ),
+      );
     }
 
     // Hide the spinner again

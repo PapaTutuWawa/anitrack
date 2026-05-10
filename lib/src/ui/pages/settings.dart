@@ -11,11 +11,11 @@ class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
-        builder: (_) => const SettingsPage(),
-        settings: const RouteSettings(
-          name: settingsRoute,
-        ),
-      );
+    builder: (_) => const SettingsPage(),
+    settings: const RouteSettings(
+      name: settingsRoute,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +58,11 @@ class SettingsPage extends StatelessWidget {
                           }
 
                           GetIt.I.get<SettingsBloc>().add(
-                                AnimeListImportedEvent(
-                                  result.files.first.path!,
-                                  ImportListType.mal,
-                                ),
-                              );
+                            AnimeListImportedEvent(
+                              result.files.first.path!,
+                              ImportListType.mal,
+                            ),
+                          );
                         },
                       ),
                       ListTile(
@@ -85,30 +85,31 @@ class SettingsPage extends StatelessWidget {
                           }
 
                           GetIt.I.get<SettingsBloc>().add(
-                                MangaListImportedEvent(
-                                  result.files.first.path!,
-                                  ImportListType.mal,
-                                ),
-                              );
+                            MangaListImportedEvent(
+                              result.files.first.path!,
+                              ImportListType.mal,
+                            ),
+                          );
                         },
                       ),
                       ListTile(
                         title: Text(t.settings.exportData),
                         onTap: () async {
                           // Pick the file
-                          final result =
-                              await FilePicker.platform.getDirectoryPath();
+                          final result = await FilePicker.platform
+                              .getDirectoryPath();
                           if (result == null) return;
 
                           if (!(await Permission.manageExternalStorage
                                   .request())
-                              .isGranted) return;
+                              .isGranted)
+                            return;
 
                           GetIt.I.get<SettingsBloc>().add(
-                                DataExportedEvent(
-                                  result,
-                                ),
-                              );
+                            DataExportedEvent(
+                              result,
+                            ),
+                          );
                         },
                       ),
                       ListTile(
@@ -123,18 +124,19 @@ class SettingsPage extends StatelessWidget {
                               context: context,
                               builder: (_) => AlertDialog(
                                 title: Text(t.settings.importInvalidData.title),
-                                content:
-                                    Text(t.settings.importInvalidData.content),
+                                content: Text(
+                                  t.settings.importInvalidData.content,
+                                ),
                               ),
                             );
                             return;
                           }
 
                           GetIt.I.get<SettingsBloc>().add(
-                                DataImportedEvent(
-                                  result.files.first.path!,
-                                ),
-                              );
+                            DataImportedEvent(
+                              result.files.first.path!,
+                            ),
+                          );
                         },
                       ),
                     ],

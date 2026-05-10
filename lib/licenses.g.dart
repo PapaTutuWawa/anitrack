@@ -2085,7 +2085,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     homepage: 'https://github.com/fluttercommunity/get_it',
     authors: [
       'Flutter Community <community@flutter.zone>',
-      'Thomas Burkhart <burkhartsengineering@gmail.com>'
+      'Thomas Burkhart <burkhartsengineering@gmail.com>',
     ],
     version: '7.2.0',
     license: '''MIT License

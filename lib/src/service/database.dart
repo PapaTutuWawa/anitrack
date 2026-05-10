@@ -123,7 +123,10 @@ class DatabaseService {
     );
   }
 
-  Future<AnimeTrackingData> incrementAnimeWatchCounter(AnimeTrackingData data, int value) async {
+  Future<AnimeTrackingData> incrementAnimeWatchCounter(
+    AnimeTrackingData data,
+    int value,
+  ) async {
     final result = await _db.rawQuery(
       'UPDATE $animeTable SET episodesWatched = episodesWatched + $value WHERE id = ? RETURNING *',
       [
@@ -171,7 +174,10 @@ class DatabaseService {
     );
   }
 
-  Future<MangaTrackingData> incrementMangaReadChapters(MangaTrackingData data, int value) async {
+  Future<MangaTrackingData> incrementMangaReadChapters(
+    MangaTrackingData data,
+    int value,
+  ) async {
     final result = await _db.rawQuery(
       'UPDATE $mangaTable SET episodesWatched = chaptersRead + $value WHERE id = ? RETURNING *',
       [

@@ -36,10 +36,10 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
     );
 
     GetIt.I.get<NavigationBloc>().add(
-          PushedNamedEvent(
-            const NavigationDestination(animeSearchRoute),
-          ),
-        );
+      PushedNamedEvent(
+        const NavigationDestination(animeSearchRoute),
+      ),
+    );
   }
 
   Future<void> _onQueryChanged(
@@ -122,34 +122,34 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
     Emitter<AnimeSearchState> emit,
   ) async {
     GetIt.I.get<list.AnimeListBloc>().add(
-          state.trackingType == TrackingMediumType.anime
-              ? list.AnimeAddedEvent(
-                  AnimeTrackingData(
-                    event.result.id,
-                    MediumTrackingState.ongoing,
-                    event.result.title,
-                    0,
-                    event.result.total,
-                    event.result.thumbnailUrl,
-                    event.result.isAiring,
-                    event.result.broadcastDay,
-                  ),
-                )
-              : list.MangaAddedEvent(
-                  MangaTrackingData(
-                    event.result.id,
-                    MediumTrackingState.ongoing,
-                    event.result.title,
-                    0,
-                    0,
-                    event.result.total,
-                    event.result.thumbnailUrl,
-                  ),
-                ),
-        );
+      state.trackingType == TrackingMediumType.anime
+          ? list.AnimeAddedEvent(
+              AnimeTrackingData(
+                event.result.id,
+                MediumTrackingState.ongoing,
+                event.result.title,
+                0,
+                event.result.total,
+                event.result.thumbnailUrl,
+                event.result.isAiring,
+                event.result.broadcastDay,
+              ),
+            )
+          : list.MangaAddedEvent(
+              MangaTrackingData(
+                event.result.id,
+                MediumTrackingState.ongoing,
+                event.result.title,
+                0,
+                0,
+                event.result.total,
+                event.result.thumbnailUrl,
+              ),
+            ),
+    );
 
     GetIt.I.get<NavigationBloc>().add(
-          PoppedRouteEvent(),
-        );
+      PoppedRouteEvent(),
+    );
   }
 }

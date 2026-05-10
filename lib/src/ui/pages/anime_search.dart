@@ -12,11 +12,11 @@ class AnimeSearchPage extends StatelessWidget {
   });
 
   static MaterialPageRoute<dynamic> get route => MaterialPageRoute<dynamic>(
-        builder: (_) => const AnimeSearchPage(),
-        settings: const RouteSettings(
-          name: animeSearchRoute,
-        ),
-      );
+    builder: (_) => const AnimeSearchPage(),
+    settings: const RouteSettings(
+      name: animeSearchRoute,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +41,13 @@ class AnimeSearchPage extends StatelessWidget {
                   ),
                   onSubmitted: (_) {
                     context.read<AnimeSearchBloc>().add(
-                          SearchQuerySubmittedEvent(),
-                        );
+                      SearchQuerySubmittedEvent(),
+                    );
                   },
                   onChanged: (value) {
                     context.read<AnimeSearchBloc>().add(
-                          SearchQueryChangedEvent(value),
-                        );
+                      SearchQueryChangedEvent(value),
+                    );
                   },
                 ),
               ),
@@ -66,8 +66,8 @@ class AnimeSearchPage extends StatelessWidget {
                       return InkWell(
                         onTap: () {
                           context.read<AnimeSearchBloc>().add(
-                                ResultTappedEvent(item),
-                              );
+                            ResultTappedEvent(item),
+                          );
                         },
                         child: ListItem(
                           title: item.title,

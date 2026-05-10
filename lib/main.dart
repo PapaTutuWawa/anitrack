@@ -38,8 +38,8 @@ void main() async {
 
   // Load animes
   GetIt.I.get<AnimeListBloc>().add(
-        AnimesLoadedEvent(),
-      );
+    AnimesLoadedEvent(),
+  );
 
   WidgetsFlutterBinding.ensureInitialized();
   await LocaleSettings.useDeviceLocale();
