@@ -40,7 +40,7 @@
     },
     "details": {
         "title": "Detalles",
-        "removeTitle": "¿Eliminar el $título?",
+        "removeTitle": "¿Eliminar el $title?",
         "removeBody": "¿Estás seguro de querer eliminar \"$title\" de la lista?",
         "removeButton": "Eliminar",
         "cancelButton": "Cancelar",

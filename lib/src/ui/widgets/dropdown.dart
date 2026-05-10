@@ -1,3 +1,4 @@
+import 'package:anitrack/src/ui/widgets/list_item.dart';
 import 'package:flutter/material.dart';
 
 class SelectorItem<T> {
@@ -31,44 +32,6 @@ class DropdownSelector<T> extends StatefulWidget {
   DropdownSelectorState<T> createState() => DropdownSelectorState<T>();
 }
 
-class DropdownSelectorDialog<T> extends StatelessWidget {
-  const DropdownSelectorDialog({
-    required this.values,
-    super.key,
-  });
-
-  final List<SelectorItem<T>> values;
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Material(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        child: ListView.builder(
-          itemCount: values.length,
-          itemBuilder: (context, index) => InkWell(
-            onTap: () {
-              Navigator.of(context).pop(values[index].value);
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Text(
-                    values[index].text,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class DropdownSelectorState<T> extends State<DropdownSelector<T>> {
   late int index;
 
@@ -89,11 +52,41 @@ class DropdownSelectorState<T> extends State<DropdownSelector<T>> {
             clipBehavior: Clip.hardEdge,
             child: InkWell(
               onTap: () async {
-                final result = await showDialog<T>(
-                  context: context,
-                  builder: (context) => DropdownSelectorDialog<T>(
-                    values: widget.values.cast<SelectorItem<T>>(),
-                  ),
+                final result = await showModalBottomSheet<T>(
+                    context: context,
+                    clipBehavior: Clip.antiAlias,
+                    builder: (context) => DraggableScrollableSheet(
+                      initialChildSize: 1,
+                      builder: (context, controller) => ListView.builder(
+                        shrinkWrap: true,
+                        controller: controller,
+                        itemCount: widget.values.length,
+                        itemBuilder: (context, index) => InkWell(
+                          onTap: () {
+                            Navigator.of(context).pop(widget.values[index].value);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsetsGeometry.symmetric(
+                              horizontal: 16,
+                              vertical: 12,
+                            ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  widget.values[index].text,
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
+                                if (this.index == index)
+                                  const Padding(
+                                    padding: EdgeInsets.only(left: 12),
+                                    child: Icon(Icons.check),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                 );
 
                 if (result == null) return;
