@@ -114,3 +114,6 @@ class AddButtonVisibilitySetEvent extends AnimeListEvent {
   /// The visibility of the button
   final bool state;
 }
+
+/// Triggered by the UI when the anime list is supposed to be summoned.
+class AnimeListRequestedEvent extends AnimeListEvent {}

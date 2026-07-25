@@ -2,6 +2,8 @@ import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/service/database.dart';
+import 'package:anitrack/src/ui/bloc/navigation_bloc.dart';
+import 'package:anitrack/src/ui/constants.dart';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -28,6 +30,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     on<AnimeRemovedEvent>(_onAnimeRemoved);
     on<MangaRemovedEvent>(_onMangaRemoved);
     on<AddButtonVisibilitySetEvent>(_onButtonVisibilityToggled);
+    on<AnimeListRequestedEvent>(_onAnimeListSummoned);
   }
 
   /// Internal anime state
@@ -353,6 +356,25 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     emit(
       state.copyWith(
         buttonVisibility: event.state,
+      ),
+    );
+  }
+
+  Future<void> _onAnimeListSummoned(
+    AnimeListRequestedEvent event,
+    Emitter<AnimeListState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        trackingType: TrackingMediumType.anime,
+        animeFilterState: MediumTrackingState.ongoing,
+        mangaFilterState: MediumTrackingState.ongoing,
+      ),
+    );
+    GetIt.I.get<NavigationBloc>().add(
+      PushedNamedAndRemoveUntilEvent(
+        const NavigationDestination(animeListRoute),
+        (_) => false,
       ),
     );
   }

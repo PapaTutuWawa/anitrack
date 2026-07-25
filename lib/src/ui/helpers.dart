@@ -1,6 +1,8 @@
 import 'package:anitrack/i18n/strings.g.dart';
+import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 Widget getDrawer(BuildContext context) {
   return Drawer(
@@ -22,9 +24,8 @@ Widget getDrawer(BuildContext context) {
           leading: const Icon(Icons.list),
           title: Text(t.content.list),
           onTap: () {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              animeListRoute,
-              (_) => false,
+            GetIt.I.get<AnimeListBloc>().add(
+              AnimeListRequestedEvent(),
             );
           },
         ),

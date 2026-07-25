@@ -236,7 +236,7 @@ class AnimeListPageState extends State<AnimeListPage> {
                           context.read<DetailsBloc>().add(
                             MangaDetailsRequestedEvent(
                               manga,
-                              heroImagePrefix: 'grid_'
+                              heroImagePrefix: 'grid_',
                             ),
                           );
                         },
