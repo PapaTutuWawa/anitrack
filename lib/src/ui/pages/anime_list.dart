@@ -178,10 +178,13 @@ class AnimeListPageState extends State<AnimeListPage> {
                       },
                       child: AnimeCoverImage(
                         url: anime.thumbnailUrl,
-                        hero: anime.id,
+                        hero: 'grid_${anime.id}',
                         onTap: () {
                           context.read<DetailsBloc>().add(
-                            AnimeDetailsRequestedEvent(anime),
+                            AnimeDetailsRequestedEvent(
+                              anime,
+                              heroImagePrefix: 'grid_',
+                            ),
                           );
                         },
                         extra: Align(
@@ -227,11 +230,14 @@ class AnimeListPageState extends State<AnimeListPage> {
                         );
                       },
                       child: AnimeCoverImage(
-                        hero: manga.id,
+                        hero: 'grid_${manga.id}',
                         url: manga.thumbnailUrl,
                         onTap: () {
                           context.read<DetailsBloc>().add(
-                            MangaDetailsRequestedEvent(manga),
+                            MangaDetailsRequestedEvent(
+                              manga,
+                              heroImagePrefix: 'grid_'
+                            ),
                           );
                         },
                         extra: Align(

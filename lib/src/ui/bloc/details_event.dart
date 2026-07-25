@@ -15,10 +15,15 @@ class AnimeDetailsRequestedEvent extends DetailsEvent {
 }
 
 class MangaDetailsRequestedEvent extends DetailsEvent {
-  MangaDetailsRequestedEvent(this.manga);
+  MangaDetailsRequestedEvent(
+    this.manga, {
+    this.heroImagePrefix,
+  });
 
   /// The manga to show details about
   final MangaTrackingData manga;
+
+  final String? heroImagePrefix;
 }
 
 class DetailsUpdatedEvent extends DetailsEvent {
