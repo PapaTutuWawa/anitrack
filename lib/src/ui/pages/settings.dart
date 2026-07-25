@@ -43,7 +43,7 @@ class SettingsPage extends StatelessWidget {
                         subtitle: Text(t.settings.importAnimeDesc),
                         onTap: () async {
                           // Pick the file
-                          final result = await FilePicker.platform.pickFiles();
+                          final result = await FilePicker.pickFiles();
                           if (result == null) return;
 
                           if (!result.files.first.path!.endsWith('.xml.gz')) {
@@ -70,7 +70,7 @@ class SettingsPage extends StatelessWidget {
                         subtitle: Text(t.settings.importMangaDesc),
                         onTap: () async {
                           // Pick the file
-                          final result = await FilePicker.platform.pickFiles();
+                          final result = await FilePicker.pickFiles();
                           if (result == null) return;
 
                           if (!result.files.first.path!.endsWith('.xml.gz')) {
@@ -96,8 +96,7 @@ class SettingsPage extends StatelessWidget {
                         title: Text(t.settings.exportData),
                         onTap: () async {
                           // Pick the file
-                          final result = await FilePicker.platform
-                              .getDirectoryPath();
+                          final result = await FilePicker.getDirectoryPath();
                           if (result == null) return;
 
                           if (!(await Permission.manageExternalStorage
@@ -116,7 +115,7 @@ class SettingsPage extends StatelessWidget {
                         title: Text(t.settings.importData),
                         onTap: () async {
                           // Pick the file
-                          final result = await FilePicker.platform.pickFiles();
+                          final result = await FilePicker.pickFiles();
                           if (result == null) return;
 
                           if (!result.files.first.path!.endsWith('.json.gz')) {
