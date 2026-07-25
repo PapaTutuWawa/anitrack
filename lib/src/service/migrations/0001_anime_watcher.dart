@@ -15,7 +15,7 @@ Future<void> migrateFromV3ToV4(Database db) async {
       anime         TEXT NOT NULL,
       CONSTRAINT pk_watcher_join_table PRIMARY KEY(name, anime),
       CONSTRAINT fk_watcher FOREIGN KEY (name) REFERENCES $animeWatcherTable(name),
-      CONSTRAINT fk_anime FOREIGN KEY (anime) REFERENCES $animeTable(id),
+      CONSTRAINT fk_anime FOREIGN KEY (anime) REFERENCES $animeTable(id)
     )''',
   );
 }
