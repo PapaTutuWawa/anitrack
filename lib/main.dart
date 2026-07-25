@@ -12,7 +12,7 @@ import 'package:anitrack/src/ui/pages/about.dart';
 import 'package:anitrack/src/ui/pages/anime_list.dart';
 import 'package:anitrack/src/ui/pages/anime_search.dart';
 import 'package:anitrack/src/ui/pages/calendar.dart';
-import 'package:anitrack/src/ui/pages/details.dart';
+import 'package:anitrack/src/ui/pages/details/details.dart';
 import 'package:anitrack/src/ui/pages/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
