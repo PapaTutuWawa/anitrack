@@ -80,6 +80,7 @@ class DetailsWatcherSheetState extends State<DetailsWatcherSheet> {
                         child: TextField(
                           controller: _controller,
                           decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
                             labelText: t.details.watchingWith.name,
                           ),
                         ),
