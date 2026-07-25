@@ -9,7 +9,8 @@ class OtherTitlesConverter implements JsonConverter<OtherTitles, String> {
   const OtherTitlesConverter();
 
   @override
-  OtherTitles fromJson(String json) => OtherTitles.fromJson(jsonDecode(json) as Map<String, dynamic>);
+  OtherTitles fromJson(String json) =>
+      OtherTitles.fromJson(jsonDecode(json) as Map<String, dynamic>);
 
   @override
   String toJson(OtherTitles object) => jsonEncode(object.toJson());

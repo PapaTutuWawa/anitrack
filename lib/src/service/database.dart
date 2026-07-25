@@ -7,6 +7,8 @@ import 'package:anitrack/src/service/migrations/0000_airing.dart';
 import 'package:anitrack/src/service/migrations/0000_score.dart';
 import 'package:anitrack/src/service/migrations/0001_anime_watcher.dart';
 import 'package:anitrack/src/service/migrations/0002_anilist.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 const animeTable = 'Anime';
@@ -83,6 +85,15 @@ class DatabaseService {
   /// Cached AnimeWatchers.
   List<AnimeWatcher>? _watcherCache;
 
+  Future<String> _getDatabasePath() async {
+    if (Platform.isAndroid || Platform.isIOS) {
+      return 'anitrack.db';
+    }
+
+    final supportDir = await getApplicationSupportDirectory();
+    return p.join(supportDir.path, 'anitrack.db');
+  }
+
   Future<void> initialize() async {
     // Allow initializing the database on Windows and Linux as well.
     if (Platform.isLinux || Platform.isWindows) {
@@ -90,8 +101,10 @@ class DatabaseService {
       databaseFactory = databaseFactoryFfi;
     }
 
+    final databasePath = await _getDatabasePath();
+    print('Opening database at $databasePath');
     _db = await openDatabase(
-      'anitrack.db',
+      databasePath,
       version: 5,
       onConfigure: (db) async {
         // In order to do schema changes during database upgrades, we disable foreign
@@ -119,7 +132,6 @@ class DatabaseService {
         }
       },
     );
-    print(_db.path);
   }
 
   Future<List<AnimeTrackingData>> loadAnimes() async {
