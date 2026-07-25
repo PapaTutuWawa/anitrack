@@ -180,8 +180,8 @@ class CalendarPageState extends State<CalendarPage> {
             child: Stack(
               children: [
                 Positioned(
-                  left: 8,
-                  right: 8,
+                  left: 0,
+                  right: 0,
                   top: 0,
                   bottom: 0,
                   child: Scaffold(
