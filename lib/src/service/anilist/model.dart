@@ -27,7 +27,7 @@ abstract class AnimeSearchResult with _$AnimeSearchResult {
       id: (json['id']! as int).toString(),
       episodes: json['episodes'] as int?,
       imageUrl:
-          (json['coverImage']! as Map<String, dynamic>)['medium']! as String,
+          (json['coverImage']! as Map<String, dynamic>)['large']! as String,
       description: json['description'] as String?,
       isAiring: json['status'] == 'RELEASING',
       broadcastDay: airingDayOfTheWeek,
@@ -51,7 +51,7 @@ abstract class MangaSearchResult with _$MangaSearchResult {
       id: (json['id']! as int).toString(),
       chapters: json['chapters'] as int?,
       imageUrl:
-          (json['coverImage']! as Map<String, dynamic>)['medium']! as String,
+          (json['coverImage']! as Map<String, dynamic>)['large']! as String,
       description: json['description'] as String?,
     );
   }

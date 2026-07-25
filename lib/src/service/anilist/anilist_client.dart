@@ -16,7 +16,7 @@ class AniListClient {
             id
             status
             coverImage {
-              medium
+              large
             }
             episodes
             description
@@ -60,7 +60,7 @@ class AniListClient {
             id
             status
             coverImage {
-              medium
+              large
             }
             chapters
             description
