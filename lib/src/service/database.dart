@@ -7,6 +7,7 @@ import 'package:anitrack/src/service/migrations/0000_airing.dart';
 import 'package:anitrack/src/service/migrations/0000_score.dart';
 import 'package:anitrack/src/service/migrations/0001_anime_watcher.dart';
 import 'package:anitrack/src/service/migrations/0002_anilist.dart';
+import 'package:anitrack/src/service/migrations/0003_other_titles.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -105,7 +106,7 @@ class DatabaseService {
     print('Opening database at $databasePath');
     _db = await openDatabase(
       databasePath,
-      version: 5,
+      version: 6,
       onConfigure: (db) async {
         // In order to do schema changes during database upgrades, we disable foreign
         // keys in the onConfigure phase, but re-enable them here.
@@ -129,6 +130,9 @@ class DatabaseService {
         }
         if (oldVersion < 5) {
           await migrateFromV4ToV5(db);
+        }
+        if (oldVersion < 6) {
+          await migrateFromV5ToV6(db);
         }
       },
     );

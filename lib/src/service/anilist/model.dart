@@ -45,6 +45,8 @@ abstract class AnimeSearchResult with _$AnimeSearchResult {
 abstract class MangaSearchResult with _$MangaSearchResult {
   const factory MangaSearchResult({
     required String title,
+    required String? titleEnglish,
+    required String? titleJapanese,
     required String id,
     required int? chapters,
     required String imageUrl,
@@ -54,6 +56,10 @@ abstract class MangaSearchResult with _$MangaSearchResult {
   factory MangaSearchResult.fromJson(Map<String, Object?> json) {
     return MangaSearchResult(
       title: (json['title']! as Map<String, dynamic>)['romaji']! as String,
+      titleEnglish:
+          (json['title']! as Map<String, dynamic>)['english'] as String?,
+      titleJapanese:
+          (json['title']! as Map<String, dynamic>)['native'] as String?,
       id: (json['id']! as int).toString(),
       chapters: json['chapters'] as int?,
       imageUrl:

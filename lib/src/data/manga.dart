@@ -1,4 +1,5 @@
 import 'package:anitrack/src/data/data_base.dart';
+import 'package:anitrack/src/data/other_titles.dart';
 import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,6 +33,9 @@ abstract class MangaTrackingData
 
     /// URL to the thumbnail/cover art for the manga.
     String thumbnailUrl,
+
+    /// Other titles the manga can have.
+    @OtherTitlesConverter() OtherTitles otherTitles,
 
     /// The source where we got the data from.
     @TrackingDataSourceConverter() TrackingDataSource source,

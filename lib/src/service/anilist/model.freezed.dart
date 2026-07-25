@@ -295,7 +295,7 @@ as String?,
 /// @nodoc
 mixin _$MangaSearchResult {
 
- String get title; String get id; int? get chapters; String get imageUrl; String? get description;
+ String get title; String? get titleEnglish; String? get titleJapanese; String get id; int? get chapters; String get imageUrl; String? get description;
 /// Create a copy of MangaSearchResult
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -306,16 +306,16 @@ $MangaSearchResultCopyWith<MangaSearchResult> get copyWith => _$MangaSearchResul
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MangaSearchResult&&(identical(other.title, title) || other.title == title)&&(identical(other.id, id) || other.id == id)&&(identical(other.chapters, chapters) || other.chapters == chapters)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MangaSearchResult&&(identical(other.title, title) || other.title == title)&&(identical(other.titleEnglish, titleEnglish) || other.titleEnglish == titleEnglish)&&(identical(other.titleJapanese, titleJapanese) || other.titleJapanese == titleJapanese)&&(identical(other.id, id) || other.id == id)&&(identical(other.chapters, chapters) || other.chapters == chapters)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.description, description) || other.description == description));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,id,chapters,imageUrl,description);
+int get hashCode => Object.hash(runtimeType,title,titleEnglish,titleJapanese,id,chapters,imageUrl,description);
 
 @override
 String toString() {
-  return 'MangaSearchResult(title: $title, id: $id, chapters: $chapters, imageUrl: $imageUrl, description: $description)';
+  return 'MangaSearchResult(title: $title, titleEnglish: $titleEnglish, titleJapanese: $titleJapanese, id: $id, chapters: $chapters, imageUrl: $imageUrl, description: $description)';
 }
 
 
@@ -326,7 +326,7 @@ abstract mixin class $MangaSearchResultCopyWith<$Res>  {
   factory $MangaSearchResultCopyWith(MangaSearchResult value, $Res Function(MangaSearchResult) _then) = _$MangaSearchResultCopyWithImpl;
 @useResult
 $Res call({
- String title, String id, int? chapters, String imageUrl, String? description
+ String title, String? titleEnglish, String? titleJapanese, String id, int? chapters, String imageUrl, String? description
 });
 
 
@@ -343,10 +343,12 @@ class _$MangaSearchResultCopyWithImpl<$Res>
 
 /// Create a copy of MangaSearchResult
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? id = null,Object? chapters = freezed,Object? imageUrl = null,Object? description = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? titleEnglish = freezed,Object? titleJapanese = freezed,Object? id = null,Object? chapters = freezed,Object? imageUrl = null,Object? description = freezed,}) {
   return _then(_self.copyWith(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,titleEnglish: freezed == titleEnglish ? _self.titleEnglish : titleEnglish // ignore: cast_nullable_to_non_nullable
+as String?,titleJapanese: freezed == titleJapanese ? _self.titleJapanese : titleJapanese // ignore: cast_nullable_to_non_nullable
+as String?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,chapters: freezed == chapters ? _self.chapters : chapters // ignore: cast_nullable_to_non_nullable
 as int?,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
@@ -435,10 +437,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String id,  int? chapters,  String imageUrl,  String? description)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String? titleEnglish,  String? titleJapanese,  String id,  int? chapters,  String imageUrl,  String? description)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MangaSearchResult() when $default != null:
-return $default(_that.title,_that.id,_that.chapters,_that.imageUrl,_that.description);case _:
+return $default(_that.title,_that.titleEnglish,_that.titleJapanese,_that.id,_that.chapters,_that.imageUrl,_that.description);case _:
   return orElse();
 
 }
@@ -456,10 +458,10 @@ return $default(_that.title,_that.id,_that.chapters,_that.imageUrl,_that.descrip
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String id,  int? chapters,  String imageUrl,  String? description)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String? titleEnglish,  String? titleJapanese,  String id,  int? chapters,  String imageUrl,  String? description)  $default,) {final _that = this;
 switch (_that) {
 case _MangaSearchResult():
-return $default(_that.title,_that.id,_that.chapters,_that.imageUrl,_that.description);case _:
+return $default(_that.title,_that.titleEnglish,_that.titleJapanese,_that.id,_that.chapters,_that.imageUrl,_that.description);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -476,10 +478,10 @@ return $default(_that.title,_that.id,_that.chapters,_that.imageUrl,_that.descrip
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String id,  int? chapters,  String imageUrl,  String? description)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String? titleEnglish,  String? titleJapanese,  String id,  int? chapters,  String imageUrl,  String? description)?  $default,) {final _that = this;
 switch (_that) {
 case _MangaSearchResult() when $default != null:
-return $default(_that.title,_that.id,_that.chapters,_that.imageUrl,_that.description);case _:
+return $default(_that.title,_that.titleEnglish,_that.titleJapanese,_that.id,_that.chapters,_that.imageUrl,_that.description);case _:
   return null;
 
 }
@@ -491,10 +493,12 @@ return $default(_that.title,_that.id,_that.chapters,_that.imageUrl,_that.descrip
 
 
 class _MangaSearchResult implements MangaSearchResult {
-  const _MangaSearchResult({required this.title, required this.id, required this.chapters, required this.imageUrl, required this.description});
+  const _MangaSearchResult({required this.title, required this.titleEnglish, required this.titleJapanese, required this.id, required this.chapters, required this.imageUrl, required this.description});
   
 
 @override final  String title;
+@override final  String? titleEnglish;
+@override final  String? titleJapanese;
 @override final  String id;
 @override final  int? chapters;
 @override final  String imageUrl;
@@ -510,16 +514,16 @@ _$MangaSearchResultCopyWith<_MangaSearchResult> get copyWith => __$MangaSearchRe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MangaSearchResult&&(identical(other.title, title) || other.title == title)&&(identical(other.id, id) || other.id == id)&&(identical(other.chapters, chapters) || other.chapters == chapters)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MangaSearchResult&&(identical(other.title, title) || other.title == title)&&(identical(other.titleEnglish, titleEnglish) || other.titleEnglish == titleEnglish)&&(identical(other.titleJapanese, titleJapanese) || other.titleJapanese == titleJapanese)&&(identical(other.id, id) || other.id == id)&&(identical(other.chapters, chapters) || other.chapters == chapters)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.description, description) || other.description == description));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,id,chapters,imageUrl,description);
+int get hashCode => Object.hash(runtimeType,title,titleEnglish,titleJapanese,id,chapters,imageUrl,description);
 
 @override
 String toString() {
-  return 'MangaSearchResult(title: $title, id: $id, chapters: $chapters, imageUrl: $imageUrl, description: $description)';
+  return 'MangaSearchResult(title: $title, titleEnglish: $titleEnglish, titleJapanese: $titleJapanese, id: $id, chapters: $chapters, imageUrl: $imageUrl, description: $description)';
 }
 
 
@@ -530,7 +534,7 @@ abstract mixin class _$MangaSearchResultCopyWith<$Res> implements $MangaSearchRe
   factory _$MangaSearchResultCopyWith(_MangaSearchResult value, $Res Function(_MangaSearchResult) _then) = __$MangaSearchResultCopyWithImpl;
 @override @useResult
 $Res call({
- String title, String id, int? chapters, String imageUrl, String? description
+ String title, String? titleEnglish, String? titleJapanese, String id, int? chapters, String imageUrl, String? description
 });
 
 
@@ -547,10 +551,12 @@ class __$MangaSearchResultCopyWithImpl<$Res>
 
 /// Create a copy of MangaSearchResult
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? id = null,Object? chapters = freezed,Object? imageUrl = null,Object? description = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? titleEnglish = freezed,Object? titleJapanese = freezed,Object? id = null,Object? chapters = freezed,Object? imageUrl = null,Object? description = freezed,}) {
   return _then(_MangaSearchResult(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,titleEnglish: freezed == titleEnglish ? _self.titleEnglish : titleEnglish // ignore: cast_nullable_to_non_nullable
+as String?,titleJapanese: freezed == titleJapanese ? _self.titleJapanese : titleJapanese // ignore: cast_nullable_to_non_nullable
+as String?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,chapters: freezed == chapters ? _self.chapters : chapters // ignore: cast_nullable_to_non_nullable
 as int?,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable

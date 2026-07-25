@@ -211,6 +211,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
           // 0 means that MAL does not know
           totalChapters == 0 ? null : totalChapters,
           data.imageUrl,
+          OtherTitles(),
           TrackingDataSource.mal,
         ),
       );

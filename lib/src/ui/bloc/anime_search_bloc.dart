@@ -156,6 +156,10 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
                 0,
                 event.result.total,
                 event.result.thumbnailUrl,
+                OtherTitles(
+                  english: event.result.titleEnglish,
+                  japanese: event.result.titleJapanese,
+                ),
                 TrackingDataSource.anilist,
               ),
             ),
