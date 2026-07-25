@@ -17,6 +17,7 @@ _MangaTrackingData _$MangaTrackingDataFromJson(Map<String, dynamic> json) =>
       (json['volumesOwned'] as num).toInt(),
       (json['chaptersTotal'] as num?)?.toInt(),
       json['thumbnailUrl'] as String,
+      const TrackingDataSourceConverter().fromJson(json['source'] as String),
     );
 
 Map<String, dynamic> _$MangaTrackingDataToJson(_MangaTrackingData instance) =>
@@ -28,4 +29,5 @@ Map<String, dynamic> _$MangaTrackingDataToJson(_MangaTrackingData instance) =>
       'volumesOwned': instance.volumesOwned,
       'chaptersTotal': instance.chaptersTotal,
       'thumbnailUrl': instance.thumbnailUrl,
+      'source': const TrackingDataSourceConverter().toJson(instance.source),
     };

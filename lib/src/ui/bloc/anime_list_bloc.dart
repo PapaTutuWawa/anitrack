@@ -317,9 +317,9 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     );
 
     // Update the cache
-    final cacheIndex = _mangas.indexWhere((m) => m.id == event.id);
+    final cacheIndex = _animes.indexWhere((m) => m.id == event.id);
     assert(cacheIndex != -1, 'The anime must exist');
-    _mangas.removeAt(cacheIndex);
+    _animes.removeAt(cacheIndex);
 
     // Update the database
     await GetIt.I.get<DatabaseService>().deleteAnime(event.id);
@@ -338,9 +338,9 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     );
 
     // Update the cache
-    final cacheIndex = _animes.indexWhere((a) => a.id == event.id);
+    final cacheIndex = _mangas.indexWhere((a) => a.id == event.id);
     assert(cacheIndex != -1, 'The manga must exist');
-    _animes.removeAt(cacheIndex);
+    _mangas.removeAt(cacheIndex);
 
     // Update the database
     await GetIt.I.get<DatabaseService>().deleteManga(event.id);

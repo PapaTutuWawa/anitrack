@@ -6,6 +6,7 @@ import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/service/migrations/0000_airing.dart';
 import 'package:anitrack/src/service/migrations/0000_score.dart';
 import 'package:anitrack/src/service/migrations/0001_anime_watcher.dart';
+import 'package:anitrack/src/service/migrations/0002_anilist.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 const animeTable = 'Anime';
@@ -38,7 +39,8 @@ Future<void> _createDatabase(Database db, int version) async {
       otherTitles     TEXT NOT NULL,
       score           INTEGER,
       airing          INTEGER NOT NULL,
-      broadcastDay    TEXT
+      broadcastDay    TEXT,
+      source          TEXT NOT NULL
     )''',
   );
   await db.execute(
@@ -52,7 +54,8 @@ Future<void> _createDatabase(Database db, int version) async {
       thumbnailUrl  TEXT NOT NULL,
       title         TEXT NOT NULL,
       otherTitles   TEXT NOT NULL,
-      score         INTEGER
+      score         INTEGER,
+      source        TEXT NOT NULL
     )''',
   );
   await db.execute(
@@ -89,7 +92,7 @@ class DatabaseService {
 
     _db = await openDatabase(
       'anitrack.db',
-      version: 4,
+      version: 5,
       onConfigure: (db) async {
         // In order to do schema changes during database upgrades, we disable foreign
         // keys in the onConfigure phase, but re-enable them here.
@@ -110,6 +113,9 @@ class DatabaseService {
         }
         if (oldVersion < 4) {
           await migrateFromV3ToV4(db);
+        }
+        if (oldVersion < 5) {
+          await migrateFromV4ToV5(db);
         }
       },
     );

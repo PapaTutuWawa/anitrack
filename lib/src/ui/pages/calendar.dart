@@ -122,8 +122,7 @@ class CalendarPageState extends State<CalendarPage> {
     ];
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Map<Weekday, List<AnimeTrackingData>> _constructAiringMap() {
     final airingAnimeMap = <Weekday, List<AnimeTrackingData>>{};
     for (final anime in GetIt.I.get<AnimeListBloc>().unfilteredAnime) {
       if (!anime.airing) continue;
@@ -158,166 +157,176 @@ class CalendarPageState extends State<CalendarPage> {
 
       airingAnimeMap.addOrSet(day, anime);
     }
+    return airingAnimeMap;
+  }
 
-    return BlocListener<CalendarBloc, CalendarState>(
-      listenWhen: (previous, current) =>
-          previous.refreshing != current.refreshing,
-      listener: (context, state) {
-        // Force an update
-        if (!state.refreshing) {
-          setState(() {});
-        }
-      },
-      child: WillPopScope(
-        onWillPop: () async => !context.read<CalendarBloc>().state.refreshing,
-        child: Stack(
-          children: [
-            Positioned(
-              left: 8,
-              right: 8,
-              top: 0,
-              bottom: 0,
-              child: Scaffold(
-                appBar: AppBar(
-                  title: Text(t.calendar.calendar),
-                  actions: [
-                    IconButton(
-                      onPressed: () {
-                        context.read<CalendarBloc>().add(
-                          RefreshPerformedEvent(),
-                        );
-                      },
-                      icon: const Icon(Icons.refresh),
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AnimeListBloc, AnimeListState>(
+      builder: (context, animeListState) {
+        final airingAnimeMap = _constructAiringMap();
+        return BlocListener<CalendarBloc, CalendarState>(
+          listenWhen: (previous, current) =>
+              previous.refreshing != current.refreshing,
+          listener: (context, state) {
+            // Force an update
+            if (!state.refreshing) {
+              setState(() {});
+            }
+          },
+          child: WillPopScope(
+            onWillPop: () async =>
+                !context.read<CalendarBloc>().state.refreshing,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 8,
+                  right: 8,
+                  top: 0,
+                  bottom: 0,
+                  child: Scaffold(
+                    appBar: AppBar(
+                      title: Text(t.calendar.calendar),
+                      actions: [
+                        IconButton(
+                          onPressed: () {
+                            context.read<CalendarBloc>().add(
+                              RefreshPerformedEvent(),
+                            );
+                          },
+                          icon: const Icon(Icons.refresh),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                drawer: getDrawer(context),
-                body: Padding(
-                  padding: const EdgeInsetsGeometry.symmetric(
-                    horizontal: 12,
-                  ),
-                  child: CustomScrollView(
-                    slivers: [
-                      // Render all available weekdays
-                      ..._renderWeekdayList(
-                        context,
-                        Weekday.unknown,
-                        airingAnimeMap,
+                    drawer: getDrawer(context),
+                    body: Padding(
+                      padding: const EdgeInsetsGeometry.symmetric(
+                        horizontal: 12,
                       ),
-                      ..._renderWeekdayList(
-                        context,
-                        Weekday.monday,
-                        airingAnimeMap,
-                      ),
-                      ..._renderWeekdayList(
-                        context,
-                        Weekday.tuesday,
-                        airingAnimeMap,
-                      ),
-                      ..._renderWeekdayList(
-                        context,
-                        Weekday.wednesday,
-                        airingAnimeMap,
-                      ),
-                      ..._renderWeekdayList(
-                        context,
-                        Weekday.thursday,
-                        airingAnimeMap,
-                      ),
-                      ..._renderWeekdayList(
-                        context,
-                        Weekday.friday,
-                        airingAnimeMap,
-                      ),
-                      ..._renderWeekdayList(
-                        context,
-                        Weekday.saturday,
-                        airingAnimeMap,
-                      ),
-                      ..._renderWeekdayList(
-                        context,
-                        Weekday.sunday,
-                        airingAnimeMap,
-                      ),
+                      child: CustomScrollView(
+                        slivers: [
+                          // Render all available weekdays
+                          ..._renderWeekdayList(
+                            context,
+                            Weekday.unknown,
+                            airingAnimeMap,
+                          ),
+                          ..._renderWeekdayList(
+                            context,
+                            Weekday.monday,
+                            airingAnimeMap,
+                          ),
+                          ..._renderWeekdayList(
+                            context,
+                            Weekday.tuesday,
+                            airingAnimeMap,
+                          ),
+                          ..._renderWeekdayList(
+                            context,
+                            Weekday.wednesday,
+                            airingAnimeMap,
+                          ),
+                          ..._renderWeekdayList(
+                            context,
+                            Weekday.thursday,
+                            airingAnimeMap,
+                          ),
+                          ..._renderWeekdayList(
+                            context,
+                            Weekday.friday,
+                            airingAnimeMap,
+                          ),
+                          ..._renderWeekdayList(
+                            context,
+                            Weekday.saturday,
+                            airingAnimeMap,
+                          ),
+                          ..._renderWeekdayList(
+                            context,
+                            Weekday.sunday,
+                            airingAnimeMap,
+                          ),
 
-                      // Provide a nice bottom padding, while keeping the elastic effect attached
-                      // to the bottom-most edge.
-                      const SliverToBoxAdapter(
+                          // Provide a nice bottom padding, while keeping the elastic effect attached
+                          // to the bottom-most edge.
+                          const SliverToBoxAdapter(
+                            child: SizedBox(
+                              height: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  child: BlocBuilder<CalendarBloc, CalendarState>(
+                    buildWhen: (previous, current) =>
+                        previous.refreshing != current.refreshing,
+                    builder: (context, state) {
+                      if (!state.refreshing) {
+                        return const SizedBox();
+                      }
+
+                      return const ModalBarrier(
+                        dismissible: false,
+                        color: Colors.black54,
+                      );
+                    },
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  child: BlocBuilder<CalendarBloc, CalendarState>(
+                    builder: (context, state) {
+                      if (!state.refreshing) {
+                        return const SizedBox();
+                      }
+
+                      return Center(
                         child: SizedBox(
-                          height: 16,
+                          width: 150,
+                          height: 150,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey.shade800,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.all(25),
+                                  child: CircularProgressIndicator(),
+                                ),
+                                Text(
+                                  t.settings.importIndicator(
+                                    current: state.refreshingCount,
+                                    total: state.refreshingTotal,
+                                  ),
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
-              ),
+              ],
             ),
-            Positioned(
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0,
-              child: BlocBuilder<CalendarBloc, CalendarState>(
-                buildWhen: (previous, current) =>
-                    previous.refreshing != current.refreshing,
-                builder: (context, state) {
-                  if (!state.refreshing) {
-                    return const SizedBox();
-                  }
-
-                  return const ModalBarrier(
-                    dismissible: false,
-                    color: Colors.black54,
-                  );
-                },
-              ),
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0,
-              child: BlocBuilder<CalendarBloc, CalendarState>(
-                builder: (context, state) {
-                  if (!state.refreshing) {
-                    return const SizedBox();
-                  }
-
-                  return Center(
-                    child: SizedBox(
-                      width: 150,
-                      height: 150,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.grey.shade800,
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.all(25),
-                              child: CircularProgressIndicator(),
-                            ),
-                            Text(
-                              t.settings.importIndicator(
-                                current: state.refreshingCount,
-                                total: state.refreshingTotal,
-                              ),
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

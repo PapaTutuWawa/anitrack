@@ -1,7 +1,10 @@
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/search_result.dart';
+import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
+import 'package:anitrack/src/service/anilist/anilist_client.dart';
+import 'package:anitrack/src/service/anilist/model.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart' as list;
 import 'package:anitrack/src/ui/bloc/navigation_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
@@ -21,6 +24,9 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
     on<SearchQuerySubmittedEvent>(_onQuerySubmitted);
     on<ResultTappedEvent>(_onResultTapped);
   }
+
+  // The client to use for AniList GraphQL queries.
+  final _anilistClient = AniListClient();
 
   Future<void> _onRequested(
     AnimeSearchRequestedEvent event,
@@ -67,23 +73,21 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
 
     if (state.trackingType == TrackingMediumType.anime) {
       // Anime
-      final result = await Jikan().searchAnime(
-        query: state.searchQuery,
-      );
+      final result = await _anilistClient.searchAnime(state.searchQuery);
 
       emit(
         state.copyWith(
           working: false,
           searchResults: result
               .map(
-                (Anime anime) => SearchResult(
+                (anime) => SearchResult(
                   anime.title,
-                  anime.malId.toString(),
+                  anime.id,
                   anime.episodes,
                   anime.imageUrl,
-                  anime.synopsis ?? '',
-                  anime.airing,
-                  anime.broadcast?.split(' ').first,
+                  anime.description ?? '',
+                  anime.isAiring,
+                  anime.broadcastDay,
                 ),
               )
               .toList(),
@@ -91,21 +95,19 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
       );
     } else {
       // Manga
-      final result = await Jikan().searchManga(
-        query: state.searchQuery,
-      );
+      final result = await _anilistClient.searchManga(state.searchQuery);
 
       emit(
         state.copyWith(
           working: false,
           searchResults: result
               .map(
-                (Manga manga) => SearchResult(
+                (manga) => SearchResult(
                   manga.title,
-                  manga.malId.toString(),
+                  manga.id,
                   manga.chapters,
                   manga.imageUrl,
-                  manga.synopsis ?? '',
+                  manga.description ?? '',
                   // TODO(Unknown): Implement for Manga
                   false,
                   null,
@@ -133,6 +135,7 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
                 event.result.thumbnailUrl,
                 event.result.isAiring,
                 event.result.broadcastDay,
+                TrackingDataSource.anilist,
               ),
             )
           : list.MangaAddedEvent(
@@ -144,6 +147,7 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
                 0,
                 event.result.total,
                 event.result.thumbnailUrl,
+                TrackingDataSource.anilist,
               ),
             ),
     );

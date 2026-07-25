@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:anitrack/src/data/source.dart';
+import 'package:anitrack/src/service/anilist/anilist_client.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -43,9 +45,18 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       String? broadcastDay;
       bool airing;
       try {
-        final apiData = await Jikan().getAnime(int.parse(anime.id));
-        airing = apiData.airing;
-        broadcastDay = apiData.broadcast?.split(' ').first;
+        switch (anime.source) {
+          case TrackingDataSource.mal:
+            final apiData = await Jikan().getAnime(int.parse(anime.id));
+            airing = apiData.airing;
+            broadcastDay = apiData.broadcast?.split(' ').first;
+          case TrackingDataSource.anilist:
+            final apiData = await GetIt.I.get<AniListClient>().getAnimeById(
+              anime.id,
+            );
+            airing = apiData.isAiring;
+            broadcastDay = apiData.broadcastDay;
+        }
       } catch (ex) {
         print('API request for anime ${anime.id} failed: $ex');
         airing = false;

@@ -1,3 +1,4 @@
+import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -28,6 +29,9 @@ abstract class MangaTrackingData with _$MangaTrackingData, TrackingMedium {
 
     /// URL to the thumbnail/cover art for the manga.
     String thumbnailUrl,
+
+    /// The source where we got the data from.
+    @TrackingDataSourceConverter() TrackingDataSource source,
   ) = _MangaTrackingData;
 
   MangaTrackingData._();

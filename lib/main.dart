@@ -1,4 +1,5 @@
 import 'package:anitrack/i18n/strings.g.dart';
+import 'package:anitrack/src/service/anilist/anilist_client.dart';
 import 'package:anitrack/src/service/database.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/anime_search_bloc.dart';
@@ -35,6 +36,7 @@ void main() async {
   GetIt.I.registerSingleton<NavigationBloc>(NavigationBloc(navKey));
   GetIt.I.registerSingleton<SettingsBloc>(SettingsBloc());
   GetIt.I.registerSingleton<CalendarBloc>(CalendarBloc());
+  GetIt.I.registerSingleton<AniListClient>(AniListClient());
 
   // Load animes
   GetIt.I.get<AnimeListBloc>().add(

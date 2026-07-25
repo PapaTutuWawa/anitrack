@@ -1,3 +1,4 @@
+import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/service/database.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -42,6 +43,9 @@ abstract class AnimeTrackingData with _$AnimeTrackingData, TrackingMedium {
 
     /// The day of the week the anime is airing
     String? broadcastDay,
+
+    /// The source where we got the data from.
+    @TrackingDataSourceConverter() TrackingDataSource source,
   ) = _AnimeTrackingData;
 
   AnimeTrackingData._();

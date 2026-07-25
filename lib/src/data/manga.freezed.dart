@@ -22,7 +22,8 @@ mixin _$MangaTrackingData {
  int get chaptersRead;/// Chapters read.
  int get volumesOwned;/// Episodes watched.
  int? get chaptersTotal;/// URL to the thumbnail/cover art for the manga.
- String get thumbnailUrl;
+ String get thumbnailUrl;/// The source where we got the data from.
+@TrackingDataSourceConverter() TrackingDataSource get source;
 /// Create a copy of MangaTrackingData
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -35,16 +36,16 @@ $MangaTrackingDataCopyWith<MangaTrackingData> get copyWith => _$MangaTrackingDat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MangaTrackingData&&(identical(other.id, id) || other.id == id)&&(identical(other.state, state) || other.state == state)&&(identical(other.title, title) || other.title == title)&&(identical(other.chaptersRead, chaptersRead) || other.chaptersRead == chaptersRead)&&(identical(other.volumesOwned, volumesOwned) || other.volumesOwned == volumesOwned)&&(identical(other.chaptersTotal, chaptersTotal) || other.chaptersTotal == chaptersTotal)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MangaTrackingData&&(identical(other.id, id) || other.id == id)&&(identical(other.state, state) || other.state == state)&&(identical(other.title, title) || other.title == title)&&(identical(other.chaptersRead, chaptersRead) || other.chaptersRead == chaptersRead)&&(identical(other.volumesOwned, volumesOwned) || other.volumesOwned == volumesOwned)&&(identical(other.chaptersTotal, chaptersTotal) || other.chaptersTotal == chaptersTotal)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl)&&(identical(other.source, source) || other.source == source));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,state,title,chaptersRead,volumesOwned,chaptersTotal,thumbnailUrl);
+int get hashCode => Object.hash(runtimeType,id,state,title,chaptersRead,volumesOwned,chaptersTotal,thumbnailUrl,source);
 
 @override
 String toString() {
-  return 'MangaTrackingData(id: $id, state: $state, title: $title, chaptersRead: $chaptersRead, volumesOwned: $volumesOwned, chaptersTotal: $chaptersTotal, thumbnailUrl: $thumbnailUrl)';
+  return 'MangaTrackingData(id: $id, state: $state, title: $title, chaptersRead: $chaptersRead, volumesOwned: $volumesOwned, chaptersTotal: $chaptersTotal, thumbnailUrl: $thumbnailUrl, source: $source)';
 }
 
 
@@ -55,7 +56,7 @@ abstract mixin class $MangaTrackingDataCopyWith<$Res>  {
   factory $MangaTrackingDataCopyWith(MangaTrackingData value, $Res Function(MangaTrackingData) _then) = _$MangaTrackingDataCopyWithImpl;
 @useResult
 $Res call({
- String id,@MediumTrackingStateConverter() MediumTrackingState state, String title, int chaptersRead, int volumesOwned, int? chaptersTotal, String thumbnailUrl
+ String id,@MediumTrackingStateConverter() MediumTrackingState state, String title, int chaptersRead, int volumesOwned, int? chaptersTotal, String thumbnailUrl,@TrackingDataSourceConverter() TrackingDataSource source
 });
 
 
@@ -72,7 +73,7 @@ class _$MangaTrackingDataCopyWithImpl<$Res>
 
 /// Create a copy of MangaTrackingData
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? state = null,Object? title = null,Object? chaptersRead = null,Object? volumesOwned = null,Object? chaptersTotal = freezed,Object? thumbnailUrl = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? state = null,Object? title = null,Object? chaptersRead = null,Object? volumesOwned = null,Object? chaptersTotal = freezed,Object? thumbnailUrl = null,Object? source = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,state: null == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
@@ -81,7 +82,8 @@ as String,chaptersRead: null == chaptersRead ? _self.chaptersRead : chaptersRead
 as int,volumesOwned: null == volumesOwned ? _self.volumesOwned : volumesOwned // ignore: cast_nullable_to_non_nullable
 as int,chaptersTotal: freezed == chaptersTotal ? _self.chaptersTotal : chaptersTotal // ignore: cast_nullable_to_non_nullable
 as int?,thumbnailUrl: null == thumbnailUrl ? _self.thumbnailUrl : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-as String,
+as String,source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
+as TrackingDataSource,
   ));
 }
 
@@ -166,10 +168,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int chaptersRead,  int volumesOwned,  int? chaptersTotal,  String thumbnailUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int chaptersRead,  int volumesOwned,  int? chaptersTotal,  String thumbnailUrl, @TrackingDataSourceConverter()  TrackingDataSource source)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MangaTrackingData() when $default != null:
-return $default(_that.id,_that.state,_that.title,_that.chaptersRead,_that.volumesOwned,_that.chaptersTotal,_that.thumbnailUrl);case _:
+return $default(_that.id,_that.state,_that.title,_that.chaptersRead,_that.volumesOwned,_that.chaptersTotal,_that.thumbnailUrl,_that.source);case _:
   return orElse();
 
 }
@@ -187,10 +189,10 @@ return $default(_that.id,_that.state,_that.title,_that.chaptersRead,_that.volume
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int chaptersRead,  int volumesOwned,  int? chaptersTotal,  String thumbnailUrl)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int chaptersRead,  int volumesOwned,  int? chaptersTotal,  String thumbnailUrl, @TrackingDataSourceConverter()  TrackingDataSource source)  $default,) {final _that = this;
 switch (_that) {
 case _MangaTrackingData():
-return $default(_that.id,_that.state,_that.title,_that.chaptersRead,_that.volumesOwned,_that.chaptersTotal,_that.thumbnailUrl);case _:
+return $default(_that.id,_that.state,_that.title,_that.chaptersRead,_that.volumesOwned,_that.chaptersTotal,_that.thumbnailUrl,_that.source);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -207,10 +209,10 @@ return $default(_that.id,_that.state,_that.title,_that.chaptersRead,_that.volume
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int chaptersRead,  int volumesOwned,  int? chaptersTotal,  String thumbnailUrl)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int chaptersRead,  int volumesOwned,  int? chaptersTotal,  String thumbnailUrl, @TrackingDataSourceConverter()  TrackingDataSource source)?  $default,) {final _that = this;
 switch (_that) {
 case _MangaTrackingData() when $default != null:
-return $default(_that.id,_that.state,_that.title,_that.chaptersRead,_that.volumesOwned,_that.chaptersTotal,_that.thumbnailUrl);case _:
+return $default(_that.id,_that.state,_that.title,_that.chaptersRead,_that.volumesOwned,_that.chaptersTotal,_that.thumbnailUrl,_that.source);case _:
   return null;
 
 }
@@ -222,7 +224,7 @@ return $default(_that.id,_that.state,_that.title,_that.chaptersRead,_that.volume
 @JsonSerializable()
 
 class _MangaTrackingData extends MangaTrackingData {
-   _MangaTrackingData(this.id, @MediumTrackingStateConverter() this.state, this.title, this.chaptersRead, this.volumesOwned, this.chaptersTotal, this.thumbnailUrl): super._();
+   _MangaTrackingData(this.id, @MediumTrackingStateConverter() this.state, this.title, this.chaptersRead, this.volumesOwned, this.chaptersTotal, this.thumbnailUrl, @TrackingDataSourceConverter() this.source): super._();
   factory _MangaTrackingData.fromJson(Map<String, dynamic> json) => _$MangaTrackingDataFromJson(json);
 
 /// The ID of the manga
@@ -239,6 +241,8 @@ class _MangaTrackingData extends MangaTrackingData {
 @override final  int? chaptersTotal;
 /// URL to the thumbnail/cover art for the manga.
 @override final  String thumbnailUrl;
+/// The source where we got the data from.
+@override@TrackingDataSourceConverter() final  TrackingDataSource source;
 
 /// Create a copy of MangaTrackingData
 /// with the given fields replaced by the non-null parameter values.
@@ -253,16 +257,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MangaTrackingData&&(identical(other.id, id) || other.id == id)&&(identical(other.state, state) || other.state == state)&&(identical(other.title, title) || other.title == title)&&(identical(other.chaptersRead, chaptersRead) || other.chaptersRead == chaptersRead)&&(identical(other.volumesOwned, volumesOwned) || other.volumesOwned == volumesOwned)&&(identical(other.chaptersTotal, chaptersTotal) || other.chaptersTotal == chaptersTotal)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MangaTrackingData&&(identical(other.id, id) || other.id == id)&&(identical(other.state, state) || other.state == state)&&(identical(other.title, title) || other.title == title)&&(identical(other.chaptersRead, chaptersRead) || other.chaptersRead == chaptersRead)&&(identical(other.volumesOwned, volumesOwned) || other.volumesOwned == volumesOwned)&&(identical(other.chaptersTotal, chaptersTotal) || other.chaptersTotal == chaptersTotal)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl)&&(identical(other.source, source) || other.source == source));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,state,title,chaptersRead,volumesOwned,chaptersTotal,thumbnailUrl);
+int get hashCode => Object.hash(runtimeType,id,state,title,chaptersRead,volumesOwned,chaptersTotal,thumbnailUrl,source);
 
 @override
 String toString() {
-  return 'MangaTrackingData(id: $id, state: $state, title: $title, chaptersRead: $chaptersRead, volumesOwned: $volumesOwned, chaptersTotal: $chaptersTotal, thumbnailUrl: $thumbnailUrl)';
+  return 'MangaTrackingData(id: $id, state: $state, title: $title, chaptersRead: $chaptersRead, volumesOwned: $volumesOwned, chaptersTotal: $chaptersTotal, thumbnailUrl: $thumbnailUrl, source: $source)';
 }
 
 
@@ -273,7 +277,7 @@ abstract mixin class _$MangaTrackingDataCopyWith<$Res> implements $MangaTracking
   factory _$MangaTrackingDataCopyWith(_MangaTrackingData value, $Res Function(_MangaTrackingData) _then) = __$MangaTrackingDataCopyWithImpl;
 @override @useResult
 $Res call({
- String id,@MediumTrackingStateConverter() MediumTrackingState state, String title, int chaptersRead, int volumesOwned, int? chaptersTotal, String thumbnailUrl
+ String id,@MediumTrackingStateConverter() MediumTrackingState state, String title, int chaptersRead, int volumesOwned, int? chaptersTotal, String thumbnailUrl,@TrackingDataSourceConverter() TrackingDataSource source
 });
 
 
@@ -290,7 +294,7 @@ class __$MangaTrackingDataCopyWithImpl<$Res>
 
 /// Create a copy of MangaTrackingData
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? state = null,Object? title = null,Object? chaptersRead = null,Object? volumesOwned = null,Object? chaptersTotal = freezed,Object? thumbnailUrl = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? state = null,Object? title = null,Object? chaptersRead = null,Object? volumesOwned = null,Object? chaptersTotal = freezed,Object? thumbnailUrl = null,Object? source = null,}) {
   return _then(_MangaTrackingData(
 null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,null == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
@@ -299,7 +303,8 @@ as String,null == chaptersRead ? _self.chaptersRead : chaptersRead // ignore: ca
 as int,null == volumesOwned ? _self.volumesOwned : volumesOwned // ignore: cast_nullable_to_non_nullable
 as int,freezed == chaptersTotal ? _self.chaptersTotal : chaptersTotal // ignore: cast_nullable_to_non_nullable
 as int?,null == thumbnailUrl ? _self.thumbnailUrl : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-as String,
+as String,null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
+as TrackingDataSource,
   ));
 }
 
