@@ -1,6 +1,8 @@
 class SearchResult {
   const SearchResult(
     this.title,
+    this.titleEnglish,
+    this.titleJapanese,
     this.id,
     this.total,
     this.thumbnailUrl,
@@ -11,6 +13,12 @@ class SearchResult {
 
   /// The title of the anime.
   final String title;
+
+  /// The English title.
+  final String? titleEnglish;
+
+  /// The original Japanese title.
+  final String? titleJapanese;
 
   /// The id of the anime.
   final String id;

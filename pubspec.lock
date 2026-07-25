@@ -242,7 +242,7 @@ packages:
     source: hosted
     version: "1.0.9"
   dart_pubspec_licenses:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: dart_pubspec_licenses
       sha256: "3d579e1aa3ad3b6519f08fce6980799c0a8375bf41e0b8d58ca21f1be64032c9"
@@ -347,14 +347,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_oss_licenses:
-    dependency: "direct dev"
-    description:
-      name: flutter_oss_licenses
-      sha256: "80f5d879f1760f90020692db0d4b58b5a475df23573df567e12757a71ce59628"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.2.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:

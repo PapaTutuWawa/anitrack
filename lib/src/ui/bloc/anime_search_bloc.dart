@@ -1,5 +1,6 @@
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
+import 'package:anitrack/src/data/other_titles.dart';
 import 'package:anitrack/src/data/search_result.dart';
 import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
@@ -82,6 +83,8 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
               .map(
                 (anime) => SearchResult(
                   anime.title,
+                  anime.titleEnglish,
+                  anime.titleJapanese,
                   anime.id,
                   anime.episodes,
                   anime.imageUrl,
@@ -104,6 +107,8 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
               .map(
                 (manga) => SearchResult(
                   manga.title,
+                  null,
+                  null,
                   manga.id,
                   manga.chapters,
                   manga.imageUrl,
@@ -135,6 +140,10 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
                 event.result.thumbnailUrl,
                 event.result.isAiring,
                 event.result.broadcastDay,
+                OtherTitles(
+                  english: event.result.titleEnglish,
+                  japanese: event.result.titleJapanese,
+                ),
                 TrackingDataSource.anilist,
               ),
             )

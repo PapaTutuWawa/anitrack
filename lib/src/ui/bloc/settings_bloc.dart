@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/manga.dart';
+import 'package:anitrack/src/data/other_titles.dart';
 import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/service/database.dart';
@@ -132,6 +133,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
           // NOTE: When the calendar gets refreshed, this should also get cleared
           true,
           null,
+          OtherTitles(),
           TrackingDataSource.mal,
         ),
       );

@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AnimeSearchResult {
 
- String get title; String get id; int? get episodes; String get imageUrl; String? get description; bool get isAiring; String? get broadcastDay;
+ String get title; String? get titleEnglish; String? get titleJapanese; String get id; int? get episodes; String get imageUrl; String? get description; bool get isAiring; String? get broadcastDay;
 /// Create a copy of AnimeSearchResult
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $AnimeSearchResultCopyWith<AnimeSearchResult> get copyWith => _$AnimeSearchResul
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AnimeSearchResult&&(identical(other.title, title) || other.title == title)&&(identical(other.id, id) || other.id == id)&&(identical(other.episodes, episodes) || other.episodes == episodes)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.description, description) || other.description == description)&&(identical(other.isAiring, isAiring) || other.isAiring == isAiring)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AnimeSearchResult&&(identical(other.title, title) || other.title == title)&&(identical(other.titleEnglish, titleEnglish) || other.titleEnglish == titleEnglish)&&(identical(other.titleJapanese, titleJapanese) || other.titleJapanese == titleJapanese)&&(identical(other.id, id) || other.id == id)&&(identical(other.episodes, episodes) || other.episodes == episodes)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.description, description) || other.description == description)&&(identical(other.isAiring, isAiring) || other.isAiring == isAiring)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,id,episodes,imageUrl,description,isAiring,broadcastDay);
+int get hashCode => Object.hash(runtimeType,title,titleEnglish,titleJapanese,id,episodes,imageUrl,description,isAiring,broadcastDay);
 
 @override
 String toString() {
-  return 'AnimeSearchResult(title: $title, id: $id, episodes: $episodes, imageUrl: $imageUrl, description: $description, isAiring: $isAiring, broadcastDay: $broadcastDay)';
+  return 'AnimeSearchResult(title: $title, titleEnglish: $titleEnglish, titleJapanese: $titleJapanese, id: $id, episodes: $episodes, imageUrl: $imageUrl, description: $description, isAiring: $isAiring, broadcastDay: $broadcastDay)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $AnimeSearchResultCopyWith<$Res>  {
   factory $AnimeSearchResultCopyWith(AnimeSearchResult value, $Res Function(AnimeSearchResult) _then) = _$AnimeSearchResultCopyWithImpl;
 @useResult
 $Res call({
- String title, String id, int? episodes, String imageUrl, String? description, bool isAiring, String? broadcastDay
+ String title, String? titleEnglish, String? titleJapanese, String id, int? episodes, String imageUrl, String? description, bool isAiring, String? broadcastDay
 });
 
 
@@ -62,10 +62,12 @@ class _$AnimeSearchResultCopyWithImpl<$Res>
 
 /// Create a copy of AnimeSearchResult
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? id = null,Object? episodes = freezed,Object? imageUrl = null,Object? description = freezed,Object? isAiring = null,Object? broadcastDay = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? titleEnglish = freezed,Object? titleJapanese = freezed,Object? id = null,Object? episodes = freezed,Object? imageUrl = null,Object? description = freezed,Object? isAiring = null,Object? broadcastDay = freezed,}) {
   return _then(_self.copyWith(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,titleEnglish: freezed == titleEnglish ? _self.titleEnglish : titleEnglish // ignore: cast_nullable_to_non_nullable
+as String?,titleJapanese: freezed == titleJapanese ? _self.titleJapanese : titleJapanese // ignore: cast_nullable_to_non_nullable
+as String?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,episodes: freezed == episodes ? _self.episodes : episodes // ignore: cast_nullable_to_non_nullable
 as int?,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
@@ -156,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String id,  int? episodes,  String imageUrl,  String? description,  bool isAiring,  String? broadcastDay)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String? titleEnglish,  String? titleJapanese,  String id,  int? episodes,  String imageUrl,  String? description,  bool isAiring,  String? broadcastDay)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AnimeSearchResult() when $default != null:
-return $default(_that.title,_that.id,_that.episodes,_that.imageUrl,_that.description,_that.isAiring,_that.broadcastDay);case _:
+return $default(_that.title,_that.titleEnglish,_that.titleJapanese,_that.id,_that.episodes,_that.imageUrl,_that.description,_that.isAiring,_that.broadcastDay);case _:
   return orElse();
 
 }
@@ -177,10 +179,10 @@ return $default(_that.title,_that.id,_that.episodes,_that.imageUrl,_that.descrip
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String id,  int? episodes,  String imageUrl,  String? description,  bool isAiring,  String? broadcastDay)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String? titleEnglish,  String? titleJapanese,  String id,  int? episodes,  String imageUrl,  String? description,  bool isAiring,  String? broadcastDay)  $default,) {final _that = this;
 switch (_that) {
 case _AnimeSearchResult():
-return $default(_that.title,_that.id,_that.episodes,_that.imageUrl,_that.description,_that.isAiring,_that.broadcastDay);case _:
+return $default(_that.title,_that.titleEnglish,_that.titleJapanese,_that.id,_that.episodes,_that.imageUrl,_that.description,_that.isAiring,_that.broadcastDay);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +199,10 @@ return $default(_that.title,_that.id,_that.episodes,_that.imageUrl,_that.descrip
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String id,  int? episodes,  String imageUrl,  String? description,  bool isAiring,  String? broadcastDay)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String? titleEnglish,  String? titleJapanese,  String id,  int? episodes,  String imageUrl,  String? description,  bool isAiring,  String? broadcastDay)?  $default,) {final _that = this;
 switch (_that) {
 case _AnimeSearchResult() when $default != null:
-return $default(_that.title,_that.id,_that.episodes,_that.imageUrl,_that.description,_that.isAiring,_that.broadcastDay);case _:
+return $default(_that.title,_that.titleEnglish,_that.titleJapanese,_that.id,_that.episodes,_that.imageUrl,_that.description,_that.isAiring,_that.broadcastDay);case _:
   return null;
 
 }
@@ -212,10 +214,12 @@ return $default(_that.title,_that.id,_that.episodes,_that.imageUrl,_that.descrip
 
 
 class _AnimeSearchResult implements AnimeSearchResult {
-  const _AnimeSearchResult({required this.title, required this.id, required this.episodes, required this.imageUrl, required this.description, required this.isAiring, required this.broadcastDay});
+  const _AnimeSearchResult({required this.title, required this.titleEnglish, required this.titleJapanese, required this.id, required this.episodes, required this.imageUrl, required this.description, required this.isAiring, required this.broadcastDay});
   
 
 @override final  String title;
+@override final  String? titleEnglish;
+@override final  String? titleJapanese;
 @override final  String id;
 @override final  int? episodes;
 @override final  String imageUrl;
@@ -233,16 +237,16 @@ _$AnimeSearchResultCopyWith<_AnimeSearchResult> get copyWith => __$AnimeSearchRe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AnimeSearchResult&&(identical(other.title, title) || other.title == title)&&(identical(other.id, id) || other.id == id)&&(identical(other.episodes, episodes) || other.episodes == episodes)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.description, description) || other.description == description)&&(identical(other.isAiring, isAiring) || other.isAiring == isAiring)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AnimeSearchResult&&(identical(other.title, title) || other.title == title)&&(identical(other.titleEnglish, titleEnglish) || other.titleEnglish == titleEnglish)&&(identical(other.titleJapanese, titleJapanese) || other.titleJapanese == titleJapanese)&&(identical(other.id, id) || other.id == id)&&(identical(other.episodes, episodes) || other.episodes == episodes)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.description, description) || other.description == description)&&(identical(other.isAiring, isAiring) || other.isAiring == isAiring)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,id,episodes,imageUrl,description,isAiring,broadcastDay);
+int get hashCode => Object.hash(runtimeType,title,titleEnglish,titleJapanese,id,episodes,imageUrl,description,isAiring,broadcastDay);
 
 @override
 String toString() {
-  return 'AnimeSearchResult(title: $title, id: $id, episodes: $episodes, imageUrl: $imageUrl, description: $description, isAiring: $isAiring, broadcastDay: $broadcastDay)';
+  return 'AnimeSearchResult(title: $title, titleEnglish: $titleEnglish, titleJapanese: $titleJapanese, id: $id, episodes: $episodes, imageUrl: $imageUrl, description: $description, isAiring: $isAiring, broadcastDay: $broadcastDay)';
 }
 
 
@@ -253,7 +257,7 @@ abstract mixin class _$AnimeSearchResultCopyWith<$Res> implements $AnimeSearchRe
   factory _$AnimeSearchResultCopyWith(_AnimeSearchResult value, $Res Function(_AnimeSearchResult) _then) = __$AnimeSearchResultCopyWithImpl;
 @override @useResult
 $Res call({
- String title, String id, int? episodes, String imageUrl, String? description, bool isAiring, String? broadcastDay
+ String title, String? titleEnglish, String? titleJapanese, String id, int? episodes, String imageUrl, String? description, bool isAiring, String? broadcastDay
 });
 
 
@@ -270,10 +274,12 @@ class __$AnimeSearchResultCopyWithImpl<$Res>
 
 /// Create a copy of AnimeSearchResult
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? id = null,Object? episodes = freezed,Object? imageUrl = null,Object? description = freezed,Object? isAiring = null,Object? broadcastDay = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? titleEnglish = freezed,Object? titleJapanese = freezed,Object? id = null,Object? episodes = freezed,Object? imageUrl = null,Object? description = freezed,Object? isAiring = null,Object? broadcastDay = freezed,}) {
   return _then(_AnimeSearchResult(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,titleEnglish: freezed == titleEnglish ? _self.titleEnglish : titleEnglish // ignore: cast_nullable_to_non_nullable
+as String?,titleJapanese: freezed == titleJapanese ? _self.titleJapanese : titleJapanese // ignore: cast_nullable_to_non_nullable
+as String?,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,episodes: freezed == episodes ? _self.episodes : episodes // ignore: cast_nullable_to_non_nullable
 as int?,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable

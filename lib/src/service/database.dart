@@ -144,7 +144,6 @@ class DatabaseService {
     await _db.insert(
       animeTable,
       data.toJson(),
-      conflictAlgorithm: ConflictAlgorithm.ignore,
     );
   }
 

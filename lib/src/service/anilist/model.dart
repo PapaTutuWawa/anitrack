@@ -7,6 +7,8 @@ part 'model.freezed.dart';
 abstract class AnimeSearchResult with _$AnimeSearchResult {
   const factory AnimeSearchResult({
     required String title,
+    required String? titleEnglish,
+    required String? titleJapanese,
     required String id,
     required int? episodes,
     required String imageUrl,
@@ -24,6 +26,8 @@ abstract class AnimeSearchResult with _$AnimeSearchResult {
           );
     return AnimeSearchResult(
       title: (json['title']! as Map<String, dynamic>)['romaji']! as String,
+      titleEnglish: (json['title']! as Map<String, dynamic>)['english'] as String?,
+      titleJapanese: (json['title']! as Map<String, dynamic>)['native'] as String?,
       id: (json['id']! as int).toString(),
       episodes: json['episodes'] as int?,
       imageUrl:

@@ -1,4 +1,5 @@
 import 'package:anitrack/src/data/data_base.dart';
+import 'package:anitrack/src/data/other_titles.dart';
 import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/service/database.dart';
@@ -46,6 +47,9 @@ abstract class AnimeTrackingData
 
     /// The day of the week the anime is airing
     String? broadcastDay,
+
+    /// Other titles
+    @OtherTitlesConverter() OtherTitles otherTitles,
 
     /// The source where we got the data from.
     @TrackingDataSourceConverter() TrackingDataSource source,

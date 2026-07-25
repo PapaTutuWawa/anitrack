@@ -23,7 +23,8 @@ mixin _$AnimeTrackingData {
  int? get episodesTotal;/// URL to the thumbnail/cover art for the anime.
  String get thumbnailUrl;/// Flag whether the anime is airing
 @BoolConverter() bool get airing;/// The day of the week the anime is airing
- String? get broadcastDay;/// The source where we got the data from.
+ String? get broadcastDay;/// Other titles
+@OtherTitlesConverter() OtherTitles get otherTitles;/// The source where we got the data from.
 @TrackingDataSourceConverter() TrackingDataSource get source;
 /// Create a copy of AnimeTrackingData
 /// with the given fields replaced by the non-null parameter values.
@@ -37,16 +38,16 @@ $AnimeTrackingDataCopyWith<AnimeTrackingData> get copyWith => _$AnimeTrackingDat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AnimeTrackingData&&(identical(other.id, id) || other.id == id)&&(identical(other.state, state) || other.state == state)&&(identical(other.title, title) || other.title == title)&&(identical(other.episodesWatched, episodesWatched) || other.episodesWatched == episodesWatched)&&(identical(other.episodesTotal, episodesTotal) || other.episodesTotal == episodesTotal)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl)&&(identical(other.airing, airing) || other.airing == airing)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay)&&(identical(other.source, source) || other.source == source));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AnimeTrackingData&&(identical(other.id, id) || other.id == id)&&(identical(other.state, state) || other.state == state)&&(identical(other.title, title) || other.title == title)&&(identical(other.episodesWatched, episodesWatched) || other.episodesWatched == episodesWatched)&&(identical(other.episodesTotal, episodesTotal) || other.episodesTotal == episodesTotal)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl)&&(identical(other.airing, airing) || other.airing == airing)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay)&&(identical(other.otherTitles, otherTitles) || other.otherTitles == otherTitles)&&(identical(other.source, source) || other.source == source));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,state,title,episodesWatched,episodesTotal,thumbnailUrl,airing,broadcastDay,source);
+int get hashCode => Object.hash(runtimeType,id,state,title,episodesWatched,episodesTotal,thumbnailUrl,airing,broadcastDay,otherTitles,source);
 
 @override
 String toString() {
-  return 'AnimeTrackingData(id: $id, state: $state, title: $title, episodesWatched: $episodesWatched, episodesTotal: $episodesTotal, thumbnailUrl: $thumbnailUrl, airing: $airing, broadcastDay: $broadcastDay, source: $source)';
+  return 'AnimeTrackingData(id: $id, state: $state, title: $title, episodesWatched: $episodesWatched, episodesTotal: $episodesTotal, thumbnailUrl: $thumbnailUrl, airing: $airing, broadcastDay: $broadcastDay, otherTitles: $otherTitles, source: $source)';
 }
 
 
@@ -57,11 +58,11 @@ abstract mixin class $AnimeTrackingDataCopyWith<$Res>  {
   factory $AnimeTrackingDataCopyWith(AnimeTrackingData value, $Res Function(AnimeTrackingData) _then) = _$AnimeTrackingDataCopyWithImpl;
 @useResult
 $Res call({
- String id,@MediumTrackingStateConverter() MediumTrackingState state, String title, int episodesWatched, int? episodesTotal, String thumbnailUrl,@BoolConverter() bool airing, String? broadcastDay,@TrackingDataSourceConverter() TrackingDataSource source
+ String id,@MediumTrackingStateConverter() MediumTrackingState state, String title, int episodesWatched, int? episodesTotal, String thumbnailUrl,@BoolConverter() bool airing, String? broadcastDay,@OtherTitlesConverter() OtherTitles otherTitles,@TrackingDataSourceConverter() TrackingDataSource source
 });
 
 
-
+$OtherTitlesCopyWith<$Res> get otherTitles;
 
 }
 /// @nodoc
@@ -74,7 +75,7 @@ class _$AnimeTrackingDataCopyWithImpl<$Res>
 
 /// Create a copy of AnimeTrackingData
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? state = null,Object? title = null,Object? episodesWatched = null,Object? episodesTotal = freezed,Object? thumbnailUrl = null,Object? airing = null,Object? broadcastDay = freezed,Object? source = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? state = null,Object? title = null,Object? episodesWatched = null,Object? episodesTotal = freezed,Object? thumbnailUrl = null,Object? airing = null,Object? broadcastDay = freezed,Object? otherTitles = null,Object? source = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,state: null == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
@@ -84,11 +85,21 @@ as int,episodesTotal: freezed == episodesTotal ? _self.episodesTotal : episodesT
 as int?,thumbnailUrl: null == thumbnailUrl ? _self.thumbnailUrl : thumbnailUrl // ignore: cast_nullable_to_non_nullable
 as String,airing: null == airing ? _self.airing : airing // ignore: cast_nullable_to_non_nullable
 as bool,broadcastDay: freezed == broadcastDay ? _self.broadcastDay : broadcastDay // ignore: cast_nullable_to_non_nullable
-as String?,source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
+as String?,otherTitles: null == otherTitles ? _self.otherTitles : otherTitles // ignore: cast_nullable_to_non_nullable
+as OtherTitles,source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
 as TrackingDataSource,
   ));
 }
-
+/// Create a copy of AnimeTrackingData
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OtherTitlesCopyWith<$Res> get otherTitles {
+  
+  return $OtherTitlesCopyWith<$Res>(_self.otherTitles, (value) {
+    return _then(_self.copyWith(otherTitles: value));
+  });
+}
 }
 
 
@@ -170,10 +181,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int episodesWatched,  int? episodesTotal,  String thumbnailUrl, @BoolConverter()  bool airing,  String? broadcastDay, @TrackingDataSourceConverter()  TrackingDataSource source)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int episodesWatched,  int? episodesTotal,  String thumbnailUrl, @BoolConverter()  bool airing,  String? broadcastDay, @OtherTitlesConverter()  OtherTitles otherTitles, @TrackingDataSourceConverter()  TrackingDataSource source)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AnimeTrackingData() when $default != null:
-return $default(_that.id,_that.state,_that.title,_that.episodesWatched,_that.episodesTotal,_that.thumbnailUrl,_that.airing,_that.broadcastDay,_that.source);case _:
+return $default(_that.id,_that.state,_that.title,_that.episodesWatched,_that.episodesTotal,_that.thumbnailUrl,_that.airing,_that.broadcastDay,_that.otherTitles,_that.source);case _:
   return orElse();
 
 }
@@ -191,10 +202,10 @@ return $default(_that.id,_that.state,_that.title,_that.episodesWatched,_that.epi
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int episodesWatched,  int? episodesTotal,  String thumbnailUrl, @BoolConverter()  bool airing,  String? broadcastDay, @TrackingDataSourceConverter()  TrackingDataSource source)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int episodesWatched,  int? episodesTotal,  String thumbnailUrl, @BoolConverter()  bool airing,  String? broadcastDay, @OtherTitlesConverter()  OtherTitles otherTitles, @TrackingDataSourceConverter()  TrackingDataSource source)  $default,) {final _that = this;
 switch (_that) {
 case _AnimeTrackingData():
-return $default(_that.id,_that.state,_that.title,_that.episodesWatched,_that.episodesTotal,_that.thumbnailUrl,_that.airing,_that.broadcastDay,_that.source);case _:
+return $default(_that.id,_that.state,_that.title,_that.episodesWatched,_that.episodesTotal,_that.thumbnailUrl,_that.airing,_that.broadcastDay,_that.otherTitles,_that.source);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -211,10 +222,10 @@ return $default(_that.id,_that.state,_that.title,_that.episodesWatched,_that.epi
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int episodesWatched,  int? episodesTotal,  String thumbnailUrl, @BoolConverter()  bool airing,  String? broadcastDay, @TrackingDataSourceConverter()  TrackingDataSource source)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @MediumTrackingStateConverter()  MediumTrackingState state,  String title,  int episodesWatched,  int? episodesTotal,  String thumbnailUrl, @BoolConverter()  bool airing,  String? broadcastDay, @OtherTitlesConverter()  OtherTitles otherTitles, @TrackingDataSourceConverter()  TrackingDataSource source)?  $default,) {final _that = this;
 switch (_that) {
 case _AnimeTrackingData() when $default != null:
-return $default(_that.id,_that.state,_that.title,_that.episodesWatched,_that.episodesTotal,_that.thumbnailUrl,_that.airing,_that.broadcastDay,_that.source);case _:
+return $default(_that.id,_that.state,_that.title,_that.episodesWatched,_that.episodesTotal,_that.thumbnailUrl,_that.airing,_that.broadcastDay,_that.otherTitles,_that.source);case _:
   return null;
 
 }
@@ -226,7 +237,7 @@ return $default(_that.id,_that.state,_that.title,_that.episodesWatched,_that.epi
 @JsonSerializable()
 
 class _AnimeTrackingData extends AnimeTrackingData {
-   _AnimeTrackingData(this.id, @MediumTrackingStateConverter() this.state, this.title, this.episodesWatched, this.episodesTotal, this.thumbnailUrl, @BoolConverter() this.airing, this.broadcastDay, @TrackingDataSourceConverter() this.source): super._();
+   _AnimeTrackingData(this.id, @MediumTrackingStateConverter() this.state, this.title, this.episodesWatched, this.episodesTotal, this.thumbnailUrl, @BoolConverter() this.airing, this.broadcastDay, @OtherTitlesConverter() this.otherTitles, @TrackingDataSourceConverter() this.source): super._();
   factory _AnimeTrackingData.fromJson(Map<String, dynamic> json) => _$AnimeTrackingDataFromJson(json);
 
 /// The ID of the anime
@@ -245,6 +256,8 @@ class _AnimeTrackingData extends AnimeTrackingData {
 @override@BoolConverter() final  bool airing;
 /// The day of the week the anime is airing
 @override final  String? broadcastDay;
+/// Other titles
+@override@OtherTitlesConverter() final  OtherTitles otherTitles;
 /// The source where we got the data from.
 @override@TrackingDataSourceConverter() final  TrackingDataSource source;
 
@@ -261,16 +274,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AnimeTrackingData&&(identical(other.id, id) || other.id == id)&&(identical(other.state, state) || other.state == state)&&(identical(other.title, title) || other.title == title)&&(identical(other.episodesWatched, episodesWatched) || other.episodesWatched == episodesWatched)&&(identical(other.episodesTotal, episodesTotal) || other.episodesTotal == episodesTotal)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl)&&(identical(other.airing, airing) || other.airing == airing)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay)&&(identical(other.source, source) || other.source == source));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AnimeTrackingData&&(identical(other.id, id) || other.id == id)&&(identical(other.state, state) || other.state == state)&&(identical(other.title, title) || other.title == title)&&(identical(other.episodesWatched, episodesWatched) || other.episodesWatched == episodesWatched)&&(identical(other.episodesTotal, episodesTotal) || other.episodesTotal == episodesTotal)&&(identical(other.thumbnailUrl, thumbnailUrl) || other.thumbnailUrl == thumbnailUrl)&&(identical(other.airing, airing) || other.airing == airing)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay)&&(identical(other.otherTitles, otherTitles) || other.otherTitles == otherTitles)&&(identical(other.source, source) || other.source == source));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,state,title,episodesWatched,episodesTotal,thumbnailUrl,airing,broadcastDay,source);
+int get hashCode => Object.hash(runtimeType,id,state,title,episodesWatched,episodesTotal,thumbnailUrl,airing,broadcastDay,otherTitles,source);
 
 @override
 String toString() {
-  return 'AnimeTrackingData(id: $id, state: $state, title: $title, episodesWatched: $episodesWatched, episodesTotal: $episodesTotal, thumbnailUrl: $thumbnailUrl, airing: $airing, broadcastDay: $broadcastDay, source: $source)';
+  return 'AnimeTrackingData(id: $id, state: $state, title: $title, episodesWatched: $episodesWatched, episodesTotal: $episodesTotal, thumbnailUrl: $thumbnailUrl, airing: $airing, broadcastDay: $broadcastDay, otherTitles: $otherTitles, source: $source)';
 }
 
 
@@ -281,11 +294,11 @@ abstract mixin class _$AnimeTrackingDataCopyWith<$Res> implements $AnimeTracking
   factory _$AnimeTrackingDataCopyWith(_AnimeTrackingData value, $Res Function(_AnimeTrackingData) _then) = __$AnimeTrackingDataCopyWithImpl;
 @override @useResult
 $Res call({
- String id,@MediumTrackingStateConverter() MediumTrackingState state, String title, int episodesWatched, int? episodesTotal, String thumbnailUrl,@BoolConverter() bool airing, String? broadcastDay,@TrackingDataSourceConverter() TrackingDataSource source
+ String id,@MediumTrackingStateConverter() MediumTrackingState state, String title, int episodesWatched, int? episodesTotal, String thumbnailUrl,@BoolConverter() bool airing, String? broadcastDay,@OtherTitlesConverter() OtherTitles otherTitles,@TrackingDataSourceConverter() TrackingDataSource source
 });
 
 
-
+@override $OtherTitlesCopyWith<$Res> get otherTitles;
 
 }
 /// @nodoc
@@ -298,7 +311,7 @@ class __$AnimeTrackingDataCopyWithImpl<$Res>
 
 /// Create a copy of AnimeTrackingData
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? state = null,Object? title = null,Object? episodesWatched = null,Object? episodesTotal = freezed,Object? thumbnailUrl = null,Object? airing = null,Object? broadcastDay = freezed,Object? source = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? state = null,Object? title = null,Object? episodesWatched = null,Object? episodesTotal = freezed,Object? thumbnailUrl = null,Object? airing = null,Object? broadcastDay = freezed,Object? otherTitles = null,Object? source = null,}) {
   return _then(_AnimeTrackingData(
 null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,null == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
@@ -308,12 +321,22 @@ as int,freezed == episodesTotal ? _self.episodesTotal : episodesTotal // ignore:
 as int?,null == thumbnailUrl ? _self.thumbnailUrl : thumbnailUrl // ignore: cast_nullable_to_non_nullable
 as String,null == airing ? _self.airing : airing // ignore: cast_nullable_to_non_nullable
 as bool,freezed == broadcastDay ? _self.broadcastDay : broadcastDay // ignore: cast_nullable_to_non_nullable
-as String?,null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
+as String?,null == otherTitles ? _self.otherTitles : otherTitles // ignore: cast_nullable_to_non_nullable
+as OtherTitles,null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
 as TrackingDataSource,
   ));
 }
 
-
+/// Create a copy of AnimeTrackingData
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$OtherTitlesCopyWith<$Res> get otherTitles {
+  
+  return $OtherTitlesCopyWith<$Res>(_self.otherTitles, (value) {
+    return _then(_self.copyWith(otherTitles: value));
+  });
+}
 }
 
 // dart format on
