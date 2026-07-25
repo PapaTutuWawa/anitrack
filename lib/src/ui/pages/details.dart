@@ -359,71 +359,71 @@ class DetailsPage extends StatelessWidget {
                             ),
                           ),
                         ),*/
-                      Padding(
-                        padding: const EdgeInsetsGeometry.symmetric(
-                          vertical: 8,
-                          horizontal: 8,
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                bottom: 8,
-                              ),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    t.details.watchingWith.title,
-                                    style: Theme.of(
-                                      context,
-                                    ).textTheme.titleSmall,
-                                  ),
-
-                                  Padding(
-                                    padding: const EdgeInsetsGeometry.only(
-                                      left: 4,
+                      if (state.trackingType == TrackingMediumType.anime)
+                        Padding(
+                          padding: const EdgeInsetsGeometry.symmetric(
+                            vertical: 8,
+                            horizontal: 8,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 8,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      t.details.watchingWith.title,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.titleSmall,
                                     ),
-                                    child: IconButton(
-                                      onPressed: () async {
-                                        final bloc = context
-                                            .read<DetailsBloc>();
-                                        final watchers = await bloc
-                                            .getAllAnimeWatchers();
-                                        final result =
-                                            await showModalBottomSheet<
-                                              AnimeWatcher?
-                                            >(
-                                              context: context,
-                                              builder: (ctx) =>
-                                                  DetailsWatcherSheet(
-                                                    watchers: watchers,
-                                                  ),
-                                            );
-                                        if (result == null) {
-                                          return;
-                                        }
 
-                                        // Do not allow adding a watcher twice.
-                                        if (state.animeWatchers.any(
-                                          (watcher) =>
-                                              watcher.name == result.name,
-                                        )) {
-                                          return;
-                                        }
+                                    Padding(
+                                      padding: const EdgeInsetsGeometry.only(
+                                        left: 4,
+                                      ),
+                                      child: IconButton(
+                                        onPressed: () async {
+                                          final bloc = context
+                                              .read<DetailsBloc>();
+                                          final watchers = await bloc
+                                              .getAllAnimeWatchers();
+                                          final result =
+                                              await showModalBottomSheet<
+                                                AnimeWatcher?
+                                              >(
+                                                context: context,
+                                                builder: (ctx) =>
+                                                    DetailsWatcherSheet(
+                                                      watchers: watchers,
+                                                    ),
+                                              );
+                                          if (result == null) {
+                                            return;
+                                          }
 
-                                        context.read<DetailsBloc>().add(
-                                          AnimeWatcherAddedEvent(result),
-                                        );
-                                      },
-                                      icon: const Icon(Icons.add),
+                                          // Do not allow adding a watcher twice.
+                                          if (state.animeWatchers.any(
+                                            (watcher) =>
+                                                watcher.name == result.name,
+                                          )) {
+                                            return;
+                                          }
+
+                                          context.read<DetailsBloc>().add(
+                                            AnimeWatcherAddedEvent(result),
+                                          );
+                                        },
+                                        icon: const Icon(Icons.add),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            if (state.trackingType == TrackingMediumType.anime)
                               if (state.animeWatchers.isNotEmpty)
                                 Wrap(
                                   children: [
@@ -446,9 +446,9 @@ class DetailsPage extends StatelessWidget {
                                 )
                               else
                                 Text(t.details.watchingWith.alone),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           vertical: 8,
