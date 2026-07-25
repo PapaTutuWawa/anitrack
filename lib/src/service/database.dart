@@ -61,7 +61,7 @@ Future<void> _createDatabase(Database db, int version) async {
   await db.execute(
     '''
     CREATE TABLE $animeWatcherTable(
-      name          TEXT NOT NULL PRIMARY KEY,
+      name          TEXT NOT NULL PRIMARY KEY
     )''',
   );
   await db.execute(
