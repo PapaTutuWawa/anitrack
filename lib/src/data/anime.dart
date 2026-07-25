@@ -1,3 +1,4 @@
+import 'package:anitrack/src/data/data_base.dart';
 import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/service/database.dart';
@@ -18,7 +19,9 @@ class BoolConverter implements JsonConverter<bool, int> {
 
 /// Data about a tracked anime
 @freezed
-abstract class AnimeTrackingData with _$AnimeTrackingData, TrackingMedium {
+abstract class AnimeTrackingData
+    with _$AnimeTrackingData, TrackingMedium
+    implements TrackingDataBase {
   factory AnimeTrackingData(
     /// The ID of the anime
     String id,

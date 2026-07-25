@@ -1,7 +1,9 @@
 import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/data/anime.dart';
 import 'package:anitrack/src/data/anime_watcher.dart';
+import 'package:anitrack/src/data/data_base.dart';
 import 'package:anitrack/src/data/manga.dart';
+import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/ui/bloc/details_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
@@ -27,6 +29,31 @@ class DetailsPage extends StatelessWidget {
       name: detailsRoute,
     ),
   );
+
+  String _mangaUrl(MangaTrackingData data) {
+    switch (data.source) {
+      case TrackingDataSource.mal:
+        return 'https://myanimelist.net/manga/${data.id}';
+      case TrackingDataSource.anilist:
+        return 'https://anilist.co/manga/${data.id}';
+    }
+  }
+
+  String _animeUrl(AnimeTrackingData data) {
+    switch (data.source) {
+      case TrackingDataSource.mal:
+        return 'https://myanimelist.net/anime/${data.id}';
+      case TrackingDataSource.anilist:
+        return 'https://anilist.co/anime/${data.id}';
+    }
+  }
+
+  String _sourceButtonName(TrackingDataBase data) {
+    return switch (data.source) {
+      TrackingDataSource.mal => t.details.mal,
+      TrackingDataSource.anilist => t.details.anilist,
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -246,20 +273,30 @@ class DetailsPage extends StatelessWidget {
                                       children: [
                                         ElevatedButton(
                                           onPressed: () async {
-                                            final url = switch (state
-                                                .trackingType) {
-                                              TrackingMediumType.anime =>
-                                                'https://myanimelist.net/anime/${state.data!.id}',
-                                              TrackingMediumType.manga =>
-                                                'https://myanimelist.net/manga/${state.data!.id}',
-                                            };
+                                            final url =
+                                                switch (state.trackingType) {
+                                                  TrackingMediumType.anime =>
+                                                    _animeUrl(
+                                                      state.data!
+                                                          as AnimeTrackingData,
+                                                    ),
+                                                  TrackingMediumType.manga =>
+                                                    _mangaUrl(
+                                                      state.data!
+                                                          as MangaTrackingData,
+                                                    ),
+                                                };
                                             await launchUrl(
                                               Uri.parse(url),
                                               mode: LaunchMode
                                                   .externalApplication,
                                             );
                                           },
-                                          child: Text(t.details.mal),
+                                          child: Text(
+                                            _sourceButtonName(
+                                              state.data! as TrackingDataBase,
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),

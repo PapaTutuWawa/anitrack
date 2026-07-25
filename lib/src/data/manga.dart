@@ -1,3 +1,4 @@
+import 'package:anitrack/src/data/data_base.dart';
 import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -7,7 +8,9 @@ part 'manga.g.dart';
 
 /// Data about a tracked anime
 @freezed
-abstract class MangaTrackingData with _$MangaTrackingData, TrackingMedium {
+abstract class MangaTrackingData
+    with _$MangaTrackingData, TrackingMedium
+    implements TrackingDataBase {
   factory MangaTrackingData(
     /// The ID of the manga
     String id,

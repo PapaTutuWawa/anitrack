@@ -50,6 +50,7 @@
         "chapters": "Chapters",
         "volumesOwned": "Volumes owned",
         "mal": "MAL",
+        "anilist": "AniList",
         "watchingWith": {
             "title": "Watching with",
             "add": "Add",
