@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DetailsState {
 
- TrackingMedium? get data; String? get heroImagePrefix; TrackingMediumType get trackingType;
+ TrackingMedium? get data; String? get heroImagePrefix; TrackingMediumType get trackingType; List<AnimeWatcher> get animeWatchers;
 /// Create a copy of DetailsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $DetailsStateCopyWith<DetailsState> get copyWith => _$DetailsStateCopyWithImpl<D
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DetailsState&&(identical(other.data, data) || other.data == data)&&(identical(other.heroImagePrefix, heroImagePrefix) || other.heroImagePrefix == heroImagePrefix)&&(identical(other.trackingType, trackingType) || other.trackingType == trackingType));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DetailsState&&(identical(other.data, data) || other.data == data)&&(identical(other.heroImagePrefix, heroImagePrefix) || other.heroImagePrefix == heroImagePrefix)&&(identical(other.trackingType, trackingType) || other.trackingType == trackingType)&&const DeepCollectionEquality().equals(other.animeWatchers, animeWatchers));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,data,heroImagePrefix,trackingType);
+int get hashCode => Object.hash(runtimeType,data,heroImagePrefix,trackingType,const DeepCollectionEquality().hash(animeWatchers));
 
 @override
 String toString() {
-  return 'DetailsState(data: $data, heroImagePrefix: $heroImagePrefix, trackingType: $trackingType)';
+  return 'DetailsState(data: $data, heroImagePrefix: $heroImagePrefix, trackingType: $trackingType, animeWatchers: $animeWatchers)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $DetailsStateCopyWith<$Res>  {
   factory $DetailsStateCopyWith(DetailsState value, $Res Function(DetailsState) _then) = _$DetailsStateCopyWithImpl;
 @useResult
 $Res call({
- TrackingMedium? data, String? heroImagePrefix, TrackingMediumType trackingType
+ TrackingMedium? data, String? heroImagePrefix, TrackingMediumType trackingType, List<AnimeWatcher> animeWatchers
 });
 
 
@@ -62,12 +62,13 @@ class _$DetailsStateCopyWithImpl<$Res>
 
 /// Create a copy of DetailsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? data = freezed,Object? heroImagePrefix = freezed,Object? trackingType = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? data = freezed,Object? heroImagePrefix = freezed,Object? trackingType = null,Object? animeWatchers = null,}) {
   return _then(_self.copyWith(
 data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as TrackingMedium?,heroImagePrefix: freezed == heroImagePrefix ? _self.heroImagePrefix : heroImagePrefix // ignore: cast_nullable_to_non_nullable
 as String?,trackingType: null == trackingType ? _self.trackingType : trackingType // ignore: cast_nullable_to_non_nullable
-as TrackingMediumType,
+as TrackingMediumType,animeWatchers: null == animeWatchers ? _self.animeWatchers : animeWatchers // ignore: cast_nullable_to_non_nullable
+as List<AnimeWatcher>,
   ));
 }
 
@@ -152,10 +153,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TrackingMedium? data,  String? heroImagePrefix,  TrackingMediumType trackingType)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TrackingMedium? data,  String? heroImagePrefix,  TrackingMediumType trackingType,  List<AnimeWatcher> animeWatchers)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DetailsState() when $default != null:
-return $default(_that.data,_that.heroImagePrefix,_that.trackingType);case _:
+return $default(_that.data,_that.heroImagePrefix,_that.trackingType,_that.animeWatchers);case _:
   return orElse();
 
 }
@@ -173,10 +174,10 @@ return $default(_that.data,_that.heroImagePrefix,_that.trackingType);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TrackingMedium? data,  String? heroImagePrefix,  TrackingMediumType trackingType)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TrackingMedium? data,  String? heroImagePrefix,  TrackingMediumType trackingType,  List<AnimeWatcher> animeWatchers)  $default,) {final _that = this;
 switch (_that) {
 case _DetailsState():
-return $default(_that.data,_that.heroImagePrefix,_that.trackingType);case _:
+return $default(_that.data,_that.heroImagePrefix,_that.trackingType,_that.animeWatchers);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -193,10 +194,10 @@ return $default(_that.data,_that.heroImagePrefix,_that.trackingType);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TrackingMedium? data,  String? heroImagePrefix,  TrackingMediumType trackingType)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TrackingMedium? data,  String? heroImagePrefix,  TrackingMediumType trackingType,  List<AnimeWatcher> animeWatchers)?  $default,) {final _that = this;
 switch (_that) {
 case _DetailsState() when $default != null:
-return $default(_that.data,_that.heroImagePrefix,_that.trackingType);case _:
+return $default(_that.data,_that.heroImagePrefix,_that.trackingType,_that.animeWatchers);case _:
   return null;
 
 }
@@ -208,12 +209,19 @@ return $default(_that.data,_that.heroImagePrefix,_that.trackingType);case _:
 
 
 class _DetailsState implements DetailsState {
-   _DetailsState({this.data, this.heroImagePrefix, this.trackingType = TrackingMediumType.anime});
+   _DetailsState({this.data, this.heroImagePrefix, this.trackingType = TrackingMediumType.anime, final  List<AnimeWatcher> animeWatchers = const []}): _animeWatchers = animeWatchers;
   
 
 @override final  TrackingMedium? data;
 @override final  String? heroImagePrefix;
 @override@JsonKey() final  TrackingMediumType trackingType;
+ final  List<AnimeWatcher> _animeWatchers;
+@override@JsonKey() List<AnimeWatcher> get animeWatchers {
+  if (_animeWatchers is EqualUnmodifiableListView) return _animeWatchers;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_animeWatchers);
+}
+
 
 /// Create a copy of DetailsState
 /// with the given fields replaced by the non-null parameter values.
@@ -225,16 +233,16 @@ _$DetailsStateCopyWith<_DetailsState> get copyWith => __$DetailsStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DetailsState&&(identical(other.data, data) || other.data == data)&&(identical(other.heroImagePrefix, heroImagePrefix) || other.heroImagePrefix == heroImagePrefix)&&(identical(other.trackingType, trackingType) || other.trackingType == trackingType));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DetailsState&&(identical(other.data, data) || other.data == data)&&(identical(other.heroImagePrefix, heroImagePrefix) || other.heroImagePrefix == heroImagePrefix)&&(identical(other.trackingType, trackingType) || other.trackingType == trackingType)&&const DeepCollectionEquality().equals(other._animeWatchers, _animeWatchers));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,data,heroImagePrefix,trackingType);
+int get hashCode => Object.hash(runtimeType,data,heroImagePrefix,trackingType,const DeepCollectionEquality().hash(_animeWatchers));
 
 @override
 String toString() {
-  return 'DetailsState(data: $data, heroImagePrefix: $heroImagePrefix, trackingType: $trackingType)';
+  return 'DetailsState(data: $data, heroImagePrefix: $heroImagePrefix, trackingType: $trackingType, animeWatchers: $animeWatchers)';
 }
 
 
@@ -245,7 +253,7 @@ abstract mixin class _$DetailsStateCopyWith<$Res> implements $DetailsStateCopyWi
   factory _$DetailsStateCopyWith(_DetailsState value, $Res Function(_DetailsState) _then) = __$DetailsStateCopyWithImpl;
 @override @useResult
 $Res call({
- TrackingMedium? data, String? heroImagePrefix, TrackingMediumType trackingType
+ TrackingMedium? data, String? heroImagePrefix, TrackingMediumType trackingType, List<AnimeWatcher> animeWatchers
 });
 
 
@@ -262,12 +270,13 @@ class __$DetailsStateCopyWithImpl<$Res>
 
 /// Create a copy of DetailsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? data = freezed,Object? heroImagePrefix = freezed,Object? trackingType = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? data = freezed,Object? heroImagePrefix = freezed,Object? trackingType = null,Object? animeWatchers = null,}) {
   return _then(_DetailsState(
 data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as TrackingMedium?,heroImagePrefix: freezed == heroImagePrefix ? _self.heroImagePrefix : heroImagePrefix // ignore: cast_nullable_to_non_nullable
 as String?,trackingType: null == trackingType ? _self.trackingType : trackingType // ignore: cast_nullable_to_non_nullable
-as TrackingMediumType,
+as TrackingMediumType,animeWatchers: null == animeWatchers ? _self._animeWatchers : animeWatchers // ignore: cast_nullable_to_non_nullable
+as List<AnimeWatcher>,
   ));
 }
 

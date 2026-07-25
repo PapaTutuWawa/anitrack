@@ -1,9 +1,11 @@
 import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/data/anime.dart';
+import 'package:anitrack/src/data/anime_watcher.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/ui/bloc/details_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
+import 'package:anitrack/src/ui/pages/details/watcher_sheet.dart';
 import 'package:anitrack/src/ui/widgets/dropdown.dart';
 import 'package:anitrack/src/ui/widgets/image.dart';
 import 'package:anitrack/src/ui/widgets/integer_input.dart';
@@ -358,6 +360,96 @@ class DetailsPage extends StatelessWidget {
                           ),
                         ),*/
                       Padding(
+                        padding: const EdgeInsetsGeometry.symmetric(
+                          vertical: 8,
+                          horizontal: 8,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                bottom: 8,
+                              ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    t.details.watchingWith.title,
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.titleSmall,
+                                  ),
+
+                                  Padding(
+                                    padding: const EdgeInsetsGeometry.only(
+                                      left: 4,
+                                    ),
+                                    child: IconButton(
+                                      onPressed: () async {
+                                        final bloc = context
+                                            .read<DetailsBloc>();
+                                        final watchers = await bloc
+                                            .getAllAnimeWatchers();
+                                        final result =
+                                            await showModalBottomSheet<
+                                              AnimeWatcher?
+                                            >(
+                                              context: context,
+                                              builder: (ctx) =>
+                                                  DetailsWatcherSheet(
+                                                    watchers: watchers,
+                                                  ),
+                                            );
+                                        if (result == null) {
+                                          return;
+                                        }
+
+                                        // Do not allow adding a watcher twice.
+                                        if (state.animeWatchers.any(
+                                          (watcher) =>
+                                              watcher.name == result.name,
+                                        )) {
+                                          return;
+                                        }
+
+                                        context.read<DetailsBloc>().add(
+                                          AnimeWatcherAddedEvent(result),
+                                        );
+                                      },
+                                      icon: const Icon(Icons.add),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            if (state.trackingType == TrackingMediumType.anime)
+                              if (state.animeWatchers.isNotEmpty)
+                                Wrap(
+                                  children: [
+                                    for (final watcher in state.animeWatchers)
+                                      Padding(
+                                        padding:
+                                            const EdgeInsetsGeometry.symmetric(
+                                              horizontal: 4,
+                                            ),
+                                        child: InputChip(
+                                          label: Text(watcher.name),
+                                          onDeleted: () {
+                                            context.read<DetailsBloc>().add(
+                                              AnimeWatcherRemovedEvent(watcher),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                  ],
+                                )
+                              else
+                                Text(t.details.watchingWith.alone),
+                          ],
+                        ),
+                      ),
+                      Padding(
                         padding: const EdgeInsets.symmetric(
                           vertical: 8,
                         ),
@@ -377,7 +469,6 @@ class DetailsPage extends StatelessWidget {
                                     ),
                                   ),
                                 );
-                                break;
                               case TrackingMediumType.manga:
                                 final data = state.data! as MangaTrackingData;
                                 context.read<DetailsBloc>().add(
@@ -387,7 +478,6 @@ class DetailsPage extends StatelessWidget {
                                     ),
                                   ),
                                 );
-                                break;
                             }
                           },
                           initialValue:

@@ -6,5 +6,6 @@ abstract class DetailsState with _$DetailsState {
     TrackingMedium? data,
     String? heroImagePrefix,
     @Default(TrackingMediumType.anime) TrackingMediumType trackingType,
+    @Default([]) List<AnimeWatcher> animeWatchers,
   }) = _DetailsState;
 }

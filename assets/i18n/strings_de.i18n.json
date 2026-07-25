@@ -45,7 +45,22 @@
         "cancelButton": "Abbrechen",
         "readState": "Lese-Status",
         "episodes": "Folgen",
-        "chapters": "Kapitel"
+        "chapters": "Kapitel",
+        "mal": "MAL",
+        "watchingWith": {
+            "title": "Zusammen schauen mit",
+            "add": "Hinzufügen",
+            "name": "Name",
+            "alone": "Alleine"
+        },
+        "watchers": {
+            "removeTitle": "Zuschauer entfernen",
+            "removeBody": "Bist Du dir sicher, dass du \"$watcher\" als Zuschauer entfernen möchtest?"
+        },
+        "details": {
+            "titleJa": "Japanischer Titel",
+            "textCopied": "Text wurde in die Zwischenablage kopiert"
+        }
     },
     "data": {
         "dropped": "Abgebrochen",

@@ -50,6 +50,16 @@
         "chapters": "Chapters",
         "volumesOwned": "Volumes owned",
         "mal": "MAL",
+        "watchingWith": {
+            "title": "Watching with",
+            "add": "Add",
+            "name": "Name",
+            "alone": "Watching alone"
+        },
+        "watchers": {
+            "removeTitle": "Remove Watcher",
+            "removeBody": "Are you sure you want to remove \"$watcher\" as a watcher?"
+        },
         "details": {
             "titleJa": "Japanese Title",
             "textCopied": "Text copied to clipboard"

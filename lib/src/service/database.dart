@@ -1,13 +1,17 @@
 import 'dart:io';
 
 import 'package:anitrack/src/data/anime.dart';
+import 'package:anitrack/src/data/anime_watcher.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/service/migrations/0000_airing.dart';
 import 'package:anitrack/src/service/migrations/0000_score.dart';
+import 'package:anitrack/src/service/migrations/0001_anime_watcher.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 const animeTable = 'Anime';
 const mangaTable = 'Manga';
+const animeWatcherTable = 'AnimeWatchers';
+const animeWatcherJoinTable = 'AnimeWatchersJoin';
 
 extension BoolToInt on bool {
   int toInt() {
@@ -51,10 +55,30 @@ Future<void> _createDatabase(Database db, int version) async {
       score         INTEGER
     )''',
   );
+  await db.execute(
+    '''
+    CREATE TABLE $animeWatcherTable(
+      name          TEXT NOT NULL PRIMARY KEY,
+    )''',
+  );
+  await db.execute(
+    '''
+    CREATE TABLE $animeWatcherJoinTable(
+      name          TEXT NOT NULL,
+      anime         TEXT NOT NULL,
+      CONSTRAINT pk_watcher_join_table PRIMARY KEY(name, anime),
+      CONSTRAINT fk_watcher FOREIGN KEY (name) REFERENCES $animeWatcherTable(name),
+      CONSTRAINT fk_anime FOREIGN KEY (anime) REFERENCES $animeTable(id)
+    )''',
+  );
 }
 
 class DatabaseService {
+  /// The actual sqlite database connection.
   late final Database _db;
+
+  /// Cached AnimeWatchers.
+  List<AnimeWatcher>? _watcherCache;
 
   Future<void> initialize() async {
     // Allow initializing the database on Windows and Linux as well.
@@ -65,7 +89,7 @@ class DatabaseService {
 
     _db = await openDatabase(
       'anitrack.db',
-      version: 3,
+      version: 4,
       onConfigure: (db) async {
         // In order to do schema changes during database upgrades, we disable foreign
         // keys in the onConfigure phase, but re-enable them here.
@@ -84,8 +108,12 @@ class DatabaseService {
         if (oldVersion < 3) {
           await migrateFromV2ToV3(db);
         }
+        if (oldVersion < 4) {
+          await migrateFromV3ToV4(db);
+        }
       },
     );
+    print(_db.path);
   }
 
   Future<List<AnimeTrackingData>> loadAnimes() async {
@@ -190,5 +218,97 @@ class DatabaseService {
         .map(MangaTrackingData.fromJson)
         .toList()
         .first;
+  }
+
+  /// Queries all anime watchers.
+  ///
+  /// Returns the list of AnimeWatchers in the database. May be empty.
+  Future<List<AnimeWatcher>> getAnimeWatchers() async {
+    if (_watcherCache != null) {
+      return _watcherCache!;
+    }
+
+    final dbResults = await _db.query(
+      animeWatcherTable,
+    );
+
+    final results = dbResults
+        .cast<Map<String, dynamic>>()
+        .map(AnimeWatcher.fromJson)
+        .toList();
+    _watcherCache = results;
+    return results;
+  }
+
+  /// Removes an AnimeWatcher from the database.
+  ///
+  /// @watcher The watcher to be removed from the database.
+  Future<void> deleteAnimeWatcher(AnimeWatcher watcher) async {
+    await _db.delete(
+      animeWatcherJoinTable,
+      where: 'name = ?',
+      whereArgs: [watcher.name],
+    );
+    await _db.delete(
+      animeWatcherTable,
+      where: 'name = ?',
+      whereArgs: [watcher.name],
+    );
+    _watcherCache?.removeWhere((item) => item.name == watcher.name);
+  }
+
+  /// Adds an AnimeWatcher to the database.
+  ///
+  /// @watcher The watcher to add to the database.
+  Future<void> addWatcher(AnimeWatcher watcher) async {
+    await _db.insert(
+      animeWatcherTable,
+      watcher.toJson(),
+    );
+    _watcherCache?.add(watcher);
+  }
+
+  Future<List<AnimeWatcher>> getWatchersForAnime(
+    AnimeTrackingData anime,
+  ) async {
+    final dbResults = await _db.rawQuery(
+      '''
+      SELECT * FROM $animeWatcherTable
+        JOIN $animeWatcherJoinTable ON $animeWatcherTable.name = $animeWatcherJoinTable.name
+        WHERE anime = ?;
+      ''',
+      [
+        anime.id,
+      ],
+    );
+
+    return dbResults
+        .cast<Map<String, dynamic>>()
+        .map(AnimeWatcher.fromJson)
+        .toList();
+  }
+
+  Future<void> associateWatcherWithAnime(
+    AnimeWatcher watcher,
+    AnimeTrackingData anime,
+  ) async {
+    await _db.insert(
+      animeWatcherJoinTable,
+      {
+        'name': watcher.name,
+        'anime': anime.id,
+      },
+    );
+  }
+
+  Future<void> disassociateWatcherWithAnime(
+    AnimeWatcher watcher,
+    AnimeTrackingData anime,
+  ) async {
+    await _db.delete(
+      animeWatcherJoinTable,
+      where: 'name = ? and anime = ?',
+      whereArgs: [watcher.name, anime.id],
+    );
   }
 }

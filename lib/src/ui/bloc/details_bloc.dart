@@ -1,4 +1,5 @@
 import 'package:anitrack/src/data/anime.dart';
+import 'package:anitrack/src/data/anime_watcher.dart';
 import 'package:anitrack/src/data/manga.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/service/database.dart';
@@ -19,17 +20,26 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     on<MangaDetailsRequestedEvent>(_onMangaRequested);
     on<DetailsUpdatedEvent>(_onDetailsUpdated);
     on<ItemRemovedEvent>(_onItemRemoved);
+    on<AnimeWatcherAddedEvent>(_onAnimeWatcherAdded);
+    on<AnimeWatcherRemovedEvent>(_onAnimeWatcherRemoved);
+    on<AnimeWatcherDeletedEvent>(_onAnimeWatcherDeleted);
   }
 
   Future<void> _onAnimeRequested(
     AnimeDetailsRequestedEvent event,
     Emitter<DetailsState> emit,
   ) async {
+    // Find out what watchers there are
+    final watchers = await GetIt.I.get<DatabaseService>().getWatchersForAnime(
+      event.anime,
+    );
+
     emit(
       state.copyWith(
         trackingType: TrackingMediumType.anime,
         heroImagePrefix: event.heroImagePrefix,
         data: event.anime,
+        animeWatchers: watchers,
       ),
     );
 
@@ -116,5 +126,63 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
 
     // Navigate back
     GetIt.I.get<NavigationBloc>().add(PoppedRouteEvent());
+  }
+
+  Future<void> _onAnimeWatcherAdded(
+    AnimeWatcherAddedEvent event,
+    Emitter<DetailsState> emit,
+  ) async {
+    await GetIt.I.get<DatabaseService>().associateWatcherWithAnime(
+      event.watcher,
+      state.data! as AnimeTrackingData,
+    );
+    emit(
+      state.copyWith(
+        animeWatchers: List.of([
+          ...state.animeWatchers,
+          event.watcher,
+        ]),
+      ),
+    );
+  }
+
+  Future<void> _onAnimeWatcherRemoved(
+    AnimeWatcherRemovedEvent event,
+    Emitter<DetailsState> emit,
+  ) async {
+    await GetIt.I.get<DatabaseService>().disassociateWatcherWithAnime(
+      event.watcher,
+      state.data! as AnimeTrackingData,
+    );
+    emit(
+      state.copyWith(
+        animeWatchers: state.animeWatchers
+            .where((watcher) => watcher.name != event.watcher.name)
+            .toList(),
+      ),
+    );
+  }
+
+  Future<void> _onAnimeWatcherDeleted(
+    AnimeWatcherDeletedEvent event,
+    Emitter<DetailsState> emit,
+  ) async {
+    await GetIt.I.get<DatabaseService>().deleteAnimeWatcher(event.watcher);
+
+    emit(
+      state.copyWith(
+        animeWatchers: state.animeWatchers
+            .where((watcher) => watcher.name != event.watcher.name)
+            .toList(),
+      ),
+    );
+  }
+
+  Future<void> addAnimeWatcher(AnimeWatcher watcher) async {
+    await GetIt.I.get<DatabaseService>().addWatcher(watcher);
+  }
+
+  Future<List<AnimeWatcher>> getAllAnimeWatchers() async {
+    return GetIt.I.get<DatabaseService>().getAnimeWatchers();
   }
 }

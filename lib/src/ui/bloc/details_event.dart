@@ -36,3 +36,24 @@ class ItemRemovedEvent extends DetailsEvent {
   /// The type of medium of the item
   final TrackingMediumType trackingType;
 }
+
+class AnimeWatcherRemovedEvent extends DetailsEvent {
+  AnimeWatcherRemovedEvent(this.watcher);
+
+  /// The watcher that was removed
+  final AnimeWatcher watcher;
+}
+
+class AnimeWatcherAddedEvent extends DetailsEvent {
+  AnimeWatcherAddedEvent(this.watcher);
+
+  /// The watcher that was added
+  final AnimeWatcher watcher;
+}
+
+class AnimeWatcherDeletedEvent extends DetailsEvent {
+  AnimeWatcherDeletedEvent(this.watcher);
+
+  /// The watcher that was deleted
+  final AnimeWatcher watcher;
+}
