@@ -8,6 +8,7 @@ import 'package:anitrack/src/service/migrations/0000_score.dart';
 import 'package:anitrack/src/service/migrations/0001_anime_watcher.dart';
 import 'package:anitrack/src/service/migrations/0002_anilist.dart';
 import 'package:anitrack/src/service/migrations/0003_other_titles.dart';
+import 'package:anitrack/src/service/migrations/0004_fix_constraints.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -73,8 +74,8 @@ Future<void> _createDatabase(Database db, int version) async {
       name          TEXT NOT NULL,
       anime         TEXT NOT NULL,
       CONSTRAINT pk_watcher_join_table PRIMARY KEY(name, anime),
-      CONSTRAINT fk_watcher FOREIGN KEY (name) REFERENCES $animeWatcherTable(name),
-      CONSTRAINT fk_anime FOREIGN KEY (anime) REFERENCES $animeTable(id)
+      CONSTRAINT fk_watcher FOREIGN KEY (name) REFERENCES $animeWatcherTable(name) ON DELETE CASCADE,
+      CONSTRAINT fk_anime FOREIGN KEY (anime) REFERENCES $animeTable(id) ON DELETE CASCADE
     )''',
   );
 }
@@ -106,7 +107,7 @@ class DatabaseService {
     print('Opening database at $databasePath');
     _db = await openDatabase(
       databasePath,
-      version: 6,
+      version: 7,
       onConfigure: (db) async {
         // In order to do schema changes during database upgrades, we disable foreign
         // keys in the onConfigure phase, but re-enable them here.
@@ -133,6 +134,9 @@ class DatabaseService {
         }
         if (oldVersion < 6) {
           await migrateFromV5ToV6(db);
+        }
+        if (oldVersion < 7) {
+          await migrateFromV6ToV7(db);
         }
       },
     );
