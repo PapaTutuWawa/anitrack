@@ -2,7 +2,7 @@ name: anitrack
 description: An anime and manga tracker
 publish_to: "none"
 
-version: 0.2.1+2018
+version: 0.2.2+2019
 
 environment:
   sdk: ^3.8.0
