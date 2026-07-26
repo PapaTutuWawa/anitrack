@@ -15,6 +15,7 @@ import 'package:anitrack/src/ui/pages/calendar.dart';
 import 'package:anitrack/src/ui/pages/details/details.dart';
 import 'package:anitrack/src/ui/pages/settings.dart';
 import 'package:anitrack/src/ui/widgets/shell_wrapper.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -79,7 +80,7 @@ class MyApp extends StatelessWidget {
   /// The router to attach to the main app.
   final _router = GoRouter(
     initialLocation: animeListRoute,
-    debugLogDiagnostics: true,
+    debugLogDiagnostics: kDebugMode,
     routes: [
       ShellRoute(
         builder: (context, state, child) {
