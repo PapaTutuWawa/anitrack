@@ -10,7 +10,6 @@ import 'package:bottom_bar/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:go_router/go_router.dart';
 
 class AnimeListPage extends StatefulWidget {
   const AnimeListPage({
@@ -104,17 +103,15 @@ class AnimeListPage extends StatefulWidget {
           AnimeListPage.getPageTitle(state.trackingType),
         ),
       ),
-      actions: [
+      actions: const [
         BlocBuilder<AnimeListBloc, AnimeListState>(
-          builder: (context, state) =>
-              AnimeListPage.getPopupButton(context, state),
+          builder: AnimeListPage.getPopupButton,
         ),
       ],
     );
   }
 
   static Widget buildBottomNavigationBar(BuildContext context) {
-    final pageController = context.read<AnimeListBloc>().pageController;
     return BlocBuilder<AnimeListBloc, AnimeListState>(
       builder: (context, state) => BottomBar(
         selectedIndex: state.trackingType == TrackingMediumType.anime ? 0 : 1,
@@ -124,8 +121,6 @@ class AnimeListPage extends StatefulWidget {
               index == 0 ? TrackingMediumType.anime : TrackingMediumType.manga,
             ),
           );
-
-          pageController.jumpToPage(index);
         },
         items: [
           BottomBarItem(
@@ -155,7 +150,9 @@ class AnimeListPage extends StatefulWidget {
           curve: Curves.easeInOutQuint,
           child: FloatingActionButton(
             onPressed: () {
-              context.push(animeSearchRoute);
+              context.read<AnimeSearchBloc>().add(
+                AnimeSearchRequestedEvent(state.trackingType),
+              );
             },
             tooltip: t.tooltips.addNewItem,
             child: const Icon(Icons.add),
@@ -170,7 +167,6 @@ class AnimeListPage extends StatefulWidget {
 }
 
 class AnimeListPageState extends State<AnimeListPage> {
-  final PageController _controller = PageController();
   final ScrollController _animeScrollController = ScrollController();
 
   @override
@@ -180,7 +176,6 @@ class AnimeListPageState extends State<AnimeListPage> {
   }
 
   void _onAnimeListScrolled() {
-    //print(_animeScrollController.position.maxScrollExtent);
     final bloc = GetIt.I.get<AnimeListBloc>();
     if (_animeScrollController.offset + 20 >=
         _animeScrollController.position.maxScrollExtent) {
@@ -202,11 +197,8 @@ class AnimeListPageState extends State<AnimeListPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<AnimeListBloc, AnimeListState>(
       builder: (context, state) {
-        return PageView(
-          // Prevent swiping between pages
-          // (https://github.com/flutter/flutter/issues/37510#issuecomment-612663656)
-          physics: const NeverScrollableScrollPhysics(),
-          controller: _controller,
+        return IndexedStack(
+          index: state.trackingType == TrackingMediumType.anime ? 0 : 1,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),

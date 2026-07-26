@@ -6,7 +6,6 @@ import 'package:anitrack/src/ui/bloc/navigation_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 
@@ -41,9 +40,6 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
   final List<MangaTrackingData> _mangas = List<MangaTrackingData>.empty(
     growable: true,
   );
-
-  /// Controller for the bottom navigation bar
-  final pageController = PageController();
 
   List<AnimeTrackingData> get unfilteredAnime => _animes;
 
