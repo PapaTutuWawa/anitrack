@@ -122,9 +122,13 @@ class MyApp extends StatelessWidget {
         if (state is NoopNavigationState) {
           // NOOP
         } else if (state is PushNavigationState) {
-          _router.go(state.destination);
-        } else if (state is GoNavigationState) {
           _router.push(state.destination);
+        } else if (state is GoNavigationState) {
+          if (_router.canPop()) {
+            _router.replace(state.destination);
+          } else {
+            _router.go(state.destination);
+          }
         } else if (state is PoppedNavigationState) {
           _router.pop();
         }
