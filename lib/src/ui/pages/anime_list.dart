@@ -56,9 +56,9 @@ class AnimeListPage extends StatefulWidget {
         value: MediumTrackingState.paused,
         child: Text(MediumTrackingState.paused.getName(type)),
       ),
-      const PopupMenuItem<MediumTrackingState>(
+      PopupMenuItem<MediumTrackingState>(
         value: MediumTrackingState.all,
-        child: Text('All'),
+        child: Text(t.data.all),
       ),
     ];
   }
