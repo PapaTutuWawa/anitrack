@@ -44,29 +44,36 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
 
       String? broadcastDay;
       bool airing;
+      int? episodes;
       try {
         switch (anime.source) {
           case TrackingDataSource.mal:
             final apiData = await Jikan().getAnime(int.parse(anime.id));
             airing = apiData.airing;
             broadcastDay = apiData.broadcast?.split(' ').first;
+            episodes = apiData.episodes;
           case TrackingDataSource.anilist:
             final apiData = await GetIt.I.get<AniListClient>().getAnimeById(
               anime.id,
             );
             airing = apiData.isAiring;
             broadcastDay = apiData.broadcastDay;
+            episodes = apiData.episodes;
         }
       } catch (ex) {
         print('API request for anime ${anime.id} failed: $ex');
-        airing = false;
+        continue;
       }
 
-      print('Anime "${anime.title}": airing=$airing');
+      print('Anime "${anime.title}": airing=$airing; episodes=$episodes');
       if (!airing) {
         al.add(
           AnimeUpdatedEvent(
-            anime.copyWith(airing: false, broadcastDay: null),
+            anime.copyWith(
+              airing: false,
+              broadcastDay: null,
+              episodesTotal: episodes,
+            ),
             commit: true,
           ),
         );
@@ -74,13 +81,17 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         print('Updating Anime "${anime.title}": broadcastDay=$broadcastDay');
         al.add(
           AnimeUpdatedEvent(
-            anime.copyWith(airing: true, broadcastDay: broadcastDay),
+            anime.copyWith(
+              airing: true,
+              broadcastDay: broadcastDay,
+              episodesTotal: episodes,
+            ),
             commit: true,
           ),
         );
       }
 
-      // Prevent hammering Jikan
+      // Prevent hammering Jikan/AniList
       await Future<void>.delayed(const Duration(milliseconds: 500));
     }
 

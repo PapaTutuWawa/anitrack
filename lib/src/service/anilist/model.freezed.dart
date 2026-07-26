@@ -570,7 +570,7 @@ as String?,
 /// @nodoc
 mixin _$Anime {
 
- String get title; bool get isAiring; String? get broadcastDay;
+ String get title; bool get isAiring; String? get broadcastDay; int? get episodes;
 /// Create a copy of Anime
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -581,16 +581,16 @@ $AnimeCopyWith<Anime> get copyWith => _$AnimeCopyWithImpl<Anime>(this as Anime, 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Anime&&(identical(other.title, title) || other.title == title)&&(identical(other.isAiring, isAiring) || other.isAiring == isAiring)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Anime&&(identical(other.title, title) || other.title == title)&&(identical(other.isAiring, isAiring) || other.isAiring == isAiring)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay)&&(identical(other.episodes, episodes) || other.episodes == episodes));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,isAiring,broadcastDay);
+int get hashCode => Object.hash(runtimeType,title,isAiring,broadcastDay,episodes);
 
 @override
 String toString() {
-  return 'Anime(title: $title, isAiring: $isAiring, broadcastDay: $broadcastDay)';
+  return 'Anime(title: $title, isAiring: $isAiring, broadcastDay: $broadcastDay, episodes: $episodes)';
 }
 
 
@@ -601,7 +601,7 @@ abstract mixin class $AnimeCopyWith<$Res>  {
   factory $AnimeCopyWith(Anime value, $Res Function(Anime) _then) = _$AnimeCopyWithImpl;
 @useResult
 $Res call({
- String title, bool isAiring, String? broadcastDay
+ String title, bool isAiring, String? broadcastDay, int? episodes
 });
 
 
@@ -618,12 +618,13 @@ class _$AnimeCopyWithImpl<$Res>
 
 /// Create a copy of Anime
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? isAiring = null,Object? broadcastDay = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? isAiring = null,Object? broadcastDay = freezed,Object? episodes = freezed,}) {
   return _then(_self.copyWith(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,isAiring: null == isAiring ? _self.isAiring : isAiring // ignore: cast_nullable_to_non_nullable
 as bool,broadcastDay: freezed == broadcastDay ? _self.broadcastDay : broadcastDay // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,episodes: freezed == episodes ? _self.episodes : episodes // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 
@@ -708,10 +709,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  bool isAiring,  String? broadcastDay)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  bool isAiring,  String? broadcastDay,  int? episodes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Anime() when $default != null:
-return $default(_that.title,_that.isAiring,_that.broadcastDay);case _:
+return $default(_that.title,_that.isAiring,_that.broadcastDay,_that.episodes);case _:
   return orElse();
 
 }
@@ -729,10 +730,10 @@ return $default(_that.title,_that.isAiring,_that.broadcastDay);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  bool isAiring,  String? broadcastDay)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  bool isAiring,  String? broadcastDay,  int? episodes)  $default,) {final _that = this;
 switch (_that) {
 case _Anime():
-return $default(_that.title,_that.isAiring,_that.broadcastDay);case _:
+return $default(_that.title,_that.isAiring,_that.broadcastDay,_that.episodes);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -749,10 +750,10 @@ return $default(_that.title,_that.isAiring,_that.broadcastDay);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  bool isAiring,  String? broadcastDay)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  bool isAiring,  String? broadcastDay,  int? episodes)?  $default,) {final _that = this;
 switch (_that) {
 case _Anime() when $default != null:
-return $default(_that.title,_that.isAiring,_that.broadcastDay);case _:
+return $default(_that.title,_that.isAiring,_that.broadcastDay,_that.episodes);case _:
   return null;
 
 }
@@ -764,12 +765,13 @@ return $default(_that.title,_that.isAiring,_that.broadcastDay);case _:
 
 
 class _Anime implements Anime {
-  const _Anime({required this.title, required this.isAiring, required this.broadcastDay});
+  const _Anime({required this.title, required this.isAiring, required this.broadcastDay, required this.episodes});
   
 
 @override final  String title;
 @override final  bool isAiring;
 @override final  String? broadcastDay;
+@override final  int? episodes;
 
 /// Create a copy of Anime
 /// with the given fields replaced by the non-null parameter values.
@@ -781,16 +783,16 @@ _$AnimeCopyWith<_Anime> get copyWith => __$AnimeCopyWithImpl<_Anime>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Anime&&(identical(other.title, title) || other.title == title)&&(identical(other.isAiring, isAiring) || other.isAiring == isAiring)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Anime&&(identical(other.title, title) || other.title == title)&&(identical(other.isAiring, isAiring) || other.isAiring == isAiring)&&(identical(other.broadcastDay, broadcastDay) || other.broadcastDay == broadcastDay)&&(identical(other.episodes, episodes) || other.episodes == episodes));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,isAiring,broadcastDay);
+int get hashCode => Object.hash(runtimeType,title,isAiring,broadcastDay,episodes);
 
 @override
 String toString() {
-  return 'Anime(title: $title, isAiring: $isAiring, broadcastDay: $broadcastDay)';
+  return 'Anime(title: $title, isAiring: $isAiring, broadcastDay: $broadcastDay, episodes: $episodes)';
 }
 
 
@@ -801,7 +803,7 @@ abstract mixin class _$AnimeCopyWith<$Res> implements $AnimeCopyWith<$Res> {
   factory _$AnimeCopyWith(_Anime value, $Res Function(_Anime) _then) = __$AnimeCopyWithImpl;
 @override @useResult
 $Res call({
- String title, bool isAiring, String? broadcastDay
+ String title, bool isAiring, String? broadcastDay, int? episodes
 });
 
 
@@ -818,12 +820,13 @@ class __$AnimeCopyWithImpl<$Res>
 
 /// Create a copy of Anime
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? isAiring = null,Object? broadcastDay = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? isAiring = null,Object? broadcastDay = freezed,Object? episodes = freezed,}) {
   return _then(_Anime(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,isAiring: null == isAiring ? _self.isAiring : isAiring // ignore: cast_nullable_to_non_nullable
 as bool,broadcastDay: freezed == broadcastDay ? _self.broadcastDay : broadcastDay // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,episodes: freezed == episodes ? _self.episodes : episodes // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 

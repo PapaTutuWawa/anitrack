@@ -75,6 +75,7 @@ abstract class Anime with _$Anime {
     required String title,
     required bool isAiring,
     required String? broadcastDay,
+    required int? episodes,
   }) = _Anime;
 
   factory Anime.fromJson(Map<String, Object?> json) {
@@ -88,6 +89,7 @@ abstract class Anime with _$Anime {
     return Anime(
       title: (json['title']! as Map<String, dynamic>)['romaji']! as String,
       isAiring: json['status'] == 'RELEASING',
+      episodes: json['episodes'] as int?,
       broadcastDay: airingDayOfTheWeek,
     );
   }
