@@ -44,9 +44,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     );
 
     GetIt.I.get<NavigationBloc>().add(
-      PushedNamedEvent(
-        const NavigationDestination(detailsRoute),
-      ),
+      GoNavigationEvent(detailsRoute),
     );
   }
 
@@ -63,9 +61,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     );
 
     GetIt.I.get<NavigationBloc>().add(
-      PushedNamedEvent(
-        const NavigationDestination(detailsRoute),
-      ),
+      PushNavigationEvent(detailsRoute),
     );
   }
 
@@ -126,7 +122,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     }
 
     // Navigate back
-    GetIt.I.get<NavigationBloc>().add(PoppedRouteEvent());
+    GetIt.I.get<NavigationBloc>().add(PopNavigationEvent());
   }
 
   Future<void> _onAnimeWatcherAdded(

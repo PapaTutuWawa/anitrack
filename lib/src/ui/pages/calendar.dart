@@ -63,6 +63,22 @@ class CalendarPage extends StatefulWidget {
     ),
   );
 
+  static AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      title: Text(t.calendar.calendar),
+      actions: [
+        IconButton(
+          onPressed: () {
+            context.read<CalendarBloc>().add(
+              RefreshPerformedEvent(),
+            );
+          },
+          icon: const Icon(Icons.refresh),
+        ),
+      ],
+    );
+  }
+
   @override
   CalendarPageState createState() => CalendarPageState();
 }
@@ -131,28 +147,20 @@ class CalendarPageState extends State<CalendarPage> {
       switch (anime.broadcastDay) {
         case 'Mondays':
           day = Weekday.monday;
-          break;
         case 'Tuesdays':
           day = Weekday.tuesday;
-          break;
         case 'Wednesdays':
           day = Weekday.wednesday;
-          break;
         case 'Thursdays':
           day = Weekday.thursday;
-          break;
         case 'Fridays':
           day = Weekday.friday;
-          break;
         case 'Saturdays':
           day = Weekday.saturday;
-          break;
         case 'Sundays':
           day = Weekday.sunday;
-          break;
         default:
           day = Weekday.unknown;
-          break;
       }
 
       airingAnimeMap.addOrSet(day, anime);
@@ -184,78 +192,62 @@ class CalendarPageState extends State<CalendarPage> {
                   right: 0,
                   top: 0,
                   bottom: 0,
-                  child: Scaffold(
-                    appBar: AppBar(
-                      title: Text(t.calendar.calendar),
-                      actions: [
-                        IconButton(
-                          onPressed: () {
-                            context.read<CalendarBloc>().add(
-                              RefreshPerformedEvent(),
-                            );
-                          },
-                          icon: const Icon(Icons.refresh),
+                  child: Padding(
+                    padding: const EdgeInsetsGeometry.symmetric(
+                      horizontal: 12,
+                    ),
+                    child: CustomScrollView(
+                      slivers: [
+                        // Render all available weekdays
+                        ..._renderWeekdayList(
+                          context,
+                          Weekday.unknown,
+                          airingAnimeMap,
+                        ),
+                        ..._renderWeekdayList(
+                          context,
+                          Weekday.monday,
+                          airingAnimeMap,
+                        ),
+                        ..._renderWeekdayList(
+                          context,
+                          Weekday.tuesday,
+                          airingAnimeMap,
+                        ),
+                        ..._renderWeekdayList(
+                          context,
+                          Weekday.wednesday,
+                          airingAnimeMap,
+                        ),
+                        ..._renderWeekdayList(
+                          context,
+                          Weekday.thursday,
+                          airingAnimeMap,
+                        ),
+                        ..._renderWeekdayList(
+                          context,
+                          Weekday.friday,
+                          airingAnimeMap,
+                        ),
+                        ..._renderWeekdayList(
+                          context,
+                          Weekday.saturday,
+                          airingAnimeMap,
+                        ),
+                        ..._renderWeekdayList(
+                          context,
+                          Weekday.sunday,
+                          airingAnimeMap,
+                        ),
+
+                        // Provide a nice bottom padding, while keeping the elastic effect attached
+                        // to the bottom-most edge.
+                        const SliverToBoxAdapter(
+                          child: SizedBox(
+                            height: 16,
+                          ),
                         ),
                       ],
-                    ),
-                    drawer: getDrawer(context),
-                    body: Padding(
-                      padding: const EdgeInsetsGeometry.symmetric(
-                        horizontal: 12,
-                      ),
-                      child: CustomScrollView(
-                        slivers: [
-                          // Render all available weekdays
-                          ..._renderWeekdayList(
-                            context,
-                            Weekday.unknown,
-                            airingAnimeMap,
-                          ),
-                          ..._renderWeekdayList(
-                            context,
-                            Weekday.monday,
-                            airingAnimeMap,
-                          ),
-                          ..._renderWeekdayList(
-                            context,
-                            Weekday.tuesday,
-                            airingAnimeMap,
-                          ),
-                          ..._renderWeekdayList(
-                            context,
-                            Weekday.wednesday,
-                            airingAnimeMap,
-                          ),
-                          ..._renderWeekdayList(
-                            context,
-                            Weekday.thursday,
-                            airingAnimeMap,
-                          ),
-                          ..._renderWeekdayList(
-                            context,
-                            Weekday.friday,
-                            airingAnimeMap,
-                          ),
-                          ..._renderWeekdayList(
-                            context,
-                            Weekday.saturday,
-                            airingAnimeMap,
-                          ),
-                          ..._renderWeekdayList(
-                            context,
-                            Weekday.sunday,
-                            airingAnimeMap,
-                          ),
-
-                          // Provide a nice bottom padding, while keeping the elastic effect attached
-                          // to the bottom-most edge.
-                          const SliverToBoxAdapter(
-                            child: SizedBox(
-                              height: 16,
-                            ),
-                          ),
-                        ],
-                      ),
                     ),
                   ),
                 ),

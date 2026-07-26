@@ -5,14 +5,12 @@ import 'package:anitrack/src/data/search_result.dart';
 import 'package:anitrack/src/data/source.dart';
 import 'package:anitrack/src/data/type.dart';
 import 'package:anitrack/src/service/anilist/anilist_client.dart';
-import 'package:anitrack/src/service/anilist/model.dart';
 import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart' as list;
 import 'package:anitrack/src/ui/bloc/navigation_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:jikan_api/jikan_api.dart';
 
 part 'anime_search_state.dart';
 part 'anime_search_event.dart';
@@ -43,9 +41,7 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
     );
 
     GetIt.I.get<NavigationBloc>().add(
-      PushedNamedEvent(
-        const NavigationDestination(animeSearchRoute),
-      ),
+      PushNavigationEvent(animeSearchRoute),
     );
   }
 
@@ -166,7 +162,7 @@ class AnimeSearchBloc extends Bloc<AnimeSearchEvent, AnimeSearchState> {
     );
 
     GetIt.I.get<NavigationBloc>().add(
-      PoppedRouteEvent(),
+      GoNavigationEvent(animeListRoute),
     );
   }
 }

@@ -14,13 +14,13 @@ import 'package:anitrack/src/ui/pages/anime_search.dart';
 import 'package:anitrack/src/ui/pages/calendar.dart';
 import 'package:anitrack/src/ui/pages/details/details.dart';
 import 'package:anitrack/src/ui/pages/settings.dart';
+import 'package:anitrack/src/ui/widgets/shell_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 void main() async {
-  final navKey = GlobalKey<NavigatorState>();
-
   // Initialize the widgets binding for sqflite
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -33,7 +33,7 @@ void main() async {
   GetIt.I.registerSingleton<AnimeListBloc>(AnimeListBloc());
   GetIt.I.registerSingleton<AnimeSearchBloc>(AnimeSearchBloc());
   GetIt.I.registerSingleton<DetailsBloc>(DetailsBloc());
-  GetIt.I.registerSingleton<NavigationBloc>(NavigationBloc(navKey));
+  GetIt.I.registerSingleton<NavigationBloc>(NavigationBloc());
   GetIt.I.registerSingleton<SettingsBloc>(SettingsBloc());
   GetIt.I.registerSingleton<CalendarBloc>(CalendarBloc());
   GetIt.I.registerSingleton<AniListClient>(AniListClient());
@@ -68,53 +68,81 @@ void main() async {
           create: (_) => GetIt.I.get<CalendarBloc>(),
         ),
       ],
-      child: MyApp(navKey),
+      child: MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp(
-    this.navKey, {
-    super.key,
-  });
+  MyApp({super.key});
 
-  final GlobalKey<NavigatorState> navKey;
+  /// The router to attach to the main app.
+  final _router = GoRouter(
+    initialLocation: animeListRoute,
+    debugLogDiagnostics: true,
+    routes: [
+      ShellRoute(
+        builder: (context, state, child) {
+          return ShellWrapper(state: state, child: child);
+        },
+        routes: [
+          GoRoute(
+            path: animeListRoute,
+            builder: (context, state) => const AnimeListPage(),
+          ),
+          GoRoute(
+            path: calendarRoute,
+            builder: (context, state) => const CalendarPage(),
+          ),
+        ],
+      ),
+      GoRoute(
+        path: animeSearchRoute,
+        builder: (context, state) => const AnimeSearchPage(),
+      ),
+      GoRoute(
+        path: detailsRoute,
+        builder: (context, state) => const DetailsPage(),
+      ),
+      GoRoute(
+        path: aboutRoute,
+        builder: (context, state) => const AboutPage(),
+      ),
+      GoRoute(
+        path: settingsRoute,
+        builder: (context, state) => const SettingsPage(),
+      ),
+    ],
+  );
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'AniTrack',
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
-      navigatorKey: navKey,
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case '/':
-          case animeListRoute:
-            return AnimeListPage.route;
-          case animeSearchRoute:
-            return AnimeSearchPage.route;
-          case calendarRoute:
-            return CalendarPage.route;
-          case detailsRoute:
-            return DetailsPage.route;
-          case aboutRoute:
-            return AboutPage.route;
-          case settingsRoute:
-            return SettingsPage.route;
+    return BlocListener<NavigationBloc, NavigationState>(
+      listener: (context, state) {
+        if (state is NoopNavigationState) {
+          // NOOP
+        } else if (state is PushNavigationState) {
+          _router.go(state.destination);
+        } else if (state is GoNavigationState) {
+          _router.push(state.destination);
+        } else if (state is PoppedNavigationState) {
+          _router.pop();
         }
-
-        return null;
       },
+      child: MaterialApp.router(
+        title: 'AniTrack',
+        theme: ThemeData(
+          brightness: Brightness.light,
+          primarySwatch: Colors.blue,
+          useMaterial3: true,
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          primarySwatch: Colors.blue,
+          useMaterial3: true,
+        ),
+        routerConfig: _router,
+      ),
     );
   }
 }

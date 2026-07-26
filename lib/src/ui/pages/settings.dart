@@ -5,6 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -35,6 +36,12 @@ class SettingsPage extends StatelessWidget {
                 child: Scaffold(
                   appBar: AppBar(
                     title: Text(t.settings.title),
+                    leading: IconButton(
+                      icon: const Icon(Icons.arrow_back),
+                      onPressed: () {
+                        GoRouter.of(context).pop();
+                      },
+                    ),
                   ),
                   body: ListView(
                     children: [

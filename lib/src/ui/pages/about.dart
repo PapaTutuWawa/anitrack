@@ -3,6 +3,7 @@ import 'package:anitrack/licenses.g.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
@@ -22,6 +23,12 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(t.about.title),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            GoRouter.of(context).pop();
+          },
+        ),
       ),
       body: ListView.builder(
         itemCount: ossLicenses.length + 1,

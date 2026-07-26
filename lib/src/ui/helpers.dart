@@ -3,6 +3,7 @@ import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 Widget getDrawer(BuildContext context) {
   return Drawer(
@@ -24,33 +25,30 @@ Widget getDrawer(BuildContext context) {
           leading: const Icon(Icons.list),
           title: Text(t.content.list),
           onTap: () {
-            GetIt.I.get<AnimeListBloc>().add(
-              AnimeListRequestedEvent(),
-            );
+            GoRouter.of(context).go(animeListRoute);
+            Navigator.of(context).pop();
           },
         ),
         ListTile(
           leading: const Icon(Icons.calendar_today),
           title: Text(t.calendar.calendar),
           onTap: () {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              calendarRoute,
-              (_) => false,
-            );
+            GoRouter.of(context).go(calendarRoute);
+            Navigator.of(context).pop();
           },
         ),
         ListTile(
           leading: const Icon(Icons.settings),
           title: Text(t.settings.title),
           onTap: () {
-            Navigator.of(context).pushNamed(settingsRoute);
+            GoRouter.of(context).push(settingsRoute);
           },
         ),
         ListTile(
           leading: const Icon(Icons.info),
           title: Text(t.about.title),
           onTap: () {
-            Navigator.of(context).pushNamed(aboutRoute);
+            GoRouter.of(context).push(aboutRoute);
           },
         ),
       ],

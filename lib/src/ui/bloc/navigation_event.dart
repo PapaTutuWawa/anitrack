@@ -11,20 +11,14 @@ class NavigationDestination {
 
 abstract class NavigationEvent {}
 
-class PushedNamedEvent extends NavigationEvent {
-  PushedNamedEvent(this.destination);
-  final NavigationDestination destination;
+class GoNavigationEvent extends NavigationEvent {
+  GoNavigationEvent(this.destination);
+  final String destination;
 }
 
-class PushedNamedAndRemoveUntilEvent extends NavigationEvent {
-  PushedNamedAndRemoveUntilEvent(this.destination, this.predicate);
-  final NavigationDestination destination;
-  final RoutePredicate predicate;
+class PushNavigationEvent extends NavigationEvent {
+  PushNavigationEvent(this.destination);
+  final String destination;
 }
 
-class PushedNamedReplaceEvent extends NavigationEvent {
-  PushedNamedReplaceEvent(this.destination);
-  final NavigationDestination destination;
-}
-
-class PoppedRouteEvent extends NavigationEvent {}
+class PopNavigationEvent extends NavigationEvent {}
