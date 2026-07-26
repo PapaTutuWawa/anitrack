@@ -1,5 +1,5 @@
 import 'package:anitrack/i18n/strings.g.dart';
-import 'package:anitrack/licenses.g.dart';
+import 'package:anitrack/oss_licenses.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,7 +31,7 @@ class AboutPage extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-        itemCount: ossLicenses.length + 1,
+        itemCount: dependencies.length + 1,
         itemBuilder: (context, index) {
           if (index == 0) {
             return Padding(
@@ -97,9 +97,7 @@ class AboutPage extends StatelessWidget {
             );
           }
 
-          final dep = ossLicenses[index - 1];
-          if (!dep.isDirectDependency) return Container();
-
+          final dep = dependencies[index - 1];
           return ListTile(
             title: Text(dep.name),
             onTap: () {
