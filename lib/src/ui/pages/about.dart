@@ -48,7 +48,11 @@ class AboutPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        padding: const EdgeInsets.only(
+                          top: 8,
+                          left: 4,
+                          right: 4,
+                        ),
                         child: ElevatedButton(
                           onPressed: () async {
                             await launchUrl(
@@ -62,7 +66,11 @@ class AboutPage extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        padding: const EdgeInsets.only(
+                          top: 8,
+                          left: 4,
+                          right: 4,
+                        ),
                         child: ElevatedButton(
                           onPressed: () async {
                             final licenseText = await rootBundle.loadString(
