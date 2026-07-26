@@ -115,10 +115,8 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     switch (event.trackingType) {
       case TrackingMediumType.anime:
         bloc.add(AnimeRemovedEvent(event.id));
-        break;
       case TrackingMediumType.manga:
         bloc.add(MangaRemovedEvent(event.id));
-        break;
     }
 
     // Navigate back

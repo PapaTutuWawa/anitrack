@@ -1,4 +1,3 @@
-import 'package:anitrack/src/ui/widgets/list_item.dart';
 import 'package:flutter/material.dart';
 
 class SelectorItem<T> {

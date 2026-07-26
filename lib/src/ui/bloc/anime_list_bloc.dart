@@ -125,8 +125,9 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
 
     final anime = state.animes[index];
     if (anime.episodesTotal != null &&
-        anime.episodesWatched + 1 > anime.episodesTotal!)
+        anime.episodesWatched + 1 > anime.episodesTotal!) {
       return;
+    }
 
     final newAnime = await GetIt.I
         .get<DatabaseService>()
@@ -226,8 +227,9 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
 
     final manga = state.mangas[index];
     if (manga.chaptersTotal != null &&
-        manga.chaptersRead + 1 > manga.chaptersTotal!)
+        manga.chaptersRead + 1 > manga.chaptersTotal!) {
       return;
+    }
 
     final newManga = await GetIt.I
         .get<DatabaseService>()

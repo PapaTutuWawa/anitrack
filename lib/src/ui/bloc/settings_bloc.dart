@@ -250,7 +250,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     Emitter<SettingsState> emit,
   ) async {
     final al = GetIt.I.get<AnimeListBloc>();
-    final exportArchive = archive.GZipDecoder().decodeBytes(
+    final exportArchive = const archive.GZipDecoder().decodeBytes(
       await File(event.path).readAsBytes(),
     );
     final json = jsonDecode(utf8.decode(exportArchive)) as Map<String, dynamic>;

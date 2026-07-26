@@ -46,7 +46,7 @@ class ListItem extends StatelessWidget {
       },
       // TODO(PapaTutuWawa): Fix
       key: UniqueKey(),
-      backgroundBuilder: (_, direction, __) {
+      backgroundBuilder: (_, direction, _) {
         if (direction == SwipeDirection.endToStart) {
           return const Align(
             alignment: Alignment.centerRight,

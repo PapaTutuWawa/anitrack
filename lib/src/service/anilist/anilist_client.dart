@@ -4,7 +4,7 @@ import 'package:graphql/client.dart';
 class AniListClient {
   /// The base GraphQL client for AniList
   final _client = GraphQLClient(
-    link: HttpLink("https://graphql.anilist.co"),
+    link: HttpLink('https://graphql.anilist.co'),
     cache: GraphQLCache(),
   );
 
@@ -42,11 +42,11 @@ class AniListClient {
     );
     if (result.hasException) {
       // TODO: Handle this more elegantly
-      print(result.exception.toString());
+      print(result.exception);
       return [];
     }
 
-    return (result.data!["Page"]["media"] as List<Object?>)
+    return (result.data!['Page']['media'] as List<Object?>)
         .cast<Map<String, dynamic>>()
         .map(AnimeSearchResult.fromJson)
         .toList();
@@ -83,11 +83,11 @@ class AniListClient {
     );
     if (result.hasException) {
       // TODO: Handle this more elegantly
-      print(result.exception.toString());
+      print(result.exception);
       return [];
     }
 
-    return (result.data!["Page"]["media"] as List<Object?>)
+    return (result.data!['Page']['media'] as List<Object?>)
         .cast<Map<String, dynamic>>()
         .map(MangaSearchResult.fromJson)
         .toList();
@@ -119,7 +119,7 @@ class AniListClient {
       ),
     );
     if (result.hasException) {
-      print(result.exception.toString());
+      print(result.exception);
     }
 
     return Anime.fromJson(result.data!['Media'] as Map<String, dynamic>);

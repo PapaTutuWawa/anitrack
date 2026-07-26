@@ -1,8 +1,6 @@
 import 'package:anitrack/i18n/strings.g.dart';
-import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 Widget getDrawer(BuildContext context) {

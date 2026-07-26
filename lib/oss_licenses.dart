@@ -1,6 +1,5 @@
 // dart format off
 // cSpell:disable
-// ignore_for_file: always_put_required_named_parameters_first
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: sort_constructors_first
 
@@ -8,7 +7,7 @@
 // https://pub.dev/packages/dart_pubspec_licenses
 
 /// This package.
-const thisPackage = _anitrack;
+const Package thisPackage = _anitrack;
 
 /// All dependencies including transitive dependencies.
 const allDependencies = <Package>[
@@ -291,7 +290,8 @@ const __fe_analyzer_shared = Package(
     isSdk: false,
     dependencies: [PackageRef('meta'), PackageRef('source_span')],
     devDependencies: [PackageRef('collection'), PackageRef('test')],
-    license: '''Copyright 2019, the Dart project authors.
+    license: '''
+Copyright 2019, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -332,7 +332,8 @@ const _analyzer = Package(
     isSdk: false,
     dependencies: [PackageRef('_fe_analyzer_shared'), PackageRef('collection'), PackageRef('convert'), PackageRef('crypto'), PackageRef('glob'), PackageRef('meta'), PackageRef('package_config'), PackageRef('path'), PackageRef('pub_semver'), PackageRef('source_span'), PackageRef('watcher'), PackageRef('yaml')],
     devDependencies: [PackageRef('args'), PackageRef('async'), PackageRef('lints'), PackageRef('matcher'), PackageRef('test'), PackageRef('vm_service')],
-    license: '''Copyright 2013, the Dart project authors.
+    license: '''
+Copyright 2013, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -373,7 +374,8 @@ const _archive = Package(
     isSdk: false,
     dependencies: [PackageRef('path'), PackageRef('posix')],
     devDependencies: [PackageRef('build_runner'), PackageRef('http'), PackageRef('lints'), PackageRef('test'), PackageRef('web')],
-    license: '''The MIT License
+    license: '''
+The MIT License
 
 Copyright (c) 2013-2021 Brendan Duncan.
 All rights reserved.
@@ -409,7 +411,8 @@ const _args = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2013, the Dart project authors.
+    license: '''
+Copyright 2013, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -450,7 +453,8 @@ const _async = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('meta')],
     devDependencies: [PackageRef('fake_async'), PackageRef('stack_trace'), PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -492,7 +496,8 @@ const _bloc = Package(
     isSdk: false,
     dependencies: [PackageRef('meta')],
     devDependencies: [PackageRef('stream_transform'), PackageRef('test')],
-    license: '''The MIT License (MIT)
+    license: '''
+The MIT License (MIT)
 Copyright (c) 2026 Felix Angelov
 
 Permission is hereby granted, free of charge, to any person
@@ -527,7 +532,8 @@ const _boolean_selector = Package(
     isSdk: false,
     dependencies: [PackageRef('source_span'), PackageRef('string_scanner')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2016, the Dart project authors.
+    license: '''
+Copyright 2016, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -568,7 +574,8 @@ const _bottom_bar = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2021 CoderUni
 
@@ -603,7 +610,8 @@ const _build = Package(
     isSdk: false,
     dependencies: [PackageRef('analyzer'), PackageRef('crypto'), PackageRef('glob'), PackageRef('logging'), PackageRef('package_config'), PackageRef('path')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2016, the Dart project authors.
+    license: '''
+Copyright 2016, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -644,7 +652,8 @@ const _build_config = Package(
     isSdk: false,
     dependencies: [PackageRef('checked_yaml'), PackageRef('json_annotation'), PackageRef('path'), PackageRef('pubspec_parse')],
     devDependencies: [PackageRef('build_runner'), PackageRef('term_glyph'), PackageRef('test')],
-    license: '''Copyright 2017, the Dart project authors.
+    license: '''
+Copyright 2017, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -685,7 +694,8 @@ const _build_daemon = Package(
     isSdk: false,
     dependencies: [PackageRef('built_collection'), PackageRef('built_value'), PackageRef('crypto'), PackageRef('http_multi_server'), PackageRef('logging'), PackageRef('path'), PackageRef('pool'), PackageRef('shelf'), PackageRef('shelf_web_socket'), PackageRef('stream_transform'), PackageRef('watcher'), PackageRef('web_socket_channel')],
     devDependencies: [PackageRef('build_runner'), PackageRef('test')],
-    license: '''Copyright 2019, the Dart project authors.
+    license: '''
+Copyright 2019, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -726,7 +736,8 @@ const _build_runner = Package(
     isSdk: false,
     dependencies: [PackageRef('analyzer'), PackageRef('args'), PackageRef('async'), PackageRef('build'), PackageRef('build_config'), PackageRef('build_daemon'), PackageRef('built_collection'), PackageRef('built_value'), PackageRef('collection'), PackageRef('convert'), PackageRef('crypto'), PackageRef('dart_style'), PackageRef('glob'), PackageRef('graphs'), PackageRef('http_multi_server'), PackageRef('io'), PackageRef('json_annotation'), PackageRef('logging'), PackageRef('meta'), PackageRef('mime'), PackageRef('package_config'), PackageRef('path'), PackageRef('pool'), PackageRef('pub_semver'), PackageRef('shelf'), PackageRef('shelf_web_socket'), PackageRef('stream_transform'), PackageRef('watcher'), PackageRef('web_socket_channel'), PackageRef('yaml')],
     devDependencies: [PackageRef('stream_channel'), PackageRef('test')],
-    license: '''Copyright 2016, the Dart project authors.
+    license: '''
+Copyright 2016, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -758,7 +769,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
 /// built_collection 5.1.1
 const _built_collection = Package(
     name: 'built_collection',
-    description: '''Immutable collections based on the SDK collections. Each SDK collection class is split into a new immutable collection class and a corresponding mutable builder class.
+    description: '''
+Immutable collections based on the SDK collections. Each SDK collection class is split into a new immutable collection class and a corresponding mutable builder class.
 ''',
     homepage: 'https://github.com/google/built_collection.dart',
     authors: [],
@@ -768,7 +780,8 @@ const _built_collection = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2015, Google Inc. All rights reserved.
+    license: '''
+Copyright 2015, Google Inc. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -801,7 +814,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
 /// built_value 8.12.6
 const _built_value = Package(
     name: 'built_value',
-    description: '''Value types with builders, Dart classes as enums, and serialization. This library is the runtime dependency.
+    description: '''
+Value types with builders, Dart classes as enums, and serialization. This library is the runtime dependency.
 ''',
     repository: 'https://github.com/google/built_value.dart/tree/master/built_value',
     authors: [],
@@ -811,7 +825,8 @@ const _built_value = Package(
     isSdk: false,
     dependencies: [PackageRef('built_collection'), PackageRef('collection'), PackageRef('fixnum'), PackageRef('meta')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2015, Google Inc. All rights reserved.
+    license: '''
+Copyright 2015, Google Inc. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -853,7 +868,8 @@ const _cached_network_image = Package(
     isSdk: false,
     dependencies: [PackageRef('cached_network_image_platform_interface'), PackageRef('cached_network_image_web'), PackageRef('flutter'), PackageRef('flutter_cache_manager'), PackageRef('octo_image')],
     devDependencies: [PackageRef('file'), PackageRef('flutter_lints'), PackageRef('flutter_test')],
-    license: '''The MIT License (MIT)
+    license: '''
+The MIT License (MIT)
 
 Copyright (c) 2018 Rene Floor
 
@@ -888,7 +904,8 @@ const _cached_network_image_platform_interface = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('flutter_cache_manager')],
     devDependencies: [PackageRef('file'), PackageRef('flutter_lints'), PackageRef('flutter_test')],
-    license: '''The MIT License (MIT)
+    license: '''
+The MIT License (MIT)
 
 Copyright (c) 2018 Rene Floor
 
@@ -923,7 +940,8 @@ const _cached_network_image_web = Package(
     isSdk: false,
     dependencies: [PackageRef('cached_network_image_platform_interface'), PackageRef('flutter'), PackageRef('flutter_cache_manager'), PackageRef('web')],
     devDependencies: [PackageRef('file'), PackageRef('flutter_lints'), PackageRef('flutter_test')],
-    license: '''The MIT License (MIT)
+    license: '''
+The MIT License (MIT)
 
 Copyright (c) 2018 Rene Floor
 
@@ -958,7 +976,8 @@ const _characters = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2019, the Dart project authors.
+    license: '''
+Copyright 2019, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -999,7 +1018,8 @@ const _checked_yaml = Package(
     isSdk: false,
     dependencies: [PackageRef('json_annotation'), PackageRef('source_span'), PackageRef('yaml')],
     devDependencies: [PackageRef('build_runner'), PackageRef('json_serializable'), PackageRef('path'), PackageRef('test')],
-    license: '''Copyright 2019, the Dart project authors. All rights reserved.
+    license: '''
+Copyright 2019, the Dart project authors. All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
@@ -1039,7 +1059,8 @@ const _cli_config = Package(
     isSdk: false,
     dependencies: [PackageRef('args'), PackageRef('yaml')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2023, the Dart project authors.
+    license: '''
+Copyright 2023, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -1080,7 +1101,8 @@ const _cli_util = Package(
     isSdk: false,
     dependencies: [PackageRef('meta'), PackageRef('path')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -1121,7 +1143,8 @@ const _clock = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Apache License
+    license: '''
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -1336,7 +1359,8 @@ const _code_assets = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('hooks')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2025, the Dart project authors.
+    license: '''
+Copyright 2025, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -1377,7 +1401,8 @@ const _collection = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -1418,7 +1443,8 @@ const _convert = Package(
     isSdk: false,
     dependencies: [PackageRef('typed_data')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -1459,7 +1485,8 @@ const _coverage = Package(
     isSdk: false,
     dependencies: [PackageRef('args'), PackageRef('cli_config'), PackageRef('glob'), PackageRef('logging'), PackageRef('meta'), PackageRef('package_config'), PackageRef('path'), PackageRef('source_maps'), PackageRef('stack_trace'), PackageRef('vm_service'), PackageRef('yaml')],
     devDependencies: [PackageRef('build_runner'), PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -1500,7 +1527,8 @@ const _cross_file = Package(
     isSdk: false,
     dependencies: [PackageRef('meta'), PackageRef('web')],
     devDependencies: [PackageRef('path'), PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -1539,7 +1567,8 @@ const _crypto = Package(
     isSdk: false,
     dependencies: [PackageRef('typed_data')],
     devDependencies: [PackageRef('convert'), PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -1580,7 +1609,8 @@ const _csslib = Package(
     isSdk: false,
     dependencies: [PackageRef('source_span')],
     devDependencies: [PackageRef('path'), PackageRef('term_glyph'), PackageRef('test')],
-    license: '''Copyright 2013, the Dart project authors.
+    license: '''
+Copyright 2013, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -1621,7 +1651,8 @@ const _cupertino_icons = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('collection'), PackageRef('flutter'), PackageRef('flutter_test'), PackageRef('path')],
-    license: '''The MIT License (MIT)
+    license: '''
+The MIT License (MIT)
 
 Copyright (c) 2016 Vladimir Kharlampidi
 
@@ -1656,7 +1687,8 @@ const _dart_pubspec_licenses = Package(
     isSdk: false,
     dependencies: [PackageRef('yaml'), PackageRef('path'), PackageRef('json_annotation'), PackageRef('args'), PackageRef('pana')],
     devDependencies: [PackageRef('lints'), PackageRef('json_serializable'), PackageRef('build_runner')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2019 Takashi Kawasaki
 
@@ -1691,7 +1723,8 @@ const _dart_style = Package(
     isSdk: false,
     dependencies: [PackageRef('analyzer'), PackageRef('args'), PackageRef('collection'), PackageRef('package_config'), PackageRef('path'), PackageRef('pub_semver'), PackageRef('source_span'), PackageRef('yaml')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -1732,7 +1765,8 @@ const _dbus = Package(
     isSdk: false,
     dependencies: [PackageRef('args'), PackageRef('ffi'), PackageRef('meta'), PackageRef('xml')],
     devDependencies: [PackageRef('lints'), PackageRef('test')],
-    license: '''Mozilla Public License Version 2.0
+    license: '''
+Mozilla Public License Version 2.0
 ==================================
 
 1. Definitions
@@ -2119,7 +2153,8 @@ const _fake_async = Package(
     isSdk: false,
     dependencies: [PackageRef('clock'), PackageRef('collection')],
     devDependencies: [PackageRef('async'), PackageRef('test')],
-    license: '''Apache License
+    license: '''
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -2334,7 +2369,8 @@ const _ffi = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2019, the Dart project authors.
+    license: '''
+Copyright 2019, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -2375,7 +2411,8 @@ const _file = Package(
     isSdk: false,
     dependencies: [PackageRef('meta'), PackageRef('path')],
     devDependencies: [PackageRef('lints'), PackageRef('test')],
-    license: '''Copyright 2017, the Dart project authors. All rights reserved.
+    license: '''
+Copyright 2017, the Dart project authors. All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
@@ -2416,7 +2453,8 @@ const _file_picker = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('flutter_web_plugins'), PackageRef('flutter_plugin_android_lifecycle'), PackageRef('plugin_platform_interface'), PackageRef('ffi'), PackageRef('path'), PackageRef('win32'), PackageRef('cross_file'), PackageRef('web'), PackageRef('dbus')],
     devDependencies: [PackageRef('flutter_lints'), PackageRef('flutter_test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018 Miguel Ruivo
 
@@ -2451,7 +2489,8 @@ const _fixnum = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -2492,7 +2531,8 @@ const _flutter = Package(
     isSdk: true,
     dependencies: [PackageRef('characters'), PackageRef('collection'), PackageRef('material_color_utilities'), PackageRef('meta'), PackageRef('vector_math'), PackageRef('sky_engine')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('flutter_localizations'), PackageRef('fake_async'), PackageRef('leak_tracker_flutter_testing'), PackageRef('leak_tracker_testing'), PackageRef('leak_tracker'), PackageRef('web'), PackageRef('clock'), PackageRef('file'), PackageRef('path'), PackageRef('platform')],
-    license: '''Copyright 2014 The Flutter Authors. All rights reserved.
+    license: '''
+Copyright 2014 The Flutter Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -2532,7 +2572,8 @@ const _flutter_bloc = Package(
     isSdk: false,
     dependencies: [PackageRef('bloc'), PackageRef('flutter'), PackageRef('provider')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''The MIT License (MIT)
+    license: '''
+The MIT License (MIT)
 Copyright (c) 2025 Felix Angelov
 
 Permission is hereby granted, free of charge, to any person
@@ -2567,7 +2608,8 @@ const _flutter_cache_manager = Package(
     isSdk: false,
     dependencies: [PackageRef('clock'), PackageRef('collection'), PackageRef('file'), PackageRef('flutter'), PackageRef('http'), PackageRef('path'), PackageRef('path_provider'), PackageRef('rxdart'), PackageRef('sqflite'), PackageRef('uuid')],
     devDependencies: [PackageRef('build_runner'), PackageRef('flutter_lints'), PackageRef('flutter_test')],
-    license: '''The MIT License (MIT)
+    license: '''
+The MIT License (MIT)
 
 Copyright (c) 2017 Rene Floor
 
@@ -2603,7 +2645,8 @@ const _flutter_launcher_icons = Package(
     isSdk: false,
     dependencies: [PackageRef('args'), PackageRef('checked_yaml'), PackageRef('cli_util'), PackageRef('image'), PackageRef('json_annotation'), PackageRef('path'), PackageRef('yaml')],
     devDependencies: [PackageRef('build_runner'), PackageRef('json_serializable'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2019 Mark O'Sullivan
 
@@ -2638,7 +2681,8 @@ const _flutter_lints = Package(
     isSdk: false,
     dependencies: [PackageRef('lints')],
     devDependencies: [],
-    license: '''Copyright 2013 The Flutter Authors. All rights reserved.
+    license: '''
+Copyright 2013 The Flutter Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -2670,7 +2714,6 @@ const _flutter_localizations = Package(
     name: 'flutter_localizations',
     description: '',
     authors: [],
-    spdxIdentifiers: [],
     isMarkdown: false,
     isSdk: true,
     dependencies: [PackageRef('flutter'), PackageRef('intl'), PackageRef('path')],
@@ -2689,7 +2732,8 @@ const _flutter_plugin_android_lifecycle = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -2721,7 +2765,6 @@ const _flutter_test = Package(
     name: 'flutter_test',
     description: '',
     authors: [],
-    spdxIdentifiers: [],
     isMarkdown: false,
     isSdk: true,
     dependencies: [PackageRef('flutter'), PackageRef('test_api'), PackageRef('matcher'), PackageRef('path'), PackageRef('fake_async'), PackageRef('clock'), PackageRef('stack_trace'), PackageRef('vector_math'), PackageRef('leak_tracker_flutter_testing'), PackageRef('collection'), PackageRef('meta'), PackageRef('stream_channel')],
@@ -2734,7 +2777,6 @@ const _flutter_web_plugins = Package(
     description: 'Library to register Flutter Web plugins',
     homepage: 'https://flutter.dev',
     authors: [],
-    spdxIdentifiers: [],
     isMarkdown: false,
     isSdk: true,
     dependencies: [PackageRef('flutter')],
@@ -2753,7 +2795,8 @@ const _fluttertoast = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('flutter_web_plugins'), PackageRef('web')],
     devDependencies: [],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2020 Karthik Ponnam
 
@@ -2779,7 +2822,8 @@ SOFTWARE.''',
 /// freezed 3.2.5
 const _freezed = Package(
     name: 'freezed',
-    description: '''Code generation for immutable classes that has a simple syntax/API without compromising on the features.
+    description: '''
+Code generation for immutable classes that has a simple syntax/API without compromising on the features.
 ''',
     repository: 'https://github.com/rrousselGit/freezed',
     authors: [],
@@ -2789,7 +2833,8 @@ const _freezed = Package(
     isSdk: false,
     dependencies: [PackageRef('analyzer'), PackageRef('build'), PackageRef('build_config'), PackageRef('collection'), PackageRef('meta'), PackageRef('source_gen'), PackageRef('freezed_annotation'), PackageRef('json_annotation'), PackageRef('dart_style'), PackageRef('pub_semver')],
     devDependencies: [PackageRef('json_serializable'), PackageRef('build_runner'), PackageRef('test'), PackageRef('matcher'), PackageRef('flutter')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2020 Remi Rousselet
 
@@ -2815,7 +2860,8 @@ SOFTWARE.''',
 /// freezed_annotation 3.1.0
 const _freezed_annotation = Package(
     name: 'freezed_annotation',
-    description: '''Annotations for the freezed code-generator. This package does nothing without freezed too.
+    description: '''
+Annotations for the freezed code-generator. This package does nothing without freezed too.
 ''',
     repository: 'https://github.com/rrousselGit/freezed',
     authors: [],
@@ -2825,7 +2871,8 @@ const _freezed_annotation = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('json_annotation'), PackageRef('meta')],
     devDependencies: [PackageRef('build_runner'), PackageRef('json_serializable'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2020 Remi Rousselet
 
@@ -2860,7 +2907,8 @@ const _frontend_server_client = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('path')],
     devDependencies: [PackageRef('package_config'), PackageRef('shelf'), PackageRef('shelf_packages_handler'), PackageRef('shelf_static'), PackageRef('test'), PackageRef('vm_service')],
-    license: '''Copyright 2020, the Dart project authors.
+    license: '''
+Copyright 2020, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -2902,7 +2950,8 @@ const _get_it = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('collection'), PackageRef('meta')],
     devDependencies: [PackageRef('leak_tracker'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018 Thomas Burkhart
 
@@ -2937,7 +2986,8 @@ const _glob = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('collection'), PackageRef('file'), PackageRef('path'), PackageRef('string_scanner')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -2978,7 +3028,8 @@ const _gql = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('meta'), PackageRef('source_span'), PackageRef('yaml')],
     devDependencies: [PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018-present, GQL Dart
 
@@ -3013,7 +3064,8 @@ const _gql_dedupe_link = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('gql_exec'), PackageRef('gql_link'), PackageRef('meta')],
     devDependencies: [PackageRef('gql'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018-present, GQL Dart
 
@@ -3048,7 +3100,8 @@ const _gql_error_link = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('gql_exec'), PackageRef('gql_link'), PackageRef('meta')],
     devDependencies: [PackageRef('gql'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018-present, GQL Dart
 
@@ -3083,7 +3136,8 @@ const _gql_exec = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('gql'), PackageRef('meta')],
     devDependencies: [PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018-present, GQL Dart
 
@@ -3118,7 +3172,8 @@ const _gql_http_link = Package(
     isSdk: false,
     dependencies: [PackageRef('gql'), PackageRef('gql_exec'), PackageRef('gql_link'), PackageRef('http'), PackageRef('http_parser'), PackageRef('meta')],
     devDependencies: [PackageRef('build_runner'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018-present, GQL Dart
 
@@ -3153,7 +3208,8 @@ const _gql_link = Package(
     isSdk: false,
     dependencies: [PackageRef('gql'), PackageRef('gql_exec'), PackageRef('meta')],
     devDependencies: [PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018-present, GQL Dart
 
@@ -3188,7 +3244,8 @@ const _gql_transform_link = Package(
     isSdk: false,
     dependencies: [PackageRef('gql_exec'), PackageRef('gql_link')],
     devDependencies: [PackageRef('gql'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018-present, GQL Dart
 
@@ -3223,7 +3280,8 @@ const _graphql = Package(
     isSdk: false,
     dependencies: [PackageRef('meta'), PackageRef('path'), PackageRef('gql'), PackageRef('gql_exec'), PackageRef('gql_link'), PackageRef('gql_http_link'), PackageRef('gql_transform_link'), PackageRef('gql_error_link'), PackageRef('gql_dedupe_link'), PackageRef('hive_ce'), PackageRef('normalize'), PackageRef('http'), PackageRef('collection'), PackageRef('web_socket_channel'), PackageRef('stream_channel'), PackageRef('rxdart'), PackageRef('uuid')],
     devDependencies: [PackageRef('async'), PackageRef('test'), PackageRef('coverage'), PackageRef('http_parser'), PackageRef('lints')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018-present, Zino App B.V.
 
@@ -3258,7 +3316,8 @@ const _graphs = Package(
     isSdk: false,
     dependencies: [PackageRef('collection')],
     devDependencies: [PackageRef('test'), PackageRef('analyzer'), PackageRef('path'), PackageRef('pool')],
-    license: '''Copyright 2017, the Dart project authors.
+    license: '''
+Copyright 2017, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -3299,7 +3358,8 @@ const _hive_ce = Package(
     isSdk: false,
     dependencies: [PackageRef('meta'), PackageRef('crypto'), PackageRef('web'), PackageRef('isolate_channel'), PackageRef('json_annotation')],
     devDependencies: [PackageRef('test'), PackageRef('path'), PackageRef('build_runner'), PackageRef('json_serializable')],
-    license: '''Copyright 2025 Aaron DeLory
+    license: '''
+Copyright 2025 Aaron DeLory
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -3530,7 +3590,8 @@ const _hooks = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('crypto'), PackageRef('logging'), PackageRef('meta'), PackageRef('pub_semver'), PackageRef('record_use'), PackageRef('yaml')],
     devDependencies: [PackageRef('args'), PackageRef('code_assets'), PackageRef('glob'), PackageRef('path'), PackageRef('test')],
-    license: '''Copyright 2025, the Dart project authors.
+    license: '''
+Copyright 2025, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -3566,12 +3627,12 @@ const _html = Package(
     repository: 'https://github.com/dart-lang/tools/tree/main/pkgs/html',
     authors: [],
     version: '0.15.6',
-    spdxIdentifiers: [],
     isMarkdown: false,
     isSdk: false,
     dependencies: [PackageRef('csslib'), PackageRef('source_span')],
     devDependencies: [PackageRef('dart_style'), PackageRef('path'), PackageRef('test')],
-    license: '''Copyright (c) 2006-2012 The Authors
+    license: '''
+Copyright (c) 2006-2012 The Authors
 
 Contributors:
 James Graham - jg307@cam.ac.uk
@@ -3608,7 +3669,8 @@ const _http = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('http_parser'), PackageRef('meta'), PackageRef('web')],
     devDependencies: [PackageRef('fake_async'), PackageRef('shelf'), PackageRef('stream_channel'), PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -3649,7 +3711,8 @@ const _http_multi_server = Package(
     isSdk: false,
     dependencies: [PackageRef('async')],
     devDependencies: [PackageRef('http'), PackageRef('shelf'), PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -3690,7 +3753,8 @@ const _http_parser = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('source_span'), PackageRef('string_scanner'), PackageRef('typed_data')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -3731,7 +3795,8 @@ const _image = Package(
     isSdk: false,
     dependencies: [PackageRef('archive'), PackageRef('meta'), PackageRef('xml')],
     devDependencies: [PackageRef('build_runner'), PackageRef('http'), PackageRef('intl'), PackageRef('lints'), PackageRef('test'), PackageRef('web')],
-    license: '''The MIT License
+    license: '''
+The MIT License
 
 Copyright (c) 2013-2022 Brendan Duncan.
 All rights reserved.
@@ -3767,7 +3832,8 @@ const _intl = Package(
     isSdk: false,
     dependencies: [PackageRef('clock'), PackageRef('meta'), PackageRef('path')],
     devDependencies: [PackageRef('ffi'), PackageRef('fixnum'), PackageRef('lints'), PackageRef('test')],
-    license: '''Copyright 2013, the Dart project authors.
+    license: '''
+Copyright 2013, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -3808,7 +3874,8 @@ const _io = Package(
     isSdk: false,
     dependencies: [PackageRef('meta'), PackageRef('path'), PackageRef('string_scanner')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2017, the Dart project authors.
+    license: '''
+Copyright 2017, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -3849,7 +3916,8 @@ const _isolate_channel = Package(
     isSdk: false,
     dependencies: [PackageRef('meta')],
     devDependencies: [PackageRef('test'), PackageRef('build_runner')],
-    license: '''Copyright 2025 Aaron DeLory
+    license: '''
+Copyright 2025 Aaron DeLory
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -3874,7 +3942,8 @@ const _jikan_api = Package(
     isSdk: false,
     dependencies: [PackageRef('http'), PackageRef('built_value'), PackageRef('built_collection')],
     devDependencies: [PackageRef('build_runner'), PackageRef('lints'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2019 Javier Rosales
 
@@ -3909,7 +3978,8 @@ const _jni = Package(
     isSdk: false,
     dependencies: [PackageRef('args'), PackageRef('collection'), PackageRef('ffi'), PackageRef('meta'), PackageRef('package_config'), PackageRef('path'), PackageRef('plugin_platform_interface')],
     devDependencies: [PackageRef('dart_style'), PackageRef('logging'), PackageRef('test')],
-    license: '''Copyright 2022, the Dart project authors.
+    license: '''
+Copyright 2022, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -3950,7 +4020,8 @@ const _jni_flutter = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('jni')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''Copyright 2026, the Dart project authors.
+    license: '''
+Copyright 2026, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -3991,7 +4062,8 @@ const _json_annotation = Package(
     isSdk: false,
     dependencies: [PackageRef('meta')],
     devDependencies: [],
-    license: '''Copyright 2017, the Dart project authors. All rights reserved.
+    license: '''
+Copyright 2017, the Dart project authors. All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
@@ -4031,7 +4103,8 @@ const _json_serializable = Package(
     isSdk: false,
     dependencies: [PackageRef('analyzer'), PackageRef('async'), PackageRef('build'), PackageRef('build_config'), PackageRef('dart_style'), PackageRef('json_annotation'), PackageRef('meta'), PackageRef('path'), PackageRef('pub_semver'), PackageRef('pubspec_parse'), PackageRef('source_gen'), PackageRef('source_helper')],
     devDependencies: [PackageRef('build_runner'), PackageRef('collection'), PackageRef('logging'), PackageRef('test'), PackageRef('yaml')],
-    license: '''Copyright 2017, the Dart project authors. All rights reserved.
+    license: '''
+Copyright 2017, the Dart project authors. All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
@@ -4071,7 +4144,8 @@ const _leak_tracker = Package(
     isSdk: false,
     dependencies: [PackageRef('clock'), PackageRef('collection'), PackageRef('meta'), PackageRef('path'), PackageRef('vm_service')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2022, the Dart project authors.
+    license: '''
+Copyright 2022, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4112,7 +4186,8 @@ const _leak_tracker_flutter_testing = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('leak_tracker'), PackageRef('leak_tracker_testing'), PackageRef('matcher'), PackageRef('meta')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2022, the Dart project authors.
+    license: '''
+Copyright 2022, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4153,7 +4228,8 @@ const _leak_tracker_testing = Package(
     isSdk: false,
     dependencies: [PackageRef('leak_tracker'), PackageRef('matcher'), PackageRef('meta')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2022, the Dart project authors.
+    license: '''
+Copyright 2022, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4185,7 +4261,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
 /// lints 6.1.0
 const _lints = Package(
     name: 'lints',
-    description: """Official Dart lint rules. Defines the 'core' and 'recommended' set of lints suggested by the Dart team.
+    description: """
+Official Dart lint rules. Defines the 'core' and 'recommended' set of lints suggested by the Dart team.
 """,
     repository: 'https://github.com/dart-lang/core/tree/main/pkgs/lints',
     authors: [],
@@ -4195,7 +4272,8 @@ const _lints = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('http'), PackageRef('path'), PackageRef('yaml')],
-    license: '''Copyright 2021, the Dart project authors.
+    license: '''
+Copyright 2021, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4236,7 +4314,8 @@ const _logging = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2013, the Dart project authors.
+    license: '''
+Copyright 2013, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4277,7 +4356,8 @@ const _markdown = Package(
     isSdk: false,
     dependencies: [PackageRef('args'), PackageRef('meta')],
     devDependencies: [PackageRef('build_runner'), PackageRef('collection'), PackageRef('html'), PackageRef('http'), PackageRef('io'), PackageRef('path'), PackageRef('pool'), PackageRef('test'), PackageRef('web'), PackageRef('yaml')],
-    license: '''Copyright 2012, the Dart project authors.
+    license: '''
+Copyright 2012, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4318,7 +4398,8 @@ const _matcher = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('meta'), PackageRef('stack_trace'), PackageRef('term_glyph'), PackageRef('test_api')],
     devDependencies: [PackageRef('fake_async'), PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4359,7 +4440,8 @@ const _material_color_utilities = Package(
     isSdk: false,
     dependencies: [PackageRef('collection')],
     devDependencies: [PackageRef('matcher'), PackageRef('test')],
-    license: '''Apache License
+    license: '''
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -4574,7 +4656,8 @@ const _meta = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('lints')],
-    license: '''Copyright 2016, the Dart project authors.
+    license: '''
+Copyright 2016, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4615,7 +4698,8 @@ const _mime = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4656,7 +4740,8 @@ const _native_toolchain_c = Package(
     isSdk: false,
     dependencies: [PackageRef('code_assets'), PackageRef('glob'), PackageRef('hooks'), PackageRef('logging'), PackageRef('meta'), PackageRef('pub_semver')],
     devDependencies: [PackageRef('collection'), PackageRef('test')],
-    license: '''Copyright 2023, the Dart project authors.
+    license: '''
+Copyright 2023, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4697,7 +4782,8 @@ const _nested = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2019 Remi Rousselet
 
@@ -4732,7 +4818,8 @@ const _node_preamble = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [],
-    license: '''The MIT License (MIT)
+    license: '''
+The MIT License (MIT)
 
 Copyright (c) 2015 Michael Bullington
 
@@ -4795,7 +4882,8 @@ const _normalize = Package(
     isSdk: false,
     dependencies: [PackageRef('gql'), PackageRef('collection')],
     devDependencies: [PackageRef('test'), PackageRef('lints')],
-    license: '''The MIT License (MIT)
+    license: '''
+The MIT License (MIT)
 
 Copyright (c) 2020 Sat Mandir Khalsa
 
@@ -4830,7 +4918,8 @@ const _objective_c = Package(
     isSdk: false,
     dependencies: [PackageRef('code_assets'), PackageRef('collection'), PackageRef('ffi'), PackageRef('hooks'), PackageRef('logging'), PackageRef('meta'), PackageRef('pub_semver')],
     devDependencies: [PackageRef('args'), PackageRef('path'), PackageRef('test'), PackageRef('yaml')],
-    license: '''Copyright 2024, the Dart project authors.
+    license: '''
+Copyright 2024, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4871,7 +4960,8 @@ const _octo_image = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('flutter_lints')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2020 Baseflow
 
@@ -4906,7 +4996,8 @@ const _package_config = Package(
     isSdk: false,
     dependencies: [PackageRef('path')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2019, the Dart project authors.
+    license: '''
+Copyright 2019, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4947,7 +5038,8 @@ const _pana = Package(
     isSdk: false,
     dependencies: [PackageRef('analyzer'), PackageRef('args'), PackageRef('async'), PackageRef('cli_util'), PackageRef('collection'), PackageRef('crypto'), PackageRef('html'), PackageRef('http'), PackageRef('io'), PackageRef('json_annotation'), PackageRef('lints'), PackageRef('logging'), PackageRef('markdown'), PackageRef('meta'), PackageRef('path'), PackageRef('pub_semver'), PackageRef('pubspec_parse'), PackageRef('retry'), PackageRef('safe_url_check'), PackageRef('source_span'), PackageRef('string_scanner'), PackageRef('test'), PackageRef('yaml')],
     devDependencies: [PackageRef('build'), PackageRef('build_config'), PackageRef('build_runner'), PackageRef('json_serializable'), PackageRef('shelf'), PackageRef('source_gen')],
-    license: '''Copyright 2017, the Dart project authors.
+    license: '''
+Copyright 2017, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4988,7 +5080,8 @@ const _path = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -5029,7 +5122,8 @@ const _path_provider = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('path_provider_android'), PackageRef('path_provider_foundation'), PackageRef('path_provider_linux'), PackageRef('path_provider_platform_interface'), PackageRef('path_provider_windows')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('plugin_platform_interface'), PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -5068,7 +5162,8 @@ const _path_provider_android = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('jni'), PackageRef('jni_flutter'), PackageRef('path_provider_platform_interface')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -5107,7 +5202,8 @@ const _path_provider_foundation = Package(
     isSdk: false,
     dependencies: [PackageRef('ffi'), PackageRef('flutter'), PackageRef('objective_c'), PackageRef('path_provider_platform_interface')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -5146,7 +5242,8 @@ const _path_provider_linux = Package(
     isSdk: false,
     dependencies: [PackageRef('ffi'), PackageRef('flutter'), PackageRef('path'), PackageRef('path_provider_platform_interface'), PackageRef('xdg_directories')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -5185,7 +5282,8 @@ const _path_provider_platform_interface = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('platform'), PackageRef('plugin_platform_interface')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -5224,7 +5322,8 @@ const _path_provider_windows = Package(
     isSdk: false,
     dependencies: [PackageRef('ffi'), PackageRef('flutter'), PackageRef('path'), PackageRef('path_provider_platform_interface')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''Copyright 2013 The Flutter Authors. All rights reserved.
+    license: '''
+Copyright 2013 The Flutter Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -5263,7 +5362,8 @@ const _permission_handler = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('meta'), PackageRef('permission_handler_android'), PackageRef('permission_handler_apple'), PackageRef('permission_handler_html'), PackageRef('permission_handler_windows'), PackageRef('permission_handler_platform_interface')],
     devDependencies: [PackageRef('flutter_lints'), PackageRef('flutter_test'), PackageRef('plugin_platform_interface')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018 Baseflow
 
@@ -5298,7 +5398,8 @@ const _permission_handler_android = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('permission_handler_platform_interface')],
     devDependencies: [PackageRef('flutter_lints'), PackageRef('plugin_platform_interface')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018 Baseflow
 
@@ -5333,7 +5434,8 @@ const _permission_handler_apple = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('permission_handler_platform_interface')],
     devDependencies: [PackageRef('flutter_lints'), PackageRef('plugin_platform_interface')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018 Baseflow
 
@@ -5368,7 +5470,8 @@ const _permission_handler_html = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('flutter_web_plugins'), PackageRef('permission_handler_platform_interface'), PackageRef('web')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('flutter_lints'), PackageRef('build_runner'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018 Baseflow
 
@@ -5403,7 +5506,8 @@ const _permission_handler_platform_interface = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('meta'), PackageRef('plugin_platform_interface')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('flutter_lints')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018 Baseflow
 
@@ -5438,7 +5542,8 @@ const _permission_handler_windows = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('permission_handler_platform_interface')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('plugin_platform_interface')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2018 Baseflow
 
@@ -5474,7 +5579,8 @@ const _petitparser = Package(
     isSdk: false,
     dependencies: [PackageRef('meta'), PackageRef('collection')],
     devDependencies: [PackageRef('lints'), PackageRef('test')],
-    license: '''The MIT License
+    license: '''
+The MIT License
 
 Copyright (c) 2006-2024 Lukas Renggli.
 All rights reserved.
@@ -5510,7 +5616,8 @@ const _platform = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2017, the Dart project authors. All rights reserved.
+    license: '''
+Copyright 2017, the Dart project authors. All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
@@ -5550,7 +5657,8 @@ const _plugin_platform_interface = Package(
     isSdk: false,
     dependencies: [PackageRef('meta')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors. All rights reserved.
+    license: '''
+Copyright 2013 The Flutter Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -5589,7 +5697,8 @@ const _pool = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('stack_trace')],
     devDependencies: [PackageRef('fake_async'), PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -5630,7 +5739,8 @@ const _posix = Package(
     isSdk: false,
     dependencies: [PackageRef('ffi'), PackageRef('meta'), PackageRef('path')],
     devDependencies: [PackageRef('logging'), PackageRef('stack_trace'), PackageRef('test'), PackageRef('uuid')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2020 Brett Sutton
 
@@ -5665,7 +5775,8 @@ const _provider = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('flutter'), PackageRef('nested')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('leak_tracker'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2019 Remi Rousselet
 
@@ -5700,7 +5811,8 @@ const _pub_semver = Package(
     isSdk: false,
     dependencies: [PackageRef('collection')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -5741,7 +5853,8 @@ const _pubspec_parse = Package(
     isSdk: false,
     dependencies: [PackageRef('checked_yaml'), PackageRef('collection'), PackageRef('json_annotation'), PackageRef('pub_semver'), PackageRef('yaml')],
     devDependencies: [PackageRef('build_runner'), PackageRef('json_serializable'), PackageRef('path'), PackageRef('source_gen'), PackageRef('stack_trace'), PackageRef('test')],
-    license: '''Copyright 2018, the Dart project authors.
+    license: '''
+Copyright 2018, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -5773,7 +5886,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
 /// record_use 0.6.0
 const _record_use = Package(
     name: 'record_use',
-    description: '''The serialization logic and API for the usage recording SDK feature.
+    description: '''
+The serialization logic and API for the usage recording SDK feature.
 ''',
     repository: 'https://github.com/dart-lang/native/tree/main/pkgs/record_use',
     authors: [],
@@ -5783,7 +5897,8 @@ const _record_use = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('meta'), PackageRef('pub_semver')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2024, the Dart project authors.
+    license: '''
+Copyright 2024, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -5825,7 +5940,8 @@ const _retry = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('test'), PackageRef('lints')],
-    license: '''Apache License
+    license: '''
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -6031,7 +6147,8 @@ const _retry = Package(
 /// rxdart 0.28.0
 const _rxdart = Package(
     name: 'rxdart',
-    description: '''RxDart is an implementation of the popular ReactiveX api for asynchronous programming, leveraging the native Dart Streams api.
+    description: '''
+RxDart is an implementation of the popular ReactiveX api for asynchronous programming, leveraging the native Dart Streams api.
 ''',
     repository: 'https://github.com/ReactiveX/rxdart',
     authors: [],
@@ -6041,7 +6158,8 @@ const _rxdart = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('lints'), PackageRef('stack_trace'), PackageRef('test')],
-    license: '''Apache License
+    license: '''
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -6257,7 +6375,8 @@ const _safe_url_check = Package(
     isSdk: false,
     dependencies: [PackageRef('meta'), PackageRef('retry')],
     devDependencies: [PackageRef('test'), PackageRef('lints'), PackageRef('build_runner')],
-    license: '''Apache License
+    license: '''
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -6472,7 +6591,8 @@ const _serial_csv = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('lints'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2023-2026 Tien Do Nam
 
@@ -6498,7 +6618,8 @@ SOFTWARE.''',
 /// shelf 1.4.2
 const _shelf = Package(
     name: 'shelf',
-    description: '''A model for web server middleware that encourages composition and easy reuse.
+    description: '''
+A model for web server middleware that encourages composition and easy reuse.
 ''',
     repository: 'https://github.com/dart-lang/shelf/tree/master/pkgs/shelf',
     authors: [],
@@ -6508,7 +6629,8 @@ const _shelf = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('collection'), PackageRef('http_parser'), PackageRef('path'), PackageRef('stack_trace'), PackageRef('stream_channel')],
     devDependencies: [PackageRef('http'), PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -6549,7 +6671,8 @@ const _shelf_packages_handler = Package(
     isSdk: false,
     dependencies: [PackageRef('path'), PackageRef('shelf'), PackageRef('shelf_static')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2016, the Dart project authors.
+    license: '''
+Copyright 2016, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -6590,7 +6713,8 @@ const _shelf_static = Package(
     isSdk: false,
     dependencies: [PackageRef('convert'), PackageRef('http_parser'), PackageRef('mime'), PackageRef('path'), PackageRef('shelf')],
     devDependencies: [PackageRef('args'), PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -6631,7 +6755,8 @@ const _shelf_web_socket = Package(
     isSdk: false,
     dependencies: [PackageRef('shelf'), PackageRef('stream_channel'), PackageRef('web_socket_channel')],
     devDependencies: [PackageRef('http'), PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -6665,12 +6790,12 @@ const _sky_engine = Package(
     name: 'sky_engine',
     description: '',
     authors: [],
-    spdxIdentifiers: [],
     isMarkdown: false,
     isSdk: true,
     dependencies: [],
     devDependencies: [],
-    license: '''vulkan-validation-layers
+    license: r'''
+vulkan-validation-layers
 
 
 
@@ -9684,10 +9809,10 @@ expat
 
 ! /bin/bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2017-2024 Sebastian Pipping <sebastian@pipping.org>
@@ -9721,10 +9846,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2016-2023 Sebastian Pipping <sebastian@pipping.org>
@@ -9756,10 +9881,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2017 Sebastian Pipping <sebastian@pipping.org>
@@ -9789,10 +9914,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2017-2022 Sebastian Pipping <sebastian@pipping.org>
@@ -9823,10 +9948,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2017-2024 Sebastian Pipping <sebastian@pipping.org>
@@ -9857,10 +9982,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2019-2021 Sebastian Pipping <sebastian@pipping.org>
@@ -9889,10 +10014,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2019-2022 Sebastian Pipping <sebastian@pipping.org>
@@ -9922,10 +10047,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2019-2024 Sebastian Pipping <sebastian@pipping.org>
@@ -9956,10 +10081,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2020-2023 Sebastian Pipping <sebastian@pipping.org>
@@ -9988,10 +10113,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2021-2022 Sebastian Pipping <sebastian@pipping.org>
@@ -10020,10 +10145,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2021-2025 Sebastian Pipping <sebastian@pipping.org>
@@ -10053,10 +10178,10 @@ expat
 
 ! /usr/bin/env bash
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2024-2025 Sebastian Pipping <sebastian@pipping.org>
@@ -10086,10 +10211,10 @@ expat
 ! /usr/bin/env bash
 Creates release tarball and detached GPG signature file for upload
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2018-2019 Sebastian Pipping <sebastian@pipping.org>
@@ -10118,10 +10243,10 @@ expat
 
 ! /usr/bin/env python3
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2019-2023 Sebastian Pipping <sebastian@pipping.org>
@@ -10154,13 +10279,13 @@ USAGE: get-version.sh path/to/expat.h
 
 This script will print Expat's version number on stdout. For example:
 
-  \$ ./conftools/get-version.sh ./lib/expat.h
+  $ ./conftools/get-version.sh ./lib/expat.h
   1.95.3
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2002 Greg Stein <gstein@users.sourceforge.net>
@@ -10191,10 +10316,10 @@ expat
 !/usr/bin/env bash
 Clean source directory after running the coverage script.
                          __  __            _
-                      ___\ \/ /_ __   __ _| |_
-                     / _ \\  /| '_ \ / _` | __|
-                    |  __//  \| |_) | (_| | |_
-                     \___/_/\_\ .__/ \__,_|\__|
+                      ___ / /_ __   __ _| |_
+                     / _ \  /| '_  / _` | __|
+                    |  __//  | |_) | (_| | |_
+                     ___/_/_ .__/ __,_|__|
                               |_| XML parser
 
 Copyright (c) 2017 Rhodri James <rhodri@wildebeest.org.uk>
@@ -28051,10 +28176,10 @@ Read an XML document from standard input and print
 element declarations (if any) to standard output.
 It must be used with Expat compiled for UTF-8 output.
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -28092,10 +28217,10 @@ Read an XML document from standard input and print an element
 outline on standard output.
 Must be used with Expat compiled for UTF-8 output.
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 2000      Clark Cooper <coopercc@users.sourceforge.net>
@@ -28477,10 +28602,10 @@ expat
 
 This file is included (from xmltok.c, 1-3 times depending on XML_MIN_SIZE)!
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -28519,10 +28644,10 @@ expat
 
 This file is included!
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -29273,10 +29398,10 @@ the name of each element to standard output indenting child
 elements by one tab stop more than their parent element.
 It must be used with Expat compiled for UTF-8 output.
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -29943,10 +30068,10 @@ SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -29982,10 +30107,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30025,10 +30150,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30061,10 +30186,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30109,10 +30234,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30152,10 +30277,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30191,10 +30316,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30227,10 +30352,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30262,10 +30387,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30298,10 +30423,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30332,10 +30457,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30367,10 +30492,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30401,10 +30526,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30435,10 +30560,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30475,10 +30600,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30510,10 +30635,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30550,10 +30675,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30583,10 +30708,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30616,10 +30741,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30650,10 +30775,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -30683,10 +30808,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1999-2000 Thai Open Source Software Center Ltd
@@ -30718,10 +30843,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 2000      Clark Cooper <coopercc@users.sourceforge.net>
@@ -30753,10 +30878,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 2000 Clark Cooper <coopercc@users.sourceforge.net>
@@ -30785,10 +30910,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 expat
 
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 2022 Mark Brand <markbrand@google.com>
@@ -30818,9 +30943,9 @@ inja
 
 ___        _          Version 3.3
 |_ _|_ __  (_) __ _    https://github.com/pantor/inja
-| || '_ \ | |/ _` |   Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+| || '_  | |/ _` |   Licensed under the MIT License <http://opensource.org/licenses/MIT>.
 | || | | || | (_| |
-|___|_| |_|/ |\__,_|   Copyright (c) 2018-2021 Lars Berscheid
+|___|_| |_|/ |__,_|   Copyright (c) 2018-2021 Lars Berscheid
 |__/
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30842,10 +30967,10 @@ expat
 
 d19ae032c224863c1527ba44d228cc34b99192c3a4c5a27af1f4e054d45ee031 (2.7.1+)
 __  __            _
-___\ \/ /_ __   __ _| |_
-/ _ \\  /| '_ \ / _` | __|
-|  __//  \| |_) | (_| | |_
-\___/_/\_\ .__/ \__,_|\__|
+___ / /_ __   __ _| |_
+/ _ \  /| '_  / _` | __|
+|  __//  | |_) | (_| | |_
+___/_/_ .__/ __,_|__|
 |_| XML parser
 
 Copyright (c) 1997-2000 Thai Open Source Software Center Ltd
@@ -31208,7 +31333,7 @@ at a full implementation, you've got one here...
 The best currently available description of JPEG is the textbook "JPEG Still
 Image Data Compression Standard" by William B. Pennebaker and Joan L.
 Mitchell, published by Van Nostrand Reinhold, 1993, ISBN 0-442-01272-1.
-Price US\$59.95, 638 pp.  The book includes the complete text of the ISO JPEG
+Price US$59.95, 638 pp.  The book includes the complete text of the ISO JPEG
 standards (DIS 10918-1 and draft DIS 10918-2).
 
 The original JPEG standard is divided into two parts, Part 1 being the actual
@@ -36882,7 +37007,8 @@ const _slang = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('intl'), PackageRef('serial_csv'), PackageRef('watcher'), PackageRef('yaml')],
     devDependencies: [PackageRef('analyzer'), PackageRef('lints'), PackageRef('test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2020-2026 Tien Do Nam
 
@@ -36917,7 +37043,8 @@ const _slang_build_runner = Package(
     isSdk: false,
     dependencies: [PackageRef('build'), PackageRef('dart_style'), PackageRef('glob'), PackageRef('slang')],
     devDependencies: [PackageRef('lints')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2020-2026 Tien Do Nam
 
@@ -36952,7 +37079,8 @@ const _slang_flutter = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('flutter_localizations'), PackageRef('slang')],
     devDependencies: [PackageRef('intl'), PackageRef('flutter_test')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2020-2026 Tien Do Nam
 
@@ -36987,7 +37115,8 @@ const _source_gen = Package(
     isSdk: false,
     dependencies: [PackageRef('analyzer'), PackageRef('async'), PackageRef('build'), PackageRef('dart_style'), PackageRef('glob'), PackageRef('path'), PackageRef('pub_semver'), PackageRef('source_span'), PackageRef('yaml')],
     devDependencies: [PackageRef('logging'), PackageRef('term_glyph'), PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -37028,7 +37157,8 @@ const _source_helper = Package(
     isSdk: false,
     dependencies: [PackageRef('analyzer'), PackageRef('source_gen')],
     devDependencies: [PackageRef('test')],
-    license: '''Apache License
+    license: '''
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -37243,7 +37373,8 @@ const _source_map_stack_trace = Package(
     isSdk: false,
     dependencies: [PackageRef('path'), PackageRef('source_maps'), PackageRef('stack_trace')],
     devDependencies: [PackageRef('source_span'), PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -37284,7 +37415,8 @@ const _source_maps = Package(
     isSdk: false,
     dependencies: [PackageRef('source_span')],
     devDependencies: [PackageRef('term_glyph'), PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -37325,7 +37457,8 @@ const _source_span = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('path'), PackageRef('term_glyph')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -37366,7 +37499,8 @@ const _sqflite = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('sqflite_android'), PackageRef('sqflite_darwin'), PackageRef('sqflite_platform_interface'), PackageRef('sqflite_common'), PackageRef('path')],
     devDependencies: [PackageRef('flutter_lints'), PackageRef('http'), PackageRef('flutter_test'), PackageRef('test_api'), PackageRef('pub_semver')],
-    license: '''BSD 2-Clause License
+    license: '''
+BSD 2-Clause License
 
 Copyright (c) 2019, Alexandre Roux Tekartik
 All rights reserved.
@@ -37405,7 +37539,8 @@ const _sqflite_android = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('sqflite_common'), PackageRef('path'), PackageRef('sqflite_platform_interface')],
     devDependencies: [PackageRef('flutter_lints'), PackageRef('http'), PackageRef('flutter_test'), PackageRef('test_api'), PackageRef('pub_semver')],
-    license: '''BSD 2-Clause License
+    license: '''
+BSD 2-Clause License
 
 Copyright (c) 2019, Alexandre Roux Tekartik
 All rights reserved.
@@ -37444,7 +37579,8 @@ const _sqflite_common = Package(
     isSdk: false,
     dependencies: [PackageRef('synchronized'), PackageRef('path'), PackageRef('meta')],
     devDependencies: [PackageRef('lints'), PackageRef('http'), PackageRef('test'), PackageRef('test_api'), PackageRef('pub_semver')],
-    license: '''BSD 2-Clause License
+    license: '''
+BSD 2-Clause License
 
 Copyright (c) 2019, Alexandre Roux Tekartik
 All rights reserved.
@@ -37483,7 +37619,8 @@ const _sqflite_common_ffi = Package(
     isSdk: false,
     dependencies: [PackageRef('sqlite3'), PackageRef('sqflite_common'), PackageRef('synchronized'), PackageRef('path'), PackageRef('meta')],
     devDependencies: [PackageRef('lints'), PackageRef('test'), PackageRef('pub_semver'), PackageRef('archive'), PackageRef('http')],
-    license: '''BSD 2-Clause License
+    license: '''
+BSD 2-Clause License
 
 Copyright (c) 2019, Alexandre Roux Tekartik
 All rights reserved.
@@ -37522,7 +37659,8 @@ const _sqflite_darwin = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('sqflite_platform_interface'), PackageRef('meta'), PackageRef('sqflite_common'), PackageRef('path')],
     devDependencies: [PackageRef('flutter_lints'), PackageRef('http'), PackageRef('flutter_test'), PackageRef('test_api'), PackageRef('pub_semver')],
-    license: '''BSD 2-Clause License
+    license: '''
+BSD 2-Clause License
 
 Copyright (c) 2019, Alexandre Roux Tekartik
 All rights reserved.
@@ -37561,7 +37699,8 @@ const _sqflite_platform_interface = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('platform'), PackageRef('sqflite_common'), PackageRef('plugin_platform_interface'), PackageRef('meta')],
     devDependencies: [PackageRef('flutter_lints'), PackageRef('flutter_test'), PackageRef('test_api'), PackageRef('pub_semver')],
-    license: '''BSD 2-Clause License
+    license: '''
+BSD 2-Clause License
 
 Copyright (c) 2019, Alexandre Roux Tekartik
 All rights reserved.
@@ -37600,7 +37739,8 @@ const _sqlite3 = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('ffi'), PackageRef('meta'), PackageRef('path'), PackageRef('web'), PackageRef('typed_data'), PackageRef('hooks'), PackageRef('code_assets'), PackageRef('native_toolchain_c'), PackageRef('crypto')],
     devDependencies: [PackageRef('analyzer'), PackageRef('build_daemon'), PackageRef('build_runner'), PackageRef('dart_style'), PackageRef('http'), PackageRef('lints'), PackageRef('shelf'), PackageRef('shelf_static'), PackageRef('stream_channel'), PackageRef('test'), PackageRef('pub_semver'), PackageRef('convert'), PackageRef('package_config'), PackageRef('logging')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2020 Simon Binder
 
@@ -37635,7 +37775,8 @@ const _stack_trace = Package(
     isSdk: false,
     dependencies: [PackageRef('path')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -37676,7 +37817,8 @@ const _stream_channel = Package(
     isSdk: false,
     dependencies: [PackageRef('async')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -37717,7 +37859,8 @@ const _stream_transform = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('async'), PackageRef('fake_async'), PackageRef('test')],
-    license: '''Copyright 2017, the Dart project authors.
+    license: '''
+Copyright 2017, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -37758,7 +37901,8 @@ const _string_scanner = Package(
     isSdk: false,
     dependencies: [PackageRef('source_span')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -37799,7 +37943,8 @@ const _swipeable_tile = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('flutter_lints')],
-    license: '''BSD 3-Clause License
+    license: '''
+BSD 3-Clause License
 
 Copyright (c) 2021, Watery Desert
 All rights reserved.
@@ -37842,7 +37987,8 @@ const _synchronized = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('web'), PackageRef('lints'), PackageRef('pub_semver'), PackageRef('test'), PackageRef('build_runner'), PackageRef('yaml')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2016, Alexandre Roux Tekartik.
 
@@ -37877,7 +38023,8 @@ const _term_glyph = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('dart_style'), PackageRef('test')],
-    license: '''Copyright 2017, the Dart project authors.
+    license: '''
+Copyright 2017, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -37918,7 +38065,8 @@ const _test = Package(
     isSdk: false,
     dependencies: [PackageRef('analyzer'), PackageRef('async'), PackageRef('boolean_selector'), PackageRef('collection'), PackageRef('coverage'), PackageRef('http_multi_server'), PackageRef('io'), PackageRef('matcher'), PackageRef('node_preamble'), PackageRef('package_config'), PackageRef('path'), PackageRef('pool'), PackageRef('shelf'), PackageRef('shelf_packages_handler'), PackageRef('shelf_static'), PackageRef('shelf_web_socket'), PackageRef('source_span'), PackageRef('stack_trace'), PackageRef('stream_channel'), PackageRef('test_api'), PackageRef('test_core'), PackageRef('typed_data'), PackageRef('web_socket_channel'), PackageRef('webkit_inspection_protocol'), PackageRef('yaml')],
     devDependencies: [PackageRef('fake_async'), PackageRef('glob')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -37959,7 +38107,8 @@ const _test_api = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('boolean_selector'), PackageRef('collection'), PackageRef('meta'), PackageRef('source_span'), PackageRef('stack_trace'), PackageRef('stream_channel'), PackageRef('string_scanner'), PackageRef('term_glyph')],
     devDependencies: [PackageRef('analyzer'), PackageRef('fake_async'), PackageRef('glob'), PackageRef('graphs'), PackageRef('path'), PackageRef('test'), PackageRef('test_core')],
-    license: '''Copyright 2018, the Dart project authors.
+    license: '''
+Copyright 2018, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -38000,7 +38149,8 @@ const _test_core = Package(
     isSdk: false,
     dependencies: [PackageRef('analyzer'), PackageRef('args'), PackageRef('async'), PackageRef('boolean_selector'), PackageRef('collection'), PackageRef('coverage'), PackageRef('frontend_server_client'), PackageRef('glob'), PackageRef('io'), PackageRef('meta'), PackageRef('package_config'), PackageRef('path'), PackageRef('pool'), PackageRef('source_map_stack_trace'), PackageRef('source_maps'), PackageRef('source_span'), PackageRef('stack_trace'), PackageRef('stream_channel'), PackageRef('test_api'), PackageRef('vm_service'), PackageRef('yaml')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2018, the Dart project authors.
+    license: '''
+Copyright 2018, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -38041,7 +38191,8 @@ const _typed_data = Package(
     isSdk: false,
     dependencies: [PackageRef('collection')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -38082,7 +38233,8 @@ const _url_launcher = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('url_launcher_android'), PackageRef('url_launcher_ios'), PackageRef('url_launcher_linux'), PackageRef('url_launcher_macos'), PackageRef('url_launcher_platform_interface'), PackageRef('url_launcher_web'), PackageRef('url_launcher_windows')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('plugin_platform_interface'), PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors. All rights reserved.
+    license: '''
+Copyright 2013 The Flutter Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -38121,7 +38273,8 @@ const _url_launcher_android = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('meta'), PackageRef('url_launcher_platform_interface')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('plugin_platform_interface'), PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -38160,7 +38313,8 @@ const _url_launcher_ios = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('url_launcher_platform_interface')],
     devDependencies: [PackageRef('build_runner'), PackageRef('flutter_test'), PackageRef('plugin_platform_interface'), PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -38199,7 +38353,8 @@ const _url_launcher_linux = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('url_launcher_platform_interface')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -38238,7 +38393,8 @@ const _url_launcher_macos = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('url_launcher_platform_interface')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -38277,7 +38433,8 @@ const _url_launcher_platform_interface = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('plugin_platform_interface')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''Copyright 2013 The Flutter Authors. All rights reserved.
+    license: '''
+Copyright 2013 The Flutter Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -38316,7 +38473,8 @@ const _url_launcher_web = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('flutter_web_plugins'), PackageRef('url_launcher_platform_interface'), PackageRef('web')],
     devDependencies: [PackageRef('flutter_test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -38355,7 +38513,8 @@ const _url_launcher_windows = Package(
     isSdk: false,
     dependencies: [PackageRef('flutter'), PackageRef('url_launcher_platform_interface')],
     devDependencies: [PackageRef('flutter_test'), PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors
+    license: '''
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -38385,7 +38544,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
 /// uuid 4.6.0
 const _uuid = Package(
     name: 'uuid',
-    description: '''RFC4122 (v1, v4, v5, v6, v7, v8) UUID Generator and Parser for Dart
+    description: '''
+RFC4122 (v1, v4, v5, v6, v7, v8) UUID Generator and Parser for Dart
 ''',
     repository: 'https://github.com/Daegalus/dart-uuid',
     authors: [],
@@ -38395,7 +38555,8 @@ const _uuid = Package(
     isSdk: false,
     dependencies: [PackageRef('crypto'), PackageRef('fixnum')],
     devDependencies: [PackageRef('lints'), PackageRef('test')],
-    license: '''Copyright (c) 2021 Yulian Kuncheff
+    license: '''
+Copyright (c) 2021 Yulian Kuncheff
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -38416,7 +38577,8 @@ const _vector_math = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('build_runner'), PackageRef('path'), PackageRef('test')],
-    license: '''Copyright 2015, Google Inc. All rights reserved.
+    license: '''
+Copyright 2015, Google Inc. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -38477,7 +38639,8 @@ const _very_good_analysis = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2020 Very Good Ventures
 
@@ -38512,7 +38675,8 @@ const _vm_service = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('async'), PackageRef('collection'), PackageRef('lints'), PackageRef('logging'), PackageRef('markdown'), PackageRef('path'), PackageRef('pub_semver'), PackageRef('stack_trace'), PackageRef('test')],
-    license: '''Copyright 2015, the Dart project authors.
+    license: '''
+Copyright 2015, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -38553,7 +38717,8 @@ const _watcher = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('path')],
     devDependencies: [PackageRef('clock'), PackageRef('fake_async'), PackageRef('test')],
-    license: '''Copyright 2014, the Dart project authors.
+    license: '''
+Copyright 2014, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -38594,7 +38759,8 @@ const _web = Package(
     isSdk: false,
     dependencies: [],
     devDependencies: [PackageRef('path'), PackageRef('test')],
-    license: '''Copyright 2023, the Dart project authors.
+    license: '''
+Copyright 2023, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -38634,7 +38800,8 @@ const _web_socket = Package(
     isSdk: false,
     dependencies: [PackageRef('web')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2024, the Dart project authors.
+    license: '''
+Copyright 2024, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -38675,7 +38842,8 @@ const _web_socket_channel = Package(
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('crypto'), PackageRef('stream_channel'), PackageRef('web'), PackageRef('web_socket')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2016, the Dart project authors.
+    license: '''
+Copyright 2016, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -38707,7 +38875,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
 /// webkit_inspection_protocol 1.2.1
 const _webkit_inspection_protocol = Package(
     name: 'webkit_inspection_protocol',
-    description: '''A client for the Chrome DevTools Protocol (previously called the Webkit Inspection Protocol).
+    description: '''
+A client for the Chrome DevTools Protocol (previously called the Webkit Inspection Protocol).
 ''',
     repository: 'https://github.com/google/webkit_inspection_protocol.dart',
     authors: [],
@@ -38717,7 +38886,8 @@ const _webkit_inspection_protocol = Package(
     isSdk: false,
     dependencies: [PackageRef('logging')],
     devDependencies: [PackageRef('args'), PackageRef('lints'), PackageRef('shelf_static'), PackageRef('shelf_web_socket'), PackageRef('shelf'), PackageRef('test'), PackageRef('web_socket_channel')],
-    license: '''Copyright 2013, Google Inc.
+    license: '''
+Copyright 2013, Google Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -38750,7 +38920,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
 /// win32 5.15.0
 const _win32 = Package(
     name: 'win32',
-    description: '''Access common Win32 APIs directly from Dart using FFI — no C required!
+    description: '''
+Access common Win32 APIs directly from Dart using FFI — no C required!
 ''',
     homepage: 'https://win32.pub',
     repository: 'https://github.com/halildurmus/win32',
@@ -38761,7 +38932,8 @@ const _win32 = Package(
     isSdk: false,
     dependencies: [PackageRef('ffi')],
     devDependencies: [PackageRef('args'), PackageRef('hooks'), PackageRef('path'), PackageRef('test')],
-    license: '''BSD 3-Clause License
+    license: '''
+BSD 3-Clause License
 
 Copyright (c) 2024, Halil Durmus
 
@@ -38803,7 +38975,8 @@ const _xdg_directories = Package(
     isSdk: false,
     dependencies: [PackageRef('meta'), PackageRef('path')],
     devDependencies: [PackageRef('test')],
-    license: '''Copyright 2013 The Flutter Authors. All rights reserved.
+    license: '''
+Copyright 2013 The Flutter Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -38842,7 +39015,8 @@ const _xml = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('meta'), PackageRef('petitparser')],
     devDependencies: [PackageRef('args'), PackageRef('lints'), PackageRef('test')],
-    license: '''The MIT License
+    license: '''
+The MIT License
 
 Copyright (c) 2006-2025 Lukas Renggli.
 All rights reserved.
@@ -38878,7 +39052,8 @@ const _yaml = Package(
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('source_span'), PackageRef('string_scanner')],
     devDependencies: [PackageRef('path'), PackageRef('test')],
-    license: '''Copyright (c) 2014, the Dart project authors.
+    license: '''
+Copyright (c) 2014, the Dart project authors.
 Copyright (c) 2006, Kirill Simonov.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -38911,7 +39086,8 @@ const _anitrack = Package(
     isSdk: false,
     dependencies: [PackageRef('archive'), PackageRef('bloc'), PackageRef('bottom_bar'), PackageRef('cached_network_image'), PackageRef('collection'), PackageRef('cupertino_icons'), PackageRef('file_picker'), PackageRef('flutter'), PackageRef('flutter_bloc'), PackageRef('fluttertoast'), PackageRef('freezed_annotation'), PackageRef('get_it'), PackageRef('graphql'), PackageRef('jikan_api'), PackageRef('json_annotation'), PackageRef('path'), PackageRef('permission_handler'), PackageRef('slang'), PackageRef('slang_flutter'), PackageRef('sqflite'), PackageRef('sqflite_common_ffi'), PackageRef('swipeable_tile'), PackageRef('url_launcher'), PackageRef('xml')],
     devDependencies: [PackageRef('build_runner'), PackageRef('flutter_launcher_icons'), PackageRef('flutter_lints'), PackageRef('dart_pubspec_licenses'), PackageRef('flutter_test'), PackageRef('freezed'), PackageRef('json_serializable'), PackageRef('slang_build_runner'), PackageRef('very_good_analysis')],
-    license: '''MIT License
+    license: '''
+MIT License
 
 Copyright (c) 2023 Alexander "PapaTutuWawa"
 

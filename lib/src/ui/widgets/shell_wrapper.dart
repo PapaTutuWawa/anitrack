@@ -1,4 +1,3 @@
-import 'package:anitrack/i18n/strings.g.dart';
 import 'package:anitrack/src/ui/constants.dart';
 import 'package:anitrack/src/ui/helpers.dart';
 import 'package:anitrack/src/ui/pages/anime_list.dart';

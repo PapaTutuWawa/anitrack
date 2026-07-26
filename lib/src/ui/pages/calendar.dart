@@ -4,7 +4,6 @@ import 'package:anitrack/src/ui/bloc/anime_list_bloc.dart';
 import 'package:anitrack/src/ui/bloc/calendar_bloc.dart';
 import 'package:anitrack/src/ui/bloc/details_bloc.dart';
 import 'package:anitrack/src/ui/constants.dart';
-import 'package:anitrack/src/ui/helpers.dart';
 import 'package:anitrack/src/ui/widgets/grid_item.dart';
 import 'package:anitrack/src/ui/widgets/image.dart';
 import 'package:flutter/material.dart';

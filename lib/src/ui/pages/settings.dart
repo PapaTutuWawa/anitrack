@@ -108,8 +108,9 @@ class SettingsPage extends StatelessWidget {
 
                           if (!(await Permission.manageExternalStorage
                                   .request())
-                              .isGranted)
+                              .isGranted) {
                             return;
+                          }
 
                           GetIt.I.get<SettingsBloc>().add(
                             DataExportedEvent(
