@@ -44,7 +44,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     );
 
     GetIt.I.get<NavigationBloc>().add(
-      GoNavigationEvent(detailsRoute),
+      PushNavigationEvent(detailsRoute),
     );
   }
 

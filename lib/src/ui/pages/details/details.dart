@@ -16,6 +16,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -60,6 +61,12 @@ class DetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(t.details.title),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            GoRouter.of(context).pop();
+          },
+        ),
       ),
       body: BlocBuilder<DetailsBloc, DetailsState>(
         builder: (context, state) {
